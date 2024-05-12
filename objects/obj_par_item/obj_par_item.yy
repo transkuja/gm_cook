@@ -30,9 +30,6 @@
   "properties":[
     {"$GMObjectProperty":"","%Name":"item_id","filters":[],"listItems":[],"multiselect":false,"name":"item_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"none\"","varType":2,},
     {"$GMObjectProperty":"","%Name":"stack","filters":[],"listItems":[],"multiselect":false,"name":"stack","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"5","varType":0,},
-    {"$GMObjectProperty":"","%Name":"gui_sprite","filters":[
-        "GMSprite",
-      ],"listItems":[],"multiselect":false,"name":"gui_sprite","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

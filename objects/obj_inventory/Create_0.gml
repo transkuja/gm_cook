@@ -54,10 +54,10 @@ function DrawItems() {
 		if (!instance_exists(slots_instances[i])) continue;
 		if (i < array_length(inventory))
 		{
-			slots_instances[i].Refresh(inventory[i].sprite, inventory[i].qty);
+			slots_instances[i].Refresh(inventory[i]);
 		}
 		else
-			slots_instances[i].Refresh(-1, 0);
+			slots_instances[i].Refresh({});
 	}
 }
 
@@ -92,6 +92,21 @@ function DrawSlots() {
 			slots_instances[0].SetSelected(true);
 		}
 	}
+}
+
+// Returns the selected item id or "none" if no proper item was selected
+function UseSelectedItem() {
+	var _currentSlotId = "none";
+	with (slots_instances[selected_slot]) {
+		if (item_data.qty > 0) {
+			item_data.qty--;
+		}
+		
+		_currentSlotId = item_data.item_id;
+	}
+	
+	RemoveItem(_currentSlotId, 1);
+	return _currentSlotId;
 }
 
 // Create process

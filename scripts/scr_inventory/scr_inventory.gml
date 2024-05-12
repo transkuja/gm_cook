@@ -1,8 +1,6 @@
 
-function ItemData(_id, _sprite, _qty, _stack) constructor
-{
+function ItemData(_id = "empty", _qty = 0, _stack = 0) constructor {
     item_id = _id;
-	sprite = _sprite;
 	qty = _qty;
 	stack = _stack;
 } 

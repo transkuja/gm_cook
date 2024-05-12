@@ -25,6 +25,9 @@ last_interactible_detected = noone;
 
 draw_debug = true;
 
+// For prepared items
+item_in_hands = noone; 
+
 current_state = new PlayerIdleState(id, {});
 current_state.enter_state();
 
@@ -140,7 +143,11 @@ function InteractInputCheck() {
 	if (global.player_control == false)	{ return; }
 	if (!instance_exists(last_interactible_detected)) { return; }
 	
-	if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_enter)) {
+	if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
 		last_interactible_detected.Interact();	
+	}
+	
+	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
+		last_interactible_detected.PutItemIn();
 	}
 }

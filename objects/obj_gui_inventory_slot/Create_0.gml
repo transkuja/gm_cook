@@ -1,14 +1,13 @@
 image_alpha = 0.5;
-item_sprite = noone;
-qty = 0;
+item_data = {};
+
 is_selected = false;
 center_x = x + (sprite_width * 0.5);
 center_y = y + (sprite_height * 0.5);
 
-function Refresh(_spr, _qty) {
-	spr_item = _spr;
-	qty = _qty;
-
+function Refresh(_itemData) {
+	// TODO: check if data is copied or passed by ref
+	item_data = _itemData;
 }
 
 function SetSelected(_value) {

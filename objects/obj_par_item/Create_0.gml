@@ -34,7 +34,7 @@ function Collect() {
 	
 	if (instance_exists(inst_inventory)) {
 		is_collected = true;
-		inst_inventory.AddItem(new ItemData(item_id, gui_sprite, 1, stack));
+		inst_inventory.AddItem(new ItemData(item_id, 1, stack));
 		instance_destroy();
 	}
 }
