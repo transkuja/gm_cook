@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_magnet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_magnet",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
