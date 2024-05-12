@@ -1,1 +1,1 @@
-Spawn();
+Spawn(true);

@@ -2,14 +2,15 @@ event_inherited();
 
 spawned_instance = noone;
 
-function Spawn() {
+function Spawn(_checkInstance = false) {
 	
 	if (to_spawn == noone || to_spawn == undefined) return;
 	
 	if (!layer_exists("Instances"))
 		layer_create(0,"Instances");
-		
-	instance_create_layer(x, y, "Instances", to_spawn);
+	
+	if (!_checkInstance || !instance_exists(spawned_instance))
+		spawned_instance = instance_create_layer(x, y, "Instances", to_spawn);
 	
 	if (auto_respawn) { alarm[0] = spawn_cooldown * game_get_speed(gamespeed_fps); }
 }
