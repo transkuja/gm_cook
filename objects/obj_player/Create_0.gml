@@ -22,6 +22,7 @@ collect_radius = 150;
 interact_radius = 150;
 interact_prompt_instance = noone;
 last_interactible_detected = noone;
+last_transformer_detected = noone;
 
 draw_debug = true;
 
@@ -137,17 +138,45 @@ function InteractibleDetection() {
 	}
 	
 }
+
+function TransformerDetection() {
+	var _detected = collision_circle(x,y, interact_radius, obj_par_transformer, false, false);
+	
+	if (_detected != noone && _detected != undefined) {
+		if (last_transformer_detected == _detected) { return; }
+		
+		if (instance_exists(last_transformer_detected)) {
+			last_transformer_detected.ResetFeedback();
+		}
+		
+		_detected.InRangeFeedback();
+		last_transformer_detected = _detected;
+	}
+	else
+	{
+		if (instance_exists(last_transformer_detected)) {
+			last_transformer_detected.ResetFeedback();
+			last_transformer_detected = noone;
+		}
+		
+		if (instance_exists(interact_prompt_instance))
+			instance_destroy(interact_prompt_instance);
+	}
+}
 	
 // TODO: externalize in InputManager
 function InteractInputCheck() {
 	if (global.player_control == false)	{ return; }
-	if (!instance_exists(last_interactible_detected)) { return; }
-	
-	if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
-		last_interactible_detected.Interact();	
+
+	if (instance_exists(last_interactible_detected)) {
+		if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
+			last_interactible_detected.Interact();
+		}
 	}
-	
-	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
-		last_interactible_detected.PutItemIn();
+
+	if (instance_exists(last_transformer_detected)) {
+		if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
+			last_transformer_detected.PutItemIn();
+		}
 	}
 }

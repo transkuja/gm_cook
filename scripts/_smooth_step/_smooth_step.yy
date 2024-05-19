@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_smooth_step",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_smooth_step",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

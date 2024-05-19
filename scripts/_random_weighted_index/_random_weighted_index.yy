@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_random_weighted_index",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_random_weighted_index",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

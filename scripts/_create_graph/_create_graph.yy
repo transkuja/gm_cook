@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_create_graph",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_create_graph",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_decimal_to_base",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_decimal_to_base",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

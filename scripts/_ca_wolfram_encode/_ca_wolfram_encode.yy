@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_ca_wolfram_encode",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_ca_wolfram_encode",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

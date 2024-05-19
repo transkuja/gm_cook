@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_cubic_spline_evaluate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_cubic_spline_evaluate",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

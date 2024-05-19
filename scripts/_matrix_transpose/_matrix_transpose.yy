@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_matrix_transpose",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_matrix_transpose",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

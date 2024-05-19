@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_union_by",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_union_by",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

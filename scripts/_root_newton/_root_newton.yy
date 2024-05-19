@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_root_newton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_root_newton",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

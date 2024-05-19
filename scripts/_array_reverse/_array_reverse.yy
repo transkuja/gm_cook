@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_array_reverse",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_array_reverse",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

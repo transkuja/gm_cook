@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_unit_vector",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_unit_vector",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

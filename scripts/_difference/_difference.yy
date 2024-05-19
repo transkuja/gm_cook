@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_difference",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_difference",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

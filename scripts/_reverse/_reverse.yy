@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_reverse",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_reverse",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

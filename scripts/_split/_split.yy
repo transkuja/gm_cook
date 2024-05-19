@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_split",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_split",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

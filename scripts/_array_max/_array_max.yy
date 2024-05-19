@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_array_max",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_array_max",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

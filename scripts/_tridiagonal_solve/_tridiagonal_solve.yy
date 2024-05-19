@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_tridiagonal_solve",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_tridiagonal_solve",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

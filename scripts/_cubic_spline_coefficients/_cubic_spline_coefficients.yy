@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_cubic_spline_coefficients",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_cubic_spline_coefficients",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

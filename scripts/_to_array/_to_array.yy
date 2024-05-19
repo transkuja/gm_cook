@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_to_array",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_to_array",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

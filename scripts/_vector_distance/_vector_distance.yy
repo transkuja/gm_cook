@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_vector_distance",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_vector_distance",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

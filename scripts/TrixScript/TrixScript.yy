@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"TrixScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TrixScript",
+  "parent":{
+    "name":"Addons",
+    "path":"folders/Scripts/Addons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

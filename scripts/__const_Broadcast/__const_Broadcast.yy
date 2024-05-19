@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"__const_Broadcast",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__const_Broadcast",
+  "parent":{
+    "name":"BROADCAST",
+    "path":"folders/Scripts/Addons/BROADCAST.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_k_tuples",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_k_tuples",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

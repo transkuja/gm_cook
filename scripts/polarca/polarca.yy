@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"polarca",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"polarca",
+  "parent":{
+    "name":"polarca",
+    "path":"folders/Scripts/Addons/polarca.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

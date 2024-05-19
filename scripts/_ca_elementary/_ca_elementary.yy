@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_ca_elementary",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_ca_elementary",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

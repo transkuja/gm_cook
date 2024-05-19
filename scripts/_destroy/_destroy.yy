@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_destroy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_destroy",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"__phgen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__phgen",
+  "parent":{
+    "name":"phgen",
+    "path":"folders/Scripts/Addons/phgen.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

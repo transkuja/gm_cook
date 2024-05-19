@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_drop_right",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_drop_right",
+  "parent":{
+    "name":"gdash",
+    "path":"folders/Scripts/Addons/gdash.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

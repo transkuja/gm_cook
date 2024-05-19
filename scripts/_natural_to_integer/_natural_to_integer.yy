@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_natural_to_integer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_natural_to_integer",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

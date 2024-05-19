@@ -8,10 +8,10 @@ function VectorLength(_x, _y) {
 
 function NormalizeVector(_x, _y) {
 	var _normalized = [0,0];
-	var _length = VectorLength(_x, _y);
-	if (_length > 0) {
-		_normalized[0] = _x / _length;
-		_normalized[1] = _y / _length;
+	var _size = VectorLength(_x, _y);
+	if (_size > 0) {
+		_normalized[0] = _x / _size;
+		_normalized[1] = _y / _size;
 	}	
 		
 	return _normalized;

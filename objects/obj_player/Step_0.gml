@@ -3,6 +3,7 @@ if (current_state)
 
 ItemDetection();
 InteractibleDetection();
+TransformerDetection();
 InteractInputCheck();
 
 // Depth sorting

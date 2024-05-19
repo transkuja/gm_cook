@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"_triangular_solve",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_triangular_solve",
+  "parent":{
+    "name":"maths",
+    "path":"folders/Scripts/Addons/maths.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
