@@ -5,6 +5,7 @@ ItemDetection();
 InteractibleDetection();
 TransformerDetection();
 InteractInputCheck();
+CheckInputsInventory();
 
 // Depth sorting
 depth = -y;

@@ -20,6 +20,7 @@ function PlayerIdleState(_player, _args = {}): PlayerState(_player, _args) const
 		
 		if (!player.IsStopped() && global.player_control == true)
 			transition_to(new PlayerWalkState(player));
+			
     }
  
     some_custom_state_specific_method = function() {
@@ -48,6 +49,7 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
 				y += velocity_y;
 
 		   UpdateFacingDirection();
+		   UpdateItemInHands();
 	   }
 	   
 	   if (player.IsStopped())

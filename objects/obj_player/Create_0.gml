@@ -174,9 +174,55 @@ function InteractInputCheck() {
 		}
 	}
 
-	if (instance_exists(last_transformer_detected)) {
-		if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
-			last_transformer_detected.PutItemIn();
+	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
+		if (!instance_exists(item_in_hands)) { return; }
+		if (instance_exists(last_transformer_detected) && !last_transformer_detected.IsFilled()) {
+			last_transformer_detected.PutItemIn(item_in_hands.item_id);
+			instance_destroy(item_in_hands);
+			item_in_hands = noone;
+		}
+		else {
+			// TODO: drop item
 		}
 	}
+}
+
+function GetItemFromInventoryToHands() {
+	if (instance_exists(item_in_hands)) {
+		// TODO: smthg ? play sound at least	
+		return;
+	}
+	
+	if (!instance_exists(inst_inventory)) { _log("No inventory instance in room !!!"); return; }
+	if (!inst_inventory.IsSelectedItemValid()) { 
+		// TODO: feedback item selected not valid
+		return; 
+	}
+	
+	var _itemId = inst_inventory.UseSelectedItem();
+	
+	item_in_hands = instance_create_layer(
+						x, 
+						y,
+						"Instances", obj_par_item_in_hands);
+	
+	if (instance_exists(item_in_hands)) {
+		item_in_hands.Initialize(_itemId);
+		UpdateItemInHands();
+	}
+	//obj_par_item_in_hands, );
+}
+
+function CheckInputsInventory() {
+	if (gamepad_button_check_pressed(0, gp_face4) || mouse_check_button_pressed(mb_right)) {
+		if (!instance_exists(item_in_hands)) {
+			GetItemFromInventoryToHands();
+		}
+	}
+}
+
+function UpdateItemInHands() {
+	if (!instance_exists(item_in_hands)) { return; }
+	
+	item_in_hands.MoveWithPlayer(x, y, depth);
 }

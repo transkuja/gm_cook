@@ -94,16 +94,25 @@ function DrawSlots() {
 	}
 }
 
+
+// Return currently selected item in inventory and "none" if no valid item selected
+function GetSelectedItemId() {
+	var _currentSlotId = 
+		variable_struct_get_or_else(slots_instances[selected_slot].item_data, "item_id", "none");
+	//with (slots_instances[selected_slot]) {	
+		//_currentSlotId = item_data.item_id;
+	//}
+	
+	return _currentSlotId;
+}
+
+function IsSelectedItemValid() {
+	return GetSelectedItemId() != "none";
+}
+
 // Returns the selected item id or "none" if no proper item was selected
 function UseSelectedItem() {
-	var _currentSlotId = "none";
-	with (slots_instances[selected_slot]) {
-		if (item_data.qty > 0) {
-			item_data.qty--;
-		}
-		
-		_currentSlotId = item_data.item_id;
-	}
+	var _currentSlotId = GetSelectedItemId();
 	
 	RemoveItem(_currentSlotId, 1);
 	return _currentSlotId;
