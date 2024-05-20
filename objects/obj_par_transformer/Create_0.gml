@@ -3,7 +3,7 @@ event_inherited()
 items_in_ids = array_create(0, "none");
 
 // On X pressed
-function Interact() {
+function StartTransforming() {
 	
 }
 
@@ -24,7 +24,15 @@ function PutItemIn(_itemId) {
 
 // After operation, A
 function TakeFrom() {
+	var _item_removed = items_in_ids[array_length(items_in_ids) - 1];
+	array_remove(items_in_ids, _item_removed);
+	return _item_removed;
+}
 
+
+// On A pressed
+function Interact() {
+	
 }
 
 // Retrieve what has been put in, in case of mistake

@@ -163,7 +163,21 @@ function TransformerDetection() {
 			instance_destroy(interact_prompt_instance);
 	}
 }
+
+function SetItemInHands(_itemId) {
+	if (instance_exists(item_in_hands)) { return; }
 	
+	item_in_hands = instance_create_layer(
+						x, 
+						y,
+						"Instances", obj_par_item_in_hands);
+	
+	if (instance_exists(item_in_hands)) {
+		item_in_hands.Initialize(_itemId);
+		UpdateItemInHands();
+	}
+}
+
 // TODO: externalize in InputManager
 function InteractInputCheck() {
 	if (global.player_control == false)	{ return; }
@@ -175,17 +189,27 @@ function InteractInputCheck() {
 	}
 
 	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
-		if (!instance_exists(item_in_hands)) { return; }
-		if (instance_exists(last_transformer_detected) && !last_transformer_detected.IsFilled()) {
-			last_transformer_detected.PutItemIn(item_in_hands.item_id);
-			instance_destroy(item_in_hands);
-			item_in_hands = noone;
+		if (instance_exists(last_transformer_detected)) {
+			if (instance_exists(item_in_hands)) {
+				if (!last_transformer_detected.IsFilled()) {
+					last_transformer_detected.PutItemIn(item_in_hands.item_id);
+					instance_destroy(item_in_hands);
+					item_in_hands = noone;
+				}
+			}
+			// No item in hand
+			else {
+				var _item_retrieved = last_transformer_detected.TakeFrom();
+				SetItemInHands(_item_retrieved);				
+			}
 		}
 		else {
 			// TODO: drop item
 		}
 	}
 }
+
+
 
 function GetItemFromInventoryToHands() {
 	if (instance_exists(item_in_hands)) {
@@ -201,16 +225,7 @@ function GetItemFromInventoryToHands() {
 	
 	var _itemId = inst_inventory.UseSelectedItem();
 	
-	item_in_hands = instance_create_layer(
-						x, 
-						y,
-						"Instances", obj_par_item_in_hands);
-	
-	if (instance_exists(item_in_hands)) {
-		item_in_hands.Initialize(_itemId);
-		UpdateItemInHands();
-	}
-	//obj_par_item_in_hands, );
+	SetItemInHands(_itemId);
 }
 
 function CheckInputsInventory() {
