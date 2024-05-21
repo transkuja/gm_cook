@@ -43,6 +43,7 @@ function RemoveItem(_id, _qty) {
 		{
 			show_debug_message("Quantity 0, deleting " + inventory[_foundIndex].item_id);
 			array_delete(inventory, _foundIndex, 1);
+			slots_instances[_foundIndex].Refresh({});
 		}
 	}
 }

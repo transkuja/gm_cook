@@ -24,6 +24,8 @@ function PutItemIn(_itemId) {
 
 // After operation, A
 function TakeFrom() {
+	if (array_length(items_in_ids) == 0) { return; }
+	
 	var _item_removed = items_in_ids[array_length(items_in_ids) - 1];
 	array_remove(items_in_ids, _item_removed);
 	return _item_removed;
@@ -31,13 +33,25 @@ function TakeFrom() {
 
 
 // On A pressed
-function Interact() {
+function Interact(_interactInstigator) {
+	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+		if (_interactInstigator.HasItemInHands())
+			return;
+	}
 	
+	if (IsFilled()) {
+		StartTransforming();
+	}
 }
 
 // Retrieve what has been put in, in case of mistake
 function EmptyTransformer() {
 	
+}
+
+// At least one item in
+function ContainsAnItem() {
+	return array_length(items_in_ids) > 0;
 }
 
 function IsFilled() {

@@ -21,7 +21,7 @@ function Initialize(_itemId) {
 		sprite_index = sprite_item_ref;
 	}
 	
-	mask_index = spr_no_coll_mask;
+	//mask_index = spr_no_coll_mask;
 	
 	is_init = true;
 }
@@ -30,12 +30,12 @@ function Drop(_x, _y) {
 	x = _x;
 	y = _y;
 	is_dropped = true;
-	mask_index = sprite_item_ref;
+	//mask_index = sprite_item_ref;
 }
 
-function PickUp() {
+function PickUp(_pickupInstigator) {
 	is_dropped = false;
-	mask_index = spr_no_coll_mask;
+	//mask_index = spr_no_coll_mask;
 	CanBePickedUpFeedback(false);
 }
 

@@ -15,7 +15,7 @@ function Spawn(_checkInstance = false) {
 	if (auto_respawn) { alarm[0] = spawn_cooldown * game_get_speed(gamespeed_fps); }
 }
 
-function Interact() {
+function Interact(_interactInstigator) {
 	alarm[0] = -1;
 	Spawn();
 }

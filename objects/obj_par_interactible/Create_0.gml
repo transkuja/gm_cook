@@ -13,6 +13,6 @@ function ResetFeedback() {
 	shader_enabled = false;
 }
 
-function Interact() constructor {
+function Interact(_interactInstigator) constructor {
 	
 }

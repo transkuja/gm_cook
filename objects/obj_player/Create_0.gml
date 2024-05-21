@@ -20,9 +20,12 @@ current_scale = 1;
 // Item detection
 collect_radius = 150;
 interact_radius = 150;
+pick_up_radius = 100;
 interact_prompt_instance = noone;
 last_interactible_detected = noone;
 last_transformer_detected = noone;
+last_portable_item_detected = noone;
+detection_offset_y = -50;
 
 draw_debug = true;
 
@@ -74,6 +77,8 @@ function UpdateFacingDirection() {
 }
 	
 function IsStopped() { return velocity_x == 0 && velocity_y == 0; }
+function HasItemInHands() {	return instance_exists(item_in_hands); }
+function ClearItemInHands() { instance_destroy(item_in_hands); item_in_hands = noone; }
 
 function ComputeVelocityFromInputs() {
 	if (global.player_control == true)
@@ -97,7 +102,7 @@ function ComputeVelocityFromInputs() {
 
 function ItemDetection() {
 	var _items_detected = ds_list_create();
-	var _count = collision_circle_list(x,y, collect_radius, obj_par_item, false, false, _items_detected, false);
+	var _count = collision_circle_list(x,y + detection_offset_y, collect_radius, obj_par_item, false, false, _items_detected, false);
 	
 	if (_count > 0)
 	{
@@ -114,7 +119,7 @@ function ItemDetection() {
 }
 
 function InteractibleDetection() {
-	var _detected = collision_circle(x,y, interact_radius, obj_par_interactible, false, false);
+	var _detected = collision_circle(x,y+detection_offset_y, interact_radius, obj_par_interactible, false, false);
 	
 	if (_detected != noone && _detected != undefined) {
 		if (last_interactible_detected == _detected) { return; }
@@ -140,7 +145,7 @@ function InteractibleDetection() {
 }
 
 function TransformerDetection() {
-	var _detected = collision_circle(x,y, interact_radius, obj_par_transformer, false, false);
+	var _detected = collision_circle(x,y+detection_offset_y, interact_radius, obj_par_transformer, false, false);
 	
 	if (_detected != noone && _detected != undefined) {
 		if (last_transformer_detected == _detected) { return; }
@@ -164,8 +169,35 @@ function TransformerDetection() {
 	}
 }
 
+function PortableItemDetection() {
+	if (HasItemInHands()) { return; }
+	
+	var _detected = collision_circle(x,y+detection_offset_y, pick_up_radius, obj_par_item_in_hands, false, false);
+	
+	if (_detected != noone && _detected != undefined) {
+		if (last_portable_item_detected == _detected) { return; }
+		
+		if (instance_exists(last_portable_item_detected)) {
+			last_portable_item_detected.CanBePickedUpFeedback(false);
+		}
+		
+		_detected.CanBePickedUpFeedback(true);
+		last_portable_item_detected = _detected;
+	}
+	else
+	{
+		if (instance_exists(last_portable_item_detected)) {
+			last_portable_item_detected.CanBePickedUpFeedback(false);
+			last_portable_item_detected = noone;
+		}
+		
+		if (instance_exists(interact_prompt_instance))
+			instance_destroy(interact_prompt_instance);
+	}
+}
+
 function SetItemInHands(_itemId) {
-	if (instance_exists(item_in_hands)) { return; }
+	if (instance_exists(item_in_hands) || _itemId == "none" || _itemId == "") { return; }
 	
 	item_in_hands = instance_create_layer(
 						x, 
@@ -184,27 +216,39 @@ function InteractInputCheck() {
 
 	if (instance_exists(last_interactible_detected)) {
 		if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
-			last_interactible_detected.Interact();
+			last_interactible_detected.Interact(self);
+			return;
 		}
 	}
 
 	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
 		if (instance_exists(last_transformer_detected)) {
-			if (instance_exists(item_in_hands)) {
+			if (HasItemInHands()) {
 				if (!last_transformer_detected.IsFilled()) {
 					last_transformer_detected.PutItemIn(item_in_hands.item_id);
-					instance_destroy(item_in_hands);
-					item_in_hands = noone;
+					ClearItemInHands();
+					return;
+				} 
+				else {
+					last_transformer_detected.PlayFilledFeedbacks();
+					return;
 				}
 			}
 			// No item in hand
 			else {
+				if (!last_transformer_detected.ContainsAnItem()) { return; }
+				
 				var _item_retrieved = last_transformer_detected.TakeFrom();
-				SetItemInHands(_item_retrieved);				
+				SetItemInHands(_item_retrieved);
+				return;
 			}
 		}
 		else {
-			// TODO: drop item
+			if (HasItemInHands()) {
+				item_in_hands.Drop(x, y);
+				item_in_hands = noone;
+				return;
+			}
 		}
 	}
 }
