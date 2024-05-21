@@ -22,7 +22,7 @@ if (is_magnetized && lerp_param < 1)
 	lerp_param = min(lerp_param, 1);
 	
 	x = EaseInBack(lerp_param, lerp_origin_x, inst_player.x - lerp_origin_x, 1);
-	y = EaseInBack(lerp_param,lerp_origin_y, inst_player.y - lerp_origin_y, 1);
+	y = EaseInBack(lerp_param,lerp_origin_y, inst_player.y - lerp_origin_y + target_offset_y, 1);
 	
 	if (lerp_param >= 1)
 		Collect();

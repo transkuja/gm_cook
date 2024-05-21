@@ -8,6 +8,7 @@ end_radius = 40
 lerp_param = 0;
 lerp_origin_x = 0;
 lerp_origin_y = 0;
+target_offset_y = -50;
 
 // Debug
 draw_debug = true;

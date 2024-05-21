@@ -4,6 +4,7 @@ if (current_state)
 ItemDetection();
 InteractibleDetection();
 TransformerDetection();
+PortableItemDetection();
 InteractInputCheck();
 CheckInputsInventory();
 

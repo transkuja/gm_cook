@@ -18,9 +18,9 @@ scale_flip = 1;
 current_scale = 1;
 
 // Item detection
-collect_radius = 150;
-interact_radius = 150;
-pick_up_radius = 100;
+collect_radius = 120;
+interact_radius = 80;
+pick_up_radius = 50;
 interact_prompt_instance = noone;
 last_interactible_detected = noone;
 last_transformer_detected = noone;
@@ -196,7 +196,7 @@ function PortableItemDetection() {
 	}
 }
 
-function SetItemInHands(_itemId) {
+function CreateItemInHands(_itemId) {
 	if (instance_exists(item_in_hands) || _itemId == "none" || _itemId == "") { return; }
 	
 	item_in_hands = instance_create_layer(
@@ -210,10 +210,18 @@ function SetItemInHands(_itemId) {
 	}
 }
 
+function SetItemInHands(_item_inst) {
+	if (HasItemInHands() || !instance_exists(_item_inst)) { return; }
+	
+	item_in_hands = _item_inst;
+	UpdateItemInHands();
+}
+
 // TODO: externalize in InputManager
 function InteractInputCheck() {
 	if (global.player_control == false)	{ return; }
 
+	// Press X / Space button
 	if (instance_exists(last_interactible_detected)) {
 		if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
 			last_interactible_detected.Interact(self);
@@ -221,7 +229,15 @@ function InteractInputCheck() {
 		}
 	}
 
+	// Press A / Enter button
 	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
+		if (instance_exists(last_portable_item_detected)) {
+			if (!HasItemInHands()) {
+				last_portable_item_detected.PickUp(self);
+				return;
+			}
+		}
+		
 		if (instance_exists(last_transformer_detected)) {
 			if (HasItemInHands()) {
 				if (!last_transformer_detected.IsFilled()) {
@@ -239,16 +255,15 @@ function InteractInputCheck() {
 				if (!last_transformer_detected.ContainsAnItem()) { return; }
 				
 				var _item_retrieved = last_transformer_detected.TakeFrom();
-				SetItemInHands(_item_retrieved);
+				CreateItemInHands(_item_retrieved);
 				return;
 			}
 		}
-		else {
-			if (HasItemInHands()) {
-				item_in_hands.Drop(x, y);
-				item_in_hands = noone;
-				return;
-			}
+		
+		if (HasItemInHands()) {
+			item_in_hands.Drop(x, y);
+			item_in_hands = noone;
+			return;
 		}
 	}
 }
@@ -269,7 +284,7 @@ function GetItemFromInventoryToHands() {
 	
 	var _itemId = inst_inventory.UseSelectedItem();
 	
-	SetItemInHands(_itemId);
+	CreateItemInHands(_itemId);
 }
 
 function CheckInputsInventory() {

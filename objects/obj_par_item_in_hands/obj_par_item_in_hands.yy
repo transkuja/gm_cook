@@ -31,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"white_square",
-    "path":"sprites/white_square/white_square.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

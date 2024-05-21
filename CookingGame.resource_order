@@ -192,6 +192,7 @@
     {"name":"scr_ssave_manager","order":4,"path":"scripts/scr_ssave_manager/scr_ssave_manager.yy",},
     {"name":"scr_ssave","order":2,"path":"scripts/scr_ssave/scr_ssave.yy",},
     {"name":"scr_vectorUtils","order":1,"path":"scripts/scr_vectorUtils/scr_vectorUtils.yy",},
+    {"name":"scr_commonChecks","order":13,"path":"scripts/scr_commonChecks/scr_commonChecks.yy",},
     {"name":"TrixScript","order":2,"path":"scripts/TrixScript/TrixScript.yy",},
     {"name":"chopper_ph","order":8,"path":"sprites/chopper_ph/chopper_ph.yy",},
     {"name":"Cutlery","order":7,"path":"sprites/Cutlery/Cutlery.yy",},

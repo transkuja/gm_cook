@@ -239,6 +239,7 @@
     {"id":{"name":"scr_ssave_manager","path":"scripts/scr_ssave_manager/scr_ssave_manager.yy",},},
     {"id":{"name":"scr_ssave","path":"scripts/scr_ssave/scr_ssave.yy",},},
     {"id":{"name":"scr_vectorUtils","path":"scripts/scr_vectorUtils/scr_vectorUtils.yy",},},
+    {"id":{"name":"scr_commonChecks","path":"scripts/scr_commonChecks/scr_commonChecks.yy",},},
     {"id":{"name":"TrixScript","path":"scripts/TrixScript/TrixScript.yy",},},
     {"id":{"name":"shader_outline","path":"shaders/shader_outline/shader_outline.yy",},},
     {"id":{"name":"chopper_ph","path":"sprites/chopper_ph/chopper_ph.yy",},},
