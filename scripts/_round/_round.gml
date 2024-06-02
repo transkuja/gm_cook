@@ -9,7 +9,7 @@ function _round(xx)
 {
 	// Get step size and direction arguments
 	var step = (argument_count > 1 ? argument[1] : 1.0);
-	var down = (argument_count > 2 ? argument[2] : true);
+	var down_value = (argument_count > 2 ? argument[2] : true);
 	
 	// Verify that step size is positive
 	if (step <= 0)
@@ -32,7 +32,7 @@ function _round(xx)
 	else
 	{
 		// Break ties based on direction argument
-		if (down == true)
+		if (down_value == true)
 			return xx - (xx mod step);
 		else
 			return xx - (xx mod step) + step;

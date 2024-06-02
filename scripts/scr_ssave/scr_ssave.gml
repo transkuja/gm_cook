@@ -39,7 +39,7 @@ function SSave(_name = "data", _protection = SSAVE_PROTECTION_DEFAULT) construct
 	}
 	
 	///@desc Saves the ssave
-	static save = function()
+	static _save = function()
 	{
 		var _filename = __get_filename();
 		return __save_to_file(_filename);

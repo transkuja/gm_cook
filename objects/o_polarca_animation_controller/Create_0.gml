@@ -15,3 +15,4 @@ init = function(){
 
 }
 
+on_animation_finished = noone;

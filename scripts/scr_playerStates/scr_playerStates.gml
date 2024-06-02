@@ -57,3 +57,22 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
 	}
  }
 
+function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _args) constructor {
+    name = "transform";
+	player = _player;
+	
+    enter_state = function() {
+		player.state = PLAYER_STATE.TRANSFORMING;
+		player.sprite_index = player.playerSpr[player.state];
+    }
+
+    process_step = function() {
+		
+       with (player) {
+			CheckCookingInput();
+	   }
+	   
+	   if (!instance_exists(player.cooking_input_object))
+			transition_to(new PlayerIdleState(player))
+	}
+ }

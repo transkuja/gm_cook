@@ -10,7 +10,7 @@ repeat(len){
 		
 	//work
 	with(_animation){
-		_pos+=curve_speed
+		_pos+=d(curve_speed)
 		instance_update(_pos)
 	}
 	
@@ -24,6 +24,9 @@ repeat(len){
 }
 
 if(_should_destroy){
+	if (on_animation_finished != noone) 
+		on_animation_finished.dispatch();
+		
 	show_debug_message("arrp -> animationsended. killing controller " +string(id))
 	instance_destroy()
 }

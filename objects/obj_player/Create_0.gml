@@ -32,6 +32,9 @@ draw_debug = true;
 // For prepared items
 item_in_hands = noone; 
 
+// Transform inputs
+cooking_input_object = noone;
+
 current_state = new PlayerIdleState(id, {});
 current_state.enter_state();
 
@@ -78,7 +81,14 @@ function UpdateFacingDirection() {
 	
 function IsStopped() { return velocity_x == 0 && velocity_y == 0; }
 function HasItemInHands() {	return instance_exists(item_in_hands); }
-function ClearItemInHands() { instance_destroy(item_in_hands); item_in_hands = noone; }
+function ClearItemInHands(_target) { 
+	if (instance_exists(_target))
+		item_in_hands.StartMoveTo(_target, true);
+	else
+		instance_destroy(item_in_hands);
+		
+	item_in_hands = noone; 
+}
 
 function ComputeVelocityFromInputs() {
 	if (global.player_control == true)
@@ -230,7 +240,7 @@ function InteractInputCheck() {
 	}
 
 	// Press A / Enter button
-	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)) {
+	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left)) {
 		if (instance_exists(last_portable_item_detected)) {
 			if (!HasItemInHands()) {
 				last_portable_item_detected.PickUp(self);
@@ -242,7 +252,7 @@ function InteractInputCheck() {
 			if (HasItemInHands()) {
 				if (!last_transformer_detected.IsFilled()) {
 					last_transformer_detected.PutItemIn(item_in_hands.item_id);
-					ClearItemInHands();
+					ClearItemInHands(last_transformer_detected);
 					return;
 				} 
 				else {
@@ -299,4 +309,26 @@ function UpdateItemInHands() {
 	if (!instance_exists(item_in_hands)) { return; }
 	
 	item_in_hands.MoveWithPlayer(x, y, depth);
+}
+
+function CheckCookingInput() {
+	if (!instance_exists(cooking_input_object)) { return; }
+	
+	if (gamepad_button_check_pressed(0, gp_face1) ||
+			mouse_check_button_pressed(mb_left) || 
+			gamepad_button_check_pressed(0, gp_face3) || 
+			keyboard_check_pressed(vk_space) ||
+			keyboard_check_pressed(vk_enter)) {
+		cooking_input_object.OnInputPressed();
+		
+		// TODO: play anim on player
+		//image_blend = c_green;
+		//var color_blend = new polarca_animation("image_blend", c_white, ac_linear, 0, 0.09);
+		//polarca_animation_start([color_blend]);
+		
+		if (instance_exists(last_transformer_detected)) {
+			last_transformer_detected.TransformingFeedbacks();
+		}
+	}
+	
 }

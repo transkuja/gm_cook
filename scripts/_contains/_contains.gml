@@ -19,7 +19,7 @@ function _contains() {
 	*/
 
 	var collection = argument[0];
-	var target = argument[1];
+	var target_value = argument[1];
 	var fromIndex = argument_count > 2 ? argument[2] : 0;
 	var dsType = argument_count > 3 ? argument[3] : ds_type_list;
 	var collectionType = typeof(collection);
@@ -50,10 +50,10 @@ function _contains() {
 	}
 
 	if (collectionType == "string") {
-	    return string_count(string(target), collection) > 0;
+	    return string_count(string(target_value), collection) > 0;
 	} else if (collectionType == "array") {    
 	    var asList = _to_list(collection);
-	    var found = ds_list_find_index(asList, target);
+	    var found = ds_list_find_index(asList, target_value);
 	    ds_list_destroy(asList);
 	    return found != -1;
 	} else if (collectionType == "number") {
@@ -67,13 +67,13 @@ function _contains() {
 
 	        for (var i = fromIndex; i < n; i++) {
 	            var thisValue = collection[? keys[i]];
-	            if (typeof(thisValue) == typeof(target) && thisValue == target) {
+	            if (typeof(thisValue) == typeof(target_value) && thisValue == target_value) {
 	                return true;
 	            }
 	        }
 	        return false;
 	    } else if (dsType == ds_type_list) {
-	        var found = ds_list_find_index(collection, target) != -1;
+	        var found = ds_list_find_index(collection, target_value) != -1;
 	        if (fromIndex != 0) {
 	            ds_list_destroy(collection);
 	        }

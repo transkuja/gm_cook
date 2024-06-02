@@ -13,6 +13,11 @@ handler_2=shader_get_uniform(shader_outline,"RGBA")
 
 shader_enabled = false;
 
+// Move variables
+move_target = noone;
+destroy_on_move_end = false;
+move_speed = 0.075;
+
 function Initialize(_itemId) {
 	item_id = _itemId;
 	if (item_id != "none")
@@ -52,4 +57,30 @@ function MoveWithPlayer(_x, _y, _depth) {
 	x = _x + player_xoffset;
 	y = _y + player_yoffset;
 	depth = _depth - 5;
+}
+	
+function StartMoveTo(_target, _destroyOnMoveEnd) {
+	move_target = _target;
+	destroy_on_move_end = _destroyOnMoveEnd;
+	is_dropped = true;
+	
+	if (instance_exists(move_target))
+	{
+		xa = new polarca_animation("x",center_x(move_target),ac_moveItemInTransformer,0,move_speed)
+		ya = new polarca_animation("y",center_y(move_target),ac_moveItemInTransformer,0,move_speed)
+		sxa = new polarca_animation("image_xscale", 0.25 ,ac_moveItemInTransformer,1,move_speed);
+		sya = new polarca_animation("image_yscale", 0.25 ,ac_moveItemInTransformer,1,move_speed);
+		
+		polarca_animation_start([xa, ya, sxa, sya]).on_animation_finished = 
+			Broadcast(function() {
+				if (variable_instance_exists(move_target, "ConfirmPendingItem"))
+					move_target.ConfirmPendingItem(item_id);
+					
+				move_target = noone;
+				
+				if (destroy_on_move_end) 
+					instance_destroy();
+			}
+		);
+	}
 }

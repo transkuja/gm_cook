@@ -1,6 +1,7 @@
 event_inherited()
 
 items_in_ids = array_create(0, "none");
+items_pending = array_create(0, "none");
 
 // On X pressed
 function StartTransforming() {
@@ -15,7 +16,20 @@ function PutItemIn(_itemId) {
 	}
 	
 	if (_itemId != "none")
-		_push(items_in_ids, _itemId);
+		_push(items_pending, _itemId);
+	
+}
+
+function ConfirmPendingItem(_itemId) {
+	if (!_contains(items_pending, _itemId)) { return; }
+		
+	array_remove(items_pending, _itemId);
+	_push(items_in_ids, _itemId);
+	
+	var anim_scale_x = new polarca_animation("image_xscale", 0.8, ac_bump_x, 0, 0.08);
+	var anim_scale_y = new polarca_animation("image_yscale", 1.2, ac_bump_x, 0, 0.08);
+	polarca_animation_start([anim_scale_x, anim_scale_y]);
+		
 	
 	_log("Transformer content:");
 	for (var i = 0; i < array_length(items_in_ids); i++)
@@ -39,7 +53,7 @@ function Interact(_interactInstigator) {
 			return;
 	}
 	
-	if (IsFilled()) {
+	if (array_length(items_in_ids) == max_items) {
 		StartTransforming();
 	}
 }
@@ -56,10 +70,16 @@ function ContainsAnItem() {
 
 function IsFilled() {
 	// array_remove(items_in_ids, "none");
-	return array_length(items_in_ids) == max_items;
+	return array_length(items_in_ids) + array_length(items_pending) == max_items;
 }
 
 
 function PlayFilledFeedbacks() {
 	_log("Filled !");
+}
+
+function TransformingFeedbacks() {
+	var anim_scale_x = new polarca_animation("image_xscale", 1.2, ac_bump_x, 0, 0.09);
+	var anim_scale_y = new polarca_animation("image_yscale", 0.8, ac_bump_x, 0, 0.09);
+	polarca_animation_start([anim_scale_x, anim_scale_y]);
 }

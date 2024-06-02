@@ -1,6 +1,7 @@
 enum PLAYER_STATE {
 	IDLE,
-	WALKING
+	WALKING,
+	TRANSFORMING
 }
 
 // Directions
