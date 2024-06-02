@@ -312,7 +312,7 @@ function UpdateItemInHands() {
 }
 
 function CheckCookingInput() {
-	if (!instance_exists(cooking_input_object)) { return; }
+	if (!instance_exists(cooking_input_object)) { return false; }
 	
 	if (gamepad_button_check_pressed(0, gp_face1) ||
 			mouse_check_button_pressed(mb_left) || 
@@ -322,13 +322,17 @@ function CheckCookingInput() {
 		cooking_input_object.OnInputPressed();
 		
 		// TODO: play anim on player
-		//image_blend = c_green;
-		//var color_blend = new polarca_animation("image_blend", c_white, ac_linear, 0, 0.09);
-		//polarca_animation_start([color_blend]);
 		
 		if (instance_exists(last_transformer_detected)) {
 			last_transformer_detected.TransformingFeedbacks();
 		}
+		
+		return true;
 	}
 	
+	return false;
+}
+
+function IsCooking() {
+	return instance_exists(cooking_input_object);
 }

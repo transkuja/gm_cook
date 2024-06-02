@@ -45,6 +45,9 @@ function TakeFrom() {
 	return _item_removed;
 }
 
+function IsTransformable() {
+	return true;
+}
 
 // On A pressed
 function Interact(_interactInstigator) {
@@ -53,7 +56,7 @@ function Interact(_interactInstigator) {
 			return;
 	}
 	
-	if (array_length(items_in_ids) == max_items) {
+	if (array_length(items_in_ids) == max_items && IsTransformable()) {
 		StartTransforming();
 	}
 }
@@ -78,8 +81,19 @@ function PlayFilledFeedbacks() {
 	_log("Filled !");
 }
 
+cur_transforming_anm = noone;
+
 function TransformingFeedbacks() {
-	var anim_scale_x = new polarca_animation("image_xscale", 1.2, ac_bump_x, 0, 0.09);
-	var anim_scale_y = new polarca_animation("image_yscale", 0.8, ac_bump_x, 0, 0.09);
-	polarca_animation_start([anim_scale_x, anim_scale_y]);
+	if (instance_exists(cur_transforming_anm))
+		instance_destroy(cur_transforming_anm);
+		
+	image_xscale = 1;
+	image_yscale = 1;
+	
+	var anim_scale_x = new polarca_animation("image_xscale", 1.2, ac_bump_x, 0, 0.3);
+	var anim_scale_y = new polarca_animation("image_yscale", 0.8, ac_bump_x, 0, 0.3);
+	cur_transforming_anm = polarca_animation_start([anim_scale_x, anim_scale_y]);
+}
+
+function OnTransformationFinished() {
 }
