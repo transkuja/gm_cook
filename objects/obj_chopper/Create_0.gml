@@ -1,5 +1,8 @@
 event_inherited();
 
+initial_item_mash_count = 0;
+current_mash_count = 0;
+
 function IsTransformable() {
 	if (array_length(items_in_ids) > 0)
 		return GetChoppedResult(items_in_ids[0]) != "none";
@@ -21,5 +24,10 @@ function StartTransforming() {
 				});
 		}
 	}
+	
+	var _s = layer_sequence_create("GUI",x,y, seq_press_button);
+	layer_sequence_pause(_s);
+	
+	layer_sequence_play(_s);
 }
 

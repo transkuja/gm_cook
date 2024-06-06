@@ -19,3 +19,19 @@ enum FADE_STATE {
 	FADE_IN,
 	FADE_OUT,
 }
+
+// Preparation enum
+enum PREPARATION_TYPE {
+	CHOP,
+	PAN_COOK,
+	HOVEN_COOK,
+	ASSEMBLE,
+	PEEL // or mix idk yet
+}
+
+enum TRANSFORMER_STATE {
+	EMPTY,
+	CAN_TRANSFORM,
+	IN_PROGRESS,
+	WAIT_FOR_PICKUP
+}

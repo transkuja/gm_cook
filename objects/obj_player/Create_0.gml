@@ -264,8 +264,7 @@ function InteractInputCheck() {
 			else {
 				if (!last_transformer_detected.ContainsAnItem()) { return; }
 				
-				var _item_retrieved = last_transformer_detected.TakeFrom();
-				CreateItemInHands(_item_retrieved);
+				last_transformer_detected.HandleTakeItem(self);
 				return;
 			}
 		}

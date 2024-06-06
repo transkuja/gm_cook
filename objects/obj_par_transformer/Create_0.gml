@@ -1,7 +1,11 @@
 event_inherited()
 
+state = TRANSFORMER_STATE.EMPTY;
 items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
+
+current_state = new TransformerEmptyState(id, {});
+current_state.enter_state();
 
 // On X pressed
 function StartTransforming() {
@@ -36,13 +40,23 @@ function ConfirmPendingItem(_itemId) {
 		_log(items_in_ids[i]);
 }
 
+function HandleTakeItem(_interactInstigator) {
+	if (current_state)
+		current_state.process_item_take(_interactInstigator);	
+}
+
 // After operation, A
-function TakeFrom() {
-	if (array_length(items_in_ids) == 0) { return; }
-	
-	var _item_removed = items_in_ids[array_length(items_in_ids) - 1];
-	array_remove(items_in_ids, _item_removed);
-	return _item_removed;
+function TakeFrom(_interactInstigator) {
+	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+		if (_interactInstigator.HasItemInHands())
+			return false;
+	}
+		
+	var _item_removed = transformer.items_in_ids[array_length(transformer.items_in_ids) - 1];
+	array_remove(transformer.items_in_ids, _item_removed);
+		
+	_interactInstigator.CreateItemInHands(_item_removed);
+	return true;
 }
 
 function IsTransformable() {

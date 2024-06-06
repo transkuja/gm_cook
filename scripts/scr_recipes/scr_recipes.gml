@@ -1,15 +1,21 @@
 
-function Recipe() constructor{
-	var result_id = "none";
-	var components = [];
+function RecipeStep(_step_components = [], _preparation_type = PREPARATION_TYPE.ASSEMBLE) constructor {
+	step_components = _step_components;
+	preparation_type = _preparation_type;
+}
+
+function Recipe(_result_id = "none", _raw_components = [], _steps = []) constructor {
+	result_id = _result_id;
+	raw_components = _raw_components;
+	recipe_steps = _steps;
 	
 	function IsValidRecipe(_components) {
-		if (array_length(_components) !=  array_length(components))
+		if (array_length(_components) !=  array_length(raw_components))
 			return "none";
 		
 		for (var i = 0; i < array_length(_components); i++)
 		{
-			if (!_contains(components, _components[i]))
+			if (!_contains(raw_components, _components[i]))
 				return "none";
 		}
 		

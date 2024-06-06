@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_jsonifier",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_jsonifier",
+  "parent":{
+    "name":"Database",
+    "path":"folders/Scripts/Database.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
