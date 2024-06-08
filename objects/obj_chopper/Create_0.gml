@@ -4,8 +4,10 @@ initial_item_mash_count = 0;
 current_mash_count = 0;
 
 function IsTransformable() {
-	if (array_length(items_in_ids) > 0)
+	if (IsFilled())
 		return GetChoppedResult(items_in_ids[0]) != "none";
+		
+	return false;
 }
 
 function OnTransformationFinished() {
@@ -14,15 +16,12 @@ function OnTransformationFinished() {
 }
 
 function StartTransforming() {
-	// TODO: spawn object handling input + sequence for QTE gameplay (R&D)
-	if (instance_exists(inst_player)) {
-		inst_player.cooking_input_object = instance_create_layer(0,0,"Instances", obj_qte_chop);
-		if (instance_exists(inst_player.cooking_input_object)) {
-			inst_player.cooking_input_object.on_qte_completed = 
-				Broadcast(function() {
-					OnTransformationFinished();
-				});
-		}
+	if (current_mash_count == 0) {
+		var _mash_count = GetChopMashCount(items_in_ids[0]);
+		if (_mash_count == -1) { return; }
+		
+		initial_item_mash_count = _mash_count;
+		current_mash_count = _mash_count;
 	}
 	
 	var _s = layer_sequence_create("GUI",x,y, seq_press_button);
@@ -31,3 +30,7 @@ function StartTransforming() {
 	layer_sequence_play(_s);
 }
 
+function Progress() {
+	current_mash_count--;
+	return initial_item_mash_count > 0 && current_mash_count <= 0;		
+}

@@ -5,7 +5,7 @@ function TransformerState(_object, _args = {}): BaseState(_object, _args) constr
 	process_interaction = function(_interactInstigator) {
     }
 	
-	process_item_take = function(_interactInstigator) {
+	process_item_interaction = function(_interactInstigator) {
     }
 }
 
@@ -17,6 +17,8 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.EMPTY;
+		transformer.image_blend = c_white;
+		_log("Transformer enter state empty");
     }
 
 
@@ -28,16 +30,32 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
         // No interaction, could eventually play feedback
     }
 	
-	process_item_take = function(_interactInstigator) {
-        if (_itemId != "none") {
-			_push(items_pending, _itemId);
+	process_item_interaction = function(_interactInstigator) {
+		if (transformer.IsFilled())
+			return;
 			
-			if (transformer.IsTransformable())
-				transition_to(new TransformerCanTransformState(transformer));
-			else
-				transition_to(new TransformerWaitForPickupState(transformer));
+		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+			if (!_interactInstigator.HasItemInHands())
+				return;
+		}
+		
+		_item_id = _interactInstigator.item_in_hands.item_id;
+        if (_item_id != "none") {
+			_push(transformer.items_pending, _item_id);
+			
+			var _to_subscribe = Subscriber(function() { 
+				transformer.ConfirmPendingItem();
+				
+				if (transformer.IsTransformable())
+					transition_to(new TransformerCanTransformState(transformer));
+				else
+					transition_to(new TransformerWaitForPickupState(transformer));
+			} );
+			
+			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
 		}
     }
+	
 }
 
 function TransformerCanTransformState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
@@ -46,6 +64,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
+		transformer.image_blend = c_aqua;
+		_log("Transformer enter state can transform");
+		
 		// TODO: spawn seq paused
     }
 
@@ -54,8 +75,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 			
     }
  
-	process_draw() = function() {
+	process_draw = function() {
 		// Draw item in + progression
+		transformer.DrawItemsIn();
 	}
 	
 	// Start transforming
@@ -65,14 +87,15 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 				return;
 		}
 	
-		if (array_length(items_in_ids) == max_items && IsTransformable()) {
+		if (array_length(transformer.items_in_ids) == transformer.max_items && transformer.IsTransformable()) {
 			transformer.StartTransforming();
+			_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
 			transition_to(new TransformerInProgressState(transformer));
 		}
     }
 	
 	// Take item out
-	process_item_take = function(_interactInstigator) {
+	process_item_interaction = function(_interactInstigator) {
 		if (transformer.TakeFrom(_interactInstigator))
 			transition_to(new TransformerEmptyState(transformer));
     }
@@ -84,6 +107,8 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.IN_PROGRESS;
+		transformer.image_blend = c_orange;
+		_log("Transformer enter state in progress");
     }
 
 
@@ -91,12 +116,19 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 			
     }
  
+ 	process_draw = function() {
+		// Draw item in + progression
+		transformer.DrawItemsIn();
+	}
+	
     process_interaction = function(_interactInstigator) {
-        // TODO:
+        if (transformer.Progress())
+			transition_to(new TransformerWaitForPickupState(transformer));
     }
 	
-	process_item_take = function(_interactInstigator) {
-        // TODO:
+	process_item_interaction = function(_interactInstigator) {
+        if (transformer.Progress())
+			transition_to(new TransformerWaitForPickupState(transformer));
     }
 }
 
@@ -106,6 +138,8 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.WAIT_FOR_PICKUP;
+		_log("Transformer enter state pick up");
+		transformer.image_blend = c_green;
     }
 
 
@@ -113,13 +147,18 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 			
     }
  
+ 	process_draw = function() {
+		// Draw item in + progression
+		transformer.DrawItemsIn();
+	}
+	
 	// Can't interact with final item, should take it out
     process_interaction = function(_interactInstigator) {
 		// feedback ?    
     }
 	
 	// Take item out
-	process_item_take = function(_interactInstigator) {
+	process_item_interaction = function(_interactInstigator) {
 		if (transformer.TakeFrom(_interactInstigator))
 			transition_to(new TransformerEmptyState(transformer));
     }

@@ -71,16 +71,16 @@ function StartMoveTo(_target, _destroyOnMoveEnd) {
 		sxa = new polarca_animation("image_xscale", 0.25 ,ac_moveItemInTransformer,1,move_speed);
 		sya = new polarca_animation("image_yscale", 0.25 ,ac_moveItemInTransformer,1,move_speed);
 		
-		polarca_animation_start([xa, ya, sxa, sya]).on_animation_finished = 
-			Broadcast(function() {
-				if (variable_instance_exists(move_target, "ConfirmPendingItem"))
-					move_target.ConfirmPendingItem(item_id);
-					
-				move_target = noone;
-				
+		var _broadcast = Broadcast(function() {
 				if (destroy_on_move_end) 
 					instance_destroy();
-			}
-		);
+		} );
+		
+		polarca_animation_start([xa, ya, sxa, sya]).on_animation_finished = _broadcast;
+			
+		
+		return _broadcast;
 	}
+	else
+		return noone;
 }

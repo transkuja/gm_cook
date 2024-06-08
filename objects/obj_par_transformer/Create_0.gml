@@ -3,6 +3,7 @@ event_inherited()
 state = TRANSFORMER_STATE.EMPTY;
 items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
+seq_input = noone;
 
 current_state = new TransformerEmptyState(id, {});
 current_state.enter_state();
@@ -24,25 +25,25 @@ function PutItemIn(_itemId) {
 	
 }
 
-function ConfirmPendingItem(_itemId) {
-	if (!_contains(items_pending, _itemId)) { return; }
-		
+function ConfirmPendingItem() {
+	if (array_length(items_pending) == 0) return;
+	
+	var _itemId = items_pending[0];		
 	array_remove(items_pending, _itemId);
 	_push(items_in_ids, _itemId);
 	
 	var anim_scale_x = new polarca_animation("image_xscale", 0.8, ac_bump_x, 0, 0.08);
 	var anim_scale_y = new polarca_animation("image_yscale", 1.2, ac_bump_x, 0, 0.08);
 	polarca_animation_start([anim_scale_x, anim_scale_y]);
-		
 	
 	_log("Transformer content:");
 	for (var i = 0; i < array_length(items_in_ids); i++)
 		_log(items_in_ids[i]);
 }
 
-function HandleTakeItem(_interactInstigator) {
+function ItemInteraction(_interactInstigator) {
 	if (current_state)
-		current_state.process_item_take(_interactInstigator);	
+		current_state.process_item_interaction(_interactInstigator);
 }
 
 // After operation, A
@@ -52,8 +53,8 @@ function TakeFrom(_interactInstigator) {
 			return false;
 	}
 		
-	var _item_removed = transformer.items_in_ids[array_length(transformer.items_in_ids) - 1];
-	array_remove(transformer.items_in_ids, _item_removed);
+	var _item_removed = items_in_ids[array_length(items_in_ids) - 1];
+	array_remove(items_in_ids, _item_removed);
 		
 	_interactInstigator.CreateItemInHands(_item_removed);
 	return true;
@@ -65,14 +66,8 @@ function IsTransformable() {
 
 // On A pressed
 function Interact(_interactInstigator) {
-	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
-		if (_interactInstigator.HasItemInHands())
-			return;
-	}
-	
-	if (array_length(items_in_ids) == max_items && IsTransformable()) {
-		StartTransforming();
-	}
+	if (current_state)
+		current_state.process_interaction(_interactInstigator);
 }
 
 // Retrieve what has been put in, in case of mistake
@@ -107,6 +102,28 @@ function TransformingFeedbacks() {
 	var anim_scale_x = new polarca_animation("image_xscale", 1.2, ac_bump_x, 0, 0.3);
 	var anim_scale_y = new polarca_animation("image_yscale", 0.8, ac_bump_x, 0, 0.3);
 	cur_transforming_anm = polarca_animation_start([anim_scale_x, anim_scale_y]);
+}
+
+function DrawItemsIn() {
+	if (array_length(items_in_ids) > 0)	{
+		for (var _i = 0; _i < array_length(items_in_ids); _i++)
+		{
+			var _draw_xy = WorldToGUI(x + (_i * 100), y - 100);
+			//var _draw_x = x + (_i * 100);
+			//var _draw_y = y - 100;
+			draw_sprite(phgen_circle(32, c_white, 2, c_black), 0, _draw_xy[0] - 32, _draw_xy[1] - 32);
+			draw_sprite_ext(
+				GetItemSprite(items_in_ids[_i]), 
+				0, 
+				 _draw_xy[0],  _draw_xy[1],
+				0.4, 0.4, 0, c_white, 1);
+			_log(_draw_xy);
+		}
+	}
+}
+
+function Progress() {
+	return true;		
 }
 
 function OnTransformationFinished() {

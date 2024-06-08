@@ -22,3 +22,12 @@ function GetChoppedResult(_item_id) {
 			return "none";
 	}
 }
+
+function GetChopMashCount(_item_id) {
+		switch (_item_id) {
+			case "banana":
+				return 5;
+			default:
+				return -1;
+		}
+}

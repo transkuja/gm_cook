@@ -32,9 +32,6 @@ draw_debug = true;
 // For prepared items
 item_in_hands = noone; 
 
-// Transform inputs
-cooking_input_object = noone;
-
 current_state = new PlayerIdleState(id, {});
 current_state.enter_state();
 
@@ -81,9 +78,13 @@ function UpdateFacingDirection() {
 	
 function IsStopped() { return velocity_x == 0 && velocity_y == 0; }
 function HasItemInHands() {	return instance_exists(item_in_hands); }
-function ClearItemInHands(_target) { 
+function ClearItemInHands(_target, _event) { 
 	if (instance_exists(_target))
-		item_in_hands.StartMoveTo(_target, true);
+	{
+		var _on_move_finished = item_in_hands.StartMoveTo(_target, true);
+		if (_event != noone)
+			_event.watch(_on_move_finished);
+	}
 	else
 		instance_destroy(item_in_hands);
 		
@@ -249,27 +250,23 @@ function InteractInputCheck() {
 		}
 		
 		if (instance_exists(last_transformer_detected)) {
-			if (HasItemInHands()) {
-				if (!last_transformer_detected.IsFilled()) {
-					last_transformer_detected.PutItemIn(item_in_hands.item_id);
-					ClearItemInHands(last_transformer_detected);
-					return;
-				} 
-				else {
-					last_transformer_detected.PlayFilledFeedbacks();
-					return;
-				}
-			}
-			// No item in hand
-			else {
-				if (!last_transformer_detected.ContainsAnItem()) { return; }
+			last_transformer_detected.ItemInteraction(self);
+			return;
+			//if (HasItemInHands()) {
+			//	if (!last_transformer_detected.IsFilled()) {
+			//		last_transformer_detected.ItemInteraction(self);
+			//		return;
+			//	} 
+			//}
+			//// No item in hand
+			//else {
+			//	if (!last_transformer_detected.ContainsAnItem()) { return; }
 				
-				last_transformer_detected.HandleTakeItem(self);
-				return;
-			}
+			//	last_transformer_detected.ItemInteraction(self);
+			//	return;
+			//}
 		}
-		
-		if (HasItemInHands()) {
+		else if (HasItemInHands()) {
 			item_in_hands.Drop(x, y);
 			item_in_hands = noone;
 			return;
@@ -311,27 +308,34 @@ function UpdateItemInHands() {
 }
 
 function CheckCookingInput() {
-	if (!instance_exists(cooking_input_object)) { return false; }
-	
-	if (gamepad_button_check_pressed(0, gp_face1) ||
-			mouse_check_button_pressed(mb_left) || 
-			gamepad_button_check_pressed(0, gp_face3) || 
-			keyboard_check_pressed(vk_space) ||
-			keyboard_check_pressed(vk_enter)) {
-		cooking_input_object.OnInputPressed();
+	if (global.player_control == false)	{ return; }
+
+	if (instance_exists(last_interactible_detected)) {
+		if (gamepad_button_check_pressed(0, gp_face1) ||
+				mouse_check_button_pressed(mb_left) || 
+				gamepad_button_check_pressed(0, gp_face3) || 
+				keyboard_check_pressed(vk_space) ||
+				keyboard_check_pressed(vk_enter)) {
+					
+			last_interactible_detected.Interact(self);
+			// TODO: play anim on player
 		
-		// TODO: play anim on player
+			if (instance_exists(last_transformer_detected)) {
+				last_transformer_detected.TransformingFeedbacks();
+			}
 		
-		if (instance_exists(last_transformer_detected)) {
-			last_transformer_detected.TransformingFeedbacks();
+			return true;
 		}
-		
-		return true;
+	}
+	else {
+		if (current_state) 
+			current_state.transition_to(new PlayerIdleState(self));
+		return false;
 	}
 	
 	return false;
 }
 
 function IsCooking() {
-	return instance_exists(cooking_input_object);
+	return state == PLAYER_STATE.TRANSFORMING;
 }
