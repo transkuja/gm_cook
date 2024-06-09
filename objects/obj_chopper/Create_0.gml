@@ -27,15 +27,28 @@ function StartTransforming() {
 	
 }
 
+function GetProgressRatio() {
+	if (initial_item_mash_count < 0)
+		return 0;
+		
+	return 1 - (current_mash_count / initial_item_mash_count);
+}
+
 function Progress() {
 	current_mash_count--;
 	return initial_item_mash_count > 0 && current_mash_count <= 0;		
 }
 
 function SetFeedbacksInitialState() {
-	if (!sequence_exists(active_sequence))
-		active_sequence = layer_sequence_create("GUI",x,y, seq_press_button);
+	if (!sequence_exists(active_sequence)) {
+		var _seq_x = x - (sprite_width * 0.5) - 50;
+		var _seq_y = y - (sprite_height * 0.5) - 50;
 		
+		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, seq_press_button);
+	}
+	
+	layer_sequence_xscale(active_sequence, 0.35);
+	layer_sequence_yscale(active_sequence, 0.35);
 	layer_sequence_pause(active_sequence);
 }
 

@@ -78,6 +78,8 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	process_draw = function() {
 		// Draw item in + progression
 		transformer.DrawItemsIn();
+		transformer.DrawBackground();
+		transformer.DrawProgress();
 	}
 	
 	// Start transforming
@@ -120,6 +122,8 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
  	process_draw = function() {
 		// Draw item in + progression
 		transformer.DrawItemsIn();
+		transformer.DrawBackground();
+		transformer.DrawProgress();
 	}
 	
     process_interaction = function(_interactInstigator) {
