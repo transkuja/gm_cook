@@ -1,4 +1,28 @@
-
+function load_database(_filename) {
+	file = file_text_open_read(_filename);
+	
+	if (file == -1) {
+		_log("Can't open", _filename, " file !");
+		return;
+	}
+	
+	var result = [];
+	while (!file_text_eof(file)) {
+		to_parse = file_text_readln(file);
+		_log(to_parse);
+		
+		var _parsed = json_parse(to_parse);
+		_push(result, _parsed);
+	}
+	
+	file_text_close(file);
+	
+	_log("Recipes DB entries count:", array_length(result));
+	for (var _i = 0; _i < array_length(result); _i++)
+		_log(result[_i]);
+		
+	return result;
+}
 
 /// @function file_read_all_text(filename)
 /// @description Reads entire content of a given file as a string, or returns undefined if the file doesn't exist.

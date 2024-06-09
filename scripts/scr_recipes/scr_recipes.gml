@@ -1,4 +1,9 @@
 
+function AssembleCombo(_ids = [], _result_id = "none") constructor {
+	ids = _ids;
+	result_id = _result_id;
+}
+
 function RecipeStep(_step_components = [], _preparation_type = PREPARATION_TYPE.ASSEMBLE) constructor {
 	step_components = _step_components;
 	preparation_type = _preparation_type;
