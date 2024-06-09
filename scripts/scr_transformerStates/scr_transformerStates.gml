@@ -128,12 +128,18 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 	
     process_interaction = function(_interactInstigator) {
         if (transformer.Progress())
+		{
+			transformer.OnTransformationFinished();
 			transition_to(new TransformerWaitForPickupState(transformer));
+		}
     }
 	
 	process_item_interaction = function(_interactInstigator) {
         if (transformer.Progress())
+		{
+			transformer.OnTransformationFinished();
 			transition_to(new TransformerWaitForPickupState(transformer));
+		}
     }
 }
 
