@@ -14,6 +14,8 @@ function IsTransformable() {
 function OnTransformationFinished() {
 	if (array_length(items_in_ids) > 0)
 		items_in_ids[0] = GetChoppedResult(items_in_ids[0]);
+	
+	initial_item_mash_count = 0;
 }
 
 function StartTransforming() {
@@ -28,7 +30,7 @@ function StartTransforming() {
 }
 
 function GetProgressRatio() {
-	if (initial_item_mash_count < 0)
+	if (initial_item_mash_count <= 0)
 		return 0;
 		
 	return 1 - (current_mash_count / initial_item_mash_count);
