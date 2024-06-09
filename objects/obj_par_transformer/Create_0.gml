@@ -3,10 +3,6 @@ event_inherited()
 state = TRANSFORMER_STATE.EMPTY;
 items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
-seq_input = noone;
-
-current_state = new TransformerEmptyState(id, {});
-current_state.enter_state();
 
 // On X pressed
 function StartTransforming() {
@@ -128,3 +124,15 @@ function Progress() {
 
 function OnTransformationFinished() {
 }
+
+function SetFeedbacksInitialState() {
+}
+
+function SetPlayerInteractingFeedbacks() {
+}
+
+function HideFeedbacks() {
+}
+
+current_state = new TransformerEmptyState(id, {});
+current_state.enter_state();

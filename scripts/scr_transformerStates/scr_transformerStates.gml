@@ -17,8 +17,9 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.EMPTY;
+		transformer.HideFeedbacks();
+
 		transformer.image_blend = c_white;
-		_log("Transformer enter state empty");
     }
 
 
@@ -64,10 +65,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
-		transformer.image_blend = c_aqua;
-		_log("Transformer enter state can transform");
+		transformer.SetFeedbacksInitialState();
 		
-		// TODO: spawn seq paused
+		transformer.image_blend = c_aqua;
     }
 
 
@@ -107,8 +107,9 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.IN_PROGRESS;
+		transformer.SetPlayerInteractingFeedbacks();
+		
 		transformer.image_blend = c_orange;
-		_log("Transformer enter state in progress");
     }
 
 
@@ -138,7 +139,8 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.WAIT_FOR_PICKUP;
-		_log("Transformer enter state pick up");
+		transformer.HideFeedbacks();
+
 		transformer.image_blend = c_green;
     }
 

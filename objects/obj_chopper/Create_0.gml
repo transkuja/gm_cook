@@ -2,6 +2,7 @@ event_inherited();
 
 initial_item_mash_count = 0;
 current_mash_count = 0;
+active_sequence = noone;
 
 function IsTransformable() {
 	if (IsFilled())
@@ -24,13 +25,26 @@ function StartTransforming() {
 		current_mash_count = _mash_count;
 	}
 	
-	var _s = layer_sequence_create("GUI",x,y, seq_press_button);
-	layer_sequence_pause(_s);
-	
-	layer_sequence_play(_s);
 }
 
 function Progress() {
 	current_mash_count--;
 	return initial_item_mash_count > 0 && current_mash_count <= 0;		
+}
+
+function SetFeedbacksInitialState() {
+	if (!sequence_exists(active_sequence))
+		active_sequence = layer_sequence_create("GUI",x,y, seq_press_button);
+		
+	layer_sequence_pause(active_sequence);
+}
+
+function SetPlayerInteractingFeedbacks() {
+	if (sequence_exists(active_sequence))
+		layer_sequence_play(active_sequence);
+}
+
+function HideFeedbacks() {
+	if (sequence_exists(active_sequence))
+		layer_sequence_destroy(active_sequence);
 }
