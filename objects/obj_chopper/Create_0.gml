@@ -40,11 +40,13 @@ function SetFeedbacksInitialState() {
 }
 
 function SetPlayerInteractingFeedbacks() {
-	if (sequence_exists(active_sequence))
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id))
 		layer_sequence_play(active_sequence);
 }
 
 function HideFeedbacks() {
-	if (sequence_exists(active_sequence))
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id))
 		layer_sequence_destroy(active_sequence);
 }
