@@ -18,16 +18,19 @@ function GetChoppedResult(_item_id) {
 	switch (_item_id) {
 		case "banana":
 			return "chopped_banana";
+		case "apple":
+			return "chopped_apple";
 		default:
 			return "none";
 	}
 }
 
 function GetChopMashCount(_item_id) {
-		switch (_item_id) {
-			case "banana":
-				return 5;
-			default:
-				return -1;
-		}
+	switch (_item_id) {
+		case "banana":
+			return 5;
+		default:
+			return -1;
+	}
 }
+

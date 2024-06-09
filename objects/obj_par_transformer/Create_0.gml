@@ -102,18 +102,20 @@ function TransformingFeedbacks() {
 
 function DrawItemsIn() {
 	if (array_length(items_in_ids) > 0)	{
-		for (var _i = 0; _i < array_length(items_in_ids); _i++)
+		for (var _i = 0; _i < max_items; _i++)
 		{
 			var _draw_xy = WorldToGUI(x + (_i * 100), y - popup_draw_height);
 			//var _draw_x = x + (_i * 100);
 			//var _draw_y = y - 100;
 			draw_sprite(phgen_circle(32, c_white, 2, c_black), 0, _draw_xy[0] - 32, _draw_xy[1] - 32);
-			draw_sprite_ext(
-				GetItemSprite(items_in_ids[_i]), 
-				0, 
-				 _draw_xy[0],  _draw_xy[1],
-				0.4, 0.4, 0, c_white, 1);
-			_log(_draw_xy);
+			
+			if (array_length(items_in_ids) > _i) {
+				draw_sprite_ext(
+					GetItemSprite(items_in_ids[_i]), 
+					0, 
+					 _draw_xy[0],  _draw_xy[1],
+					0.4, 0.4, 0, c_white, 1);
+			}
 		}
 	}
 }

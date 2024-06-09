@@ -8,19 +8,21 @@ function CreateRecipesDB(){
 		[new RecipeStep(["banana"], PREPARATION_TYPE.CHOP),
 			new RecipeStep(["chopped_banana", "apple"], PREPARATION_TYPE.ASSEMBLE)]);
 	
-	var _json_string = json_stringify(recipes, true);
+	//var _json_string = json_stringify(recipes);
 	
-	var file;
-	file = file_text_open_write(
-		working_directory + "recipes.txt");
+	json_save(working_directory + "recipes.txt", recipes);
 	
-	if (file == -1)
-		_log("File could not be created");
+	//var file;
+	//file = file_text_open_write(
+	//	working_directory + "recipes.txt");
+	
+	//if (file == -1)
+	//	_log("File could not be created");
 		
-	file_text_write_string(file, _json_string);
-	file_text_close(file);
+	//file_text_write_string(file, _json_string);
+	//file_text_close(file);
 	
-	_log("Database created at", working_directory);
+	//_log("Database created at", working_directory);
 	
-	_log(_json_string);
+	//_log(_json_string);
 }
