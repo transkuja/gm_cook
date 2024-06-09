@@ -35,6 +35,7 @@ function ConfirmPendingItem() {
 	_log("Transformer content:");
 	for (var i = 0; i < array_length(items_in_ids); i++)
 		_log(items_in_ids[i]);
+	_log(array_length(items_pending));
 }
 
 function ItemInteraction(_interactInstigator) {

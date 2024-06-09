@@ -1,1 +1,1 @@
-{"ids":["chopped_banana","apple"], "result_id":"none"}
+{"ids":["chopped_banana","apple"], "result_id":"fruit_salad"}

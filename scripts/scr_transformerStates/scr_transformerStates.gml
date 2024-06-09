@@ -169,9 +169,39 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 		// feedback ?    
     }
 	
+	send_item_in = function(_interactInstigator) {
+		_item_id = _interactInstigator.item_in_hands.item_id;
+		if (_item_id != "none") {
+			_push(transformer.items_pending, _item_id);
+			
+			var _to_subscribe = Subscriber(function() { 
+				transformer.ConfirmPendingItem();
+				
+				if (transformer.IsTransformable())
+					transition_to(new TransformerCanTransformState(transformer));
+			} );
+			
+			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
+		}
+	}
+	
 	// Take item out
 	process_item_interaction = function(_interactInstigator) {
-		if (transformer.TakeFrom(_interactInstigator))
-			transition_to(new TransformerEmptyState(transformer));
+		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+			if (_interactInstigator.HasItemInHands()) {
+				if (!transformer.IsFilled()) {
+					send_item_in(_interactInstigator);
+				}
+			}
+			else {
+				if (transformer.TakeFrom(_interactInstigator)) {
+					if (!transformer.ContainsAnItem())
+						transition_to(new TransformerEmptyState(transformer));
+				}
+			}
+		}
+		
+
+		
     }
 }

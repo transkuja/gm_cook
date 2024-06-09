@@ -4,11 +4,13 @@ function GetItemSprite(_item_id) {
 		case "banana":
 			return spr_banana;
 		case "chopped_banana":
-			return spr_tinned_fruit_with_stroke;
+			return spr_lemon_without_stroke;
 		case "apple":
 			return spr_apple_without_stroke;
 		case "chopped_apple":
-			return spr_strawberry_without_stroke;	
+			return spr_strawberry_without_stroke;
+		case "fruit_salad":
+			return spr_tinned_fruit_with_stroke;
 		default:
 			return noone;
 	}
@@ -33,4 +35,5 @@ function GetChopMashCount(_item_id) {
 			return -1;
 	}
 }
+
 

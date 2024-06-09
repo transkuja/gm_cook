@@ -4,27 +4,41 @@ initial_item_mash_count = 0;
 current_mash_count = 0;
 active_sequence = noone;
 
+expected_result = "none";
+
 function IsTransformable() {
-	if (IsFilled())
-		return GetChoppedResult(items_in_ids[0]) != "none";
+	if (IsFilled())	{
+		if (!instance_exists(inst_databaseLoader)) {
+			_log("ERROR! Obj database loader does not exist !");
+			return false;
+		}
 		
+		for (var _index = 0; _index < array_length(inst_databaseLoader.assemble_combos); _index++) {
+			var tmp = new AssembleCombo(inst_databaseLoader.assemble_combos[_index].ids, inst_databaseLoader.assemble_combos[_index].result_id );
+			var result = tmp.IsCombo(items_in_ids);
+			
+			if (result != "none") {
+				expected_result = result;
+				break;
+			}
+		}
+		
+		return true;
+	}	
+	
 	return false;
 }
 
 function OnTransformationFinished() {
-	if (array_length(items_in_ids) > 0)
-		items_in_ids[0] = GetChoppedResult(items_in_ids[0]);
+	items_in_ids = array_create(1, expected_result);
 	
 	initial_item_mash_count = 0;
 }
 
 function StartTransforming() {
 	if (current_mash_count == 0) {
-		var _mash_count = GetChopMashCount(items_in_ids[0]);
-		if (_mash_count == -1) { return; }
-		
-		initial_item_mash_count = _mash_count;
-		current_mash_count = _mash_count;
+		initial_item_mash_count = 1;
+		current_mash_count = 1;
 	}
 	
 }
