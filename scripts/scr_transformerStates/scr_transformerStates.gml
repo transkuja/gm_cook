@@ -51,6 +51,7 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 					transition_to(new TransformerCanTransformState(transformer));
 				else
 					transition_to(new TransformerWaitForPickupState(transformer));
+				
 			} );
 			
 			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
@@ -130,7 +131,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
         if (transformer.Progress())
 		{
 			transformer.OnTransformationFinished();
-			transition_to(new TransformerWaitForPickupState(transformer));
+			transition_to(new TransformerResultState(transformer));
 		}
     }
 	
@@ -138,7 +139,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
         if (transformer.Progress())
 		{
 			transformer.OnTransformationFinished();
-			transition_to(new TransformerWaitForPickupState(transformer));
+			transition_to(new TransformerResultState(transformer));
 		}
     }
 }
@@ -151,7 +152,7 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 		transformer.state = TRANSFORMER_STATE.WAIT_FOR_PICKUP;
 		transformer.HideFeedbacks();
 
-		transformer.image_blend = c_green;
+		transformer.image_blend = c_yellow;
     }
 
 
@@ -202,6 +203,45 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 		}
 		
 
+		
+    }
+}
+
+function TransformerResultState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
+    name = "result";
+	transformer = _transformer;
+	
+    enter_state = function() {
+		transformer.state = TRANSFORMER_STATE.RESULT;
+		transformer.HideFeedbacks();
+
+		transformer.image_blend = c_green;
+    }
+
+
+    process_step = function() {
+			
+    }
+ 
+ 	process_draw = function() {
+		// Draw item in + progression
+		transformer.DrawItemsIn();
+	}
+	
+	// Can't interact with final item, should take it out
+    process_interaction = function(_interactInstigator) {
+		// feedback ?    
+    }
+		
+	// Take item out
+	process_item_interaction = function(_interactInstigator) {
+		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+			if (_interactInstigator.HasItemInHands()) {	return; }
+		}
+			
+		if (transformer.TakeFrom(_interactInstigator)) {
+			transition_to(new TransformerEmptyState(transformer));
+		}
 		
     }
 }

@@ -75,19 +75,17 @@ function SetSelectedSlot(_newValue) {
 }
 
 function DrawSlots() {
-	var _xoffset = ((slot_width * slot_count) + (slots_step * (slot_count - 1))) * 0.5;
-
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
 	
 	instance_create_layer(view_wport[0] * 0.5, view_hport[0] - 200, "GUI", obj_debug_square);
 
+	var _draw_xs = GetPositionsOnLineCenter(slot_width, slots_step, slot_count, view_wport[0] * 0.5, SPRITE_ORIGIN.MIDDLE_CENTER); 
+	
 	// Draw slots
 	for (var i = 0; i < slot_count; i += 1)
 	{
-		show_debug_message("i offset: {0}", (slots_step + slot_width) * i);
-		var _x = (view_wport[0] * 0.5) +( (slot_width + slots_step) * i) - _xoffset;
-		slots_instances[i] = instance_create_layer(_x, view_hport[0] - 200, "GUI", obj_gui_inventory_slot);
+		slots_instances[i] = instance_create_layer(_draw_xs[i], view_hport[0] - 200, "GUI", obj_gui_inventory_slot);
 		slots_instances[i].slot_index = i;
 		if (i == 0) {
 			slots_instances[0].SetSelected(true);

@@ -101,20 +101,25 @@ function TransformingFeedbacks() {
 	cur_transforming_anm = polarca_animation_start([anim_scale_x, anim_scale_y]);
 }
 
+draw_circle_radius = 32;
+
 function DrawItemsIn() {
+	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
+	
+	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
+	
 	if (array_length(items_in_ids) > 0)	{
-		for (var _i = 0; _i < max_items; _i++)
+		for (var _i = 0; _i < _nb_items_to_draw; _i++)
 		{
-			var _draw_xy = WorldToGUI(x + (_i * 100), y - popup_draw_height);
-			//var _draw_x = x + (_i * 100);
-			//var _draw_y = y - 100;
-			draw_sprite(phgen_circle(32, c_white, 2, c_black), 0, _draw_xy[0] - 32, _draw_xy[1] - 32);
+			var _draw_xy = WorldToGUI(_draw_xs[_i], y - popup_draw_height);
+			
+			draw_sprite(phgen_circle(draw_circle_radius, c_white, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius);
 			
 			if (array_length(items_in_ids) > _i) {
 				draw_sprite_ext(
 					GetItemSprite(items_in_ids[_i]), 
 					0, 
-					 _draw_xy[0],  _draw_xy[1],
+					 _draw_xy[0] + draw_circle_radius,  _draw_xy[1],
 					0.4, 0.4, 0, c_white, 1);
 			}
 		}
