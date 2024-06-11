@@ -23,7 +23,10 @@ function IsTransformable() {
 			}
 		}
 		
-		return true;
+		if (expected_result == "none")
+			return false;
+		else
+			return true;
 	}	
 	
 	return false;

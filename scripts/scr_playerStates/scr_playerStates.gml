@@ -94,7 +94,7 @@ function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _arg
 		}
 	   
 	   if (!instance_exists(player.last_transformer_detected) || 
-				player.last_transformer_detected.state == TRANSFORMER_STATE.WAIT_FOR_PICKUP) {
+				player.last_transformer_detected.state == TRANSFORMER_STATE.RESULT) {
 			transition_to(new PlayerIdleState(player))
 		}
 	}
