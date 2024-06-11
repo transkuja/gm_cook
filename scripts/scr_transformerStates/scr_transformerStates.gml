@@ -41,6 +41,8 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 		}
 		
 		_item_id = _interactInstigator.item_in_hands.item_id;
+		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		
         if (_item_id != "none") {
 			_push(transformer.items_pending, _item_id);
 			
@@ -172,6 +174,8 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
 	send_item_in = function(_interactInstigator) {
 		_item_id = _interactInstigator.item_in_hands.item_id;
+		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		
 		if (_item_id != "none") {
 			_push(transformer.items_pending, _item_id);
 			

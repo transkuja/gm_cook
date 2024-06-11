@@ -36,4 +36,21 @@ function GetChopMashCount(_item_id) {
 	}
 }
 
+function GetItemType(_item_id) {
+		switch (_item_id) {
+		case "banana":
+			return ITEM_TYPE.RAW_COMPO;
+		case "chopped_banana":
+			return ITEM_TYPE.TRANSFORMED_COMPO;
+		case "apple":
+			return ITEM_TYPE.RAW_COMPO;
+		case "chopped_apple":
+			return ITEM_TYPE.TRANSFORMED_COMPO;
+		case "fruit_salad":
+			return ITEM_TYPE.RECIPE_FINAL;
+		default:
+			return ITEM_TYPE.NONE;
+	}
+}
+
 

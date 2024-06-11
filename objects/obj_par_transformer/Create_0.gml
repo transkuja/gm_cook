@@ -38,6 +38,10 @@ function ConfirmPendingItem() {
 	_log(array_length(items_pending));
 }
 
+function IsItemValid(_itemId) {
+	return true;	
+}
+
 function ItemInteraction(_interactInstigator) {
 	if (current_state)
 		current_state.process_item_interaction(_interactInstigator);

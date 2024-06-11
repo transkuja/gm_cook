@@ -4,6 +4,10 @@ initial_item_mash_count = 0;
 current_mash_count = 0;
 active_sequence = noone;
 
+function IsItemValid(_itemId) {
+	return GetItemType(_itemId) == ITEM_TYPE.RAW_COMPO;
+}
+
 function IsTransformable() {
 	if (IsFilled())
 		return GetChoppedResult(items_in_ids[0]) != "none";

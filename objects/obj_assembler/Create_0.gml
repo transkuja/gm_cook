@@ -6,6 +6,10 @@ active_sequence = noone;
 
 expected_result = "none";
 
+function IsItemValid(_itemId) {
+	return GetItemType(_itemId) != ITEM_TYPE.RECIPE_FINAL;
+}
+
 function IsTransformable() {
 	if (IsFilled())	{
 		if (!instance_exists(inst_databaseLoader)) {
