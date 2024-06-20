@@ -36,21 +36,8 @@ current_state = new PlayerIdleState(id, {});
 current_state.enter_state();
 
 function ComputeVelocity() {
-	velocity_x = gamepad_axis_value(0, gp_axislh);
-	if (abs(velocity_x) < 0.1)
-	{
-		if (keyboard_check(vk_right) || keyboard_check(ord("D"))) velocity_x = 1;
-		else if (keyboard_check(vk_left) || keyboard_check(ord("Q"))) velocity_x = -1;
-		else velocity_x = 0;
-	}
-	
-	velocity_y = gamepad_axis_value(0, gp_axislv);
-	if (abs(velocity_y) < 0.1)
-	{
-		if (keyboard_check(vk_up) || keyboard_check(ord("Z"))) velocity_y = -1;
-		else if (keyboard_check(vk_down) || keyboard_check(ord("S"))) velocity_y = 1;
-		else velocity_y = 0;
-	}
+	velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
+	velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 
 	
 	var _normalized_velocity = NormalizeVector(velocity_x, velocity_y);
 	velocity_x = _normalized_velocity[0];
@@ -234,14 +221,14 @@ function InteractInputCheck() {
 
 	// Press X / Space button
 	if (instance_exists(last_interactible_detected)) {
-		if (gamepad_button_check_pressed(0, gp_face3) || keyboard_check_pressed(vk_space)) {
+		if (input_get_pressed(0, "interact")) {
 			last_interactible_detected.Interact(self);
 			return;
 		}
 	}
 
 	// Press A / Enter button
-	if (gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left)) {
+	if (input_get_pressed(0, "item_action")) {
 		if (instance_exists(last_portable_item_detected)) {
 			if (!HasItemInHands()) {
 				last_portable_item_detected.PickUp(self);
@@ -252,19 +239,7 @@ function InteractInputCheck() {
 		if (instance_exists(last_transformer_detected)) {
 			last_transformer_detected.ItemInteraction(self);
 			return;
-			//if (HasItemInHands()) {
-			//	if (!last_transformer_detected.IsFilled()) {
-			//		last_transformer_detected.ItemInteraction(self);
-			//		return;
-			//	} 
-			//}
-			//// No item in hand
-			//else {
-			//	if (!last_transformer_detected.ContainsAnItem()) { return; }
-				
-			//	last_transformer_detected.ItemInteraction(self);
-			//	return;
-			//}
+
 		}
 		else if (HasItemInHands()) {
 			item_in_hands.Drop(x, y);
@@ -294,7 +269,7 @@ function GetItemFromInventoryToHands() {
 }
 
 function CheckInputsInventory() {
-	if (gamepad_button_check_pressed(0, gp_face4) || mouse_check_button_pressed(mb_right)) {
+	if (input_get_pressed(0, "take_out")) {
 		if (!instance_exists(item_in_hands)) {
 			GetItemFromInventoryToHands();
 		}
@@ -311,11 +286,7 @@ function CheckCookingInput() {
 	if (global.player_control == false)	{ return; }
 
 	if (instance_exists(last_interactible_detected)) {
-		if (gamepad_button_check_pressed(0, gp_face1) ||
-				mouse_check_button_pressed(mb_left) || 
-				gamepad_button_check_pressed(0, gp_face3) || 
-				keyboard_check_pressed(vk_space) ||
-				keyboard_check_pressed(vk_enter)) {
+		if (input_get_pressed(0 , "qte")) {
 					
 			last_interactible_detected.Interact(self);
 			// TODO: play anim on player
