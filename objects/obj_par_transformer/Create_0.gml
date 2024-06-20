@@ -3,6 +3,7 @@ event_inherited()
 state = TRANSFORMER_STATE.EMPTY;
 items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
+qte_holder = noone;
 
 // On X pressed
 function StartTransforming() {
@@ -130,27 +131,6 @@ function DrawItemsIn() {
 	}
 }
 
-progress_bar_width = 100;
-progress_bar_height = 25;
-progress_bar_outline = 2.5;
-
-function DrawProgress() {
-	var _draw_xy = WorldToGUI(x, y - 85);
-	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, c_white, 0, c_white, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
-	
-	var pb_content_w = (progress_bar_width - 2*progress_bar_outline) * GetProgressRatio();
-	var pb_content_h = progress_bar_height - 2*progress_bar_outline;
-	if (pb_content_w > 0 && pb_content_h > 0)
-		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] - progress_bar_width * 0.5 + progress_bar_outline, _draw_xy[1] + progress_bar_outline);
-}
-
-function DrawBackground() {
-	//var _draw_xy = WorldToGUI(x, y - 85);
-	//var _w = progress_bar_width + 100;
-	//var _h = progress_bar_height + 20;
-	//draw_sprite(phgen_rectangle(_w, _h, c_gray, 0, c_gray, _w * 0.5, _h * 0.5), 0, _draw_xy[0], _draw_xy[1]);
-}
-
 function GetProgressRatio() {
 	return 1;
 }
@@ -162,6 +142,12 @@ function Progress() {
 function OnTransformationFinished() {
 }
 
+function TransformationFinished() {
+	OnTransformationFinished();
+	if (current_state) 
+		current_state.transition_to(new TransformerResultState(id));
+}
+
 function SetFeedbacksInitialState() {
 }
 
@@ -171,5 +157,27 @@ function SetPlayerInteractingFeedbacks() {
 function HideFeedbacks() {
 }
 
+// Non-overridable
+function CreateQteHolder() {
+	if (instance_exists(qte_holder)) { return; }
+	
+	if (qte_holder_obj != noone && qte_holder_obj != undefined) {
+		qte_holder = instance_create_layer(x, y, "GUI", qte_holder_obj.object_index);
+	}
+}
+
+function InitializeQteHolder() {
+	if (instance_exists(qte_holder))
+		qte_holder.Init(items_in_ids);
+}
+
+function ActivateQteHolder() {
+	if (instance_exists(qte_holder)) {
+		qte_holder.on_qte_completed = Broadcast(TransformationFinished());
+		qte_holder.Start();
+	}
+}
+
+// Start code execution
 current_state = new TransformerEmptyState(id, {});
 current_state.enter_state();

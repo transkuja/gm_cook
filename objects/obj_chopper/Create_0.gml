@@ -40,6 +40,7 @@ function GetProgressRatio() {
 	return 1 - (current_mash_count / initial_item_mash_count);
 }
 
+// TODO: Move to OnInputValidated
 function Progress() {
 	current_mash_count--;
 	return initial_item_mash_count > 0 && current_mash_count <= 0;		

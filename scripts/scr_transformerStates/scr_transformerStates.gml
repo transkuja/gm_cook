@@ -18,7 +18,8 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.EMPTY;
 		transformer.HideFeedbacks();
-
+		transformer.CreateQteHolder();
+		
 		transformer.image_blend = c_white;
     }
 
@@ -69,7 +70,8 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
 		transformer.SetFeedbacksInitialState();
-		
+		transformer.InitializeQteHolder();
+			
 		transformer.image_blend = c_aqua;
     }
 
@@ -81,8 +83,8 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	process_draw = function() {
 		// Draw item in + progression
 		transformer.DrawItemsIn();
-		transformer.DrawBackground();
-		transformer.DrawProgress();
+		//transformer.DrawBackground();
+		//transformer.DrawProgress();
 	}
 	
 	// Start transforming
@@ -113,6 +115,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.IN_PROGRESS;
 		transformer.SetPlayerInteractingFeedbacks();
+		transformer.ActivateQteHolder();
 		
 		transformer.image_blend = c_orange;
     }
@@ -125,24 +128,24 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
  	process_draw = function() {
 		// Draw item in + progression
 		transformer.DrawItemsIn();
-		transformer.DrawBackground();
-		transformer.DrawProgress();
+		//transformer.DrawBackground();
+		//transformer.DrawProgress();
 	}
 	
     process_interaction = function(_interactInstigator) {
-        if (transformer.Progress())
-		{
-			transformer.OnTransformationFinished();
-			transition_to(new TransformerResultState(transformer));
-		}
+        //if (transformer.Progress())
+		//{
+		//	transformer.OnTransformationFinished();
+		//	transition_to(new TransformerResultState(transformer));
+		//}
     }
 	
 	process_item_interaction = function(_interactInstigator) {
-        if (transformer.Progress())
-		{
-			transformer.OnTransformationFinished();
-			transition_to(new TransformerResultState(transformer));
-		}
+        //if (transformer.Progress())
+		//{
+		//	transformer.OnTransformationFinished();
+		//	transition_to(new TransformerResultState(transformer));
+		//}
     }
 }
 

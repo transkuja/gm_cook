@@ -288,12 +288,12 @@ function CheckCookingInput() {
 	if (instance_exists(last_interactible_detected)) {
 		if (input_get_pressed(0 , "qte")) {
 					
-			last_interactible_detected.Interact(self);
-			// TODO: play anim on player
+			//last_interactible_detected.Interact(self);
+			//// TODO: play anim on player
 		
-			if (instance_exists(last_transformer_detected)) {
-				last_transformer_detected.TransformingFeedbacks();
-			}
+			//if (instance_exists(last_transformer_detected)) {
+			//	last_transformer_detected.TransformingFeedbacks();
+			//}
 		
 			return true;
 		}

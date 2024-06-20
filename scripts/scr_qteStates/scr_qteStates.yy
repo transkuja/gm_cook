@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_qteStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_qteStates",
+  "parent":{
+    "name":"StateMachines",
+    "path":"folders/Scripts/StateMachines.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
