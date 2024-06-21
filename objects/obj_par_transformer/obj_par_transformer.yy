@@ -32,7 +32,7 @@
   "properties":[
     {"$GMObjectProperty":"","%Name":"max_items","filters":[],"listItems":[],"multiselect":false,"name":"max_items","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
     {"$GMObjectProperty":"","%Name":"popup_draw_height","filters":[],"listItems":[],"multiselect":false,"name":"popup_draw_height","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-    {"$GMObjectProperty":"","%Name":"qte_holder_obj","filters":[],"listItems":[],"multiselect":false,"name":"qte_holder_obj","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":5,},
+    {"$GMObjectProperty":"","%Name":"qte_holder_obj","filters":[],"listItems":[],"multiselect":false,"name":"qte_holder_obj","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

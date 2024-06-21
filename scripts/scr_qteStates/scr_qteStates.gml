@@ -12,6 +12,7 @@ function QteNotReadyState(_qte_holder, _args = {}): QteState(_qte_holder, _args)
 	
     enter_state = function() {
 		qte_holder.state = QTE_STATE.NOT_READY;
+		qte_holder.HideFeedbacks();
 		// stop sequence if any
     }
 	
@@ -23,7 +24,7 @@ function QteInitializedState(_qte_holder, _args = {}): QteState(_qte_holder, _ar
 	
     enter_state = function() {
 		qte_holder.state = QTE_STATE.INITIALIZED;
-		
+		qte_holder.SetFeedbacksInitialState();
 		// stop sequence
     }
 
@@ -40,8 +41,8 @@ function QteInProgressState(_qte_holder, _args = {}): QteState(_qte_holder, _arg
 	qte_holder = _qte_holder;
 	
     enter_state = function() {
-		transformer.state = QTE_STATE.IN_PROGRESS;
-		
+		qte_holder.state = QTE_STATE.IN_PROGRESS;
+		qte_holder.SetPlayerInteractingFeedbacks();
 		// play sequence
     }
 

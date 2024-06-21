@@ -42,6 +42,7 @@ function OnTransformationFinished() {
 	initial_item_mash_count = 0;
 }
 
+// DEPRECATED: move to OnInit of qte_holder
 function StartTransforming() {
 	if (current_mash_count == 0) {
 		initial_item_mash_count = 1;

@@ -17,7 +17,6 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.EMPTY;
-		transformer.HideFeedbacks();
 		transformer.CreateQteHolder();
 		
 		transformer.image_blend = c_white;
@@ -69,7 +68,6 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
-		transformer.SetFeedbacksInitialState();
 		transformer.InitializeQteHolder();
 			
 		transformer.image_blend = c_aqua;
@@ -95,7 +93,6 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		}
 	
 		if (array_length(transformer.items_in_ids) == transformer.max_items && transformer.IsTransformable()) {
-			transformer.StartTransforming();
 			_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
 			transition_to(new TransformerInProgressState(transformer));
 		}
@@ -114,7 +111,6 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.IN_PROGRESS;
-		transformer.SetPlayerInteractingFeedbacks();
 		transformer.ActivateQteHolder();
 		
 		transformer.image_blend = c_orange;
@@ -155,8 +151,6 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.WAIT_FOR_PICKUP;
-		transformer.HideFeedbacks();
-
 		transformer.image_blend = c_yellow;
     }
 
@@ -220,7 +214,6 @@ function TransformerResultState(_transformer, _args = {}): TransformerState(_tra
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.RESULT;
-		transformer.HideFeedbacks();
 
 		transformer.image_blend = c_green;
     }

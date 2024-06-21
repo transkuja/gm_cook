@@ -1,5 +1,6 @@
 on_qte_completed = noone;
 current_state = noone;
+active_sequence = noone;
 
 function OnInit(_items_id) {
 	return true;
@@ -46,6 +47,22 @@ function DrawProgress() {
 }
 
 function DrawBackground() {
+}
+
+
+function SetFeedbacksInitialState() {
+}
+
+function SetPlayerInteractingFeedbacks() {
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id))
+		layer_sequence_play(active_sequence);
+}
+
+function HideFeedbacks() {
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id))
+		layer_sequence_destroy(active_sequence);
 }
 
 state = QTE_STATE.NOT_READY;

@@ -1,22 +1,43 @@
 // Inherit the parent event
 event_inherited();
 
-function OnInputPressed() {
-	mash_count--;
-	OnInputValidated();
-}
-
-function OnInputValidated() {
-	if (mash_count <= 0)
-		Finish();
-}
+initial_item_mash_count = 0;
+current_mash_count = 0;
 
 progress_bar_width = 100;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
+function OnInit(_items_id) {
+	if (array_length(_items_id) == 0)
+		return false;
+	
+	if (current_mash_count == 0) {
+		var _mash_count = GetChopMashCount(_items_id[0]);
+		if (_mash_count == -1) { return false; }
+		
+		initial_item_mash_count = _mash_count;
+		current_mash_count = _mash_count;
+	}
+	
+	return true;
+}
+
+function OnInputPressed() {
+	OnInputValidated();
+}
+
+function OnInputValidated() {
+	current_mash_count--;
+	if (initial_item_mash_count > 0 && current_mash_count <= 0)
+		Finish();
+}
+
 function GetProgressRatio() {
-	return 1;
+	if (initial_item_mash_count <= 0)
+		return 0;
+		
+	return 1 - (current_mash_count / initial_item_mash_count);
 }
 
 function DrawProgress() {
@@ -34,4 +55,18 @@ function DrawBackground() {
 	//var _w = progress_bar_width + 100;
 	//var _h = progress_bar_height + 20;
 	//draw_sprite(phgen_rectangle(_w, _h, c_gray, 0, c_gray, _w * 0.5, _h * 0.5), 0, _draw_xy[0], _draw_xy[1]);
+}
+
+
+function SetFeedbacksInitialState() {
+	if (!sequence_exists(active_sequence)) {
+		var _seq_x = x - (sprite_width * 0.5) - 50;
+		var _seq_y = y - (sprite_height * 0.5) - 50;
+		
+		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, seq_press_button);
+	}
+	
+	layer_sequence_xscale(active_sequence, 0.35);
+	layer_sequence_yscale(active_sequence, 0.35);
+	layer_sequence_pause(active_sequence);
 }

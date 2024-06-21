@@ -5,11 +5,6 @@ items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
 qte_holder = noone;
 
-// On X pressed
-function StartTransforming() {
-	
-}
-
 // On A pressed
 function PutItemIn(_itemId) {
 	if (IsFilled()) {
@@ -162,7 +157,7 @@ function CreateQteHolder() {
 	if (instance_exists(qte_holder)) { return; }
 	
 	if (qte_holder_obj != noone && qte_holder_obj != undefined) {
-		qte_holder = instance_create_layer(x, y, "GUI", qte_holder_obj.object_index);
+		qte_holder = instance_create_layer(x, y, "GUI", qte_holder_obj);
 	}
 }
 
