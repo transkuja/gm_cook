@@ -168,7 +168,7 @@ function InitializeQteHolder() {
 
 function ActivateQteHolder() {
 	if (instance_exists(qte_holder)) {
-		qte_holder.on_qte_completed = Broadcast(TransformationFinished());
+		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished() } );
 		qte_holder.Start();
 	}
 }

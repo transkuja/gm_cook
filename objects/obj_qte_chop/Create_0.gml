@@ -23,10 +23,6 @@ function OnInit(_items_id) {
 	return true;
 }
 
-function OnInputPressed() {
-	OnInputValidated();
-}
-
 function OnInputValidated() {
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
@@ -60,8 +56,8 @@ function DrawBackground() {
 
 function SetFeedbacksInitialState() {
 	if (!sequence_exists(active_sequence)) {
-		var _seq_x = x - (sprite_width * 0.5) - 50;
-		var _seq_y = y - (sprite_height * 0.5) - 50;
+		var _seq_x = x - 50 - (progress_bar_width * 0.5);
+		var _seq_y = y - 85;
 		
 		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, seq_press_button);
 	}
