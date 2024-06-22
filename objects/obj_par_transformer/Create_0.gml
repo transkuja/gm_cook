@@ -154,7 +154,10 @@ function HideFeedbacks() {
 
 // Non-overridable
 function CreateQteHolder() {
-	if (instance_exists(qte_holder)) { return; }
+	if (instance_exists(qte_holder)) { 
+		qte_holder.Reset();
+		return;
+	}
 	
 	if (qte_holder_obj != noone && qte_holder_obj != undefined) {
 		qte_holder = instance_create_layer(x, y, "GUI", qte_holder_obj);

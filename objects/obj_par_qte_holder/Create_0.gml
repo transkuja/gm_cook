@@ -9,11 +9,17 @@ function OnInit(_items_id) {
 function Init(_items_id) {
 	if (!OnInit(_items_id)) { return; }
 	
-	current_state.transition_to(new QteInitializedState(id, {}));
+	if (current_state)
+		current_state.transition_to(new QteInitializedState(id, {}));
+	else
+		current_state = new QteInitializedState(id, {});
 }
 
 function Start() {
-	current_state.transition_to(new QteInProgressState(id, {}));
+	if (current_state)
+		current_state.transition_to(new QteInProgressState(id, {}));
+	else
+		current_state = new QteInProgressState(id, {});
 }
 
 function CheckInputIsValid() {
@@ -36,7 +42,10 @@ function Finish() {
 	if (on_qte_completed != noone) 
 		on_qte_completed.dispatch();
 		
-	current_state.transition_to(new QteNotReadyState(id, {}));
+	if (current_state)
+		current_state.transition_to(new QteNotReadyState(id, {}));
+	else
+		current_state = new QteNotReadyState(id, {});
 }
 
 function GetProgressRatio() {
@@ -63,6 +72,15 @@ function HideFeedbacks() {
 	var _s_id = layer_sequence_get_sequence(active_sequence);
 	if (sequence_exists(_s_id))
 		layer_sequence_destroy(active_sequence);
+}
+
+function Reset() {
+	if (current_state)
+		current_state.transition_to(new QteNotReadyState(id, {}));
+	else
+		current_state = new QteNotReadyState(id, {});
+		
+	on_qte_completed = noone;
 }
 
 state = QTE_STATE.NOT_READY;
