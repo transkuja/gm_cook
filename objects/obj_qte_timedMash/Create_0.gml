@@ -12,6 +12,7 @@ bar_duration = 2;
 window_open_time = 1;
 window_close_time = 1.5;
 current_qte_time = 0;
+cursor_speed = 0.05;
 
 current_position = 0;
 
@@ -57,6 +58,7 @@ function OnStart() {
 
 function OnInputValidated() {
 	if (!is_checking_input) return;
+	is_checking_input = false;
 	
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
