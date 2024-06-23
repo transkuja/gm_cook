@@ -30,10 +30,17 @@ function OnInputValidated() {
 	
 }
 
+function OnInputFailed() {
+	
+}
+
 function OnInputPressed() {
 	if (input_get_pressed(0, "qte")) {
 		if (CheckInputIsValid()) {
 			OnInputValidated();
+		}
+		else {
+			OnInputFailed();
 		}
 	}
 }
