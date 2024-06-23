@@ -13,8 +13,6 @@ window_open_time = 1;
 window_close_time = 1.5;
 current_qte_time = 0;
 
-start_position = 0;
-end_position = 0;
 current_position = 0;
 
 anticipation_time = 0.5;
@@ -43,7 +41,7 @@ function CheckInputIsValid() {
 
 function GoToStartLocation() {
 	is_checking_input = false;
-	current_position = start_position;
+	current_position = 0;
 	current_qte_time = 0;
 	alarm[0] = seconds(anticipation_time);
 	
@@ -51,6 +49,10 @@ function GoToStartLocation() {
 
 function StartMoving() {
 	is_checking_input = true;
+}
+
+function OnStart() {
+	StartMoving();
 }
 
 function OnInputValidated() {
@@ -76,6 +78,12 @@ function GetProgressRatio() {
 	return 1 - (current_mash_count / initial_item_mash_count);
 }
 
+function DrawCursor(_x, _y) {
+	var _pos = _x + current_position - (progress_bar_width * 0.5);
+	var _height = progress_bar_height + 10;
+	draw_sprite(phgen_rectangle(10, _height, c_red, 0, c_white, 10, _height * 0.5), 0, _pos, _y);
+}
+
 function DrawProgress() {
 	var _draw_xy = WorldToGUI(x, y - 85);
 	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, c_white, 0, c_white, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
@@ -85,6 +93,8 @@ function DrawProgress() {
 	var pb_content_start_pos = InvLerp(0, bar_duration, window_open_time) * progress_bar_width - (progress_bar_width * 0.5);
 	if (pb_content_w > 0 && pb_content_h > 0)
 		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] + pb_content_start_pos, _draw_xy[1]);
+		
+	DrawCursor(_draw_xy[0], _draw_xy[1]);
 }
 
 function DrawBackground() {

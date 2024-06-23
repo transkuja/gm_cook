@@ -15,11 +15,16 @@ function Init(_items_id) {
 		current_state = new QteInitializedState(id, {});
 }
 
+function OnStart() {
+}
+
 function Start() {
 	if (current_state)
 		current_state.transition_to(new QteInProgressState(id, {}));
 	else
 		current_state = new QteInProgressState(id, {});
+		
+	OnStart();
 }
 
 function CheckInputIsValid() {
