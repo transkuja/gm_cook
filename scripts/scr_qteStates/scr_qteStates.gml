@@ -13,7 +13,6 @@ function QteNotReadyState(_qte_holder, _args = {}): QteState(_qte_holder, _args)
     enter_state = function() {
 		qte_holder.state = QTE_STATE.NOT_READY;
 		qte_holder.HideFeedbacks();
-		// stop sequence if any
     }
 	
 }
@@ -25,13 +24,12 @@ function QteInitializedState(_qte_holder, _args = {}): QteState(_qte_holder, _ar
     enter_state = function() {
 		qte_holder.state = QTE_STATE.INITIALIZED;
 		qte_holder.SetFeedbacksInitialState();
-		// stop sequence
     }
 
 	process_draw = function() {
 		// Draw progression
-		qte_holder.DrawBackground(); // TODO: move method from transformer to qte_holder
-		qte_holder.DrawProgress(); // TODO: same as above
+		qte_holder.DrawBackground();
+		qte_holder.DrawProgress();
 	}
 	
 }
@@ -39,20 +37,27 @@ function QteInitializedState(_qte_holder, _args = {}): QteState(_qte_holder, _ar
 function QteInProgressState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
     name = "in_progress";
 	qte_holder = _qte_holder;
+	was_input_pressed = false;
 	
     enter_state = function() {
 		qte_holder.state = QTE_STATE.IN_PROGRESS;
 		qte_holder.SetPlayerInteractingFeedbacks();
-		// play sequence
+		was_input_pressed = input_get_pressed(0, "qte");
     }
 
  	process_draw = function() {
 		// Draw progression
-		qte_holder.DrawBackground(); // TODO: move method from transformer to qte_holder
-		qte_holder.DrawProgress(); // TODO: same as above
+		qte_holder.DrawBackground();
+		qte_holder.DrawProgress();
 	}
 	
     process_step = function() {
+		// Prevent taking the input from interacting with transformer
+		if (was_input_pressed) {
+			was_input_pressed = false;
+			return;
+		}
+		
 		qte_holder.OnInputPressed();
     }
 	
