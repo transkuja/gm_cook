@@ -1,0 +1,2 @@
+/// @description Anticipation delay
+StartMoving();

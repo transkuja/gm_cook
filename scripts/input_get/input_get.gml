@@ -1,6 +1,9 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function check_key_input(_device, _INPUT_KEY) {
+	if (_INPUT_KEY == "")
+		return false;
+		
 	var _KeyGetter = keyboard_check(_INPUT_KEY);
 	if ( _INPUT_KEY == mb_left or _INPUT_KEY == mb_right or _INPUT_KEY == mb_middle or
 		_INPUT_KEY == mb_any or _INPUT_KEY == mb_none ) {
@@ -11,6 +14,9 @@ function check_key_input(_device, _INPUT_KEY) {
 }
 
 function check_pad_input(_device, _INPUT_PAD) {
+	if (_INPUT_PAD == "")
+		return false;
+		
 	var PadGetter = gamepad_button_check(_device, _INPUT_PAD);
 	switch(_INPUT_PAD){
 		

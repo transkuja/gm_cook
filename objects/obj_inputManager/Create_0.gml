@@ -22,3 +22,8 @@ input_add("item_action", vk_enter, gp_face1, [mb_left]);
 input_add("take_out", mb_right, gp_face4);
 
 input_add("qte", mb_left, gp_face1, [vk_enter,vk_space], [gp_face3]);
+
+input_add("move_left_controller", "", gp_axisL_left);
+input_add("move_right_controller", "", gp_axisL_right);
+input_add("move_up_controller", "", gp_axisL_up,);
+input_add("move_down_controller", "", gp_axisL_down);

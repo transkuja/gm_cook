@@ -1,4 +1,7 @@
 function check_key_pressed(_device, _input_key) {
+	if (_input_key == "")
+		return false;
+		
 	var KeyGetter = keyboard_check_pressed(_input_key);
 	if ( _input_key == mb_left or _input_key == mb_right or _input_key == mb_middle or
 		_input_key == mb_any or _input_key == mb_none ){
@@ -9,6 +12,9 @@ function check_key_pressed(_device, _input_key) {
 }
 
 function check_pad_pressed(_device, _input_pad) {
+	if (_input_pad == "")
+		return false;
+		
 	var PadGetter = gamepad_button_check_pressed(_device, _input_pad);
 	switch(_input_pad){
 		
