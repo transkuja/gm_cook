@@ -20,11 +20,11 @@ anticipation_time = 0.25;
 
 is_checking_input = false;
 
-is_right_target = true;
+is_right_target = false;
 fill_target = 1000.0;
 current_fill = 0;
 min_fill_speed = 1;
-max_fill_speed = 10;
+max_fill_speed = 50;
 current_fill_speed = min_fill_speed;
 
 
@@ -45,6 +45,7 @@ function OnInit(_items_id) {
 }
 
 function NextTarget() {
+	_log("NextTarget");
 	is_right_target = !is_right_target;
 	current_fill = 0;
 	current_fill_speed = min_fill_speed;
@@ -77,6 +78,7 @@ function OnInputPressed() {
 }
 
 function OnInputValidated() {
+	_log("OnInputValidated");
 	if (!is_checking_input) return;
 	is_checking_input = false;
 	
@@ -112,12 +114,11 @@ function DrawProgress() {
 	
 	var pb_content_w = (progress_bar_width - 2*progress_bar_outline) * GetProgressRatio();
 	var pb_content_h = progress_bar_height - 2*progress_bar_outline;
-	_log("pb_content_w", pb_content_w);
 	if (pb_content_w > 1 && pb_content_h > 1) {
 		if (is_right_target) {
 			draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] - progress_bar_width * 0.5 + progress_bar_outline, _draw_xy[1] + progress_bar_outline);
 		} else {
-			draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, pb_content_w, progress_bar_height * 0.5), 0, _draw_xy[0] + progress_bar_width * 0.5 - progress_bar_outline, _draw_xy[1] + progress_bar_outline);
+			draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] + progress_bar_width * 0.5 - progress_bar_outline - pb_content_w, _draw_xy[1] + progress_bar_outline);
 		}
 	}
 		
