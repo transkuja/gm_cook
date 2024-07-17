@@ -20,7 +20,7 @@ anticipation_time = 0.25;
 
 is_checking_input = false;
 
-is_right_target = false;
+is_right_target = true;
 fill_target = 1000.0;
 current_fill = 0;
 min_fill_speed = 1;
@@ -45,10 +45,15 @@ function OnInit(_items_id) {
 }
 
 function NextTarget() {
-	_log("NextTarget");
 	is_right_target = !is_right_target;
 	current_fill = 0;
 	current_fill_speed = min_fill_speed;
+	
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id)) {
+		//_s_id.tracks
+	}
+	
 	alarm[0] = seconds(anticipation_time);
 }
 
@@ -135,10 +140,10 @@ function DrawBackground() {
 
 function SetFeedbacksInitialState() {
 	if (!sequence_exists(active_sequence)) {
-		var _seq_x = x - 50 - (progress_bar_width * 0.5);
+		var _seq_x = x - 25 - (progress_bar_width * 0.5);
 		var _seq_y = y - 85;
 		
-		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, seq_press_button);
+		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, input_sequence);
 	}
 	
 	layer_sequence_xscale(active_sequence, 0.35);

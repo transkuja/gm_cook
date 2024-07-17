@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_par_qte_holder",
+  "%Name":"obj_gui_dialogue_box",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_par_qte_holder",
+  "name":"obj_gui_dialogue_box",
   "overriddenProperties":[],
   "parent":{
-    "name":"QTE Holders",
-    "path":"folders/Objects/QTE Holders.yy",
+    "name":"Dialogue",
+    "path":"folders/Objects/UI/Dialogue.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -27,15 +28,14 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"","%Name":"input_sequence","filters":[
-        "GMSequence",
-      ],"listItems":[],"multiselect":false,"name":"input_sequence","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_gui_textbox",
+    "path":"sprites/spr_gui_textbox/spr_gui_textbox.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

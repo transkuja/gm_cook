@@ -8,7 +8,9 @@
   ],
   "managed":true,
   "name":"obj_qte_stir",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"input_sequence","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"seq_arrow_bump",},
+  ],
   "parent":{
     "name":"QTE Holders",
     "path":"folders/Objects/QTE Holders.yy",

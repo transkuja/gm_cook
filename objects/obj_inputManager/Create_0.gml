@@ -11,6 +11,7 @@ input_add("ui_left", ord("A"), gp_axisL_left);
 input_add("ui_right", ord("D"), gp_axisL_right);
 input_add("ui_up", ord("W"), gp_axisL_up);
 input_add("ui_down", ord("S"), gp_axisL_down);
+input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);
 
 input_add("move_left", ord("Q"), gp_axisL_left, [vk_left]);
 input_add("move_right", ord("D"), gp_axisL_right, [vk_right]);

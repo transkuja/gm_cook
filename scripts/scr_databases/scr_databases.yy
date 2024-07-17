@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_databases",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_databases",
+  "parent":{
+    "name":"Database",
+    "path":"folders/Scripts/Database.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

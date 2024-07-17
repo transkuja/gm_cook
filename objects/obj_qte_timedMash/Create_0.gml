@@ -112,7 +112,7 @@ function SetFeedbacksInitialState() {
 		var _seq_x = x - 50 - (progress_bar_width * 0.5);
 		var _seq_y = y - 85;
 		
-		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, seq_press_button);
+		active_sequence = layer_sequence_create("GUI", _seq_x, _seq_y, input_sequence);
 	}
 	
 	layer_sequence_xscale(active_sequence, 0.35);

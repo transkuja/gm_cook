@@ -1,0 +1,2 @@
+{"text_id":"test_0", "text_value":"Bonjour !"}
+{"text_id":"test_1", "text_value":"Je m'appelle Edouardo !"}

@@ -9,7 +9,6 @@ function load_database(_filename) {
 	var result = [];
 	while (!file_text_eof(file)) {
 		to_parse = file_text_readln(file);
-		_log(to_parse);
 		
 		var _parsed = json_parse(to_parse);
 		_push(result, _parsed);
@@ -17,10 +16,28 @@ function load_database(_filename) {
 	
 	file_text_close(file);
 	
-	_log("Recipes DB entries count:", array_length(result));
-	for (var _i = 0; _i < array_length(result); _i++)
-		_log(result[_i]);
+	return result;
+}
+
+function load_dialogue_database(_filename) {
+	file = file_text_open_read(_filename);
+	
+	if (file == -1) {
+		_log("Can't open", _filename, " file !");
+		return;
+	}
+	
+	var result = ds_map_create();
+	while (!file_text_eof(file)) {
+		to_parse = file_text_readln(file);
 		
+		var _parsed = json_parse(to_parse);
+		if (struct_exists(_parsed, "dialogue_id"))
+			result[? _parsed.dialogue_id] = _parsed;
+	}
+	
+	file_text_close(file);
+	
 	return result;
 }
 
