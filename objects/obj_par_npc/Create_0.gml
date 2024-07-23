@@ -21,6 +21,13 @@ function Interact(_interactInstigator) constructor {
 	// Init with current id
 	if (instance_exists(inst_dialogue_box)) {
 		inst_dialogue_box.Initialize(dialogue_ids[current_dialogue_state]);
+		
+		var _broadcast = Broadcast(function() {
+			AdvanceDialogue();			
+			EndInteraction();
+		} );
+	
+		inst_dialogue_box.on_dialogue_close = _broadcast;
 	}
 	
 }
@@ -28,9 +35,10 @@ function Interact(_interactInstigator) constructor {
 function EndInteraction() {
 	shader_enabled = true;
 	is_player_interacting = false;
+	inst_dialogue_box = noone;
 }
 
 function AdvanceDialogue() {
-	if (current_dialogue_state < array_length(dialogue_ids))
+	if (current_dialogue_state + 1 < array_length(dialogue_ids))
 		current_dialogue_state++;
 }

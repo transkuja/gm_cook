@@ -16,7 +16,8 @@ event_perform_object(obj_fading, ev_create, 0);
 //	gml_pragma("forceinline");
 //	event_object_perform(argument0, event_type, event_number);
 //}
-
+on_dialogue_close = noone;
+		
 current_dialogue_data = noone;
 texts_array = array_create(0);
 dialogue_progress = 0;
@@ -78,8 +79,8 @@ function GetDialogueData(_dialogue_id) {
 }
 
 function CloseDialogue() {
-	// TODO: add broadcast to free player and clear NPC
-	instance_destroy(self);
+	StartFadeOut();
+	alarm[0] = seconds(0.5);
 }
 
 function GoToNext() {
