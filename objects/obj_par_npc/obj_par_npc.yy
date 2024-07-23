@@ -30,10 +30,11 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"","%Name":"dialogue_ids","filters":[],"listItems":[
-        "\"Item 0\"",
+        "\"test\"",
         "\"Item 1\"",
         "\"Item 2\"",
-      ],"multiselect":true,"name":"dialogue_ids","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Item 0\", \"Item 1\", \"Item 2\"","varType":6,},
+        "\"Item 3\"",
+      ],"multiselect":true,"name":"dialogue_ids","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"test\"","varType":6,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
