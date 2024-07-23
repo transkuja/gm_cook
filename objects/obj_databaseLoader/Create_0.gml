@@ -34,16 +34,28 @@ function LoadRecipes() {
 function LoadDialogues() {
 	dialogues = load_dialogue_database("dialogues.txt");
 	
-	_log("Dialogues DB size: ", ds_map_size(dialogues));
-	var _map_keys = ds_map_keys_to_array(dialogues);
-	for (var _i = 0; _i < array_length(_map_keys); _i++) {
-		_log("Key ", _map_keys[_i]);
-		_log("Value ", dialogues[? _map_keys[_i]]);
-	}
+	//_log("Dialogues DB size: ", ds_map_size(dialogues));
+	//var _map_keys = ds_map_keys_to_array(dialogues);
+	//for (var _i = 0; _i < array_length(_map_keys); _i++) {
+	//	_log("Key ", _map_keys[_i]);
+	//	_log("Value ", dialogues[? _map_keys[_i]]);
+	//}
 	
 }
 
 function LoadLocTexts(_loc) {
-	//var filename = "texts_" + _loc + ".txt";
-	//localized_texts = load_database(filename);
+	var filename = "texts_" + _loc + ".txt";
+	localized_texts = load_texts_database(filename);
+	
+	//_log("Texts DB size: ", ds_map_size(localized_texts));
+	//var _map_keys = ds_map_keys_to_array(localized_texts);
+	//for (var _i = 0; _i < array_length(_map_keys); _i++) {
+		//_log("Key ", _map_keys[_i]);
+		//_log("Nb texts: ", array_length(result[? _map_keys[_i]]));
+	//	for (var _j = 0; _j < array_length(result[? _map_keys[_i]]); _j++) {
+	//		var _to_log = string("Text {0}:", _j);
+	//		_log(_to_log, result[? _map_keys[_i]][_j]);
+	//	}
+		
+	//}
 }

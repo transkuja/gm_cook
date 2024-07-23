@@ -41,6 +41,36 @@ function load_dialogue_database(_filename) {
 	return result;
 }
 
+function load_texts_database(_filename) {
+	file = file_text_open_read(_filename);
+	
+	if (file == -1) {
+		_log("Can't open", _filename, " file !");
+		return;
+	}
+	
+	var result = ds_map_create();
+	while (!file_text_eof(file)) {
+		to_parse = file_text_readln(file);
+		
+		var _parsed = json_parse(to_parse);
+		if (struct_exists(_parsed, "text_id")) {
+			var _tmpTxtId = _parsed.text_id;
+			var _map_id = string_copy(_tmpTxtId, 1, string_last_pos("_", _tmpTxtId) - 1);
+			
+			if (!is_array(result[? _map_id])) 
+				result[? _map_id] = array_create(1, _parsed);
+			else				
+				_push(result[? _map_id], _parsed);
+		}
+			
+	}
+	
+	file_text_close(file);
+	
+	return result;
+}
+
 /// @function file_read_all_text(filename)
 /// @description Reads entire content of a given file as a string, or returns undefined if the file doesn't exist.
 /// @param {string} filename        The path of the file to read the content of.
