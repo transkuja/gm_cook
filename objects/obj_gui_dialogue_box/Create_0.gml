@@ -1,5 +1,6 @@
 // Textbox variables
 textToShow = "J'aime pas les gros singes."
+talker_name = "Jean Bomber"
 textWidth = 450;
 lineHeight = 28;
 
@@ -27,8 +28,17 @@ draw_y = view_hport[0] - 200;
 x = draw_x;
 y = draw_y;
 
+space_talker_dialogue = 10;
+offset_talker_x = 50;
+draw_talker_x = draw_x - (sprite_width * image_xscale) + offset_talker_x;
+draw_talker_y = draw_y - (sprite_height * 0.5) - 50 - space_talker_dialogue;
+
+talker_name_width = 250;
+talker_name_height = 50;
 depth = -11000;
 image_xscale = 2.0;
+
+current_talkers = [];
 
 function Initialize(_dialogue_id) {
 	current_dialogue_data = GetDialogueData(_dialogue_id);
@@ -72,6 +82,35 @@ function GetDialogueData(_dialogue_id) {
 	texts_array = inst_databaseLoader.localized_texts[? _dialogue_id];
 	if (array_length(texts_array) > 0) {
 		textToShow = texts_array[0].text_value;
+		var nb_talkers = array_length(current_dialogue_data.talkers);
+		if (nb_talkers > 0) {
+			// Initialize talkers array
+			for (var _i = 0; _i < nb_talkers; _i++) {
+				if (_contains(current_dialogue_data.talkers[_i].used, -1)) {
+					current_talkers = array_create(array_length(texts_array), current_dialogue_data.talkers[_i].name_id);
+					break;
+				}
+			}
+			
+			talker_name = current_talkers[0];
+		}
+		
+		// Set talker names at correct indexes
+		if (nb_talkers > 1) {
+			var nb_texts = array_length(texts_array);
+			for (var _i = 0; _i < nb_talkers; _i++) {
+				if (_contains(current_dialogue_data.talkers[_i].used, -1)) { continue; }
+				
+				var talker_indexes_count = array_length(current_dialogue_data.talkers[_i].used);
+				if (talker_indexes_count <= 0) { continue; }
+				
+				for (var _j = 0; _j < talker_indexes_count ; _j++) {
+					var cur_index = current_dialogue_data.talkers[_i].used[_j];
+					if (cur_index < nb_texts)
+						current_talkers[cur_index] = current_dialogue_data.talkers[_i].name_id;
+				}
+			}
+		}
 	}
 	else
 		textToShow = string("No text in dialogue id {0}!", _dialogue_id);
@@ -88,6 +127,8 @@ function GoToNext() {
 	if (dialogue_progress >= array_length(texts_array)) {
 		CloseDialogue();
 	}
-	else
+	else {
+		talker_name = current_talkers[dialogue_progress];
 		textToShow = texts_array[dialogue_progress].text_value;
+	}
 }
