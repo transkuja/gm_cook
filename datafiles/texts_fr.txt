@@ -2,3 +2,7 @@
 {"text_id":"test_1", "text_value":"Je m'appelle Edouardo !"}
 {"text_id":"choice_positive_0", "text_value":"Bien sur"}
 {"text_id":"choice_negative_0", "text_value":"Jamais"}
+{"text_id":"choice_positive_answer_0", "text_value":"Ah non !"}
+{"text_id":"choice_positive_answer_1", "text_value":"Moi c'est Bobby !"}
+{"text_id":"choice_positive_answer_2", "text_value":"Haha mdr gros singe."}
+{"text_id":"choice_negative_answer_0", "text_value":"Pouet."}
