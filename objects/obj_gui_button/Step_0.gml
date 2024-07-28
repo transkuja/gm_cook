@@ -20,7 +20,7 @@ if (mouse_check_button_released(mb_left))
 		//audio_play_sound(snd_button, 1, false);
 		on_clicked();
 		if (on_clicked_event != noone)
-			on_clicked_event.dispatch();
+			on_clicked_event.dispatch(on_click_param);
 	}
 	
 	UpdateVisual();

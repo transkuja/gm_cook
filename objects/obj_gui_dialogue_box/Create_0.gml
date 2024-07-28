@@ -133,9 +133,15 @@ function CloseDialogue() {
 	alarm[0] = seconds(0.5);
 }
 
-function OnChoiceSelected() {
+function OnChoiceSelected(_on_click_param) {
 	for (var _i = array_length(choices_buttons_inst) - 1; _i >= 0; _i--)
 		instance_destroy(choices_buttons_inst[_i]);
+		
+	choices_set = false;
+	current_dialogue_data = noone;
+	dialogue_progress = 0;
+	
+	Initialize(_on_click_param);
 }
 
 function SetChoices() {
@@ -145,17 +151,24 @@ function SetChoices() {
 	for (var _i = 0; _i < nb_choices; _i++)
 	{
 		var draw_xy = WorldToGUI(choice_origin_x, draw_talker_y - _i * (space_talker_dialogue + choice_height));
-		var button_inst = instance_create_layer(draw_xy[0], draw_xy[1], "GUI", obj_gui_button);
-		button_inst.image_xscale = choice_width / button_inst.sprite_width;
-		button_inst.image_yscale = choice_height / button_inst.sprite_height;
-		button_inst.depth = depth-1000;
+		var button_inst = instance_create_layer(draw_xy[0], draw_xy[1], "GUI", obj_gui_button, { on_click_param : loaded_choices[_i] });
 		
 		if (instance_exists(button_inst)) 
 		{
+			button_inst.image_xscale = choice_width / button_inst.sprite_width;
+			button_inst.image_yscale = choice_height / button_inst.sprite_height;
+			button_inst.depth = depth-1000;
+		
 			var choice_text = inst_databaseLoader.localized_texts[? loaded_choices[_i]];
 			if (array_length(choice_text) > 0)
 				button_inst.button_text = choice_text[0].text_value;
-				
+			
+			var _broadcast = Broadcast(function(_on_click_param) {
+				OnChoiceSelected(_on_click_param);
+			} );
+			
+			button_inst.on_clicked_event = _broadcast;
+			
 			//button_inst.on_clicked_event
 			_push(choices_buttons_inst,button_inst);
 		}

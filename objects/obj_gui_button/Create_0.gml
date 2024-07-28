@@ -6,6 +6,8 @@ on_clicked_event = noone;
 on_clicked = function() {
 }
 
+on_click_param = "";
+
 function UpdateVisual() {
 	if (clicked) 
 	{
