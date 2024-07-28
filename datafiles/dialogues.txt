@@ -1,1 +1,1 @@
-{"dialogue_id":"test", "talkers":[{"name_id":"bobby", "used":[1,2]}, {"name_id":"player", "used":[-1]}], "choices":[]}
+{"dialogue_id":"test", "talkers":[{"name_id":"bobby", "used":[1,2]}, {"name_id":"player", "used":[-1]}], "choices":["choice_negative", "choice_positive"]}

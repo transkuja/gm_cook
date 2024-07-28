@@ -39,6 +39,13 @@ depth = -11000;
 image_xscale = 2.0;
 
 current_talkers = [];
+has_choice = false;
+loaded_choices = [];
+choices_set = false;
+choice_width = 300;
+choice_height = 80;
+choice_origin_x = x + (sprite_width * 0.5) - (choice_width * 0.5);
+choices_buttons_inst = [];
 
 function Initialize(_dialogue_id) {
 	current_dialogue_data = GetDialogueData(_dialogue_id);
@@ -47,7 +54,7 @@ function Initialize(_dialogue_id) {
 }
 
 function CatchInput() {
-	return true;
+	return !choices_set;
 }
 
 function HandleInput() {
@@ -77,8 +84,12 @@ function GetDialogueData(_dialogue_id) {
 	current_dialogue_data = inst_databaseLoader.dialogues[? _dialogue_id];
 	if (current_dialogue_data == noone) {
 		textToShow = "Dialogue not found !";
+		return;
 	}
 	
+	loaded_choices = current_dialogue_data.choices;
+	has_choice = array_length(loaded_choices) > 0;
+
 	texts_array = inst_databaseLoader.localized_texts[? _dialogue_id];
 	if (array_length(texts_array) > 0) {
 		textToShow = texts_array[0].text_value;
@@ -114,7 +125,7 @@ function GetDialogueData(_dialogue_id) {
 	}
 	else
 		textToShow = string("No text in dialogue id {0}!", _dialogue_id);
-	
+
 }
 
 function CloseDialogue() {
@@ -122,10 +133,46 @@ function CloseDialogue() {
 	alarm[0] = seconds(0.5);
 }
 
+function OnChoiceSelected() {
+	for (var _i = array_length(choices_buttons_inst) - 1; _i >= 0; _i--)
+		instance_destroy(choices_buttons_inst[_i]);
+}
+
+function SetChoices() {
+	choices_set = true;
+
+	var nb_choices = array_length(loaded_choices);
+	for (var _i = 0; _i < nb_choices; _i++)
+	{
+		var draw_xy = WorldToGUI(choice_origin_x, draw_talker_y - _i * (space_talker_dialogue + choice_height));
+		var button_inst = instance_create_layer(draw_xy[0], draw_xy[1], "GUI", obj_gui_button);
+		button_inst.image_xscale = choice_width / button_inst.sprite_width;
+		button_inst.image_yscale = choice_height / button_inst.sprite_height;
+		button_inst.depth = depth-1000;
+		
+		if (instance_exists(button_inst)) 
+		{
+			var choice_text = inst_databaseLoader.localized_texts[? loaded_choices[_i]];
+			if (array_length(choice_text) > 0)
+				button_inst.button_text = choice_text[0].text_value;
+				
+			//button_inst.on_clicked_event
+			_push(choices_buttons_inst,button_inst);
+		}
+	}
+	
+}
+
 function GoToNext() {
 	dialogue_progress++;
 	if (dialogue_progress >= array_length(texts_array)) {
-		CloseDialogue();
+		if (!has_choice) {
+			CloseDialogue();
+		}
+		else
+		{
+			SetChoices();
+		}
 	}
 	else {
 		talker_name = current_talkers[dialogue_progress];

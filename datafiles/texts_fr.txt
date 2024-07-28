@@ -1,2 +1,4 @@
 {"text_id":"test_0", "text_value":"Bonjour !"}
 {"text_id":"test_1", "text_value":"Je m'appelle Edouardo !"}
+{"text_id":"choice_positive_0", "text_value":"Bien sur"}
+{"text_id":"choice_negative_0", "text_value":"Jamais"}
