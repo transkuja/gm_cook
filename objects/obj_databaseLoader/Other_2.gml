@@ -3,3 +3,5 @@ LoadRecipes();
 
 LoadDialogues();
 LoadLocTexts("fr");
+
+LoadQuests();

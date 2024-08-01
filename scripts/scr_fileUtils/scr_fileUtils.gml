@@ -19,7 +19,7 @@ function load_database(_filename) {
 	return result;
 }
 
-function load_dialogue_database(_filename) {
+function load_database_to_map(_filename, _id_var_name) {
 	file = file_text_open_read(_filename);
 	
 	if (file == -1) {
@@ -32,8 +32,8 @@ function load_dialogue_database(_filename) {
 		to_parse = file_text_readln(file);
 		
 		var _parsed = json_parse(to_parse);
-		if (struct_exists(_parsed, "dialogue_id"))
-			result[? _parsed.dialogue_id] = _parsed;
+		if (struct_exists(_parsed, _id_var_name))
+			result[? struct_get(_parsed, _id_var_name)] = _parsed;
 	}
 	
 	file_text_close(file);

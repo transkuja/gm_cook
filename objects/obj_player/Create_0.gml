@@ -269,6 +269,8 @@ function GetItemFromInventoryToHands() {
 }
 
 function CheckInputsInventory() {
+	if (global.player_control == false)	{ return; }
+	
 	if (input_get_pressed(0, "take_out")) {
 		if (!instance_exists(item_in_hands)) {
 			GetItemFromInventoryToHands();

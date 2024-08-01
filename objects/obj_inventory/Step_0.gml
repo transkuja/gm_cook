@@ -1,3 +1,5 @@
+if (global.player_control == false) return;
+
 if (gamepad_button_check_pressed(0, gp_shoulderl)) {
 	var _newValue = selected_slot - 1; 
 	SetSelectedSlot(_newValue < 0 ? slot_count -1 : _newValue);

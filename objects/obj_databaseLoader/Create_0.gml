@@ -2,6 +2,7 @@ assemble_combos = [];
 recipes_data = [];
 dialogues = ds_map_create();
 localized_texts = ds_map_create();
+quests = ds_map_create();
 
 function LoadAssembleCombos() {
 	assemble_combos = load_database("assemble_combos.txt");
@@ -32,7 +33,7 @@ function LoadRecipes() {
 }
 
 function LoadDialogues() {
-	dialogues = load_dialogue_database("dialogues.txt");
+	dialogues = load_database_to_map("dialogues.txt", "dialogue_id");
 	
 	//_log("Dialogues DB size: ", ds_map_size(dialogues));
 	//var _map_keys = ds_map_keys_to_array(dialogues);
@@ -58,4 +59,8 @@ function LoadLocTexts(_loc) {
 	//	}
 		
 	//}
+}
+
+function LoadQuests() {
+	quests = load_database_to_map("quests.txt", "quest_id");
 }

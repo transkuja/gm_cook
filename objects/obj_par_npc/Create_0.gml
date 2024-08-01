@@ -7,6 +7,7 @@ event_inherited();
 is_player_interacting = false;
 current_dialogue_state = 0; // TODO: save this
 inst_dialogue_box = noone;
+save_key = save_data_get_key("_dialogue");
 
 function Interact(_interactInstigator) constructor {
 	if (is_player_interacting || array_length(dialogue_ids) <= current_dialogue_state) 
@@ -41,4 +42,6 @@ function EndInteraction() {
 function AdvanceDialogue() {
 	if (current_dialogue_state + 1 < array_length(dialogue_ids))
 		current_dialogue_state++;
+		
+	save_data_set(save_key, current_dialogue_state);
 }
