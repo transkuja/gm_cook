@@ -57,6 +57,10 @@ function GetPendingQuest() {
 }
 
 
+function CanAdvanceDialogue() {
+	return current_quest_id != "";
+}
+
 // for each quest, check in save if marked as resolved
 // if quest not resolved, check requirements
 // if requirements met, bypass dialogue with quest dialogue (initial or pending)

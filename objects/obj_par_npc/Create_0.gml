@@ -46,9 +46,17 @@ function EndInteraction() {
 	inst_dialogue_box = noone;
 }
 
+function CanAdvanceDialogue() {
+	return true;
+}
+
 function AdvanceDialogue() {
+	if (!CanAdvanceDialogue()) 
+		return;
+	
 	if (current_dialogue_state + 1 < array_length(dialogue_ids))
+	{
 		current_dialogue_state++;
-		
-	save_data_set(save_key, current_dialogue_state);
+		save_data_set(save_key, current_dialogue_state);
+	}
 }
