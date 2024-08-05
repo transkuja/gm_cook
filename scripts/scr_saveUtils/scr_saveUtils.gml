@@ -1,7 +1,7 @@
 function save_data_get(_key) { 
 	if (!instance_exists(inst_saveManager)) {
 		_log("ERROR: SAVE MANAGER MISSING !!!!");
-		return;
+		return undefined;
 	}
 	
 	if (ds_map_exists(inst_saveManager.current_save_data, _key))

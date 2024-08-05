@@ -21,3 +21,33 @@ function QuestData() constructor {
     //"quest_objectives":[]
 
 }
+
+
+function GetQuestStatus(_quest_id) {
+	q_status = save_data_get(_quest_id);
+	if (is_undefined(q_status)) {
+		return "not_started";
+	}
+		
+	return q_status; // done or pending
+}
+
+function IsQuestRequirementsMet(_quest_id) {
+	if (instance_exists(inst_databaseLoader)) { return false; }
+	
+	var q_data = inst_databaseLoader.quests[? _quest_id];
+		
+	// check quest valid
+	if (!struct_exists(q_data, "requirements")) { return; }
+		
+	for (var i = 0; i < array_length(q_data.requirements); i++) {
+		save_value = save_data_get(q_data.requirements[i].save_key);
+		if (is_undefined(save_value)) { return false; }
+			
+		if (q_data.requirements[i].save_key_param != "" && q_data.requirements[i].save_key_param != save_value)
+			return false;
+				
+	}
+		
+	return true;
+}
