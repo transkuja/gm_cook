@@ -4,6 +4,8 @@ function QuestData() constructor {
 	quest_id = "";
 	requirements = [ { save_key : "", save_key_param : "" } ]
 	initial_dialogue = ""
+	accept_dialogue = ""
+	refuse_dialogue = ""
     pending_dialogue = ""
     final_dialogue = ""
     quest_objectives = []

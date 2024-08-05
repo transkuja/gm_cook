@@ -9,6 +9,13 @@ current_dialogue_state = 0; // TODO: save this
 inst_dialogue_box = noone;
 save_key = save_data_get_key("_dialogue");
 
+function GetCurrentDialogue() {
+	if (array_length(dialogue_ids) > current_dialogue_state)
+		return dialogue_ids[current_dialogue_state];
+		
+	return "";
+}
+
 function Interact(_interactInstigator) constructor {
 	if (is_player_interacting || array_length(dialogue_ids) <= current_dialogue_state) 
 		return;
@@ -21,7 +28,7 @@ function Interact(_interactInstigator) constructor {
 	
 	// Init with current id
 	if (instance_exists(inst_dialogue_box)) {
-		inst_dialogue_box.Initialize(dialogue_ids[current_dialogue_state]);
+		inst_dialogue_box.Initialize(GetCurrentDialogue());
 		
 		var _broadcast = Broadcast(function() {
 			AdvanceDialogue();			
