@@ -47,9 +47,30 @@ choice_height = 80;
 choice_origin_x = x + (sprite_width * 0.5) - (choice_width * 0.5);
 choices_buttons_inst = [];
 
-function Initialize(_dialogue_id) {
-	current_dialogue_data = GetDialogueData(_dialogue_id);
-	// TODO: check struct
+on_choice_selected = [];
+
+function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id = "", _on_choice_pos_selected = noone, _on_choice_neg_selected = noone) {
+	GetDialogueData(_dialogue_id);
+	
+	if (current_dialogue_data == noone) {
+		CloseDialogue();
+		return;
+	}
+	
+	// Bypass choices from external source and not use data from dialogue (to avoid multiple chained dialogues)
+	on_choice_selected = [];
+	var _next_dialogue_pos = _choice_positive_id;
+	var _next_dialogue_neg = _choice_negative_id;
+	
+	// If no override, use default suffixe answer to look for dialogue
+	if (_next_dialogue_pos == "" && array_length(loaded_choices) > 0) 
+		_next_dialogue_pos = string("{0}_answer", loaded_choices[0]);
+		
+	if (_next_dialogue_neg == "" && array_length(loaded_choices) > 1) 
+		_next_dialogue_neg = string("{0}_answer", loaded_choices[1]);
+		
+	_push(on_choice_selected, { next_dialogue : _next_dialogue_pos, on_select : _on_choice_pos_selected });
+	_push(on_choice_selected, { next_dialogue : _next_dialogue_neg, on_select : _on_choice_neg_selected });
 	
 }
 
@@ -142,7 +163,16 @@ function OnChoiceSelected(_on_click_param) {
 	for (var _i = array_length(choices_buttons_inst) - 1; _i >= 0; _i--)
 		instance_destroy(choices_buttons_inst[_i]);
 	
-	Initialize(string("{0}_answer", _on_click_param));
+	// Call choice delegate set from dialogue caller
+	if (struct_exists(on_click_param, "on_select")) {
+		if (on_click_param.on_select != noone)
+			on_click_param.on_select.dispatch();
+	}
+	
+	if (struct_exists(on_click_param, "next_dialogue")) 
+		Initialize(on_click_param.next_dialogue);
+	else
+		CloseDialogue()
 }
 
 function SetChoices() {
@@ -159,7 +189,7 @@ function SetChoices() {
 			button_inst.image_xscale = choice_width / button_inst.sprite_width;
 			button_inst.image_yscale = choice_height / button_inst.sprite_height;
 			button_inst.depth = depth-1000;
-			button_inst.on_click_param = loaded_choices[_i];
+			button_inst.on_click_param = on_choice_selected[_i];
 			
 			var choice_text = inst_databaseLoader.localized_texts[? loaded_choices[_i]];
 			if (array_length(choice_text) > 0)

@@ -6,6 +6,8 @@ event_inherited();
 
 arr_quests_ids = string_split(quests_ids, "|");
 current_quest_id = "";
+cur_quest_data = {};
+cur_quest_status = "";
 
 function GetCurrentDialogue() {
 	// Has an unresolved quest, bypass dialogue with based on quest dialogues
@@ -14,17 +16,21 @@ function GetCurrentDialogue() {
 		current_quest_id = current_quest[0];
 		
 		if (instance_exists(inst_databaseLoader)) { return false; }
-		var q_data = inst_databaseLoader.quests[? _quest_id];
+		cur_quest_data = inst_databaseLoader.quests[? _quest_id];
 		
 		if (current_quest[1] == "not_started") {
 			if (IsQuestRequirementsMet(current_quest_id)) {
-				if (struct_exists(q_data, "initial_dialogue"))
-					return q_data.initial_dialogue;
+				if (struct_exists(cur_quest_data, "initial_dialogue")) {
+					cur_quest_status = "not_started";
+					return cur_quest_data.initial_dialogue;
+				}
 			}
 		}
 		else (current_quest[1] == "pending") {
-			if (struct_exists(q_data, "pending_dialogue"))
-				return q_data.pending_dialogue;
+			if (struct_exists(cur_quest_data, "pending_dialogue")) {
+				cur_quest_status = "pending";
+				return cur_quest_data.pending_dialogue;
+			}
 		}
 	}
 	
@@ -59,6 +65,25 @@ function GetPendingQuest() {
 
 function CanAdvanceDialogue() {
 	return current_quest_id != "";
+}
+
+function InitDialogueBox() {
+	var current_dialogue_id = GetCurrentDialogue();
+	if (instance_exists(inst_dialogue_box)) {
+		if (cur_quest_status == "not_started") {
+			var _accept_dialogue = "";
+			var _refuse_dialogue = "";
+			if (struct_exists(cur_quest_data, "accept_dialogue")) _accept_dialogue = cur_quest_data.accept_dialogue;
+			if (struct_exists(cur_quest_data, "refuse_dialogue")) _accept_dialogue = cur_quest_data.refuse_dialogue;
+			
+			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue);
+		}
+		else if (cur_quest_status == "pending") {
+			var _final_dialogue = "";
+			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
+			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "");
+		}
+	}
 }
 
 // for each quest, check in save if marked as resolved

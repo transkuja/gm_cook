@@ -16,6 +16,11 @@ function GetCurrentDialogue() {
 	return "";
 }
 
+function InitDialogueBox() {
+	if (instance_exists(inst_dialogue_box))
+		inst_dialogue_box.Initialize(GetCurrentDialogue());
+}
+
 function Interact(_interactInstigator) constructor {
 	if (is_player_interacting || array_length(dialogue_ids) <= current_dialogue_state) 
 		return;
@@ -28,7 +33,7 @@ function Interact(_interactInstigator) constructor {
 	
 	// Init with current id
 	if (instance_exists(inst_dialogue_box)) {
-		inst_dialogue_box.Initialize(GetCurrentDialogue());
+		InitDialogueBox();
 		
 		var _broadcast = Broadcast(function() {
 			AdvanceDialogue();			
