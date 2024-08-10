@@ -43,6 +43,9 @@ function IsQuestRequirementsMet(_quest_id) {
 	if (!struct_exists(q_data, "requirements")) { return; }
 		
 	for (var i = 0; i < array_length(q_data.requirements); i++) {
+		if (q_data.requirements[i].save_key == "")
+			continue;
+			
 		save_value = save_data_get(q_data.requirements[i].save_key);
 		if (is_undefined(save_value)) { return false; }
 			

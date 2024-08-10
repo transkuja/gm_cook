@@ -1,3 +1,9 @@
 {"dialogue_id":"test", "talkers":[{"name_id":"bobby", "used":[1,2]}, {"name_id":"player", "used":[-1]}], "choices":["choice_negative", "choice_positive"]}
 {"dialogue_id":"choice_positive_answer", "talkers":[{"name_id":"Bobby", "used":[-1]}], "choices":[]}
 {"dialogue_id":"choice_negative_answer", "talkers":[{"name_id":"Topich", "used":[-1]}], "choices":[]}
+{"dialogue_id":"d_npc_test_1", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":[]}
+{"dialogue_id":"d_npc_test_2", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":[]}
+{"dialogue_id":"d_quest_1_initial", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":["choice_quest_1_init_neg", "choice_quest_1_init_pos"]}
+{"dialogue_id":"d_quest_1_pending", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":["choice_quest_1_pend_neg", "choice_quest_1_pend_pos"]}
+{"dialogue_id":"d_quest_1_final", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":[]}
+{"dialogue_id":"d_quest_1_accept", "talkers":[{"name_id":"Hungry Earl", "used":[-1]}], "choices":[]}

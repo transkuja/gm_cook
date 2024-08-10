@@ -1,1 +1,2 @@
-{"quest_id":"quest_1", "requirements":[{"save_key":"", "save_key_param":""}], "initial_dialogue":"", "pending_dialogue":"", "final_dialogue":"", "quest_objectives":[]}
+{"quest_id":"quest_0", "requirements":[{"save_key":"", "save_key_param":""}], "initial_dialogue":"", "pending_dialogue":"", "final_dialogue":"", "quest_objectives":[]}
+{"quest_id":"quest_1", "requirements":[], "initial_dialogue":"d_quest_1_initial", "pending_dialogue":"d_quest_1_pending", "final_dialogue":"d_quest_1_final", "quest_objectives":["fruit_salad"], "accept_dialogue":"d_quest_1_accept"}
