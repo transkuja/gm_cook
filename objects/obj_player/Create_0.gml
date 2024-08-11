@@ -275,6 +275,14 @@ function CheckInputsInventory() {
 		if (!instance_exists(item_in_hands)) {
 			GetItemFromInventoryToHands();
 		}
+		else {
+			if (instance_exists(inst_inventory)) {
+				if (inst_inventory.CanAddItem(item_in_hands.item_id, 1)) {
+					inst_inventory.AddItem(new ItemData(item_in_hands.item_id, 1, 1));
+					ClearItemInHands(noone, noone);
+				}
+			}
+		}
 	}
 }
 
