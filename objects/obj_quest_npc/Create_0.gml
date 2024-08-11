@@ -11,6 +11,7 @@ cur_quest_status = "";
 
 function GetCurrentDialogue() {
 	current_quest_id = "";
+	cur_quest_data = {};
 	
 	// Has an unresolved quest, bypass dialogue with based on quest dialogues
 	current_quest = GetUnresolvedQuest();
@@ -93,6 +94,8 @@ function InitDialogueBox() {
 		else if (cur_quest_status == "pending") {
 			var _final_dialogue = "";
 			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
+			
+			inst_dialogue_box.opt_no_choice = !CanQuestItemBeValidated(cur_quest_data);
 			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "", Broadcast(function() { SetQuestToFinished(); }));
 		}
 		else {

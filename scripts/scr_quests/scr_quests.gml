@@ -43,7 +43,7 @@ function IsQuestRequirementsMet(_quest_id) {
 	var q_data = inst_databaseLoader.quests[? _quest_id];
 		
 	// check quest valid
-	if (!struct_exists(q_data, "requirements")) { return; }
+	if (!struct_exists(q_data, "requirements")) { return true; }
 		
 	for (var i = 0; i < array_length(q_data.requirements); i++) {
 		if (q_data.requirements[i].save_key == "")
@@ -57,5 +57,22 @@ function IsQuestRequirementsMet(_quest_id) {
 				
 	}
 		
+	return true;
+}
+
+function CanQuestItemBeValidated(_quest_data) {
+	if (!instance_exists(inst_inventory)) { return false; }
+	
+	if (!struct_exists(_quest_data, "quest_objectives")) { return true; }
+
+	var item_count = array_length(_quest_data.quest_objectives);
+	if (item_count == 0) 
+		return true;
+		
+	for (var _i = 0; _i < item_count; _i++) {
+		if (!inst_inventory.HasItem(_quest_data.quest_objectives[_i]))
+			return false;
+	}
+	
 	return true;
 }

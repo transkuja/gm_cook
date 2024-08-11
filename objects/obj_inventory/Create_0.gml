@@ -117,5 +117,16 @@ function UseSelectedItem() {
 	return _currentSlotId;
 }
 
+function HasItem(_item_id) {
+	for (var _i = 0; _i < array_length(inventory); _i++) {
+		if (!struct_exists(inventory[_i], "item_id"))
+			continue;
+			
+		if (inventory[_i].item_id == _item_id)
+			return true;
+	}
+	
+	return false;
+}
 // Create process
 DrawSlots();

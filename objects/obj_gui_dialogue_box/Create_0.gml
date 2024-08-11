@@ -48,6 +48,8 @@ choice_origin_x = x + (sprite_width * 0.5) - (choice_width * 0.5);
 choices_buttons_inst = [];
 
 on_choice_selected = [];
+// If set to true, will skip the choice of the current dialogue. Must be set before Initialize.
+opt_no_choice = false;
 
 function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id = "", _on_choice_pos_selected = noone, _on_choice_neg_selected = noone) {
 	GetDialogueData(_dialogue_id);
@@ -58,7 +60,7 @@ function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id 
 	}
 	
 	on_choice_selected = [];
-	if (!has_choice)
+	if (!has_choice || opt_no_choice)
 		return;
 		
 	// Bypass choices from external source and not use data from dialogue (to avoid multiple chained dialogues)
@@ -183,6 +185,9 @@ function OnChoiceSelected(_on_click_param) {
 }
 
 function SetChoices() {
+	if (opt_no_choice)
+		return;
+		
 	choices_set = true;
 
 	var nb_choices = array_length(loaded_choices);
@@ -218,7 +223,7 @@ function SetChoices() {
 function GoToNext() {
 	dialogue_progress++;
 	if (dialogue_progress >= array_length(texts_array)) {
-		if (!has_choice) {
+		if (!has_choice || opt_no_choice) {
 			CloseDialogue();
 		}
 		else
