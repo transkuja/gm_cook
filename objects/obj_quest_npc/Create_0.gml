@@ -10,6 +10,8 @@ cur_quest_data = {};
 cur_quest_status = "";
 
 function GetCurrentDialogue() {
+	current_quest_id = "";
+	
 	// Has an unresolved quest, bypass dialogue with based on quest dialogues
 	current_quest = GetUnresolvedQuest();
 	if (current_quest[0] != "") {
@@ -18,7 +20,13 @@ function GetCurrentDialogue() {
 		if (!instance_exists(inst_databaseLoader)) { return false; }
 		cur_quest_data = inst_databaseLoader.quests[? current_quest_id];
 		
-		if (current_quest[1] == "not_started") {
+		if (current_quest[1] == "pending") {
+			if (struct_exists(cur_quest_data, "pending_dialogue")) {
+				cur_quest_status = "pending";
+				return cur_quest_data.pending_dialogue;
+			}
+		}
+		else if (current_quest[1] == "not_started") {
 			if (IsQuestRequirementsMet(current_quest_id)) {
 				if (struct_exists(cur_quest_data, "initial_dialogue")) {
 					cur_quest_status = "not_started";
@@ -26,12 +34,7 @@ function GetCurrentDialogue() {
 				}
 			}
 		}
-		else if (current_quest[1] == "pending") {
-			if (struct_exists(cur_quest_data, "pending_dialogue")) {
-				cur_quest_status = "pending";
-				return cur_quest_data.pending_dialogue;
-			}
-		}
+		
 	}
 	
 	if (array_length(arr_dialogues_ids) > current_dialogue_state)
@@ -64,7 +67,7 @@ function GetPendingQuest() {
 
 
 function CanAdvanceDialogue() {
-	return current_quest_id != "";
+	return current_quest_id == "";
 }
 
 function SetQuestToPending() {
