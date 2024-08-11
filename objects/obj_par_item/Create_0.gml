@@ -20,6 +20,9 @@ function StartMagnet() {
 	// TODO: can collect ? (inventory full)
 	if (is_collected || is_magnetized) return;		
 	
+	if (instance_exists(inst_inventory) && !inst_inventory.CanAddItem(item_id, 1))
+		return;
+		
 	if (instance_exists(inst_player)) {
 		lerp_param = 0;
 		lerp_origin_x = x;
@@ -34,8 +37,11 @@ function Collect() {
 	is_magnetized = false;
 	
 	if (instance_exists(inst_inventory)) {
-		is_collected = true;
+		if (!inst_inventory.CanAddItem(item_id, 1))
+			return;
+			
 		inst_inventory.AddItem(new ItemData(item_id, 1, stack));
+		is_collected = true;
 		instance_destroy();
 	}
 }

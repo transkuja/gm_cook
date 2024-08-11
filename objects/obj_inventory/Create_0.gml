@@ -12,12 +12,29 @@ selected_slot = 0;
 function GetNbrInventorySlotsTaken() {
 }
 
+function CanAddItem(_item_id, _qty) {
+	var _foundIndex = array_find_index(inventory, method({item_id:_item_id} , function(_element) 
+													{ return (_element.item_id == item_id )}));
+	
+	if (_foundIndex == -1)
+	{
+		if (array_length(inventory) == slot_count)
+			return false;
+	}
+	else 
+	{
+		// TODO: check stack
+	}
+	
+	return true;
+}
+
 function AddItem(_data) {
 	var _foundIndex = array_find_index(inventory, method({data:_data} , function(_element) 
 													{ return (_element.item_id == data.item_id); }));
 	
 	if (_foundIndex == -1)
-	{
+	{		
 		array_push(inventory, _data);
 	}
 	else
@@ -28,6 +45,8 @@ function AddItem(_data) {
 	}
 	
 	DrawItems();
+	
+	return true;
 }
 
 function RemoveItem(_id, _qty) {
