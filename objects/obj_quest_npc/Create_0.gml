@@ -67,6 +67,14 @@ function CanAdvanceDialogue() {
 	return current_quest_id != "";
 }
 
+function SetQuestToPending() {
+	SaveQuestStatus(current_quest_id, "pending");
+}
+
+function SetQuestToFinished() {
+	SaveQuestStatus(current_quest_id, "done");
+}
+
 function InitDialogueBox() {
 	var current_dialogue_id = GetCurrentDialogue();
 	if (instance_exists(inst_dialogue_box)) {
@@ -76,12 +84,13 @@ function InitDialogueBox() {
 			if (struct_exists(cur_quest_data, "accept_dialogue")) _accept_dialogue = cur_quest_data.accept_dialogue;
 			if (struct_exists(cur_quest_data, "refuse_dialogue")) _accept_dialogue = cur_quest_data.refuse_dialogue;
 			
-			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue);
+			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue, 
+											Broadcast( function() { SetQuestToPending(); }) );
 		}
 		else if (cur_quest_status == "pending") {
 			var _final_dialogue = "";
 			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
-			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "");
+			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "", Broadcast(function() { SetQuestToFinished(); }));
 		}
 		else {
 			inst_dialogue_box.Initialize(current_dialogue_id);

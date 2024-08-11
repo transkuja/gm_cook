@@ -27,8 +27,8 @@ function save_data_set(_key, _value) {
 		return;
 	}
 	
-	if (ds_map_exists(inst_saveManager.current_save_data, _key))
-		ds_map_replace(inst_saveManager.current_save_data, _key, _value);
+	//if (ds_map_exists(inst_saveManager.current_save_data, _key))
+	ds_map_replace(inst_saveManager.current_save_data, _key, _value);
 }
 
 function save_data_get_key(_suffixe) { 

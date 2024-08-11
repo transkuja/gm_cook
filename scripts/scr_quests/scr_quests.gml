@@ -24,6 +24,9 @@ function QuestData() constructor {
 
 }
 
+function SaveQuestStatus(_quest_id, _new_status) {
+	save_data_set(_quest_id, _new_status);
+}
 
 function GetQuestStatus(_quest_id) {
 	q_status = save_data_get(_quest_id);
