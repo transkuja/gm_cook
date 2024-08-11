@@ -11,11 +11,11 @@
 {"text_id":"d_npc_test_2_0", "text_value":"J'ai rien d'intéressant à raconter."}
 {"text_id":"d_quest_1_initial_0", "text_value":"J'ai trop faim, ça serait pas l'heure du gouter par hasard ?"}
 {"text_id":"d_quest_1_initial_1", "text_value":"Ah ! Je m'en doutais ! Tu pourrais me donner une Salade de Fruits stp ?"}
-{"text_id":"choice_quest_1_init_neg", "text_value":"On goûte pas à 18h."}
-{"text_id":"choice_quest_1_init_pos", "text_value":"Bien sûr !"}
+{"text_id":"choice_quest_1_init_neg_0", "text_value":"On goûte pas à 18h."}
+{"text_id":"choice_quest_1_init_pos_0", "text_value":"Bien sûr !"}
 {"text_id":"d_quest_1_accept_0", "text_value":"Parfait ! Je t'attends là, on m'a pas programmé pour bouger de toute façon."}
 {"text_id":"d_quest_1_pending_0", "text_value":"J'ai faiiiiiim"}
 {"text_id":"d_quest_1_pending_1", "text_value":"T'as trouvé une Salade de Fruits ?"}
-{"text_id":"choice_quest_1_pend_neg", "text_value":"Non"}
-{"text_id":"choice_quest_1_pend_pos", "text_value":"Lui donner"}
+{"text_id":"choice_quest_1_pend_neg_0", "text_value":"Non"}
+{"text_id":"choice_quest_1_pend_pos_0", "text_value":"Lui donner"}
 {"text_id":"d_quest_1_final_0", "text_value":"Ouah merci, je vais me mettre bien avec ça !"}

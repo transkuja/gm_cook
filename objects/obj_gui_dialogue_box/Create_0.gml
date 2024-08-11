@@ -52,13 +52,16 @@ on_choice_selected = [];
 function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id = "", _on_choice_pos_selected = noone, _on_choice_neg_selected = noone) {
 	GetDialogueData(_dialogue_id);
 	
-	if (current_dialogue_data == noone) {
+	if (current_dialogue_data == noone || current_dialogue_data == undefined) {
 		CloseDialogue();
 		return;
 	}
 	
-	// Bypass choices from external source and not use data from dialogue (to avoid multiple chained dialogues)
 	on_choice_selected = [];
+	if (!has_choice)
+		return;
+		
+	// Bypass choices from external source and not use data from dialogue (to avoid multiple chained dialogues)
 	var _next_dialogue_pos = _choice_positive_id;
 	var _next_dialogue_neg = _choice_negative_id;
 	
@@ -105,7 +108,7 @@ function GetDialogueData(_dialogue_id) {
 	_log("Check dialogue from DB:", _dialogue_id);
 	current_dialogue_data = inst_databaseLoader.dialogues[? _dialogue_id];
 	if (current_dialogue_data == noone || current_dialogue_data == undefined) {
-		textToShow = string("Dialogue {0} not found !", _dialogue_id);
+		_log(string("Dialogue {0} not found !", _dialogue_id));
 		return;
 	}
 	
@@ -168,13 +171,13 @@ function OnChoiceSelected(_on_click_param) {
 		instance_destroy(choices_buttons_inst[_i]);
 	
 	// Call choice delegate set from dialogue caller
-	if (struct_exists(on_click_param, "on_select")) {
-		if (on_click_param.on_select != noone)
-			on_click_param.on_select.dispatch();
+	if (struct_exists(_on_click_param, "on_select")) {
+		if (_on_click_param.on_select != noone)
+			_on_click_param.on_select.dispatch();
 	}
 	
-	if (struct_exists(on_click_param, "next_dialogue")) 
-		Initialize(on_click_param.next_dialogue);
+	if (struct_exists(_on_click_param, "next_dialogue")) 
+		Initialize(_on_click_param.next_dialogue);
 	else
 		CloseDialogue()
 }

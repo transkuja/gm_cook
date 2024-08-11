@@ -35,7 +35,7 @@ function GetQuestStatus(_quest_id) {
 }
 
 function IsQuestRequirementsMet(_quest_id) {
-	if (instance_exists(inst_databaseLoader)) { return false; }
+	if (!instance_exists(inst_databaseLoader)) { return false; }
 	
 	var q_data = inst_databaseLoader.quests[? _quest_id];
 		
