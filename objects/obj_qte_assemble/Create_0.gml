@@ -16,8 +16,8 @@ function OnInit(_items_id) {
 		//var _mash_count = GetChopMashCount(_items_id[0]);
 		//if (_mash_count == -1) { return false; }
 		
-		initial_item_mash_count = 1;
-		current_mash_count = 1;
+		initial_item_mash_count = 5;
+		current_mash_count = 5;
 	}
 	
 	return true;

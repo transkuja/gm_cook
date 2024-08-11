@@ -68,9 +68,15 @@ function CanQuestItemBeValidated(_quest_data) {
 	var item_count = array_length(_quest_data.quest_objectives);
 	if (item_count == 0) 
 		return true;
+	
+	var item_in_hand_id = "";
+	
+	if (!instance_exists(inst_player)) { return false; }
+	if (inst_player.HasItemInHands())
+		item_in_hand_id = inst_player.item_in_hands.item_id;
 		
 	for (var _i = 0; _i < item_count; _i++) {
-		if (!inst_inventory.HasItem(_quest_data.quest_objectives[_i]))
+		if (!inst_inventory.HasItem(_quest_data.quest_objectives[_i]) && item_in_hand_id != _quest_data.quest_objectives[_i])
 			return false;
 	}
 	

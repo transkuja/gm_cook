@@ -83,9 +83,16 @@ function SetQuestToFinished() {
 	if (item_count == 0) return;
 
 	if (!instance_exists(inst_inventory)) { return; }
-		
+	if (!instance_exists(inst_player)) { return; }
+	var item_in_hands = "";
+	if (inst_player.HasItemInHands())
+		item_in_hands = inst_player.item_in_hands.item_id;
+	
 	for (var _i = 0; _i < item_count; _i++) {
-		inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
+		if (item_in_hands == cur_quest_data.quest_objectives[_i])
+			inst_player.ClearItemInHands(noone, noone);
+		else
+			inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
 	}
 	
 }
