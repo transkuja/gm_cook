@@ -79,13 +79,13 @@ function SetQuestToFinished() {
 	SaveQuestStatus(current_quest_id, "done");
 		
 	if (!struct_exists(cur_quest_data, "quest_objectives")) { return; }
-	var item_count = array_length(_quest_data.quest_objectives);
+	var item_count = array_length(cur_quest_data.quest_objectives);
 	if (item_count == 0) return;
 
 	if (!instance_exists(inst_inventory)) { return; }
 		
 	for (var _i = 0; _i < item_count; _i++) {
-		inst_inventory.RemoveItem(_quest_data.quest_objectives[_i], 1);
+		inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
 	}
 	
 }
