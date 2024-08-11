@@ -1,8 +1,8 @@
 // Textbox variables
 textToShow = "J'aime pas les gros singes."
 talker_name = "Jean Bomber"
-textWidth = 450;
-lineHeight = 28;
+textWidth = 850;
+lineHeight = 40;
 
 // Stop player on open
 global.player_control = false;
@@ -42,7 +42,7 @@ current_talkers = [];
 has_choice = false;
 loaded_choices = [];
 choices_set = false;
-choice_width = 300;
+choice_width = 350;
 choice_height = 80;
 choice_origin_x = x + (sprite_width * 0.5) - (choice_width * 0.5);
 choices_buttons_inst = [];
