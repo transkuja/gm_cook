@@ -102,14 +102,18 @@ function GetDialogueData(_dialogue_id) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
 	}
 	
-	_log(_dialogue_id);
+	_log("Check dialogue from DB:", _dialogue_id);
 	current_dialogue_data = inst_databaseLoader.dialogues[? _dialogue_id];
-	if (current_dialogue_data == noone) {
-		textToShow = "Dialogue not found !";
+	if (current_dialogue_data == noone || current_dialogue_data == undefined) {
+		textToShow = string("Dialogue {0} not found !", _dialogue_id);
 		return;
 	}
 	
-	loaded_choices = current_dialogue_data.choices;
+	if (struct_exists(current_dialogue_data, "choices"))
+		loaded_choices = current_dialogue_data.choices;
+	else 
+		loaded_choices = [];
+		
 	has_choice = array_length(loaded_choices) > 0;
 
 	texts_array = inst_databaseLoader.localized_texts[? _dialogue_id];

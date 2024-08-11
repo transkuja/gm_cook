@@ -4,14 +4,15 @@
 // Inherit the parent event
 event_inherited();
 
+arr_dialogues_ids = string_split(dialogue_ids, "|");
 is_player_interacting = false;
 current_dialogue_state = 0; // TODO: save this
 inst_dialogue_box = noone;
 save_key = save_data_get_key("_dialogue");
 
 function GetCurrentDialogue() {
-	if (array_length(dialogue_ids) > current_dialogue_state)
-		return dialogue_ids[current_dialogue_state];
+	if (array_length(arr_dialogues_ids) > current_dialogue_state)
+		return arr_dialogues_ids[current_dialogue_state];
 		
 	return "";
 }
@@ -22,7 +23,7 @@ function InitDialogueBox() {
 }
 
 function Interact(_interactInstigator) constructor {
-	if (is_player_interacting || array_length(dialogue_ids) <= current_dialogue_state) 
+	if (is_player_interacting || array_length(arr_dialogues_ids) <= current_dialogue_state) 
 		return;
 		
 	shader_enabled = false;
@@ -59,7 +60,7 @@ function AdvanceDialogue() {
 	if (!CanAdvanceDialogue()) 
 		return;
 	
-	if (current_dialogue_state + 1 < array_length(dialogue_ids))
+	if (current_dialogue_state + 1 < array_length(arr_dialogues_ids))
 	{
 		current_dialogue_state++;
 		save_data_set(save_key, current_dialogue_state);

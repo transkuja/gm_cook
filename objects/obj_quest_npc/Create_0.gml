@@ -15,8 +15,8 @@ function GetCurrentDialogue() {
 	if (current_quest[0] != "") {
 		current_quest_id = current_quest[0];
 		
-		if (instance_exists(inst_databaseLoader)) { return false; }
-		cur_quest_data = inst_databaseLoader.quests[? _quest_id];
+		if (!instance_exists(inst_databaseLoader)) { return false; }
+		cur_quest_data = inst_databaseLoader.quests[? current_quest_id];
 		
 		if (current_quest[1] == "not_started") {
 			if (IsQuestRequirementsMet(current_quest_id)) {
@@ -26,7 +26,7 @@ function GetCurrentDialogue() {
 				}
 			}
 		}
-		else (current_quest[1] == "pending") {
+		else if (current_quest[1] == "pending") {
 			if (struct_exists(cur_quest_data, "pending_dialogue")) {
 				cur_quest_status = "pending";
 				return cur_quest_data.pending_dialogue;
@@ -34,8 +34,8 @@ function GetCurrentDialogue() {
 		}
 	}
 	
-	if (array_length(dialogue_ids) > current_dialogue_state)
-		return dialogue_ids[current_dialogue_state];
+	if (array_length(arr_dialogues_ids) > current_dialogue_state)
+		return arr_dialogues_ids[current_dialogue_state];
 		
 	return "";
 }
@@ -82,6 +82,9 @@ function InitDialogueBox() {
 			var _final_dialogue = "";
 			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
 			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "");
+		}
+		else {
+			inst_dialogue_box.Initialize(current_dialogue_id);
 		}
 	}
 }

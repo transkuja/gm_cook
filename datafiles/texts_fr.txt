@@ -19,4 +19,3 @@
 {"text_id":"choice_quest_1_pend_neg", "text_value":"Non"}
 {"text_id":"choice_quest_1_pend_pos", "text_value":"Lui donner"}
 {"text_id":"d_quest_1_final_0", "text_value":"Ouah merci, je vais me mettre bien avec ça !"}
-
