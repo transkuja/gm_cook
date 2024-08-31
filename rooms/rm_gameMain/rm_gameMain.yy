@@ -42,6 +42,7 @@
     {"name":"inst_4D282BF2","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_747C076F","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_saveManager","path":"rooms/rm_gameMain/rm_gameMain.yy",},
+    {"name":"inst_51D28445","path":"rooms/rm_gameMain/rm_gameMain.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -81,6 +82,10 @@
         {"$GMRInstance":"","%Name":"inst_747C076F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_747C076F","objectId":{"name":"obj_quest_npc","path":"objects/obj_quest_npc/obj_quest_npc.yy",},"properties":[
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_npc","path":"objects/obj_par_npc/obj_par_npc.yy",},"propertyId":{"name":"dialogue_ids","path":"objects/obj_par_npc/obj_par_npc.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"d_npc_test_1|d_npc_test_2\"",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-4.0,"scaleY":4.0,"x":1472.0,"y":512.0,},
+        {"$GMRInstance":"","%Name":"inst_51D28445","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_51D28445","objectId":{"name":"obj_dialogueStarter","path":"objects/obj_dialogueStarter/obj_dialogueStarter.yy",},"properties":[
+            {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_dialogueStarter","path":"objects/obj_dialogueStarter/obj_dialogueStarter.yy",},"propertyId":{"name":"dialogue_id","path":"objects/obj_dialogueStarter/obj_dialogueStarter.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"d_protaupe_intro\"",},
+            {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_dialogueStarter","path":"objects/obj_dialogueStarter/obj_dialogueStarter.yy",},"propertyId":{"name":"play_on_room_start","path":"objects/obj_dialogueStarter/obj_dialogueStarter.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":96.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"ControlObjects","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_69AE651A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_69AE651A","objectId":{"name":"obj_roomControl","path":"objects/obj_roomControl/obj_roomControl.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-64.0,"y":-64.0,},

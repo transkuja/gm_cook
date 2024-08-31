@@ -6,6 +6,13 @@ inst_dialogue_box = noone;
 save_key = save_data_get_key("_played");
 
 function AreRequirementsValid() {
+	if (dialogue_id == "" || !is_string(dialogue_id)) return false;
+	
+	// Check from requirements database
+	if (!AreDialogueRequirementsMet(dialogue_id))
+		return false;
+	
+	// No other requirement, can start dialogue
 	if (array_length(arr_requirements) == 0) return true;
 	
 	for (var i = 0; i < array_length(arr_requirements); i++)
@@ -14,6 +21,7 @@ function AreRequirementsValid() {
 			return false;
 	}
 	
+	// No check failed, can start dialogue
 	return true;
 }
 

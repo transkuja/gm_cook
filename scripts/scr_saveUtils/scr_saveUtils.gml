@@ -21,6 +21,10 @@ function save_data_add(_key, _delta) {
 		var cur_value = ds_map_find_value(inst_saveManager.current_save_data, _key);
 		ds_map_replace(inst_saveManager.current_save_data, _key, cur_value + _delta);
 	}
+	else
+	{
+		save_data_set(_key, _delta);
+	}
 }
 
 function save_data_set(_key, _value) {
