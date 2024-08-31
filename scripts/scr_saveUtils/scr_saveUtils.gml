@@ -6,6 +6,8 @@ function save_data_get(_key) {
 	
 	if (ds_map_exists(inst_saveManager.current_save_data, _key))
 		return ds_map_find_value(inst_saveManager.current_save_data,_key);
+		
+	return undefined;
 }
 
 function save_data_add(_key, _delta) {

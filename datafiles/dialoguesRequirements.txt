@@ -1,0 +1,1 @@
+﻿{"dialogue_id":"d_protaupe_intro","requirements":[{"save_key":"d_protaupe_intro_played","value":"", "inverse":true}]}
