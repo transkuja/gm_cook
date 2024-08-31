@@ -1,3 +1,4 @@
+filepath = "Datas/";
 assemble_combos = [];
 recipes_data = [];
 dialogues = ds_map_create();
@@ -6,11 +7,11 @@ quests = ds_map_create();
 dialogues_requirements = ds_map_create();
 
 function LoadAssembleCombos() {
-	assemble_combos = load_database("assemble_combos.txt");
+	assemble_combos = load_database(filepath + "assemble_combos.txt");
 }
 
 function LoadRecipes() {
-	recipes_data = load_database("recipes.txt");
+	recipes_data = load_database(filepath + "recipes.txt");
 	
 	//file = file_text_open_read("recipes.txt");
 	
@@ -34,7 +35,7 @@ function LoadRecipes() {
 }
 
 function LoadDialogues() {
-	dialogues = load_database_to_map("dialogues.txt", "dialogue_id");
+	dialogues = load_database_to_map(filepath + "dialogues.txt", "dialogue_id");
 	
 	//_log("Dialogues DB size: ", ds_map_size(dialogues));
 	//var _map_keys = ds_map_keys_to_array(dialogues);
@@ -43,12 +44,12 @@ function LoadDialogues() {
 	//	_log("Value ", dialogues[? _map_keys[_i]]);
 	//}
 	
-	dialogues_requirements = load_database_to_map("dialoguesRequirements.txt", "dialogue_id");
+	dialogues_requirements = load_database_to_map(filepath + "dialoguesRequirements.txt", "dialogue_id");
 }
 
 function LoadLocTexts(_loc) {
 	var filename = "texts_" + _loc + ".txt";
-	localized_texts = load_texts_database(filename);
+	localized_texts = load_texts_database(filepath + filename);
 	
 	//_log("Texts DB size: ", ds_map_size(localized_texts));
 	//var _map_keys = ds_map_keys_to_array(localized_texts);
@@ -64,5 +65,24 @@ function LoadLocTexts(_loc) {
 }
 
 function LoadQuests() {
-	quests = load_database_to_map("quests.txt", "quest_id");
+	quests = load_database_to_map(filepath + "quests.txt", "quest_id");
+}
+
+// PROTAUPE EXCLUSIVE
+billy_memory = "";
+function LoadVieuxBillyMemory() {
+	
+	file = file_text_open_read("VieuxBilly/memory.txt");
+	
+	if (file == -1) {
+		_log("Can't open", _filename, " file !");
+		return;
+	}
+	
+	billy_memory = "";
+	while (!file_text_eof(file)) {
+		billy_memory += file_text_readln(file);
+	}
+	
+	file_text_close(file);
 }

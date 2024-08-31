@@ -5,3 +5,5 @@ LoadDialogues();
 LoadLocTexts("fr");
 
 LoadQuests();
+
+LoadVieuxBillyMemory();
