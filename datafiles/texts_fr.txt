@@ -27,7 +27,7 @@
 {"text_id":"d_protaupe_intro_0","text_value":"Hé toi là ! "}
 {"text_id":"d_protaupe_intro_1","text_value":"Oui toi, avec ton air ahuri. On se connaît non ?"}
 {"text_id":"d_protaupe_intro_2","text_value":"Ma mémoire fait encore des siennes."}
-{"text_id":"d_protaupe_intro_3","text_value":"Tu crois que tu pourrais m’aider à me rappeler ton nom en allant l’inscrire dans les fichiers du jeu ? "}
+{"text_id":"d_protaupe_intro_3","text_value":"Tu crois que tu pourrais m'aider à me rappeler ton nom en allant l’inscrire dans les fichiers du jeu ? "}
 {"text_id":"d_protaupe_intro_4","text_value":"Ça m’aiderait grandement, et ça éviterait que tu restes coincé avec moi qui répète en boucle le même dialogue débile, ho ho ho !"}
 {"text_id":"d_protaupe_talk1_0","text_value":"Le Dindon sauvage (Meleagris gallopavo), ou la Dinde, est une espèce d'oiseaux appartenant à la famille des Phasianidae"}
 {"text_id":"d_protaupe_talk2_0","text_value":"Le dindon sauvage est un oiseau terrestre de grande taille"}

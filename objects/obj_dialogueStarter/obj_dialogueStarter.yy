@@ -29,7 +29,7 @@
   "properties":[
     {"$GMObjectProperty":"","%Name":"dialogue_id","filters":[],"listItems":[],"multiselect":false,"name":"dialogue_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
     {"$GMObjectProperty":"","%Name":"play_on_room_start","filters":[],"listItems":[],"multiselect":false,"name":"play_on_room_start","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
-    {"$GMObjectProperty":"","%Name":"requirements","filters":[],"listItems":[],"multiselect":false,"name":"requirements","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":2,},
+    {"$GMObjectProperty":"","%Name":"requirements","filters":[],"listItems":[],"multiselect":false,"name":"requirements","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

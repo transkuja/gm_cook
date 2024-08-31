@@ -1,9 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-arr_requirements = string_split(requirements, "|");
+arr_requirements = string_split(requirements, "|", true);
 inst_dialogue_box = noone;
-save_key = save_data_get_key("_played");
+save_key = dialogue_id + "_played";
 
 function AreRequirementsValid() {
 	if (dialogue_id == "" || !is_string(dialogue_id)) return false;
@@ -13,6 +13,7 @@ function AreRequirementsValid() {
 		return false;
 	
 	// No other requirement, can start dialogue
+	//if (!is_string(requirements) || requirements == "") return true;
 	if (array_length(arr_requirements) == 0) return true;
 	
 	for (var i = 0; i < array_length(arr_requirements); i++)
