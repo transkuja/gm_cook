@@ -125,7 +125,8 @@ function GetSelectedItemId() {
 }
 
 function IsSelectedItemValid() {
-	return GetSelectedItemId() != "none";
+	return slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
+		&& GetSelectedItemId() != "none";
 }
 
 // Returns the selected item id or "none" if no proper item was selected

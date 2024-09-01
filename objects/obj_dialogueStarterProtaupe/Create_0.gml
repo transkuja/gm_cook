@@ -12,16 +12,34 @@ function SetDialogueId() {
 		
 		if (!_intro_dialogue_played) 
 			return;
-			
-		if (string_pos("vieux quichon", inst_databaseLoader.billy_memory) != 0)
+		
+		// If Act II quest finished (1st quest), can access second one
+		var quest_1_status = save_data_get("q_protaupe_salad");
+		if (quest_1_status != undefined && quest_1_status == "done")
 		{
-			dialogue_id = "d_protaupe_correct_name";
-			save_key = dialogue_id + "_played";
-			return;
+			if ((string_pos("galette", inst_databaseLoader.billy_memory) != 0 || string_pos("crêpe", inst_databaseLoader.billy_memory) != 0 || string_pos("crepe", inst_databaseLoader.billy_memory) != 0) 
+					&& string_pos("sans lait", inst_databaseLoader.billy_memory) != 0)
+			{
+				dialogue_id = "d_protaupe_galette";
+				save_key = dialogue_id + "_played";
+				return;
+			}
+			else 
+			{
+			}
 		}
 		else 
 		{
-			// TODO: dialogues conneries avec "Topich", "Thomas", "Thomas Pichon", "Dindon"
+			if (string_pos("vieux quichon", inst_databaseLoader.billy_memory) != 0)
+			{
+				dialogue_id = "d_protaupe_correct_name";
+				save_key = dialogue_id + "_played";
+				return;
+			}
+			else 
+			{
+				// TODO: dialogues conneries avec "Topich", "Thomas", "Thomas Pichon", "Dindon"
+			}
 		}
 	}
 	

@@ -84,7 +84,7 @@
 {"text_id":"d_protaupe_ratatouille_pending_ch_pos_0","text_value":"La voilà"}
 {"text_id":"d_protaupe_ratatouille_pending_ch_neg_0","text_value":"Un peu de patience"}
 {"text_id":"d_protaupe_ratatouille_pending_ch_pos_ans_0","text_value":"*crunch* *crunch* Ho ho ho, c'est si bon !"}
-{"text_id":"d_protaupe_ratatouille_pending_ch_pos_ans_1","text_value":"Oui, je me souviens, t'aimes la musique non ? Ça a un lien mais …"}
+{"text_id":"d_protaupe_ratatouille_pending_ch_pos_ans_1","text_value":"Oui, je me souviens, t'aimes la musique non ? Ça a un lien mais ..."}
 {"text_id":"d_protaupe_ratatouille_pending_ch_pos_ans_2","text_value":"J'en veux plus."}
 {"text_id":"d_protaupe_ratatouille2_0","text_value":"Aller, fais pas ta raclette Quichon, tu peux bien m'en refaire une."}
 {"text_id":"d_protaupe_ratatouille2_1","text_value":"Je me souviens clairement de ce que je dois te dire, mais j'ai encore un creux à l'estomac donc je compte sur toi ho ho ho !"}
@@ -102,8 +102,8 @@
 {"text_id":"d_protaupe_the_end_1","text_value":"*burp*"}
 {"text_id":"d_protaupe_the_end_2","text_value":"Ho ho ho, le signal indique qu'il n'y a plus de place !"}
 {"text_id":"d_protaupe_the_end_3","text_value":"Aller tu l'as bien mérité."}
-{"text_id":"d_protaupe_the_end_4","text_value":"…"}
-{"text_id":"d_protaupe_the_end_5","text_value":"…"}
+{"text_id":"d_protaupe_the_end_4","text_value":"..."}
+{"text_id":"d_protaupe_the_end_5","text_value":"..."}
 {"text_id":"d_protaupe_the_end_6","text_value":"ZzzZZzzZzzz"}
 {"text_id":"d_protaupe_the_end_7","text_value":"ZzzzZZZzz"}
 {"text_id":"d_protaupe_the_end_8","text_value":"ZzzZZzzZzzz"}
@@ -121,7 +121,7 @@
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_1","text_value":"Oui, c'est pas mal. Peut-être que tu pourrais me cuisiner un truc plus consistant ?"}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_2","text_value":"Y avait ce plat que ma maman me faisait quand j'étais petit. Ça remonte à loin !"}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_3","text_value":"Toi même tu sais mon vieux hein, pas vrai. Ho ho ho !"}
-{"text_id":"d_protaupe_salad_pending_ch_pos_ans_4","text_value":"Si seulement il y avait un moyen de me rappeler le nom de ce plat …"}
+{"text_id":"d_protaupe_salad_pending_ch_pos_ans_4","text_value":"Si seulement il y avait un moyen de me rappeler le nom de ce plat ..."}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_5","text_value":"Je me souviens vaguement en avoir discuté avec toi. Tu avais noté la recette et tu l'avais rangée au-dessus de ton frigo."}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_6","text_value":"Ho ho ho, sacré Quichon ! "}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_7","text_value":"Quand tu auras le nom de cette recette, remets le moi bien dans le crâne, si tu vois ce que je veux dire *wink* *wink*"}

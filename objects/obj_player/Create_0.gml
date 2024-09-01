@@ -257,7 +257,7 @@ function GetItemFromInventoryToHands() {
 		return;
 	}
 	
-	if (!instance_exists(inst_inventory)) { _log("No inventory instance in room !!!"); return; }
+	if (!instance_exists(inst_inventory)) { _log("ERROR: No inventory instance in room !!!"); return; }
 	if (!inst_inventory.IsSelectedItemValid()) { 
 		// TODO: feedback item selected not valid
 		return; 
