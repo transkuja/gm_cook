@@ -71,32 +71,6 @@ function CanAdvanceDialogue() {
 	return current_quest_id == "";
 }
 
-function SetQuestToPending() {
-	SaveQuestStatus(current_quest_id, "pending");
-}
-
-function SetQuestToFinished() {
-	SaveQuestStatus(current_quest_id, "done");
-		
-	if (!struct_exists(cur_quest_data, "quest_objectives")) { return; }
-	var item_count = array_length(cur_quest_data.quest_objectives);
-	if (item_count == 0) return;
-
-	if (!instance_exists(inst_inventory)) { return; }
-	if (!instance_exists(inst_player)) { return; }
-	var item_in_hands = "";
-	if (inst_player.HasItemInHands())
-		item_in_hands = inst_player.item_in_hands.item_id;
-	
-	for (var _i = 0; _i < item_count; _i++) {
-		if (item_in_hands == cur_quest_data.quest_objectives[_i])
-			inst_player.ClearItemInHands(noone, noone);
-		else
-			inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
-	}
-	
-}
-
 function InitDialogueBox() {
 	var current_dialogue_id = GetCurrentDialogue();
 	if (instance_exists(inst_dialogue_box)) {
@@ -104,7 +78,7 @@ function InitDialogueBox() {
 			var _accept_dialogue = "";
 			var _refuse_dialogue = "";
 			if (struct_exists(cur_quest_data, "accept_dialogue")) _accept_dialogue = cur_quest_data.accept_dialogue;
-			if (struct_exists(cur_quest_data, "refuse_dialogue")) _accept_dialogue = cur_quest_data.refuse_dialogue;
+			if (struct_exists(cur_quest_data, "refuse_dialogue")) _refuse_dialogue = cur_quest_data.refuse_dialogue;
 			
 			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue, 
 											Broadcast( function() { SetQuestToPending(); }) );

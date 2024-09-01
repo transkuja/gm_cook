@@ -8,15 +8,20 @@ function SetDialogueId() {
 	if (instance_exists(inst_databaseLoader))	
 	{
 		// Act I: if vieux quichon entered AND 1st dialogue played, swapped to 2nd dialogue
-		intro_dialogue_played = save_data_get(save_key) != undefined;
+		var _intro_dialogue_played = save_data_get(save_key) != undefined;
 		
-		if (!intro_dialogue_played) 
+		if (!_intro_dialogue_played) 
 			return;
 			
 		if (string_pos("vieux quichon", inst_databaseLoader.billy_memory) != 0)
 		{
 			dialogue_id = "d_protaupe_correct_name";
+			save_key = dialogue_id + "_played";
 			return;
+		}
+		else 
+		{
+			// TODO: dialogues conneries avec "Topich", "Thomas", "Thomas Pichon", "Dindon"
 		}
 	}
 	

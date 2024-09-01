@@ -82,3 +82,96 @@ function CanQuestItemBeValidated(_quest_data) {
 	
 	return true;
 }
+
+inst_dialogue_box = noone;
+current_quest_id = "";
+
+function SetQuestToPending() {
+	SaveQuestStatus(current_quest_id, "pending");
+}
+
+function SetQuestToFinished() {
+	SaveQuestStatus(current_quest_id, "done");
+		
+	if (!struct_exists(cur_quest_data, "quest_objectives")) { return; }
+	var item_count = array_length(cur_quest_data.quest_objectives);
+	if (item_count == 0) return;
+
+	if (!instance_exists(inst_inventory)) { return; }
+	if (!instance_exists(inst_player)) { return; }
+	var item_in_hands = "";
+	if (inst_player.HasItemInHands())
+		item_in_hands = inst_player.item_in_hands.item_id;
+	
+	for (var _i = 0; _i < item_count; _i++) {
+		if (item_in_hands == cur_quest_data.quest_objectives[_i])
+			inst_player.ClearItemInHands(noone, noone);
+		else
+			inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
+	}
+	
+}
+
+function PlayQuestStartingDialogue(_quest_id) {
+	PlayQuestDialogue(_quest_id, "not_started");
+}
+
+function PlayQuestDialogue(_quest_id, _forced_status = "") {
+	if (!is_string(_quest_id) || _quest_id == "") { return false; }
+
+	var quest_status = is_string(_forced_status) && _forced_status != "" ? _forced_status : GetQuestStatus(_quest_id);
+	if (quest_status == "done") { return false; }
+	
+	if (!instance_exists(inst_databaseLoader)) { return false; }
+	
+	current_quest_id = _quest_id;
+	
+	var cur_quest_data = inst_databaseLoader.quests[? current_quest_id];
+		
+	var current_dialogue_id = "";
+	
+	if (quest_status == "pending" && struct_exists(cur_quest_data, "pending_dialogue")) {
+		current_dialogue_id = cur_quest_data.pending_dialogue;
+	}
+	else if (quest_status == "not_started" && struct_exists(cur_quest_data, "initial_dialogue")) {
+		current_dialogue_id = cur_quest_data.initial_dialogue;
+	}
+	
+	if (instance_exists(inst_dialogue_box))
+		instance_destroy(inst_dialogue_box);
+		
+	// Create dialogue box
+	inst_dialogue_box = instance_create_layer(0, 0, "GUI", obj_gui_dialogue_box);
+	
+	// Init with current id
+	if (instance_exists(inst_dialogue_box)) {
+		if (cur_quest_status == "not_started") {
+			var _accept_dialogue = "";
+			var _refuse_dialogue = "";
+			if (struct_exists(cur_quest_data, "accept_dialogue")) _accept_dialogue = cur_quest_data.accept_dialogue;
+			if (struct_exists(cur_quest_data, "refuse_dialogue")) _accept_dialogue = cur_quest_data.refuse_dialogue;
+			
+			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue, 
+											Broadcast( function() { SetQuestToPending(); }) );
+		}
+		else if (cur_quest_status == "pending") {
+			var _final_dialogue = "";
+			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
+			
+			inst_dialogue_box.opt_no_choice = !CanQuestItemBeValidated(cur_quest_data);
+			inst_dialogue_box.Initialize(current_dialogue_id, _final_dialogue, "", Broadcast(function() { SetQuestToFinished(); }));
+		}
+		else
+			inst_dialogue_box.Initialize(current_dialogue_id);
+			
+		InitDialogueBox();
+		
+		var _broadcast = Broadcast(function() {
+			inst_dialogue_box = noone;
+		} );
+	
+		inst_dialogue_box.on_dialogue_close = _broadcast;
+	}
+	
+	return true;
+}
