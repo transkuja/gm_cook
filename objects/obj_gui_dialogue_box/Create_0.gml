@@ -20,6 +20,7 @@ event_perform_object(obj_fading, ev_create, 0);
 on_dialogue_close = noone;
 		
 current_dialogue_data = noone;
+current_id = "";
 texts_array = array_create(0);
 dialogue_progress = 0;
 
@@ -53,6 +54,7 @@ opt_no_choice = false;
 
 function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id = "", _on_choice_pos_selected = noone, _on_choice_neg_selected = noone) {
 	GetDialogueData(_dialogue_id);
+	current_id = _dialogue_id;
 	
 	if (current_dialogue_data == noone || current_dialogue_data == undefined) {
 		CloseDialogue();
@@ -161,6 +163,7 @@ function GetDialogueData(_dialogue_id) {
 
 function CloseDialogue() {
 	StartFadeOut();
+	save_data_set(current_id + "_played", true);
 	alarm[0] = seconds(0.5);
 }
 
@@ -178,8 +181,11 @@ function OnChoiceSelected(_on_click_param) {
 			_on_click_param.on_select.dispatch();
 	}
 	
-	if (struct_exists(_on_click_param, "next_dialogue")) 
+	if (struct_exists(_on_click_param, "next_dialogue"))
+	{
+		save_data_set(current_id + "_played", true);
 		Initialize(_on_click_param.next_dialogue);
+	}
 	else
 		CloseDialogue()
 }
