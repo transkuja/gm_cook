@@ -28,6 +28,21 @@ function AreRequirementsValid() {
 }
 
 function StartDialogue() {
+	if (!instance_exists(inst_databaseLoader)) {
+		_log("ERROR: Database loader instance not in Room: ", room_name);
+		return;
+	}
+	
+	for (var i = 0; i < array_length(arr_quests_ids); i++) {
+		var quest = inst_databaseLoader.quests[? arr_quests_ids[i]];
+		if (struct_exists(quest, "initial_dialogue")) {
+			if (dialogue_id == quest.initial_dialogue) {
+				PlayQuestStartingDialogue(arr_quests_ids[i]);
+				return;
+			}
+		}
+	}
+	
 	// Create dialogue box
 	inst_dialogue_box = instance_create_layer(0, 0, "GUI", obj_gui_dialogue_box);
 	
@@ -37,6 +52,7 @@ function StartDialogue() {
 		
 		var _broadcast = Broadcast(function() {
 			save_data_set(save_key, true);
+			inst_dialogue_box = noone;
 		} );
 	
 		inst_dialogue_box.on_dialogue_close = _broadcast;

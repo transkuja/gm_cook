@@ -16,6 +16,12 @@ draw_debug = true;
 image_xscale = 0.5;
 image_yscale = 0.5;
 
+function Initialize(_item_id) {
+	item_id = _item_id;
+	if (item_id != "none")
+		sprite_index = GetItemSprite(_item_id);
+}
+
 function StartMagnet() {
 	// TODO: can collect ? (inventory full)
 	if (is_collected || is_magnetized) return;		

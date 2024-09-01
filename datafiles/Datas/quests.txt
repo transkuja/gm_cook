@@ -1,2 +1,3 @@
 {"quest_id":"quest_0", "requirements":[{"save_key":"", "save_key_param":""}], "initial_dialogue":"", "pending_dialogue":"", "final_dialogue":"", "quest_objectives":[]}
 {"quest_id":"quest_1", "requirements":[], "initial_dialogue":"d_quest_1_initial", "pending_dialogue":"d_quest_1_pending", "final_dialogue":"d_quest_1_final", "quest_objectives":["fruit_salad"], "accept_dialogue":"d_quest_1_accept"}
+{"quest_id":"q_protaupe_salad", "requirements":[], "initial_dialogue":"d_protaupe_correct_name", "pending_dialogue":"d_protaupe_salad_pending", "final_dialogue":"d_protaupe_salad_pending_ch_pos", "quest_objectives":["fruit_salad"], "accept_dialogue":"d_protaupe_choice1_pos_ans", "refuse_dialogue":"d_protaupe_choice1_neg_ans"}

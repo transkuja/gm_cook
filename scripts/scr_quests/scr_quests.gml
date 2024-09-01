@@ -112,11 +112,11 @@ function SetQuestToFinished() {
 	
 }
 
-function PlayQuestStartingDialogue(_quest_id) {
-	PlayQuestDialogue(_quest_id, "not_started");
+function PlayQuestStartingDialogue(_quest_id, _always = false) {
+	PlayQuestDialogue(_quest_id, "not_started", _always);
 }
 
-function PlayQuestDialogue(_quest_id, _forced_status = "") {
+function PlayQuestDialogue(_quest_id, _forced_status = "", _always = false) {
 	if (!is_string(_quest_id) || _quest_id == "") { return false; }
 
 	var quest_status = is_string(_forced_status) && _forced_status != "" ? _forced_status : GetQuestStatus(_quest_id);
@@ -137,6 +137,10 @@ function PlayQuestDialogue(_quest_id, _forced_status = "") {
 		current_dialogue_id = cur_quest_data.initial_dialogue;
 	}
 	
+	// Play first time only
+	if (!_always && save_data_get(current_dialogue_id + "_played") != undefined)
+		return;
+		
 	if (instance_exists(inst_dialogue_box))
 		instance_destroy(inst_dialogue_box);
 		
@@ -145,16 +149,16 @@ function PlayQuestDialogue(_quest_id, _forced_status = "") {
 	
 	// Init with current id
 	if (instance_exists(inst_dialogue_box)) {
-		if (cur_quest_status == "not_started") {
+		if (quest_status == "not_started") {
 			var _accept_dialogue = "";
 			var _refuse_dialogue = "";
 			if (struct_exists(cur_quest_data, "accept_dialogue")) _accept_dialogue = cur_quest_data.accept_dialogue;
-			if (struct_exists(cur_quest_data, "refuse_dialogue")) _accept_dialogue = cur_quest_data.refuse_dialogue;
+			if (struct_exists(cur_quest_data, "refuse_dialogue")) _refuse_dialogue = cur_quest_data.refuse_dialogue;
 			
 			inst_dialogue_box.Initialize(current_dialogue_id, _accept_dialogue, _refuse_dialogue, 
 											Broadcast( function() { SetQuestToPending(); }) );
 		}
-		else if (cur_quest_status == "pending") {
+		else if (quest_status == "pending") {
 			var _final_dialogue = "";
 			if (struct_exists(cur_quest_data, "final_dialogue")) _final_dialogue = cur_quest_data.final_dialogue;
 			
@@ -164,8 +168,6 @@ function PlayQuestDialogue(_quest_id, _forced_status = "") {
 		else
 			inst_dialogue_box.Initialize(current_dialogue_id);
 			
-		InitDialogueBox();
-		
 		var _broadcast = Broadcast(function() {
 			inst_dialogue_box = noone;
 		} );
