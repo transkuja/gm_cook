@@ -85,4 +85,6 @@ function LoadVieuxBillyMemory() {
 	}
 	
 	file_text_close(file);
+	
+	billy_memory = string_lower(billy_memory);
 }
