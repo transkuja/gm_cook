@@ -28,3 +28,6 @@ input_add("move_left_controller", "", gp_axisL_left);
 input_add("move_right_controller", "", gp_axisL_right);
 input_add("move_up_controller", "", gp_axisL_up,);
 input_add("move_down_controller", "", gp_axisL_down);
+
+input_add("prev_tab", "", gp_shoulderl);
+input_add("next_tab", vk_tab, gp_shoulderr);

@@ -217,7 +217,7 @@ function SetItemInHands(_item_inst) {
 
 // TODO: externalize in InputManager
 function InteractInputCheck() {
-	if (global.player_control == false)	{ return; }
+	if (global.player_control == false || global.interact_blocked)	{ return; }
 
 	// Press X / Space button
 	if (instance_exists(last_interactible_detected)) {
