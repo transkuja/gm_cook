@@ -7,4 +7,4 @@
 
 #macro SSAVE_FILE_PREFIX_DEFAULT ""	// When no file prefix is supplied, this is used by default
 
-#macro SSAVE_USE_MANAGER true	// Whether or not the SSaveManager is used (disable this if you want to manage your saves yourself via some sort of persistent object or script)
+#macro SSAVE_USE_MANAGER true

@@ -44,6 +44,7 @@
     {"name":"inst_saveManager","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_4B8C7F93","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_2222A470","path":"rooms/rm_gameMain/rm_gameMain.yy",},
+    {"name":"inst_4236EF27","path":"rooms/rm_gameMain/rm_gameMain.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -92,6 +93,7 @@
         {"$GMRInstance":"","%Name":"inst_2222A470","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2222A470","objectId":{"name":"obj_multiple_spawner","path":"objects/obj_multiple_spawner/obj_multiple_spawner.yy",},"properties":[
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_multiple_spawner","path":"objects/obj_multiple_spawner/obj_multiple_spawner.yy",},"propertyId":{"name":"to_spawn_ids","path":"objects/obj_multiple_spawner/obj_multiple_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"protaupe_fruit_a|protaupe_fruit_b\"",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":448.0,"y":384.0,},
+        {"$GMRInstance":"","%Name":"inst_4236EF27","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4236EF27","objectId":{"name":"obj_heater_pan","path":"objects/obj_heater_pan/obj_heater_pan.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":736.0,"y":704.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"ControlObjects","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_69AE651A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_69AE651A","objectId":{"name":"obj_roomControl","path":"objects/obj_roomControl/obj_roomControl.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-64.0,"y":-64.0,},

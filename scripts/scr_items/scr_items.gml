@@ -20,7 +20,15 @@ function GetItemSprite(_item_id) {
 			return spr_protaupe_chop_fruit_a;
 		case "protaupe_chopped_fruit_b":
 			return spr_protaupe_chop_fruit_b;
-			
+	
+		case "protaupe_egg":
+			return spr_ph_egg;
+		case "protaupe_flour":
+			return spr_ph_flour;
+		case "protaupe_crepe_batter":
+			return spr_ph_crepe_batter;
+		case "protaupe_crepe":
+			return spr_ph_crepe;
 		default:
 			return noone;
 	}
@@ -36,6 +44,16 @@ function GetChoppedResult(_item_id) {
 			return "protaupe_chopped_fruit_a";
 		case "protaupe_fruit_b":
 			return "protaupe_chopped_fruit_b";
+		default:
+			return "none";
+	}
+}
+
+
+function GetHeatablePanResult(_item_id) {
+	switch (_item_id) {
+		case "protaupe_crepe_batter":
+			return "protaupe_crepe";
 		default:
 			return "none";
 	}
@@ -74,6 +92,14 @@ function GetItemType(_item_id) {
 			return ITEM_TYPE.TRANSFORMED_COMPO;
 		case "protaupe_chopped_fruit_b":
 			return ITEM_TYPE.TRANSFORMED_COMPO;
+		case "protaupe_egg":
+			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+		case "protaupe_flour":
+			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+		case "protaupe_crepe_batter":
+			return ITEM_TYPE.HEATABLE_PAN;
+		case "protaupe_crepe":
+			return ITEM_TYPE.RECIPE_FINAL;
 		default:
 			return ITEM_TYPE.NONE;
 	}
