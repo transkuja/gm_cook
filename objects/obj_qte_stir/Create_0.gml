@@ -28,6 +28,7 @@ max_fill_speed = 50;
 current_fill_speed = min_fill_speed;
 
 
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;
@@ -149,4 +150,14 @@ function SetFeedbacksInitialState() {
 	layer_sequence_xscale(active_sequence, 0.35);
 	layer_sequence_yscale(active_sequence, 0.35);
 	layer_sequence_pause(active_sequence);
+}
+
+function OnReset() 
+{
+	is_right_target = true;
+	current_fill = 0;
+	is_checking_input = false;
+	current_qte_time = 0;
+	current_position = 0;
+	current_fill_speed = min_fill_speed;
 }

@@ -139,6 +139,8 @@ function OnTransformationFinished() {
 
 function TransformationFinished() {
 	OnTransformationFinished();
+	qte_holder.Reset();
+
 	if (current_state) 
 		current_state.transition_to(new TransformerResultState(id));
 }

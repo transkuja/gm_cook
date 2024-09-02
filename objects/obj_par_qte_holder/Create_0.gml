@@ -86,7 +86,12 @@ function HideFeedbacks() {
 		layer_sequence_destroy(active_sequence);
 }
 
+function OnReset() {
+}
+
 function Reset() {
+	OnReset();
+	
 	if (current_state)
 		current_state.transition_to(new QteNotReadyState(id, {}));
 	else

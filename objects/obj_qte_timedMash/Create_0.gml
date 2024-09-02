@@ -119,3 +119,11 @@ function SetFeedbacksInitialState() {
 	layer_sequence_yscale(active_sequence, 0.35);
 	layer_sequence_pause(active_sequence);
 }
+
+function OnReset() {
+	initial_item_mash_count = 0;
+	current_mash_count = 0;
+	current_qte_time = 0;
+	current_position = 0;
+	is_checking_input = false;
+}
