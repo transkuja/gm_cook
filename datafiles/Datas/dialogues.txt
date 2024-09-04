@@ -23,7 +23,8 @@
 {"dialogue_id":"d_protaupe_galette_ch_neg_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_protaupe_galette_pending","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":["d_protaupe_galette_pending_ch_pos","d_protaupe_galette_pending_ch_neg"]}
 {"dialogue_id":"d_protaupe_galette_final","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":["d_protaupe_galette_final_ch_pos","d_protaupe_galette_final_ch_neg"]}
-{"dialogue_id":"d_protaupe_galette_final_ch_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
+{"dialogue_id":"d_protaupe_galette_final_ch_pos_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
+{"dialogue_id":"d_protaupe_galette_final_ch_neg_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_protaupe_porte_manteau","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_protaupe_ratatouille","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":["d_protaupe_ratatouille_ch_pos","d_protaupe_ratatouille_ch_neg"]}
 {"dialogue_id":"d_protaupe_ratatouille_ch_neg_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}

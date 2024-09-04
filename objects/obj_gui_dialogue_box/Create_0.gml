@@ -71,10 +71,10 @@ function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id 
 	
 	// If no override, use default suffixe answer to look for dialogue
 	if (_next_dialogue_pos == "" && array_length(loaded_choices) > 0) 
-		_next_dialogue_pos = string("{0}_answer", loaded_choices[0]);
+		_next_dialogue_pos = string("{0}_ans", loaded_choices[0]);
 		
 	if (_next_dialogue_neg == "" && array_length(loaded_choices) > 1) 
-		_next_dialogue_neg = string("{0}_answer", loaded_choices[1]);
+		_next_dialogue_neg = string("{0}_ans", loaded_choices[1]);
 		
 	_push(on_choice_selected, { next_dialogue : _next_dialogue_pos, on_select : _on_choice_pos_selected });
 	_push(on_choice_selected, { next_dialogue : _next_dialogue_neg, on_select : _on_choice_neg_selected });
