@@ -1,1 +1,4 @@
-﻿{"dialogue_id":"d_protaupe_intro","requirements":[{"save_key":"d_protaupe_intro_played","value":"", "inverse":true}]}
+﻿{"dialogue_id":"d_protaupe_intro","requirements":[{"save_key":"d_protaupe_intro_played","value":"", "inverse":true}], "or_condition":false}
+{"dialogue_id":"d_protaupe_porte_manteau","requirements":[{"save_key":"q_protaupe_galette","value":"done", "inverse":false}, {"save_key":"q_protaupe_ratatouille","value":"not_started", "inverse":false}], "or_condition":false}
+{"dialogue_id":"d_protaupe_talk1","requirements":[{"save_key":"q_protaupe_galette","value":"done", "inverse":true}, {"save_key":"q_protaupe_ratatouille","value":"", "inverse":false}], "or_condition":true}
+{"dialogue_id":"d_protaupe_talk2","requirements":[{"save_key":"q_protaupe_galette","value":"done", "inverse":true}, {"save_key":"q_protaupe_ratatouille","value":"", "inverse":false}], "or_condition":true}

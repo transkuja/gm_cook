@@ -11,9 +11,20 @@ inst_dialogue_box = noone;
 save_key = save_data_get_key("_dialogue");
 
 function GetCurrentDialogue() {
-	if (array_length(arr_dialogues_ids) > current_dialogue_state)
-		return arr_dialogues_ids[current_dialogue_state];
+	if (array_length(arr_dialogues_ids) > current_dialogue_state) {
 		
+		var startIndex = current_dialogue_state;
+		var curIndex = startIndex;
+		while (!AreDialogueRequirementsMet(arr_dialogues_ids[curIndex])) {
+			curIndex = (curIndex + 1) % array_length(arr_dialogues_ids);
+			
+			if (curIndex == startIndex)
+				break;
+		}
+		
+		current_dialogue_state = curIndex;
+		return arr_dialogues_ids[current_dialogue_state];
+	}
 	return "";
 }
 

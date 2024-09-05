@@ -20,9 +20,10 @@ function AreDialogueRequirementsMet(_dialogue_id) {
 		check_value = requirementsData.requirements[i].value;
 		
 		// By default, check key present in save
+		// Maybe just reverse condition ??
 		if (!inverse) {
 			// If key not present in save, then requirement not met
-			if (save_data == undefined) return false;
+			if (save_data == undefined) continue;
 			
 			// Checking value
 			if (check_value != "") {
@@ -74,5 +75,8 @@ function AreDialogueRequirementsMet(_dialogue_id) {
 		}
 	}
 	
+	if (requirementsData.or_condition)
+		return requirementsMetCount >= 1;
+		
 	return requirementsMetCount == array_length(requirementsData.requirements);
 }
