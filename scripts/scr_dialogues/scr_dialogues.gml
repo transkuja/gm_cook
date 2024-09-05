@@ -35,7 +35,7 @@ function AreDialogueRequirementsMet(_dialogue_id) {
 				}
 				
 				if( is_string(check_value) ){ 
-					if (check_value == _save_data) { requirementsMetCount++; continue; }
+					if (check_value == save_data) { requirementsMetCount++; continue; }
 				}else{
 					if (save_data >= check_value) { requirementsMetCount++; continue; } //process as a number
 				}
@@ -63,14 +63,14 @@ function AreDialogueRequirementsMet(_dialogue_id) {
 				}
 				
 				if( is_string(check_value) ){
-					if (check_value != _save_data) { requirementsMetCount++; continue; }
+					if (check_value != save_data) { requirementsMetCount++; continue; }
 				}else{
 					if (save_data < check_value) { requirementsMetCount++; continue; }
 				}
 			}
 			else {
 				// If no specific value, then condition failed
-				return false;
+				//return false;
 			}
 		}
 	}

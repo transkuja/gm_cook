@@ -34,12 +34,30 @@ function GetCurrentDialogue() {
 					return cur_quest_data.initial_dialogue;
 				}
 			}
+			else 
+			{
+				// Quest not ready, reset quest id
+				current_quest_id = "";
+			}
 		}
 		
 	}
 	
-	if (array_length(arr_dialogues_ids) > current_dialogue_state)
+	// Non-quest related dialogue id
+	if (array_length(arr_dialogues_ids) > current_dialogue_state) {
+		
+		var startIndex = current_dialogue_state;
+		var curIndex = startIndex;
+		while (!AreDialogueRequirementsMet(arr_dialogues_ids[curIndex])) {
+			curIndex = (curIndex + 1) % array_length(arr_dialogues_ids);
+			
+			if (curIndex == startIndex)
+				break;
+		}
+		
+		current_dialogue_state = curIndex;
 		return arr_dialogues_ids[current_dialogue_state];
+	}
 		
 	return "";
 }
