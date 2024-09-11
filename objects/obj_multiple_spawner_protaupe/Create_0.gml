@@ -20,6 +20,10 @@ function GetIdsToSpawn() {
 	if (quest_status == "pending")
 		return ["protaupe_fruit_a", "protaupe_fruit_b", "protaupe_egg"];
 		
+	quest_status = save_data_get("q_protaupe_ratatouille2");
+	if (quest_status == "pending")
+		return ["protaupe_fruit_a", "protaupe_fruit_b", "protaupe_egg"];
+		
 	return ["protaupe_fruit_a", "protaupe_fruit_b"];
 }
 
