@@ -125,10 +125,3 @@
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_5","text_value":"Je me souviens vaguement en avoir discuté avec toi. Tu avais noté la recette et tu l'avais rangée au-dessus de ton frigo."}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_6","text_value":"Ho ho ho, sacré Quichon ! "}
 {"text_id":"d_protaupe_salad_pending_ch_pos_ans_7","text_value":"Quand tu auras le nom de cette recette, remets le moi bien dans le crâne, si tu vois ce que je veux dire *wink* *wink*"}
-{"text_id":"d_protaupe_the_end_idle_0","text_value":"ZzzZZzzZzzz"}
-{"text_id":"d_protaupe_the_end_idle_1","text_value":"ZzzzZZZzz"}
-{"text_id":"d_protaupe_the_end_idle_2","text_value":"*burp*"}
-{"text_id":"d_protaupe_the_end_idle_3","text_value":"Hein ?! Quichon ?! T'es encore là ?!"}
-{"text_id":"d_protaupe_the_end_idle_4","text_value":"Y a ton vieux porte-manteaux qui a pris 2 places pour aller voir le concert symphonique One Piece le 28 octobre au soir."}
-{"text_id":"d_protaupe_the_end_idle_5","text_value":"Pas juste du piano cette fois, un orchestre entier !"}
-{"text_id":"d_protaupe_the_end_idle_6","text_value":"Un très joyeux anniversaire Quichon, ho ho ho !"}

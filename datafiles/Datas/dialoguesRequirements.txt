@@ -2,3 +2,4 @@
 {"dialogue_id":"d_protaupe_porte_manteau","requirements":[{"save_key":"q_protaupe_galette","value":"done", "inverse":false}, {"save_key":"can_start_q_protaupe_ratatouille","value":"", "inverse":true}], "or_condition":false}
 {"dialogue_id":"d_protaupe_talk1","requirements":[{"save_key":"q_protaupe_galette","value":"", "inverse":true}, {"save_key":"can_start_q_protaupe_ratatouille","value":"", "inverse":false}], "or_condition":true}
 {"dialogue_id":"d_protaupe_talk2","requirements":[{"save_key":"q_protaupe_galette","value":"", "inverse":true}, {"save_key":"can_start_q_protaupe_ratatouille","value":"", "inverse":false}], "or_condition":true}
+{"dialogue_id":"d_protaupe_the_end_idle","requirements":[{"save_key":"q_protaupe_ratatouille2","value":"done", "inverse":false}], "or_condition":false}

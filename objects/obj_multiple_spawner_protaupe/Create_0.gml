@@ -36,9 +36,12 @@ function Spawn(_checkInstance = false) {
 	var arr_to_spawn_ids = GetIdsToSpawn();
 	if (array_length(arr_to_spawn_ids) == 0) return;
 
+	var _spawnInitialAngle = random(360);
+	var _offset = 360 / array_length(arr_to_spawn_ids);
+	
 	for (var i = 0; i < array_length(arr_to_spawn_ids); i++) {
 		if (to_spawn == obj_par_item) {
-			var spawn_location = GetPointOnCircle();
+			var spawn_location = GetPointOnCircleFromIndex(_spawnInitialAngle, _offset, i);
 			var newInstance = instance_create_layer(spawn_location[0], spawn_location[1], "Instances", to_spawn);
 			if (instance_exists(newInstance))
 				newInstance.Initialize(arr_to_spawn_ids[i]);
@@ -48,6 +51,11 @@ function Spawn(_checkInstance = false) {
 	}
 	
 	if (auto_respawn) { alarm[0] = spawn_cooldown * game_get_speed(gamespeed_fps); }
+}
+
+function GetPointOnCircleFromIndex(_start, _offset, _index) {
+	var angle = (_start + _index * _offset) % 360;
+	return [x + (cos(angle) * spawn_radius), y + (sin(angle) * spawn_radius) - sprite_height * 0.5];
 }
 
 function GetPointOnCircle() {

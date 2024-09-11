@@ -70,6 +70,10 @@
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"240911030441_dialogues.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"240911030441_dialogues.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"240911030441_texts_fr.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"240911030441_texts_fr.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"240911030507_dialogues.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"240911030507_dialogues.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"240911030507_texts_fr.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"240911030507_texts_fr.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"assemble_combos.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"assemble_combos.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"dialogues.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"dialogues.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"dialoguesRequirements.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"dialoguesRequirements.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
