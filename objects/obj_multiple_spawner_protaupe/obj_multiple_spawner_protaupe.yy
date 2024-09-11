@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_cartoon_bear_panda",
-    "path":"sprites/spr_cartoon_bear_panda/spr_cartoon_bear_panda.yy",
+    "name":"spr_ph_fridge",
+    "path":"sprites/spr_ph_fridge/spr_ph_fridge.yy",
   },
   "spriteMaskId":null,
   "visible":true,
