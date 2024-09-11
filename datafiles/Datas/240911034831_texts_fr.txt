@@ -144,19 +144,3 @@
 {"text_id":"d_input_leios_1","text_value":"Je me souviens vaguement d'un Leios qui me courait après, persuadé que je lui avais volé son poisson."}
 {"text_id":"d_input_leios_2","text_value":"Mais c'était dans un jeu vidéo, le bougre avait l'air sacrément mécontent que quelqu'un lui ai piqué son poisson, ho ho ho !"}
 {"text_id":"d_input_leios_3","text_value":"C'est quoi ton nom à toi mon vieux ?"}
-{"text_id":"d_input_pichon_0","text_value":"Pichon ? C'est breton ?"}
-{"text_id":"d_input_pichon_1","text_value":"J'avais un vieil ami breton autrefois"}
-{"text_id":"d_input_pichon_2","text_value":"Il cuisait ses crêpes au beurre et il se les passait sur le visage"}
-{"text_id":"d_input_pichon_3","text_value":"Un drôle de luron j'te le dis !"}
-{"text_id":"d_input_pichon_4","text_value":"C'est quoi ton nom à toi mon vieux ?"}
-{"text_id":"d_input_dinde_0","text_value":"Je sais pas pourquoi mais je me souviens de choses importantes au sujet de la dinde."}
-{"text_id":"d_input_dinde_1","text_value":"Tu savais toi que le petit de la dinde s'appelait un dindonneau ?"}
-{"text_id":"d_input_dinde_2","text_value":"Les dindons sauvages les plus dodus peuvent peser jusqu'à 11 kilos !"}
-{"text_id":"d_input_dinde_3","text_value":"Le dindon possède une large variété d'appels, dont le croassement typique des galliformes."}
-{"text_id":"d_input_dinde_4","text_value":"Ceux-ci permettent au dindon de reformer son groupe, d'appeler ses petits, de prévenir de la présence d'un prédateur, ou encore d'établir un rapport de domination"}
-{"text_id":"d_input_dinde_5","text_value":"On dit que le dindon glougloute !"}
-{"text_id":"d_input_dinde_6","text_value":"Pourquoi je parle de dindon déjà ? Et t'es qui mon vieux bonhomme ?"}
-{"text_id":"d_input_bite_0","text_value":"C'est un nom idéal pour une tête de gland !"}
-{"text_id":"d_input_bite_1","text_value":"HO HO HO !"}
-{"text_id":"d_input_bite_2","text_value":"Pardon mon vieux, mais la blague était trop facile"}
-{"text_id":"d_input_bite_3","text_value":"C'est pas ton vrai nom n'est-ce pas ?"}

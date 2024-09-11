@@ -24,6 +24,36 @@ function QuestCheckFinished(_quest_id) {
 	return (quest_status != undefined && quest_status == "done");
 }
 
+function CheckMemoryForName() {
+	var arr_checks = ["topich", "pichon", "thomas"];
+	for (var i = 0; i < array_length(arr_checks); i++)
+	{
+		if (string_pos(arr_checks[i], inst_databaseLoader.billy_memory) != 0)
+		{
+			dialogue_id = "d_input_" + arr_checks[i];
+			save_key = dialogue_id + "_played";
+			return;
+		}	
+	}
+	
+	if (string_pos("dinde", inst_databaseLoader.billy_memory) != 0 || string_pos("dindon", inst_databaseLoader.billy_memory) != 0)
+	{
+		dialogue_id = "d_input_dinde";
+		save_key = dialogue_id + "_played";
+		return;
+	}
+	
+	if (string_pos("bite", inst_databaseLoader.billy_memory) != 0
+		|| string_pos("penis", inst_databaseLoader.billy_memory) != 0 || string_pos("pénis", inst_databaseLoader.billy_memory) != 0
+		|| string_pos("sex", inst_databaseLoader.billy_memory) != 0 || string_pos("zizi", inst_databaseLoader.billy_memory) != 0
+		|| string_pos("teub", inst_databaseLoader.billy_memory) != 0 || string_pos("chibr", inst_databaseLoader.billy_memory) != 0)
+	{
+		dialogue_id = "d_input_bite";
+		save_key = dialogue_id + "_played";
+		return;
+	}
+}
+
 function SetDialogueId() {
 	if (instance_exists(inst_databaseLoader))	
 	{
@@ -69,6 +99,7 @@ function SetDialogueId() {
 				}
 				else 
 				{
+					 CheckMemoryForName();
 					// TODO: dialogues conneries avec "Topich", "Thomas", "Thomas Pichon", "Dindon"
 				}
 			}

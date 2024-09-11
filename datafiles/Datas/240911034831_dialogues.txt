@@ -38,9 +38,6 @@
 {"dialogue_id":"d_protaupe_the_end","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_protaupe_salad_pending_ch_pos_ans","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_protaupe_the_end_idle","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_topich","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_thomas","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_leios","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_pichon","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_dinde","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
-{"dialogue_id":"d_input_bite","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
+{"dialogue_id":"d_input_topich","talkers":[],"choices":[]}
+{"dialogue_id":"d_input_thomas","talkers":[],"choices":[]}
+{"dialogue_id":"d_input_leios","talkers":[],"choices":[]}
