@@ -1,0 +1,2 @@
+saveManagerInst = noone;
+isSaveEmpty = true;

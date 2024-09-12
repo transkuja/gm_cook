@@ -1,0 +1,1 @@
+global.loadingRoom = noone;
