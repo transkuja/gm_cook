@@ -37,7 +37,9 @@ function OnNewClicked(_on_click_param) {
 	room_goto(rm_gameMain);
 }
 
+draw_credits = false;
 function OnCreditsClicked(_on_click_param) {
+	draw_credits = !draw_credits;
 }
 
 function OnExitClicked(_on_click_param) {
