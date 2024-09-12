@@ -1,9 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-start_y = room_height * 0.5 - 100;
+start_y = room_height * 0.5 - 50;
 buttons_offset = 50;
-spawn_x = room_width * 0.5;
+spawn_x = room_width - 350;
 title_screen_manager_inst = noone;
 
 //if (instance_number(obj_title_screen_manager) > 0)
