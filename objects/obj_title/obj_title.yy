@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"help_the_old_billy_tooie_title",
+    "path":"sprites/help_the_old_billy_tooie_title/help_the_old_billy_tooie_title.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
