@@ -23,6 +23,7 @@
     {"name":"inst_4236EF27","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_175AE931","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_46EF076E","path":"rooms/rm_gameMain/rm_gameMain.yy",},
+    {"name":"inst_76547BA7","path":"rooms/rm_gameMain/rm_gameMain.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -52,6 +53,9 @@
     {"$GMRInstanceLayer":"","%Name":"ControlObjects","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_C831AD7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_C831AD7","objectId":{"name":"obj_inputManager","path":"objects/obj_inputManager/obj_inputManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":-160.0,},
         {"$GMRInstance":"","%Name":"inst_saveManager","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_saveManager","objectId":{"name":"obj_saveManager","path":"objects/obj_saveManager/obj_saveManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":-128.0,},
+        {"$GMRInstance":"","%Name":"inst_76547BA7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_76547BA7","objectId":{"name":"obj_simple_music_player","path":"objects/obj_simple_music_player/obj_simple_music_player.yy",},"properties":[
+            {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_simple_music_player","path":"objects/obj_simple_music_player/obj_simple_music_player.yy",},"propertyId":{"name":"music_to_play","path":"objects/obj_simple_music_player/obj_simple_music_player.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"mus_jellybean_rainbow",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-128.0,"y":64.0,},
       ],"layers":[],"name":"ControlObjects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"InvisibleWalls","depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_7326C878","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7326C878","objectId":{"name":"obj_invisibleWall","path":"objects/obj_invisibleWall/obj_invisibleWall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":66.0,"scaleY":4.0,"x":-32.0,"y":-32.0,},
