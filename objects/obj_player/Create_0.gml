@@ -197,6 +197,8 @@ function PortableItemDetection() {
 function CreateItemInHands(_itemId) {
 	if (instance_exists(item_in_hands) || _itemId == "none" || _itemId == "") { return; }
 	
+	audio_play_sound(Minimalist1, 10, false);
+	
 	item_in_hands = instance_create_layer(
 						x, 
 						y,

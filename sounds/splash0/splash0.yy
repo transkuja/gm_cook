@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"mus_jellybean_rainbow",
+  "%Name":"splash0",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":66.46154,
-  "name":"mus_jellybean_rainbow",
+  "duration":0.182833,
+  "name":"splash0",
   "parent":{
-    "name":"Music",
-    "path":"folders/Sounds/Music.yy",
+    "name":"Protaupe",
+    "path":"folders/Sounds/Protaupe.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_jellybean_rainbow.ogg",
+  "soundFile":"splash0.mp3",
   "type":1,
-  "volume":0.75,
+  "volume":1.0,
 }

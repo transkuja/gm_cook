@@ -27,7 +27,7 @@ min_fill_speed = 1;
 max_fill_speed = 50;
 current_fill_speed = min_fill_speed;
 
-
+stir_sound_inst = noone;
 
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)

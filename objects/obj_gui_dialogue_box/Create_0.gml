@@ -227,6 +227,8 @@ function SetChoices() {
 }
 
 function GoToNext() {
+	audio_play_sound(FUI_Button_Beep_Clean, 10, false);
+	
 	dialogue_progress++;
 	if (dialogue_progress >= array_length(texts_array)) {
 		if (!has_choice || opt_no_choice) {

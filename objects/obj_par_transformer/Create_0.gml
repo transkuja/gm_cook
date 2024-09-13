@@ -141,6 +141,7 @@ function TransformationFinished() {
 	OnTransformationFinished();
 	qte_holder.Reset();
 
+	audio_play_sound(Tool_Table_01, 10, false);
 	if (current_state) 
 		current_state.transition_to(new TransformerResultState(id));
 }

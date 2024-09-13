@@ -30,6 +30,8 @@ function GetIdsToSpawn() {
 function Spawn(_checkInstance = false) {
 	if (to_spawn == noone || to_spawn == undefined) return;
 	
+	audio_play_sound(Fridge_Door_Open_01, 10, false);
+	
 	if (!layer_exists("Instances"))
 		layer_create(0,"Instances");
 		

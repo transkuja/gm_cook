@@ -27,6 +27,8 @@ function OnInputValidated() {
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
 		Finish();
+	else
+		audio_play_sound(PUNCH_PERCUSSIVE_HEAVY_09, 10, false);
 }
 
 function GetProgressRatio() {

@@ -48,6 +48,7 @@ function Collect() {
 			
 		inst_inventory.AddItem(new ItemData(item_id, 1, stack));
 		is_collected = true;
+		audio_play_sound(splash0, 10, false);
 		instance_destroy();
 	}
 }

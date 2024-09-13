@@ -4,6 +4,7 @@ clicked = false;
 
 on_clicked_event = noone;
 on_clicked = function() {
+	audio_play_sound(Menu_Sound_Forward, 10, false);
 }
 
 on_click_param = {};
