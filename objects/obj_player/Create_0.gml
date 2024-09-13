@@ -35,6 +35,8 @@ item_in_hands = noone;
 current_state = new PlayerIdleState(id, {});
 current_state.enter_state();
 
+play_left_footstep = false;
+
 function ComputeVelocity() {
 	velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
 	velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 

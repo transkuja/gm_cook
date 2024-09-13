@@ -344,6 +344,8 @@
     {"id":{"name":"seq_arrow_bump","path":"sequences/seq_arrow_bump/seq_arrow_bump.yy",},},
     {"id":{"name":"seq_press_button","path":"sequences/seq_press_button/seq_press_button.yy",},},
     {"id":{"name":"shader_outline","path":"shaders/shader_outline/shader_outline.yy",},},
+    {"id":{"name":"Footsteps_Parquet_05","path":"sounds/Footsteps_Parquet_05/Footsteps_Parquet_05.yy",},},
+    {"id":{"name":"Footsteps_Parquet_10","path":"sounds/Footsteps_Parquet_10/Footsteps_Parquet_10.yy",},},
     {"id":{"name":"Fridge_Door_Open_01","path":"sounds/Fridge_Door_Open_01/Fridge_Door_Open_01.yy",},},
     {"id":{"name":"Frying_01","path":"sounds/Frying_01/Frying_01.yy",},},
     {"id":{"name":"Frying_Loop_01","path":"sounds/Frying_Loop_01/Frying_Loop_01.yy",},},

@@ -46,6 +46,7 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
     process_step = function() {
 		
        with (player) {
+		   alarm[0] = 3;
 		   // Inputs
 		   ComputeVelocityFromInputs();
 		   InteractInputCheck();
@@ -66,6 +67,10 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
 			
 	   if (player.IsStopped())
 			transition_to(new PlayerIdleState(player));
+	}
+	
+	exit_state = function() {
+		 player.alarm[0] = -1;
 	}
  }
 

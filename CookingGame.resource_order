@@ -261,6 +261,8 @@
     {"name":"scr_vectorUtils","order":1,"path":"scripts/scr_vectorUtils/scr_vectorUtils.yy",},
     {"name":"TrixScript","order":2,"path":"scripts/TrixScript/TrixScript.yy",},
     {"name":"seq_arrow_bump","order":1,"path":"sequences/seq_arrow_bump/seq_arrow_bump.yy",},
+    {"name":"Footsteps_Parquet_05","order":10,"path":"sounds/Footsteps_Parquet_05/Footsteps_Parquet_05.yy",},
+    {"name":"Footsteps_Parquet_10","order":11,"path":"sounds/Footsteps_Parquet_10/Footsteps_Parquet_10.yy",},
     {"name":"Frying_01","order":1,"path":"sounds/Frying_01/Frying_01.yy",},
     {"name":"Frying_Loop_01","order":2,"path":"sounds/Frying_Loop_01/Frying_Loop_01.yy",},
     {"name":"FUI_Button_Beep_Clean","order":3,"path":"sounds/FUI_Button_Beep_Clean/FUI_Button_Beep_Clean.yy",},
