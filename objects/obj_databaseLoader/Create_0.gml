@@ -7,7 +7,8 @@ quests = ds_map_create();
 dialogues_requirements = ds_map_create();
 
 function LoadAssembleCombos() {
-	assemble_combos = load_database(filepath + "assemble_combos.txt");
+	zip_unzip(filepath + "assemble_combos.ini", working_directory + "extracted/");
+	assemble_combos = load_database(working_directory + "extracted/" + "assemble_combos.txt");
 }
 
 function LoadRecipes() {
@@ -48,8 +49,11 @@ function LoadDialogues() {
 }
 
 function LoadLocTexts(_loc) {
+	zip_unzip(filepath + "texts_fr.ini", working_directory + "extracted/");
+		
 	var filename = "texts_" + _loc + ".txt";
-	localized_texts = load_texts_database(filepath + filename);
+	
+	localized_texts = load_texts_database(working_directory + "extracted/" + filename);
 	
 	//_log("Texts DB size: ", ds_map_size(localized_texts));
 	//var _map_keys = ds_map_keys_to_array(localized_texts);
