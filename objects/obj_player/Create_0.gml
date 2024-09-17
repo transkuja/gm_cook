@@ -27,7 +27,7 @@ last_transformer_detected = noone;
 last_portable_item_detected = noone;
 detection_offset_y = -50;
 
-draw_debug = true;
+draw_debug = false;
 
 // For prepared items
 item_in_hands = noone; 

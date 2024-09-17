@@ -70,9 +70,13 @@ function HandleTextAppearSound() {
 		return;
 	}
 	
-	if (string_pos("*PROUUUUUUUUUUUUUUUUUT*", lower_text) != 0) {
+	if (string_pos("*pro", lower_text) != 0) {
 		sound_inst = audio_play_sound(fart_sound, 10, false);
 		return;
+	}
+	
+	if (string_pos("one piece le 28 octobre", lower_text) != 0) {
+		audio_play_sound(goodresult_sound, 10, false);
 	}
 
 	var char_count = string_length(textToShow);

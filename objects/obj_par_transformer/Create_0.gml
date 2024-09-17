@@ -28,6 +28,8 @@ function ConfirmPendingItem() {
 	var anim_scale_y = new polarca_animation("image_yscale", 1.2, ac_bump_x, 0, 0.08);
 	polarca_animation_start([anim_scale_x, anim_scale_y]);
 	
+	audio_play_sound(snd_item_arrived, 10, false);
+	
 	_log("Transformer content:");
 	for (var i = 0; i < array_length(items_in_ids); i++)
 		_log(items_in_ids[i]);

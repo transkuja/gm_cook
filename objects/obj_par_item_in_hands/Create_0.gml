@@ -36,6 +36,8 @@ function Drop(_x, _y) {
 	y = _y;
 	is_dropped = true;
 	mask_index = sprite_item_ref;
+	
+	audio_play_sound(Basket_Putdown_01, 10, false);
 }
 
 function PickUp(_pickupInstigator) {
@@ -45,6 +47,8 @@ function PickUp(_pickupInstigator) {
 	mask_index = spr_no_coll_mask;
 	CanBePickedUpFeedback(false);
 	
+	audio_play_sound(Minimalist1, 10, false);
+		
 	_pickupInstigator.SetItemInHands(self);
 }
 
