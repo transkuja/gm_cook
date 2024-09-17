@@ -12,8 +12,8 @@
   "duration":10.0,
   "name":"Frying_Loop_01",
   "parent":{
-    "name":"Protaupe",
-    "path":"folders/Sounds/Protaupe.yy",
+    "name":"CGSounds Pack",
+    "path":"folders/Sounds/Protaupe/CGSounds Pack.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

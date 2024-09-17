@@ -52,6 +52,38 @@ on_choice_selected = [];
 // If set to true, will skip the choice of the current dialogue. Must be set before Initialize.
 opt_no_choice = false;
 
+function HandleTextAppearSound() {
+	audio_stop_sound(sound_inst);
+	var lower_text = string_lower(textToShow);
+	if (string_pos("zzzz", lower_text) != 0) {
+		sound_inst = audio_play_sound(snore_sound, 10, false);
+		return;
+	}
+	
+	if (string_pos("*crunch*", lower_text) != 0) {
+		sound_inst = audio_play_sound(crunch_sound, 10, false);
+		return;
+	}
+	
+	if (string_pos("*burp*", lower_text) != 0) {
+		sound_inst = audio_play_sound(burp_sound, 10, false);
+		return;
+	}
+	
+	if (string_pos("*PROUUUUUUUUUUUUUUUUUT*", lower_text) != 0) {
+		sound_inst = audio_play_sound(fart_sound, 10, false);
+		return;
+	}
+
+	var char_count = string_length(textToShow);
+	if (char_count < 50)
+		sound_inst = audio_play_sound(snd_text_appear, 10, false, 1, random_range(5, 6));
+	else if (char_count < 100)
+		sound_inst = audio_play_sound(snd_text_appear, 10, false, 1, random_range(3, 4));
+	else
+		sound_inst = audio_play_sound(snd_text_appear, 10, false);
+}
+
 function Initialize(_dialogue_id, _choice_positive_id = "", _choice_negative_id = "", _on_choice_pos_selected = noone, _on_choice_neg_selected = noone) {
 	GetDialogueData(_dialogue_id);
 	current_id = _dialogue_id;
@@ -126,6 +158,8 @@ function GetDialogueData(_dialogue_id) {
 	texts_array = inst_databaseLoader.localized_texts[? _dialogue_id];
 	if (array_length(texts_array) > 0) {
 		textToShow = texts_array[0].text_value;
+		HandleTextAppearSound();
+		
 		var nb_talkers = array_length(current_dialogue_data.talkers);
 		if (nb_talkers > 0) {
 			// Initialize talkers array
@@ -162,6 +196,7 @@ function GetDialogueData(_dialogue_id) {
 }
 
 function CloseDialogue() {
+	audio_stop_sound(sound_inst);
 	StartFadeOut();
 	save_data_set(current_id + "_played", true);
 	alarm[0] = seconds(0.5);
@@ -226,6 +261,7 @@ function SetChoices() {
 	
 }
 
+sound_inst = noone;
 function GoToNext() {
 	audio_play_sound(FUI_Button_Beep_Clean, 10, false);
 	
@@ -242,5 +278,6 @@ function GoToNext() {
 	else {
 		talker_name = current_talkers[dialogue_progress];
 		textToShow = texts_array[dialogue_progress].text_value;
+		HandleTextAppearSound();
 	}
 }

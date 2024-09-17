@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"Frying_01",
+  "%Name":"old_man_voice2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.0,
-  "name":"Frying_01",
+  "duration":7.174966,
+  "name":"old_man_voice2",
   "parent":{
-    "name":"CGSounds Pack",
-    "path":"folders/Sounds/Protaupe/CGSounds Pack.yy",
+    "name":"Protaupe",
+    "path":"folders/Sounds/Protaupe.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"Frying_01.wav",
+  "soundFile":"old_man_voice2.ogg",
   "type":1,
   "volume":1.0,
 }

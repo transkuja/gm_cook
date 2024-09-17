@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"Frying_01",
+  "%Name":"Cutout_Knife_Hit_01",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.0,
-  "name":"Frying_01",
+  "duration":0.5,
+  "name":"Cutout_Knife_Hit_01",
   "parent":{
     "name":"CGSounds Pack",
     "path":"folders/Sounds/Protaupe/CGSounds Pack.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"Frying_01.wav",
+  "soundFile":"Cutout_Knife_Hit_01.wav",
   "type":1,
   "volume":1.0,
 }

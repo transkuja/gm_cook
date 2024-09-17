@@ -35,6 +35,12 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"","%Name":"mash_count","filters":[],"listItems":[],"multiselect":false,"name":"mash_count","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"5","varType":1,},
+    {"$GMObjectProperty":"","%Name":"in_progress_sound","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"in_progress_sound","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Frying_Loop_01","varType":5,},
+    {"$GMObjectProperty":"","%Name":"correct_input_sound","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"correct_input_sound","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Frying_01","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

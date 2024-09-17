@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"mus_jellybean_rainbow.ogg",
   "type":1,
-  "volume":0.75,
+  "volume":0.6,
 }

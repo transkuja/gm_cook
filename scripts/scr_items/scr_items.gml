@@ -82,6 +82,17 @@ function GetChopMashCount(_item_id) {
 	}
 }
 
+function GetFryingInputCount(_item_id) {
+	switch (_item_id) {
+		case "protaupe_chopped_fruit_a":
+			return 3;
+		case "protaupe_chopped_fruit_b":
+			return 5;
+		default:
+			return -1;
+	}
+}
+
 function GetItemType(_item_id) {
 		switch (_item_id) {
 		case "banana":
