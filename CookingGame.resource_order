@@ -282,6 +282,7 @@
     {"name":"snore_sound","order":17,"path":"sounds/snore_sound/snore_sound.yy",},
     {"name":"splash0","order":8,"path":"sounds/splash0/splash0.yy",},
     {"name":"Tool_Table_01","order":9,"path":"sounds/Tool_Table_01/Tool_Table_01.yy",},
+    {"name":"YAKUZA_0_OST_Are_You_Kidding","order":1,"path":"sounds/YAKUZA_0_OST_Are_You_Kidding/YAKUZA_0_OST_Are_You_Kidding.yy",},
     {"name":"arrowDown","order":19,"path":"sprites/arrowDown/arrowDown.yy",},
     {"name":"arrowLeft","order":20,"path":"sprites/arrowLeft/arrowLeft.yy",},
     {"name":"arrowRight","order":21,"path":"sprites/arrowRight/arrowRight.yy",},
