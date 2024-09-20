@@ -97,7 +97,7 @@ function DrawSlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
 	
-	instance_create_layer(view_wport[0] * 0.5, view_hport[0] - 200, "GUI", obj_debug_square);
+	//instance_create_layer(view_wport[0] * 0.5, view_hport[0] - 200, "GUI", obj_debug_square);
 
 	var _draw_xs = GetPositionsOnLineCenter(slot_width, slots_step, slot_count, view_wport[0] * 0.5, SPRITE_ORIGIN.MIDDLE_CENTER); 
 	

@@ -52,6 +52,7 @@ function NextTarget() {
 	
 	var _s_id = layer_sequence_get_sequence(active_sequence);
 	if (sequence_exists(_s_id)) {
+		layer_sequence_angle(active_sequence, is_right_target ? 0 : 180);
 		//_s_id.tracks
 	}
 	
