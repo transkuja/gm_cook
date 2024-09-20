@@ -2,9 +2,8 @@ tuto_enabled = true;
 button_inst = noone;
 save_key = "tuto";
 
-if (save_data_get(save_key) != undefined)
-	tuto_enabled = save_data_get(save_key);
-	
+is_init = false;
+
 function OnClicked() {
 	tuto_enabled = !tuto_enabled;
 	if (tuto_enabled) {
@@ -36,4 +35,14 @@ function CreateButton() {
 	
 }
 
-CreateButton();
+function Init() {
+	if (save_data_get(save_key) != undefined)
+		tuto_enabled = save_data_get(save_key);
+	
+	CreateButton();
+	
+	is_init = true;
+}
+
+// Delayed init
+alarm[0] = 5;
