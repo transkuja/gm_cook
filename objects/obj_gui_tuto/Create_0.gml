@@ -13,7 +13,7 @@ function OnClicked() {
 		button_inst.button_text = "Show tuto";
 	}
 	
-	save_data_set(save_key, tuto_enabled);
+	save_data_set(save_key, true);
 }
 
 function CreateButton() {
@@ -37,7 +37,7 @@ function CreateButton() {
 
 function Init() {
 	if (save_data_get(save_key) != undefined)
-		tuto_enabled = save_data_get(save_key);
+		tuto_enabled = !save_data_get(save_key);
 	
 	CreateButton();
 	
