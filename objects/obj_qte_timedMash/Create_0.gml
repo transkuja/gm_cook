@@ -88,7 +88,7 @@ function GetProgressRatio() {
 function DrawCursor(_x, _y) {
 	var _pos = _x + current_position - (progress_bar_width * 0.5);
 	var _height = progress_bar_height + 10;
-	draw_sprite(phgen_rectangle(10, _height, c_red, 0, c_white, 10, _height * 0.5), 0, _pos, _y);
+	draw_sprite(phgen_rectangle(10, _height, c_red, 0, c_white, 5, _height * 0.5), 0, _pos, _y);
 }
 
 function DrawProgress() {
