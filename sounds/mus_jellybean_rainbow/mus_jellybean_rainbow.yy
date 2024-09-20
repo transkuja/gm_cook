@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"mus_jellybean_rainbow",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_music",
+    "path":"audiogroups/audiogroup_music",
   },
   "bitDepth":1,
   "bitRate":128,
@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"mus_jellybean_rainbow.ogg",
   "type":1,
-  "volume":0.4,
+  "volume":0.25,
 }
