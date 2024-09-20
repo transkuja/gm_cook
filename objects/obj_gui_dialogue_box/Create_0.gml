@@ -55,6 +55,9 @@ opt_no_choice = false;
 function HandleTextAppearSound() {
 	audio_stop_sound(sound_inst);
 	var lower_text = string_lower(textToShow);
+	if (lower_text == "...")
+		return;
+		
 	if (string_pos("zzzz", lower_text) != 0) {
 		sound_inst = audio_play_sound(snore_sound, 10, false);
 		return;
