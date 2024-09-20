@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_double_quaver",
-    "path":"sprites/spr_double_quaver/spr_double_quaver.yy",
+    "name":"spr_musical_notes",
+    "path":"sprites/spr_musical_notes/spr_musical_notes.yy",
   },
   "spriteMaskId":null,
   "visible":true,
