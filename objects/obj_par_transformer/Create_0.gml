@@ -5,6 +5,10 @@ items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
 qte_holder = noone;
 
+offset_draw_item = 0;
+max_offset_draw_item = 10;
+offset_draw_speed = 0.03;
+
 // On A pressed
 function PutItemIn(_itemId) {
 	if (IsFilled()) {
@@ -109,13 +113,14 @@ function DrawItemsIn() {
 	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
 	
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
+	var _draw_color = IsTransformable() ? make_color_rgb(16, 235, 147) : c_white;
 	
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
 		{
-			var _draw_xy = WorldToGUI(_draw_xs[_i], y - popup_draw_height);
+			var _draw_xy = WorldToGUI(_draw_xs[_i], y - popup_draw_height + offset_draw_item);
 			
-			draw_sprite(phgen_circle(draw_circle_radius, c_white, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius);
+			draw_sprite(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius);
 			
 			if (array_length(items_in_ids) > _i) {
 				draw_sprite_ext(
@@ -172,6 +177,13 @@ function CreateQteHolder() {
 function InitializeQteHolder() {
 	if (instance_exists(qte_holder))
 		qte_holder.Init(items_in_ids);
+		
+			
+	var offset_ya = new polarca_animation("offset_draw_item", max_offset_draw_item , ac_bump_translate_height_pp ,0, offset_draw_speed);
+	var polarca_ctrler = polarca_animation_start([offset_ya]);
+	var polarca_ctrler = polarca_animation_start([offset_ya]);
+	polarca_ctrler.is_looping = true;	
+	polarca_ctrler.is_ping_pong = true;
 }
 
 function ActivateQteHolder() {

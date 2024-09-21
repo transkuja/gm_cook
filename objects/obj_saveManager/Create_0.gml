@@ -1,6 +1,7 @@
 current_save_data = ds_map_create();
 file_name="SaveData.sav"
 
+global.save_manager = self;
 
 function perform_save() {
 	if (current_save_data == noone || current_save_data == undefined) return;

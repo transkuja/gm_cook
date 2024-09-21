@@ -1,6 +1,7 @@
 animations = []
 len = 0
 objects = []
+pong = false;
 
 init = function(){
 	len = array_length_1d(animations)
@@ -16,3 +17,5 @@ init = function(){
 }
 
 on_animation_finished = noone;
+is_looping = false;
+is_ping_pong = false;

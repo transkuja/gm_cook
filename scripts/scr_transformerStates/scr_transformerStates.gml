@@ -71,11 +71,11 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		transformer.InitializeQteHolder();
 			
 		transformer.image_blend = c_aqua;
+	
     }
 
 
     process_step = function() {
-			
     }
  
 	process_draw = function() {
@@ -151,7 +151,7 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.WAIT_FOR_PICKUP;
-		transformer.image_blend = c_yellow;
+		//transformer.image_blend = c_yellow;
     }
 
 
