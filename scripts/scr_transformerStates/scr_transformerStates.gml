@@ -69,11 +69,14 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
 		transformer.InitializeQteHolder();
-			
+		transformer.StartAnimItems();
+		
 		transformer.image_blend = c_aqua;
-	
     }
 
+	exit_state = function() {
+		transformer.StopAnimItems();
+	}
 
     process_step = function() {
     }

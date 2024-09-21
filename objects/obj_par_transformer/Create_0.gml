@@ -113,7 +113,8 @@ function DrawItemsIn() {
 	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
 	
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
-	var _draw_color = IsTransformable() ? make_color_rgb(16, 235, 147) : c_white;
+	// Will need a method to handle red color
+	var _draw_color = state == TRANSFORMER_STATE.CAN_TRANSFORM ? make_color_rgb(16, 235, 147) : c_white;
 	
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
@@ -177,13 +178,23 @@ function CreateQteHolder() {
 function InitializeQteHolder() {
 	if (instance_exists(qte_holder))
 		qte_holder.Init(items_in_ids);
+}
+
+anim_item = noone;
+function StartAnimItems() {
+	StopAnimItems();
 		
-			
-	var offset_ya = new polarca_animation("offset_draw_item", max_offset_draw_item , ac_bump_translate_height_pp ,0, offset_draw_speed);
-	var polarca_ctrler = polarca_animation_start([offset_ya]);
-	var polarca_ctrler = polarca_animation_start([offset_ya]);
-	polarca_ctrler.is_looping = true;	
-	polarca_ctrler.is_ping_pong = true;
+	var _offset_ya = new polarca_animation("offset_draw_item", max_offset_draw_item , ac_bump_translate_height_pp ,0, offset_draw_speed);
+	anim_item = polarca_animation_start([_offset_ya]);
+	anim_item.is_looping = true;	
+	anim_item.is_ping_pong = true;
+}
+
+function StopAnimItems() {
+	if (anim_item != noone)
+		instance_destroy(anim_item);
+	
+	offset_draw_item = 0;
 }
 
 function ActivateQteHolder() {
