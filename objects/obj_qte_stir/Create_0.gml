@@ -116,7 +116,7 @@ function GetProgressRatio() {
 }
 
 function DrawProgress() {
-	var _draw_xy = WorldToGUI(x, y - 85);
+	var _draw_xy = WorldToGUI(x, y + progress_y_offset);
 	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, c_white, 0, c_white, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
 	
 	var pb_content_w = (progress_bar_width - 2*progress_bar_outline) * GetProgressRatio();

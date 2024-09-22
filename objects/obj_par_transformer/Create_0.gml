@@ -171,11 +171,14 @@ function CreateQteHolder() {
 	}
 	
 	if (qte_holder_obj != noone && qte_holder_obj != undefined) {
-		qte_holder = instance_create_layer(x, y, "GUI", qte_holder_obj);
+		qte_holder = instance_create_layer(x, y + qte_holder_spawn_y_offset, "GUI", qte_holder_obj);
 	}
 }
 
-function InitializeQteHolder() {
+function InitializeQteHolder(_force = false) {
+	if (opt_show_qte_when_ready_only && !_force)
+		return;
+		
 	if (instance_exists(qte_holder))
 		qte_holder.Init(items_in_ids);
 }
@@ -198,6 +201,9 @@ function StopAnimItems() {
 }
 
 function ActivateQteHolder() {
+	if (opt_show_qte_when_ready_only)
+		InitializeQteHolder(true);
+		
 	if (instance_exists(qte_holder)) {
 		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished() } );
 		qte_holder.Start();
