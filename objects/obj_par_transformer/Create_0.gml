@@ -10,14 +10,14 @@ max_offset_draw_item = 10;
 offset_draw_speed = 0.03;
 
 // On A pressed
-function PutItemIn(_itemId) {
+function PutItemIn(_item_id) {
 	if (IsFilled()) {
 		PlayFilledFeedbacks()
 		return;
 	}
 	
-	if (_itemId != "none")
-		_push(items_pending, _itemId);
+	if (_item_id != "none")
+		_push(items_pending, _item_id);
 	
 }
 
