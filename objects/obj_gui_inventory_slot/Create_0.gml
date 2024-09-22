@@ -36,7 +36,18 @@ clicked = false;
 
 on_clicked_event = noone;
 on_clicked = function() {
+	if (global.player_control == false) return;
 	audio_play_sound(Minimalist1, 10, false);
+
+	if (is_selected) {
+		if (instance_exists(inst_player)) {
+			inst_player.GetItemFromInventoryToHands();
+		}
+	}
+	
+	if (instance_exists(inst_inventory)) {
+		inst_inventory.SetSelectedSlot(slot_index);
+	}
 }
 
 on_click_param = {};
