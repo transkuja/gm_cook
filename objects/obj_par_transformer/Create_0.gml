@@ -58,7 +58,7 @@ function CheckIsNewRecipe(_item_id) {
 	
 	if (GetItemType(_item_id) == ITEM_TYPE.RECIPE_FINAL) {
 		save_check = save_data_get(_item_id + "_unlocked");
-		return save_check == undefined || save_check;
+		return save_check == undefined || !save_check;
 	}
 	
 	return false;
