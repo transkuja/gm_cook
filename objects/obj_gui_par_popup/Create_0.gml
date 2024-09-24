@@ -21,6 +21,7 @@ depth = -11000;
 image_xscale = 1.5;
 
 recipe_sprite = noone;
+can_close = false;
 
 function Initialize(_item_id) {
 	if (_item_id == undefined || _item_id == "" || _item_id == noone) {
@@ -32,16 +33,22 @@ function Initialize(_item_id) {
 	text_recipe_name = GetItemLocalizedName(_item_id);
 	
 	image_alpha = 1;
+	
+	audio_play_sound(snd_on_popup_open, 10, false);
+	alarm[1] = 30; // enable closing
 }
 
 function ClosePopup() {
-	audio_play_sound(FUI_Button_Beep_Clean, 10, false);
+	audio_play_sound(snd_on_popup_close, 10, false);
 	
 	StartFadeOut();
 	alarm[0] = seconds(0.5);
 }
 
 function HandleInput() {
+	if (!can_close)
+		return;
+		
 	// TODO: add delay to prevent closing too fast
 	if (input_get_pressed(0, "ui_validate")) {
 		ClosePopup();
