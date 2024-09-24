@@ -103,7 +103,7 @@ function GetFryingInputCount(_item_id) {
 		case "protaupe_chopped_fruit_b":
 			return 5;
 		case "protaupe_crepe_batter":
-			return 2;
+			return 8;
 		default:
 			return -1;
 	}
