@@ -40,6 +40,20 @@ function GetItemSprite(_item_id) {
 	}
 }
 
+// Do better lol
+function GetItemLocalizedName(_item_id) {
+	switch (_item_id) {
+		case "fruit_salad":
+			return "Salade";
+		case "protaupe_crepe":
+			return "Galettes Bretonnes sans Lait";
+		case "protaupe_ratatouille":
+			return "Grosse Ratatouille des Familles";
+		default:
+			return "";
+	}
+}
+
 function GetChoppedResult(_item_id) {
 	switch (_item_id) {
 		case "banana":

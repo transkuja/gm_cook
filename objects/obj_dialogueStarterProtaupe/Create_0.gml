@@ -99,8 +99,7 @@ function SetDialogueId() {
 				}
 				else 
 				{
-					 CheckMemoryForName();
-					// TODO: dialogues conneries avec "Topich", "Thomas", "Thomas Pichon", "Dindon"
+					 CheckMemoryForName();					
 				}
 			}
 		}
