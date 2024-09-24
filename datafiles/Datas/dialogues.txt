@@ -44,3 +44,4 @@
 {"dialogue_id":"d_input_pichon","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_input_dinde","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
 {"dialogue_id":"d_input_bite","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}
+{"dialogue_id":"d_input_clement","talkers":[{"name_id":"Vieux Billy","used":[-1]}],"choices":[]}

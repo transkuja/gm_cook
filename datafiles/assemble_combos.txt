@@ -1,4 +1,0 @@
-{"ids":["chopped_banana","chopped_apple"], "result_id":"fruit_salad"}
-{"ids":["protaupe_chopped_fruit_a","protaupe_chopped_fruit_b"], "result_id":"fruit_salad"}
-{"ids":["protaupe_egg","protaupe_flour"], "result_id":"protaupe_crepe_batter"}
-{"ids":["protaupe_chopped_fruit_a_cooked","protaupe_chopped_fruit_b_cooked"], "result_id":"protaupe_ratatouille"}

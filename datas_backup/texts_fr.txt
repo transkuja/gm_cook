@@ -132,9 +132,6 @@
 {"text_id":"d_protaupe_the_end_idle_4","text_value":"Y a ton vieux porte-manteaux qui a pris 2 places pour aller voir le concert symphonique One Piece le 28 octobre au soir."}
 {"text_id":"d_protaupe_the_end_idle_5","text_value":"Pas juste du piano cette fois, un orchestre entier !"}
 {"text_id":"d_protaupe_the_end_idle_6","text_value":"Un très joyeux anniversaire Quichon, ho ho ho !"}
-{"text_id":"d_input_topich_0","text_value":"Topich ? Quel drôle de nom, ho ho ho !"}
-{"text_id":"d_input_topich_1","text_value":"Non ça ne me dit rien, je connais personne qui s'appelle comme ça !"}
-{"text_id":"d_input_topich_2","text_value":"C'est quoi ton nom à toi mon vieux ?"}
 {"text_id":"d_input_thomas_0","text_value":"J'ai connu un Thomas dans ma jeunesse"}
 {"text_id":"d_input_thomas_1","text_value":"On l'appelait Thomas la Castagne, parce qu'il cherchait la bagarre avec tout le monde"}
 {"text_id":"d_input_thomas_2","text_value":"Il perdait tout le temps en plus, ho ho ho !"}
@@ -160,3 +157,15 @@
 {"text_id":"d_input_bite_1","text_value":"HO HO HO !"}
 {"text_id":"d_input_bite_2","text_value":"Pardon mon vieux, mais la blague était trop facile"}
 {"text_id":"d_input_bite_3","text_value":"C'est pas ton vrai nom n'est-ce pas ?"}
+{"text_id":"d_input_topich_0","text_value":"Topich ? Quel drôle de nom, ho ho ho !"}
+{"text_id":"d_input_topich_1","text_value":"Ça me rappelle l'histoire de la petite taupe"}
+{"text_id":"d_input_topich_2","text_value":"Celle qui voulait savoir qui lui avait fait sur la tête"}
+{"text_id":"d_input_topich_3","text_value":"Mais tu ressembles pas à une taupe ! Et tu n'as pas d'excrément au-dessus de la caboche !"}
+{"text_id":"d_input_topich_4","text_value":"Ho ho ho !"}
+{"text_id":"d_input_topich_5","text_value":"C'est quoi ton nom à toi mon vieux ?"}
+{"text_id":"d_input_clement_0","text_value":"J'ai connu un Clément autrefois"}
+{"text_id":"d_input_clement_1","text_value":"Il adorait tellement les arbres et la nature qu'il posait régulièrement nu sur des tapis de souris"}
+{"text_id":"d_input_clement_2","text_value":"Un drôle de personnage celui-là encore"}
+{"text_id":"d_input_clement_3","text_value":"Si tu connais un Clément, méfie toi, on raconte que c'est les pires"}
+{"text_id":"d_input_clement_4","text_value":"Toi tu as le regard vif et sage, ça m'étonnerait que ce soit ton nom !"}
+{"text_id":"d_input_clement_5","text_value":"Aller mon vieux, c'est quoi ton nom ?"}

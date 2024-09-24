@@ -43,6 +43,13 @@ function CheckMemoryForName() {
 		return;
 	}
 	
+	if (string_pos("clément", inst_databaseLoader.billy_memory) != 0 || string_pos("clement", inst_databaseLoader.billy_memory) != 0)
+	{
+		dialogue_id = "d_input_clement";
+		save_key = dialogue_id + "_played";
+		return;
+	}
+	
 	if (string_pos("bite", inst_databaseLoader.billy_memory) != 0
 		|| string_pos("penis", inst_databaseLoader.billy_memory) != 0 || string_pos("pénis", inst_databaseLoader.billy_memory) != 0
 		|| string_pos("sex", inst_databaseLoader.billy_memory) != 0 || string_pos("zizi", inst_databaseLoader.billy_memory) != 0
