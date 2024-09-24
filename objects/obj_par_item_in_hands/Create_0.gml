@@ -18,7 +18,7 @@ move_target = noone;
 destroy_on_move_end = false;
 move_speed = 0.075;
 
-function Initialize(_itemId) {
+function Initialize(_itemId, _check_new_recipe = false) {
 	item_id = _itemId;
 	if (item_id != "none")
 	{

@@ -49,6 +49,21 @@ function ItemInteraction(_interactInstigator) {
 		current_state.process_item_interaction(_interactInstigator);
 }
 
+function CheckIsNewRecipe(_item_id) {
+	if (_item_id == "") 
+		return false;
+		
+	if (state != TRANSFORMER_STATE.RESULT)
+		return false;
+	
+	if (GetItemType(_item_id) == ITEM_TYPE.RECIPE_FINAL) {
+		save_check = save_data_get(_item_id + "_unlocked");
+		return save_check == undefined || save_check;
+	}
+	
+	return false;
+}
+
 // After operation, A
 function TakeFrom(_interactInstigator) {
 	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
@@ -60,6 +75,14 @@ function TakeFrom(_interactInstigator) {
 	array_remove(items_in_ids, _item_removed);
 		
 	_interactInstigator.CreateItemInHands(_item_removed);
+	
+	if (CheckIsNewRecipe(_item_removed)) {
+		var popup = instance_create_layer(x,y, "GUI", obj_gui_par_popup);
+		popup.Initialize(_item_removed);
+		
+		save_data_set(_item_removed + "_unlocked", true);
+	}
+	
 	return true;
 }
 
