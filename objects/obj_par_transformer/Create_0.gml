@@ -9,6 +9,9 @@ offset_draw_item = 0;
 max_offset_draw_item = 10;
 offset_draw_speed = 0.03;
 
+initial_scale_x = image_xscale;
+initial_scale_y = image_yscale;
+
 // On A pressed
 function PutItemIn(_item_id) {
 	if (IsFilled()) {
@@ -223,12 +226,17 @@ function StopAnimItems() {
 	offset_draw_item = 0;
 }
 
+function OnQteValidatedFeedbacks() {
+
+}
+
 function ActivateQteHolder() {
 	if (opt_show_qte_when_ready_only)
 		InitializeQteHolder(true);
 		
 	if (instance_exists(qte_holder)) {
 		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished() } );
+		qte_holder.on_qte_validated = Broadcast(function() { OnQteValidatedFeedbacks() } );
 		qte_holder.Start();
 	}
 }

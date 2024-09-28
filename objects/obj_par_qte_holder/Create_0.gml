@@ -1,6 +1,9 @@
 on_qte_completed = noone;
+on_qte_validated = noone;
+
 current_state = noone;
 active_sequence = noone;
+
 validate_fx_inst = noone;
 transformer_x = 0;
 transformer_y = 0;
@@ -54,8 +57,18 @@ function CheckInputIsValid() {
 	return true;
 }
 
+// Overridable
 function OnInputValidated() {
 	
+}
+
+// Not overridable
+function InputValidated() {
+	OnInputValidated();
+	PlayValidateFx();
+	
+	if (on_qte_validated != noone) 
+		on_qte_validated.dispatch();
 }
 
 function OnInputFailed() {
@@ -65,7 +78,7 @@ function OnInputFailed() {
 function OnInputPressed() {
 	if (input_get_pressed(0, "qte")) {
 		if (CheckInputIsValid()) {
-			OnInputValidated();
+			InputValidated();
 		}
 		else {
 			OnInputFailed();

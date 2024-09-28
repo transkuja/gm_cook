@@ -100,6 +100,8 @@
   },
   "name":"CookingGame",
   "resources":[
+    {"id":{"name":"ac_bump_scale","path":"animcurves/ac_bump_scale/ac_bump_scale.yy",},},
+    {"id":{"name":"ac_bump_scale_down","path":"animcurves/ac_bump_scale_down/ac_bump_scale_down.yy",},},
     {"id":{"name":"ac_bump_translate_height_pp","path":"animcurves/ac_bump_translate_height_pp/ac_bump_translate_height_pp.yy",},},
     {"id":{"name":"ac_bump_translate_y","path":"animcurves/ac_bump_translate_y/ac_bump_translate_y.yy",},},
     {"id":{"name":"ac_bump_x","path":"animcurves/ac_bump_x/ac_bump_x.yy",},},
