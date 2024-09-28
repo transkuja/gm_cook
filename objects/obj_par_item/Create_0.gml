@@ -43,10 +43,9 @@ function Collect() {
 	is_magnetized = false;
 	
 	if (instance_exists(inst_inventory)) {
-		if (!inst_inventory.CanAddItem(item_id, 1))
+		if (!inst_inventory.AddItemIfPossible(item_id, 1))
 			return;
 			
-		inst_inventory.AddItem(new ItemData(item_id, 1, stack));
 		is_collected = true;
 		audio_play_sound(splash0, 10, false);
 		instance_destroy();

@@ -1,6 +1,6 @@
 slot_count = 3;
 
-inventory = array_create(0);
+inventory = array_create(slot_count, new ItemData());
 item_box = [];
 
 slots_instances = array_create(slot_count);
@@ -12,36 +12,52 @@ selected_slot = 0;
 function GetNbrInventorySlotsTaken() {
 }
 
+function AddItemIfPossible(_item_id, _qty) {
+	var _index = GetAvailableIndex(_item_id, _qty);
+	if (_index != -1) {
+		return AddItem(new ItemData(_item_id, _qty), _index);
+	}
+	
+	return false;
+}
+
 function CanAddItem(_item_id, _qty) {
-	var _foundIndex = array_find_index(inventory, method({item_id:_item_id} , function(_element) 
+	return GetAvailableIndex(_item_id, _qty) != -1;
+}
+
+function GetAvailableIndex(_item_id, _qty) {
+	var _found_index = array_find_index(inventory, method({item_id:_item_id} , function(_element) 
 													{ return (_element.item_id == item_id )}));
 	
-	if (_foundIndex == -1)
+	if (_found_index == -1)
 	{
-		if (array_length(inventory) == slot_count)
-			return false;
+		var _empty_index = array_find_index(inventory, method({item_id:_item_id} , function(_element) 
+													{ return (_element.item_id == "empty" )}));
+													
+		return _empty_index;
 	}
 	else 
 	{
 		// TODO: check stack
 	}
 	
-	return true;
+	return _found_index;
 }
 
-function AddItem(_data) {
-	var _foundIndex = array_find_index(inventory, method({data:_data} , function(_element) 
-													{ return (_element.item_id == data.item_id); }));
+function AddItem(_data, _index) {
+	//var _foundIndex = array_find_index(inventory, method({data:_data} , function(_element) 
+	//												{ return (_element.item_id == data.item_id); }));
 	
-	if (_foundIndex == -1)
-	{		
-		array_push(inventory, _data);
+	if (inventory[_index].item_id == "empty")
+	{
+		inventory[_index] = _data;
+		//array_push(inventory, _data);
 	}
 	else
 	{
-		inventory[_foundIndex].qty += _data.qty;
+		inventory[_index].qty += _data.qty;
 		show_debug_message(_data.item_id + " was in inventory");
-		show_debug_message("new quantity: {0}", inventory[_foundIndex].qty);
+		show_debug_message("new quantity: {0}", inventory[_index].qty);
 	}
 	
 	DrawItems();
@@ -50,19 +66,19 @@ function AddItem(_data) {
 }
 
 function RemoveItem(_id, _qty) {
-	var _foundIndex = array_find_index(inventory, method({item_id:_id} , function(_element) 
+	var _found_index = array_find_index(inventory, method({item_id:_id} , function(_element) 
 													{ return (_element.item_id == item_id); }));
 	
-	if (_foundIndex != -1)
+	if (_found_index != -1)
 	{
-		inventory[_foundIndex].qty -= _qty;
-		show_debug_message(inventory[_foundIndex].item_id + " new quantity: {0}", inventory[_foundIndex].qty);
+		inventory[_found_index].qty -= _qty;
+		show_debug_message(inventory[_found_index].item_id + " new quantity: {0}", inventory[_found_index].qty);
 		
-		if (inventory[_foundIndex].qty <= 0)
+		if (inventory[_found_index].qty <= 0)
 		{
-			show_debug_message("Quantity 0, deleting " + inventory[_foundIndex].item_id);
-			array_delete(inventory, _foundIndex, 1);
-			slots_instances[_foundIndex].Refresh({});
+			show_debug_message("Quantity 0, deleting " + inventory[_found_index].item_id);
+			inventory[_found_index] = new ItemData();
+			slots_instances[_found_index].Refresh({});
 		}
 	}
 }
