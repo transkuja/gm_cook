@@ -5,6 +5,7 @@
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_par_qte_holder",
@@ -32,6 +33,14 @@
         "GMSequence",
       ],"listItems":[],"multiselect":false,"name":"input_sequence","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
     {"$GMObjectProperty":"","%Name":"progress_y_offset","filters":[],"listItems":[],"multiselect":false,"name":"progress_y_offset","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-85","varType":0,},
+    {"$GMObjectProperty":"","%Name":"fx_on_validate","filters":[
+        "GMParticleSystem",
+      ],"listItems":[],"multiselect":false,"name":"fx_on_validate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_chop","varType":5,},
+    {"$GMObjectProperty":"","%Name":"fx_on_validate_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_validate_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-50","varType":0,},
+    {"$GMObjectProperty":"","%Name":"fx_on_finish","filters":[
+        "GMParticleSystem",
+      ],"listItems":[],"multiselect":false,"name":"fx_on_finish","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_transformation_finished","varType":5,},
+    {"$GMObjectProperty":"","%Name":"fx_on_finished_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_finished_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-25","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

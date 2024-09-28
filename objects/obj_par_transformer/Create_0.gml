@@ -203,7 +203,7 @@ function InitializeQteHolder(_force = false) {
 		return;
 		
 	if (instance_exists(qte_holder))
-		qte_holder.Init(items_in_ids);
+		qte_holder.Init(items_in_ids, x, y);
 }
 
 anim_item = noone;

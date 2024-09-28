@@ -1,14 +1,20 @@
 on_qte_completed = noone;
 current_state = noone;
 active_sequence = noone;
+validate_fx_inst = noone;
+transformer_x = 0;
+transformer_y = 0;
 
 function OnInit(_items_id) {
 	return true;
 }
 
-function Init(_items_id) {
-	if (!OnInit(_items_id)) { return; }
+function Init(_items_id, _x, _y) {
+	transformer_x = _x;
+	transformer_y = _y;
 	
+	if (!OnInit(_items_id)) { return; }
+
 	if (current_state)
 		current_state.transition_to(new QteInitializedState(id, {}));
 	else
@@ -25,6 +31,23 @@ function Start() {
 		current_state = new QteInProgressState(id, {});
 		
 	OnStart();
+}
+
+function PlayValidateFx() {
+	//if (!part_system_exists(validate_fx_inst))
+		validate_fx_inst = part_system_create(fx_on_validate);
+		part_system_layer(validate_fx_inst, layer_get_id("FX"));
+		
+	part_system_position(validate_fx_inst, transformer_x, transformer_y + fx_on_validate_offset_y);
+	
+}
+
+function PlayFinishedFx() {
+	validate_fx_inst = part_system_create(fx_on_finish);
+	part_system_layer(validate_fx_inst, layer_get_id("FX"));
+		
+	part_system_position(validate_fx_inst, transformer_x, transformer_y + fx_on_finished_offset_y);
+	
 }
 
 function CheckInputIsValid() {
@@ -54,6 +77,8 @@ function Finish() {
 	if (on_qte_completed != noone) 
 		on_qte_completed.dispatch();
 		
+	PlayFinishedFx();
+	
 	if (current_state)
 		current_state.transition_to(new QteNotReadyState(id, {}));
 	else
