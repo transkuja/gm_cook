@@ -231,13 +231,7 @@ function TransformerResultState(_transformer, _args = {}): TransformerState(_tra
 		transformer.DrawItemsIn();
 	}
 	
-	// Can't interact with final item, should take it out
-    process_interaction = function(_interactInstigator) {
-		// feedback ?    
-    }
-		
-	// Take item out
-	process_item_interaction = function(_interactInstigator) {
+	function Interact(_interactInstigator) {
 		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands()) {	return; }
 		}
@@ -245,6 +239,15 @@ function TransformerResultState(_transformer, _args = {}): TransformerState(_tra
 		if (transformer.TakeFrom(_interactInstigator)) {
 			transition_to(new TransformerEmptyState(transformer));
 		}
+	}
+	
+	// Can't interact with final item, should take it out
+    process_interaction = function(_interactInstigator) {
+		Interact(_interactInstigator); 
+    }
 		
+	// Take item out
+	process_item_interaction = function(_interactInstigator) {
+		Interact(_interactInstigator);
     }
 }
