@@ -100,10 +100,12 @@
   },
   "name":"CookingGame",
   "resources":[
-    {"id":{"name":"ac_bump_scale","path":"animcurves/ac_bump_scale/ac_bump_scale.yy",},},
     {"id":{"name":"ac_bump_scale_down","path":"animcurves/ac_bump_scale_down/ac_bump_scale_down.yy",},},
+    {"id":{"name":"ac_bump_scale_up_uniform","path":"animcurves/ac_bump_scale_up_uniform/ac_bump_scale_up_uniform.yy",},},
+    {"id":{"name":"ac_bump_scale_up_maintained","path":"animcurves/ac_bump_scale_up_maintained/ac_bump_scale_up_maintained.yy",},},
     {"id":{"name":"ac_bump_translate_height_pp","path":"animcurves/ac_bump_translate_height_pp/ac_bump_translate_height_pp.yy",},},
     {"id":{"name":"ac_bump_translate_y","path":"animcurves/ac_bump_translate_y/ac_bump_translate_y.yy",},},
+    {"id":{"name":"ac_bump_x_assemble","path":"animcurves/ac_bump_x_assemble/ac_bump_x_assemble.yy",},},
     {"id":{"name":"ac_bump_x","path":"animcurves/ac_bump_x/ac_bump_x.yy",},},
     {"id":{"name":"ac_linear","path":"animcurves/ac_linear/ac_linear.yy",},},
     {"id":{"name":"ac_moveItemInTransformer","path":"animcurves/ac_moveItemInTransformer/ac_moveItemInTransformer.yy",},},

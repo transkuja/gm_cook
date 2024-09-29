@@ -5,9 +5,12 @@ items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
 qte_holder = noone;
 
+// Draw items offset for animations
 offset_draw_item = 0;
 max_offset_draw_item = 10;
 offset_draw_speed = 0.03;
+item_in_scale_x = 0;
+item_in_scale_y = 0;
 
 initial_scale_x = image_xscale;
 initial_scale_y = image_yscale;
@@ -133,6 +136,10 @@ function TransformingFeedbacks() {
 	cur_transforming_anm = polarca_animation_start([anim_scale_x, anim_scale_y]);
 }
 
+function GetItemsDrawnOffsets(_index = 0, _max = 1) {
+	return [0, offset_draw_item];
+}
+
 draw_circle_radius = 32;
 
 function DrawItemsIn() {
@@ -145,16 +152,18 @@ function DrawItemsIn() {
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
 		{
-			var _draw_xy = WorldToGUI(_draw_xs[_i], y - popup_draw_height + offset_draw_item);
+			var _offset = GetItemsDrawnOffsets(_i, _nb_items_to_draw);
+			var _draw_xy = WorldToGUI(_draw_xs[_i] + _offset[0], y - popup_draw_height + _offset[1]);
 			
-			draw_sprite(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius);
+			draw_sprite_ext(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius,
+				1, 1, 0, c_white, 1);
 			
 			if (array_length(items_in_ids) > _i) {
 				draw_sprite_ext(
 					GetItemSprite(items_in_ids[_i]), 
 					0, 
 					 _draw_xy[0] + draw_circle_radius,  _draw_xy[1],
-					0.4, 0.4, 0, c_white, 1);
+					0.4 * (1 + item_in_scale_x), 0.4 * (1 + item_in_scale_y), 0, c_white, 1);
 			}
 		}
 	}
@@ -226,7 +235,7 @@ function StopAnimItems() {
 	offset_draw_item = 0;
 }
 
-function OnQteValidatedFeedbacks() {
+function OnQteValidatedFeedbacks(_progress) {
 
 }
 
@@ -236,7 +245,7 @@ function ActivateQteHolder() {
 		
 	if (instance_exists(qte_holder)) {
 		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished() } );
-		qte_holder.on_qte_validated = Broadcast(function() { OnQteValidatedFeedbacks() } );
+		qte_holder.on_qte_validated = Broadcast(function(_progress) { OnQteValidatedFeedbacks(_progress) } );
 		qte_holder.Start();
 	}
 }

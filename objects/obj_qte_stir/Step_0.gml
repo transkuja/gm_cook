@@ -10,7 +10,7 @@ if (is_checking_input) {
 		current_fill = clamp(current_fill + d(current_fill_speed), 0, fill_target);
 		
 		if (current_fill >= fill_target) {
-			OnInputValidated();
+			InputValidated();
 		}
 		
 		if (!audio_is_playing(Pizzapeel_Putdownpizza_01)) {

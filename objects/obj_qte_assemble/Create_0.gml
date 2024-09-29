@@ -27,6 +27,8 @@ function OnInputValidated() {
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
 		Finish();
+	else 
+		InputValidated();
 }
 
 function GetProgressRatio() {

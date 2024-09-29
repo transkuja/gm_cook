@@ -148,4 +148,14 @@ function GetItemType(_item_id) {
 	}
 }
 
-
+function GetStirCount(_item_id) {
+	switch (_item_id) {
+		case "protaupe_crepe_batter":
+			return 5;
+		case "fruit_salad":
+			return 5;
+		case "protaupe_ratatouille":
+			return 5;
+		default: return 5;
+	}
+}

@@ -36,7 +36,7 @@ function DrawItemsIn() {
 
 cur_qte_validated_anim = noone;
 cur_item_anim = noone;
-function OnQteValidatedFeedbacks() {
+function OnQteValidatedFeedbacks(_progress) {
 	// Anim transformer
 	//instance_destroy(cur_qte_validated_anim);
 	//image_xscale = initial_scale_x;

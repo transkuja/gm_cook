@@ -68,7 +68,7 @@ function InputValidated() {
 	PlayValidateFx();
 	
 	if (on_qte_validated != noone) 
-		on_qte_validated.dispatch();
+		on_qte_validated.dispatch(GetProgressRatio());
 }
 
 function OnInputFailed() {

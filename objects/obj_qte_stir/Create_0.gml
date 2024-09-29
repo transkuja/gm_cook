@@ -37,8 +37,8 @@ function OnInit(_items_id) {
 		//var _mash_count = GetChopMashCount(_items_id[0]);
 		//if (_mash_count == -1) { return false; }
 		
-		initial_item_mash_count = 5;
-		current_mash_count = 5;
+		initial_item_mash_count = GetStirCount("");
+		current_mash_count = initial_item_mash_count;
 	}
 	
 	
@@ -84,6 +84,11 @@ function OnInputPressed() {
 	}
 }
 
+function DelayedFinish() {
+	is_checking_input = false;
+	alarm[1] = seconds(0.15);
+}
+
 function OnInputValidated() {
 	_log("OnInputValidated");
 	if (!is_checking_input) return;
@@ -91,7 +96,7 @@ function OnInputValidated() {
 	
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
-		Finish();
+		DelayedFinish();
 	else
 		NextTarget();
 }
@@ -108,18 +113,25 @@ function DrawCursor(_x, _y) {
 	//draw_sprite(phgen_rectangle(10, _height, c_black, 0, c_white, 10, _height * 0.5), 0, _pos, _y);
 }
 
-function GetProgressRatio() {
+function GetProgressBarRatio() {
 	if (initial_item_mash_count <= 0)
 		return 0;
 	
 	return current_fill / fill_target;
 }
 
+function GetProgressRatio() {
+	if (initial_item_mash_count <= 0)
+		return 0;
+		
+	return 1 - (current_mash_count / initial_item_mash_count);
+}
+
 function DrawProgress() {
 	var _draw_xy = WorldToGUI(x, y + progress_y_offset);
 	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, c_white, 0, c_white, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
 	
-	var pb_content_w = (progress_bar_width - 2*progress_bar_outline) * GetProgressRatio();
+	var pb_content_w = (progress_bar_width - 2*progress_bar_outline) * GetProgressBarRatio();
 	var pb_content_h = progress_bar_height - 2*progress_bar_outline;
 	if (pb_content_w > 1 && pb_content_h > 1) {
 		if (is_right_target) {
