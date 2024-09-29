@@ -167,9 +167,9 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 		transformer.DrawItemsIn();
 	}
 	
-	// Can't interact with final item, should take it out
     process_interaction = function(_interactInstigator) {
-		// feedback ?    
+		// If interact but can't, feedback
+		transformer.InteractionBlockedFeedback();
     }
 	
 	send_item_in = function(_interactInstigator) {

@@ -12,6 +12,8 @@ max_offset_draw_item = 10;
 offset_draw_speed = 0.03;
 item_in_scale_x = 0;
 item_in_scale_y = 0;
+items_in_bg_draw_color = array_create(max_items, c_white);
+bg_color_lerp = 1;
 
 initial_scale_x = image_xscale;
 initial_scale_y = image_yscale;
@@ -40,6 +42,7 @@ function ConfirmPendingItem() {
 	polarca_animation_start([anim_scale_x, anim_scale_y]);
 	
 	audio_play_sound(snd_item_arrived, 10, false);
+	StopInteractionBlockedFeedback();
 	
 	_log("Transformer content:");
 	for (var i = 0; i < array_length(items_in_ids); i++)
@@ -89,6 +92,8 @@ function TakeFrom(_interactInstigator) {
 		
 		save_data_set(_item_removed + "_unlocked", true);
 	}
+	
+	StopInteractionBlockedFeedback();
 	
 	return true;
 }
@@ -143,16 +148,24 @@ function GetItemsDrawnOffsets(_index = 0, _max = 1) {
 
 draw_circle_radius = 32;
 
+function GetItemInBgColor(_item_index) {
+	if (state == TRANSFORMER_STATE.CAN_TRANSFORM) {
+		bg_color_lerp = 1;
+		return make_color_rgb(16, 235, 147);
+	}
+	
+	return items_in_bg_draw_color[_item_index];
+}
+
 function DrawItemsIn() {
 	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
 	
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
-	// Will need a method to handle red color
-	var _draw_color = state == TRANSFORMER_STATE.CAN_TRANSFORM ? make_color_rgb(16, 235, 147) : c_white;
 	
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
 		{
+			var _draw_color = merge_colour(c_white, GetItemInBgColor(_i), bg_color_lerp);
 			var _offset = GetItemsDrawnOffsets(_i, _nb_items_to_draw);
 			var _draw_xy = WorldToGUI(_draw_xs[_i] + _offset[0], y - popup_draw_height + _offset[1]);
 			
@@ -253,6 +266,15 @@ function ActivateQteHolder() {
 		qte_holder.Start();
 	}
 }
+
+function StopInteractionBlockedFeedback() {
+}
+
+function InteractionBlockedFeedback() {
+	
+}
+
+
 
 // Start code execution
 current_state = new TransformerEmptyState(id, {});
