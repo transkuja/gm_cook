@@ -232,6 +232,9 @@ function TransformerResultState(_transformer, _args = {}): TransformerState(_tra
 	}
 	
 	function Interact(_interactInstigator) {
+		if (transformer.is_interact_locked)
+			return;
+			
 		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands()) {	return; }
 		}

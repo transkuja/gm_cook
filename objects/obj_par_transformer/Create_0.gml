@@ -4,6 +4,7 @@ state = TRANSFORMER_STATE.EMPTY;
 items_in_ids = array_create(0, "none");
 items_pending = array_create(0, "none");
 qte_holder = noone;
+is_interact_locked = false;
 
 // Draw items offset for animations
 offset_draw_item = 0;
@@ -181,12 +182,15 @@ function OnTransformationFinished() {
 }
 
 function TransformationFinished() {
+	is_interact_locked = true;
 	OnTransformationFinished();
 	qte_holder.Reset();
 
 	audio_play_sound(Tool_Table_01, 10, false);
 	if (current_state) 
 		current_state.transition_to(new TransformerResultState(id));
+		
+	alarm[0] = seconds(0.35);
 }
 
 function SetFeedbacksInitialState() {
