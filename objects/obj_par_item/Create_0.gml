@@ -11,7 +11,7 @@ lerp_origin_y = 0;
 target_offset_y = -50;
 
 // Debug
-draw_debug = true;
+draw_debug = false;
 
 image_xscale = 0.5;
 image_yscale = 0.5;
