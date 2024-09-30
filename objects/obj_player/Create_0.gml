@@ -110,7 +110,7 @@ function ItemDetection() {
 		{
 			var item_detected = _items_detected[| i];
 			if (item_detected != noone && item_detected != undefined) {
-				item_detected.StartMagnet();
+				item_detected.StartMagnet(self);
 			}
 		}
 	}	

@@ -16,6 +16,8 @@ draw_debug = true;
 image_xscale = 0.5;
 image_yscale = 0.5;
 
+player_ref = noone;
+
 function Initialize(_item_id) {
 	item_id = _item_id;
 	if (item_id != "none")
@@ -24,7 +26,7 @@ function Initialize(_item_id) {
 	alarm[0] = seconds(0.25); // set is ready
 }
 
-function StartMagnet() {
+function StartMagnet(_player) {
 	// TODO: can collect ? (inventory full)
 	if (!is_ready) return;
 	if (is_collected || is_magnetized) return;		
@@ -32,7 +34,8 @@ function StartMagnet() {
 	if (instance_exists(inst_inventory) && !inst_inventory.CanAddItem(item_id, 1))
 		return;
 		
-	if (instance_exists(inst_player)) {
+	if (instance_exists(_player)) {
+		player_ref = _player;
 		lerp_param = 0;
 		lerp_origin_x = x;
 		lerp_origin_y = y;
@@ -40,6 +43,7 @@ function StartMagnet() {
 	}
 }
 
+//fx_on_collect_inst = noone;
 function Collect() {
 	if (!is_ready) return;
 	if (is_collected) return;
@@ -52,6 +56,14 @@ function Collect() {
 			
 		is_collected = true;
 		audio_play_sound(splash0, 10, false);
+		
+		// Spawn fx
+		fx_handler = instance_create_layer(x,y, "Instances", obj_fx_handler);
+		if (instance_exists(player_ref))
+			fx_handler.StartFx(fx_on_collect, 0.25, player_ref.x + random_range(-15, 15), player_ref.y + target_offset_y + random_range(-15, 15));
+		else
+			fx_handler.StartFx(fx_on_collect, 0.25, x + random_range(-15, 15), y + random_range(-15, 15));
+		
 		instance_destroy();
 	}
 }
