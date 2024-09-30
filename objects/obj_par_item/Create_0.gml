@@ -1,4 +1,4 @@
-
+is_ready = false;
 is_collected = false;
 is_magnetized = false;
 
@@ -20,10 +20,13 @@ function Initialize(_item_id) {
 	item_id = _item_id;
 	if (item_id != "none")
 		sprite_index = GetItemSprite(_item_id);
+		
+	alarm[0] = seconds(0.25); // set is ready
 }
 
 function StartMagnet() {
 	// TODO: can collect ? (inventory full)
+	if (!is_ready) return;
 	if (is_collected || is_magnetized) return;		
 	
 	if (instance_exists(inst_inventory) && !inst_inventory.CanAddItem(item_id, 1))
@@ -38,6 +41,7 @@ function StartMagnet() {
 }
 
 function Collect() {
+	if (!is_ready) return;
 	if (is_collected) return;
 	
 	is_magnetized = false;
