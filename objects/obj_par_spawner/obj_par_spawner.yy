@@ -37,6 +37,9 @@
     {"$GMObjectProperty":"","%Name":"auto_spawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
     {"$GMObjectProperty":"","%Name":"auto_respawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_respawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
     {"$GMObjectProperty":"","%Name":"spawn_cooldown","filters":[],"listItems":[],"multiselect":false,"name":"spawn_cooldown","rangeEnabled":true,"rangeMax":5000.0,"rangeMin":0.2,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.2","varType":0,},
+    {"$GMObjectProperty":"","%Name":"fx_on_spawn","filters":[
+        "GMParticleSystem",
+      ],"listItems":[],"multiselect":false,"name":"fx_on_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_smoke_spawn","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

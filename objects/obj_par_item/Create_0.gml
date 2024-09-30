@@ -58,11 +58,11 @@ function Collect() {
 		audio_play_sound(splash0, 10, false);
 		
 		// Spawn fx
-		fx_handler = instance_create_layer(x,y, "Instances", obj_fx_handler);
 		if (instance_exists(player_ref))
-			fx_handler.StartFx(fx_on_collect, 0.25, player_ref.x + random_range(-15, 15), player_ref.y + target_offset_y + random_range(-15, 15));
+			SpawnFx(fx_on_collect, 0.25, player_ref.x + random_range(-15, 15), player_ref.y + target_offset_y + random_range(-15, 15));
 		else
-			fx_handler.StartFx(fx_on_collect, 0.25, x + random_range(-15, 15), y + random_range(-15, 15));
+			SpawnFx(fx_on_collect, 0.25, x + random_range(-15, 15), y + random_range(-15, 15));
+		
 		
 		instance_destroy();
 	}

@@ -38,6 +38,7 @@ function Drop(_x, _y) {
 	mask_index = sprite_item_ref;
 	
 	audio_play_sound(Basket_Putdown_01, 10, false);
+	SpawnFx(fx_on_drop, 0.25, x, y);
 }
 
 function PickUp(_pickupInstigator) {

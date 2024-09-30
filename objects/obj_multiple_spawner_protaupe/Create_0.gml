@@ -45,8 +45,10 @@ function Spawn(_checkInstance = false) {
 		if (to_spawn == obj_par_item) {
 			var spawn_location = GetPointOnCircleFromIndex(_spawnInitialAngle, _offset, i);
 			var newInstance = instance_create_layer(spawn_location[0], spawn_location[1], "Instances", to_spawn);
-			if (instance_exists(newInstance))
+			if (instance_exists(newInstance)) {
+				SpawnFx(fx_on_spawn, 0.25, spawn_location[0], spawn_location[1]);
 				newInstance.Initialize(arr_to_spawn_ids[i]);
+			}
 			//_push(spawned, newInstance);
 		}
 			
