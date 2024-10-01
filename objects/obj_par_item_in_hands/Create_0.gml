@@ -7,9 +7,9 @@ player_xoffset = 0.0;
 player_yoffset = -200.0;
 
 // Outline shader
-handler=shader_get_uniform(shader_outline,"texture_Pixel")
-handler_1=shader_get_uniform(shader_outline,"thickness_power")
-handler_2=shader_get_uniform(shader_outline,"RGBA")
+//handler=shader_get_uniform(shader_outline,"texture_Pixel")
+//handler_1=shader_get_uniform(shader_outline,"thickness_power")
+//handler_2=shader_get_uniform(shader_outline,"RGBA")
 
 shader_enabled = false;
 
@@ -39,6 +39,7 @@ function Drop(_x, _y) {
 	
 	audio_play_sound(Basket_Putdown_01, 10, false);
 	SpawnFx(fx_on_drop, 0.25, x, y);
+	CanBePickedUpFeedback(true);
 }
 
 function PickUp(_pickupInstigator) {
@@ -53,7 +54,22 @@ function PickUp(_pickupInstigator) {
 	_pickupInstigator.SetItemInHands(self);
 }
 
+initial_layer = layer_get_name(layer);
 function CanBePickedUpFeedback(_enable) {
+	//if (shader_enabled == _enable)
+	//	return; 
+		
+	//if (_enable) {
+	//	var layer_id = layer_get_id("Outline_Instance");
+	//	layer_add_instance(layer_id, self);
+		
+	//	//layer = layer_get_id("Outline_Instance");
+	//}
+		
+		//SetEffectOutline(self);
+	//else
+	//	RemoveEffectOutline(self, initial_layer);
+		
 	shader_enabled = _enable;
 }
 
