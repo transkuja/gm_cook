@@ -3,8 +3,9 @@ velocity_x = 0;
 velocity_y = 0;
 current_speed = 0;
 
+min_speed = 150;
 max_speed = 450;
-acceleration_factor = max_speed * 2;
+acceleration_factor = (max_speed - min_speed) * 2;
 
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
@@ -49,8 +50,9 @@ function ComputeVelocity() {
 function HandleAcceleration(_dt) {
 	if (velocity_x != 0 || velocity_y != 0) {
 		if (current_speed < max_speed) {
+			if (current_speed < min_speed) current_speed = min_speed;
 			current_speed += _dt * acceleration_factor;
-			current_speed = clamp(current_speed, 0, max_speed);
+			current_speed = clamp(current_speed, min_speed, max_speed);
 		}
 	}
 	else
