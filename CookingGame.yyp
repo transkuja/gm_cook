@@ -190,7 +190,7 @@
     {"id":{"name":"fx_ph_on_collect","path":"particles/fx_ph_on_collect/fx_ph_on_collect.yy",},},
     {"id":{"name":"fx_ph_on_transformation_finished","path":"particles/fx_ph_on_transformation_finished/fx_ph_on_transformation_finished.yy",},},
     {"id":{"name":"fx_ph_smoke_spawn","path":"particles/fx_ph_smoke_spawn/fx_ph_smoke_spawn.yy",},},
-    {"id":{"name":"ParticleSystem2","path":"particles/ParticleSystem2/ParticleSystem2.yy",},},
+    {"id":{"name":"fx_ph_waves","path":"particles/fx_ph_waves/fx_ph_waves.yy",},},
     {"id":{"name":"rm_gameMain","path":"rooms/rm_gameMain/rm_gameMain.yy",},},
     {"id":{"name":"rm_loadingRoom","path":"rooms/rm_loadingRoom/rm_loadingRoom.yy",},},
     {"id":{"name":"rm_mainMenu","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},},
