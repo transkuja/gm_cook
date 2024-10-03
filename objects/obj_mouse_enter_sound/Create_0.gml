@@ -9,10 +9,13 @@ mask_index = spr_transparent_circle;
 
 fx_inst = noone;
 function PlayFx() {
-	fx_inst = part_system_create(fx_on_snd_playing);
-	part_system_layer(fx_inst, layer_get_id("FX"));
+	if (fx_on_snd_playing != noone)
+	{
+		fx_inst = part_system_create(fx_on_snd_playing);
+		part_system_layer(fx_inst, layer_get_id("FX"));
 		
-	part_system_position(fx_inst, x, y);
+		part_system_position(fx_inst, x, y);
+	}
 }
 
 function PlayMouseEnterSound() {
