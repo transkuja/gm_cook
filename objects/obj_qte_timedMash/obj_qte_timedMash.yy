@@ -11,6 +11,7 @@
   "name":"obj_qte_timedMash",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"input_sequence","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"seq_press_button",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"fx_on_validate_offset_y","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},
   ],
   "parent":{
     "name":"QTE Holders",

@@ -20,6 +20,11 @@ anticipation_time = 0.5;
 
 is_checking_input = false;
 
+// Anim failed
+bg_color_lerp = 0;
+anim_speed_failed = 0.025;
+anim_failed_inst = noone;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;
@@ -50,6 +55,8 @@ function GoToStartLocation() {
 
 function StartMoving() {
 	is_checking_input = true;
+	instance_destroy(anim_failed_inst);
+	bg_color_lerp = 0;
 }
 
 loop_sound_inst = noone;
@@ -75,6 +82,16 @@ function OnInputValidated() {
 function OnInputFailed() {
 	if (!is_checking_input) return;
 	
+	// Play failed anim
+	instance_destroy(anim_failed_inst);
+	bg_color_lerp = 0;
+	var _feedback_anim = new polarca_animation("bg_color_lerp", 1, ac_on_off_two, 0, anim_speed_failed);
+	anim_failed_inst = polarca_animation_start([_feedback_anim]);
+	anim_failed_inst.on_animation_finished = Broadcast(
+		function() { 
+			bg_color_lerp = 0; 
+	});
+	
 	GoToStartLocation();
 }
 
@@ -93,7 +110,8 @@ function DrawCursor(_x, _y) {
 
 function DrawProgress() {
 	var _draw_xy = WorldToGUI(x, y + progress_y_offset);
-	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, c_white, 0, c_white, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
+	var _bg_color = merge_colour(c_white, make_color_rgb(215,0,0), bg_color_lerp);
+	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, _bg_color, 0, _bg_color, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
 	
 	var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, window_close_time - window_open_time);
 	var pb_content_h = progress_bar_height;
