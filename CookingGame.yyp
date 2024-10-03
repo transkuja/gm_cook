@@ -107,6 +107,7 @@
     {"id":{"name":"ac_bump_scale_up_uniform","path":"animcurves/ac_bump_scale_up_uniform/ac_bump_scale_up_uniform.yy",},},
     {"id":{"name":"ac_bump_translate_height_pp","path":"animcurves/ac_bump_translate_height_pp/ac_bump_translate_height_pp.yy",},},
     {"id":{"name":"ac_bump_translate_y","path":"animcurves/ac_bump_translate_y/ac_bump_translate_y.yy",},},
+    {"id":{"name":"ac_bump_translate_y_2","path":"animcurves/ac_bump_translate_y_2/ac_bump_translate_y_2.yy",},},
     {"id":{"name":"ac_bump_x_assemble","path":"animcurves/ac_bump_x_assemble/ac_bump_x_assemble.yy",},},
     {"id":{"name":"ac_bump_x","path":"animcurves/ac_bump_x/ac_bump_x.yy",},},
     {"id":{"name":"ac_linear","path":"animcurves/ac_linear/ac_linear.yy",},},

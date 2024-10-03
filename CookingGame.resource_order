@@ -76,6 +76,7 @@
     {"name":"ac_bump_scale_up_uniform","order":5,"path":"animcurves/ac_bump_scale_up_uniform/ac_bump_scale_up_uniform.yy",},
     {"name":"ac_bump_translate_height_pp","order":4,"path":"animcurves/ac_bump_translate_height_pp/ac_bump_translate_height_pp.yy",},
     {"name":"ac_bump_translate_y","order":3,"path":"animcurves/ac_bump_translate_y/ac_bump_translate_y.yy",},
+    {"name":"ac_bump_translate_y_2","order":11,"path":"animcurves/ac_bump_translate_y_2/ac_bump_translate_y_2.yy",},
     {"name":"ac_bump_x_assemble","order":7,"path":"animcurves/ac_bump_x_assemble/ac_bump_x_assemble.yy",},
     {"name":"ac_bump_x","order":1,"path":"animcurves/ac_bump_x/ac_bump_x.yy",},
     {"name":"ac_linear","order":2,"path":"animcurves/ac_linear/ac_linear.yy",},
