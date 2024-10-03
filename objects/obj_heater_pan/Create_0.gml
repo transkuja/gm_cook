@@ -25,6 +25,8 @@ function OnTransformationFinished() {
 		items_in_ids[0] = GetHeatablePanResult(items_in_ids[0]);
 	
 	initial_item_mash_count = 0;
+	initial_progress_received = -1;
+	
 	StopAnimQteValidated();
 	
 	var _sa_x = new polarca_animation("item_in_scale_x", 0.5, ac_bump_scale_up_maintained, 0, anim_result_speed);
@@ -44,8 +46,21 @@ function StartAnimQteValidated() {
 }
 
 
-function OnQteValidatedFeedbacks(_progress) {
-	// TODO: animate color ?
+function GetItemInBgColor(_item_index) {
+	if (state == TRANSFORMER_STATE.CAN_TRANSFORM) {
+		bg_color_lerp = 1;
+		return make_color_rgb(16, 235, 147);
+	}
 	
+	return items_in_bg_draw_color[_item_index];
+}
+
+frying_bg_color = make_color_rgb(238, 134, 30);
+initial_progress_received = -1;
+function OnQteValidatedFeedbacks(_progress) {
+	if (initial_progress_received < 0)
+		initial_progress_received = _progress;
+	
+	items_in_bg_draw_color[0] = merge_color(c_white, frying_bg_color, _progress + initial_progress_received);
 	StartAnimQteValidated();
 }
