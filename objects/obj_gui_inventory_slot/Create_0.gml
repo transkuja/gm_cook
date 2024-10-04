@@ -6,10 +6,30 @@ _center_x = center_x(); //x + (sprite_width * 0.5);
 _center_y = center_y(); //y + (sprite_height * 0.5);
 
 item_scale = 0.85;
+cur_qty = -1;
+
+animated_scale_x = 0;
+animated_scale_y = 0;
+bump_anim_speed = 0.1;
+
+function StartBumpAnimIncrease() {
+	animated_scale_x = 0;
+	animated_scale_y = 0;
+	var _text_anim_scale_x = new polarca_animation("animated_scale_x", 0.25, ac_bump_scale_up_uniform, 0, bump_anim_speed);
+	var _text_anim_scale_y = new polarca_animation("animated_scale_y", 0.25, ac_bump_scale_up_uniform, 0, bump_anim_speed);
+	polarca_animation_start([_text_anim_scale_x, _text_anim_scale_y]);
+}
 
 function Refresh(_itemData) {
+	if (cur_qty < _itemData.qty && _itemData.qty > 0) {
+		// Play anim
+		StartBumpAnimIncrease();
+		
+	}
+	
 	// TODO: check if data is copied or passed by ref
 	item_data = _itemData;
+	cur_qty = item_data.qty;
 }
 
 function SetSelected(_value) {

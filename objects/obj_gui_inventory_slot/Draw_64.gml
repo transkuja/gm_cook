@@ -16,6 +16,11 @@ if (item_data.qty > 0) {
 	}
 
 	draw_set_font(fnt_inventory_slot);
-	draw_text(x + (sprite_width * 0.2),y + (sprite_height * 0.2), item_data.qty);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle)
+	//draw_text(x + (sprite_width * 0.2),y + (sprite_height * 0.2), item_data.qty);
+	draw_text_ext_transformed(x + (sprite_width * 0.2),y + (sprite_height * 0.15), item_data.qty, 
+		0, 50, 1 + animated_scale_x,1 + animated_scale_y,0);
+		
 }
 
