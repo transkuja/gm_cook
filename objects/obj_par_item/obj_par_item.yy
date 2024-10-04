@@ -6,6 +6,7 @@
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_par_item",
@@ -34,6 +35,9 @@
     {"$GMObjectProperty":"","%Name":"fx_on_collect","filters":[
         "GMParticleSystem",
       ],"listItems":[],"multiselect":false,"name":"fx_on_collect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_collect","varType":5,},
+    {"$GMObjectProperty":"","%Name":"fx_trail","filters":[
+        "GMParticleSystem",
+      ],"listItems":[],"multiselect":false,"name":"fx_trail","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_trail_circle","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

@@ -18,6 +18,8 @@ image_yscale = 0.5;
 
 player_ref = noone;
 
+part_sys_trail_list = ds_list_create();
+
 function Initialize(_item_id) {
 	item_id = _item_id;
 	if (item_id != "none")
@@ -65,5 +67,21 @@ function Collect() {
 		
 		
 		instance_destroy();
+	}
+}
+
+function CreateTrailParticle(_dir_x, _dir_y) {
+	if (is_collected) 
+		return;	
+		
+	if (fx_trail != noone)
+	{
+		fx_inst = part_system_create(fx_trail);
+		//part_system_layer(fx_inst, layer_get_id("FX"));
+		part_system_position(fx_inst, x, y);
+		part_system_depth(fx_inst, depth + 1);
+		
+		part_system_angle(fx_inst, GetAngleVectorsDegrees(1, 0, _dir_x, _dir_y));
+		ds_list_add(part_sys_trail_list, fx_inst);
 	}
 }

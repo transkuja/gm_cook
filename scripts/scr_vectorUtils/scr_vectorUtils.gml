@@ -20,3 +20,17 @@ function NormalizeVector(_x, _y) {
 function DotProduct(_x1, _y1, _x2, _y2) {
 	return (_x1 * _x2) + (_y1 * _y2);
 }
+
+function GetAngleVectors(_x1, _y1, _x2, _y2) {
+	var _v1 = NormalizeVector(_x1, _y1);
+	var _v2 = NormalizeVector(_x2, _y2);
+	
+	return arccos(DotProduct(_v1[0], _v1[1], _v2[0], _v2[1]));
+}
+
+function GetAngleVectorsDegrees(_x1, _y1, _x2, _y2) {
+	var _v1 = NormalizeVector(_x1, _y1);
+	var _v2 = NormalizeVector(_x2, _y2);
+	
+	return darccos(DotProduct(_v1[0], _v1[1], _v2[0], _v2[1]));
+}

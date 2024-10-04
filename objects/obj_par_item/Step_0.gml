@@ -26,7 +26,9 @@ if (is_magnetized && lerp_param < 1)
 	
 	if (lerp_param >= 1)
 		Collect();
+		
+	if (lerp_param >= 0.35)
+		CreateTrailParticle(_toTargetVectorX, _toTargetVectorY);
 }
 
-
-depth = -y;
+//depth = -y;
