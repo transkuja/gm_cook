@@ -80,6 +80,8 @@ function RemoveItem(_id, _qty) {
 			inventory[_found_index] = new ItemData();
 			slots_instances[_found_index].Refresh({});
 		}
+		else
+			slots_instances[_found_index].Refresh(inventory[_found_index]);
 	}
 }
 
