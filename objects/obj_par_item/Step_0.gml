@@ -1,6 +1,8 @@
 
 if (is_magnetized && lerp_param < 1)
 {
+	xprev = x;
+	yprev = y;
 	if (!instance_exists(player_ref)) {
 		is_magnetized = false;
 		return;
@@ -27,8 +29,8 @@ if (is_magnetized && lerp_param < 1)
 	if (lerp_param >= 1)
 		Collect();
 		
-	if (lerp_param >= 0.35)
-		CreateTrailParticle(_toTargetVectorX, _toTargetVectorY);
+	if (lerp_param >= 0.45)
+		CreateTrailParticle(player_ref.x, player_ref.y);
 }
 
 //depth = -y;

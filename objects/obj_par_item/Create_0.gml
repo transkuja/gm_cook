@@ -18,7 +18,7 @@ image_yscale = 0.5;
 
 player_ref = noone;
 
-part_sys_trail_list = ds_list_create();
+//part_sys_trail_list = ds_list_create();
 
 function Initialize(_item_id) {
 	item_id = _item_id;
@@ -70,18 +70,26 @@ function Collect() {
 	}
 }
 
+xprev = 0;
+yprev = 0;
 function CreateTrailParticle(_dir_x, _dir_y) {
 	if (is_collected) 
 		return;	
 		
 	if (fx_trail != noone)
 	{
-		fx_inst = part_system_create(fx_trail);
-		//part_system_layer(fx_inst, layer_get_id("FX"));
-		part_system_position(fx_inst, x, y);
-		part_system_depth(fx_inst, depth + 1);
+		var p_dir = point_direction(x,y,xprev,yprev)
+
+		part_type_orientation(global.pt_flare_particles, p_dir, p_dir, 0, 0, 0);
+
+		part_particles_create(global.ps_above,x,y,global.pt_flare_particles,1) 
+		//// old code
+		//var _fx_inst = part_system_create(fx_trail);
+		//part_system_position(_fx_inst, x, y);
+		//part_system_depth(_fx_inst, depth + 1);
 		
-		part_system_angle(fx_inst, GetAngleVectorsDegrees(1, 0, _dir_x, _dir_y));
-		ds_list_add(part_sys_trail_list, fx_inst);
+		//part_system_angle(_fx_inst, point_direction(x,y,xprev,yprev ));//GetAngleVectorsDegrees(1, 0, _dir_x, _dir_y));
+
+		//ds_list_add(part_sys_trail_list, _fx_inst);
 	}
 }

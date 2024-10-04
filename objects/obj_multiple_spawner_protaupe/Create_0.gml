@@ -48,6 +48,7 @@ function Spawn(_checkInstance = false) {
 			if (instance_exists(newInstance)) {
 				SpawnFx(fx_on_spawn, 0.25, spawn_location[0], spawn_location[1]);
 				newInstance.Initialize(arr_to_spawn_ids[i]);
+				newInstance.depth = depth - (spawn_location[1] - y);
 			}
 			//_push(spawned, newInstance);
 		}
