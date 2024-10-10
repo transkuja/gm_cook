@@ -20,6 +20,6 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"biroute_1.ogg",
-  "type":0,
-  "volume":1.0,
+  "type":1,
+  "volume":0.34,
 }
