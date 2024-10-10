@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ph_fridge",
-    "path":"sprites/spr_ph_fridge/spr_ph_fridge.yy",
+    "name":"Fridge_192x400px",
+    "path":"sprites/Fridge_192x400px/Fridge_192x400px.yy",
   },
   "spriteMaskId":null,
   "visible":true,
