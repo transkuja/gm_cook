@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ph_pan_stand",
-    "path":"sprites/spr_ph_pan_stand/spr_ph_pan_stand.yy",
+    "name":"Frying_pan_192x104px",
+    "path":"sprites/Frying_pan_192x104px/Frying_pan_192x104px.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -40,8 +40,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"chopper_ph",
-    "path":"sprites/chopper_ph/chopper_ph.yy",
+    "name":"Chopping_board_Knife_92x172px",
+    "path":"sprites/Chopping_board_Knife_92x172px/Chopping_board_Knife_92x172px.yy",
   },
   "spriteMaskId":null,
   "visible":true,

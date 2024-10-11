@@ -1,10 +1,10 @@
 {
   "$GMSprite":"",
   "%Name":"Counter_L_188x200px",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":199,
   "bbox_left":1,
-  "bbox_right":183,
+  "bbox_right":188,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
