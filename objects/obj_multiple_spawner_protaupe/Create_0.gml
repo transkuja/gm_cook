@@ -7,6 +7,7 @@ event_inherited();
 //arr_to_spawn_ids = string_split(to_spawn_ids, "|", true);
 //spawned = [];
 
+cone_radius = 90
 function GetIdsToSpawn() {
 	var quest_status = save_data_get("q_protaupe_salad");
 	if (quest_status != "done")
@@ -38,9 +39,11 @@ function Spawn(_checkInstance = false) {
 	var arr_to_spawn_ids = GetIdsToSpawn();
 	if (array_length(arr_to_spawn_ids) == 0) return;
 
-	var _spawnInitialAngle = random(360);
-	var _offset = 360 / array_length(arr_to_spawn_ids);
-	
+	//var _spawnInitialAngle = random(360);
+	//var _offset = 360 / array_length(arr_to_spawn_ids);
+	var _offset = cone_radius / array_length(arr_to_spawn_ids);
+	var _spawnInitialAngle = 90 + random_range(-cone_radius*0.5, -cone_radius*0.5 + _offset);
+		
 	for (var i = 0; i < array_length(arr_to_spawn_ids); i++) {
 		if (to_spawn == obj_par_item) {
 			var spawn_location = GetPointOnCircleFromIndex(_spawnInitialAngle, _offset, i);
@@ -60,10 +63,10 @@ function Spawn(_checkInstance = false) {
 
 function GetPointOnCircleFromIndex(_start, _offset, _index) {
 	var angle = (_start + _index * _offset) % 360;
-	return [x + (cos(angle) * spawn_radius), y + (sin(angle) * spawn_radius) - sprite_height * 0.5];
+	return [x + (cos(degtorad(angle)) * spawn_radius), y + (sin(degtorad(angle)) * spawn_radius) - sprite_height * 0.5];
 }
 
 function GetPointOnCircle() {
 	var randomAngle = random(360);
-	return [x + (cos(randomAngle) * spawn_radius), y + (sin(randomAngle) * spawn_radius) - sprite_height * 0.5];
+	return [x + (cos(degtorad(randomAngle)) * spawn_radius), y + (sin(degtorad(randomAngle)) * spawn_radius) - sprite_height * 0.5];
 }
