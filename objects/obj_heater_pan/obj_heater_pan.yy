@@ -7,8 +7,9 @@
   "managed":true,
   "name":"obj_heater_pan",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"popup_draw_height","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"150",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"popup_draw_height","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"160",},
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_timedMash",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_spawn_y_offset","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},
   ],
   "parent":{
     "name":"Transformers",

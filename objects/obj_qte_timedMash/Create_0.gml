@@ -111,7 +111,7 @@ function DrawCursor(_x, _y) {
 function DrawProgress() {
 	var _draw_xy = WorldToGUI(x, y + progress_y_offset);
 	var _bg_color = merge_colour(c_white, make_color_rgb(215,0,0), bg_color_lerp);
-	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, _bg_color, 0, _bg_color, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
+	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, _bg_color, 1, c_grey, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
 	
 	var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, window_close_time - window_open_time);
 	var pb_content_h = progress_bar_height;
