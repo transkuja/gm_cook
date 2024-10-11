@@ -25,7 +25,7 @@ function DrawItemsIn() {
 	if (array_length(items_in_ids) > 0)	{
 		draw_sprite_ext(
 			GetItemSprite(items_in_ids[0]), 0,
-				x, y - sprite_width * 0.5 * image_yscale - 20,
+				x, y,
 				0.8 + drawn_item_animated_xscale, 0.8 + drawn_item_animated_yscale, 
 				0, c_white, 1
 			);
