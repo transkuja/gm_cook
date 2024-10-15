@@ -89,6 +89,16 @@ function CanAdvanceDialogue() {
 	return current_quest_id == "";
 }
 
+function StartTalkAnim() {
+	image_index = 1;
+	alarm[0] = 15;
+}
+
+function StopTalkAnim() {
+	alarm[0] = -1;
+	image_index = 0;
+}
+
 function InitDialogueBox() {
 	var current_dialogue_id = GetCurrentDialogue();
 	if (instance_exists(inst_dialogue_box)) {
@@ -111,6 +121,20 @@ function InitDialogueBox() {
 		else {
 			inst_dialogue_box.Initialize(current_dialogue_id);
 		}
+		
+		if (inst_dialogue_box.on_dialogue_close != noone) {
+			var _subscriber = Subscriber( function() {
+					StopTalkAnim();
+				}).watch(inst_dialogue_box.on_dialogue_close);
+		}
+		else {
+			var _broadcast = Broadcast(function() {
+				StopTalkAnim();
+			} );
+			inst_dialogue_box.on_dialogue_close = _broadcast;
+		}
+		
+		StartTalkAnim();
 	}
 }
 

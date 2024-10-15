@@ -47,12 +47,20 @@ function Interact(_interactInstigator) constructor {
 	if (instance_exists(inst_dialogue_box)) {
 		InitDialogueBox();
 		
-		var _broadcast = Broadcast(function() {
-			AdvanceDialogue();			
-			EndInteraction();
-		} );
+		if (inst_dialogue_box.on_dialogue_close == noone) {
+			var _broadcast = Broadcast(function() {
+				AdvanceDialogue();			
+				EndInteraction();
+			} );
 	
-		inst_dialogue_box.on_dialogue_close = _broadcast;
+			inst_dialogue_box.on_dialogue_close = _broadcast;
+		}
+		else {
+			var _subscriber = Subscriber(function() {
+				AdvanceDialogue();			
+				EndInteraction();
+			} ).watch(inst_dialogue_box.on_dialogue_close);
+		}
 	}
 	
 }
