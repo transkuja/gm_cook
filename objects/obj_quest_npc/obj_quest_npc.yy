@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_npc_idle",
-    "path":"sprites/spr_npc_idle/spr_npc_idle.yy",
+    "name":"spr_chr_old_billy",
+    "path":"sprites/spr_chr_old_billy/spr_chr_old_billy.yy",
   },
   "spriteMaskId":null,
   "visible":true,
