@@ -114,6 +114,16 @@ function InitDialogueBox() {
 	}
 }
 
+// Idle
+_sa_x = new polarca_animation("image_xscale", 0.985, ac_chr_idle14 ,0, 0.008);
+anim_idle = polarca_animation_start([_sa_x]);
+anim_idle.is_looping = true;
+
+_sa_y = new polarca_animation("image_yscale", 1.025, ac_chr_idle14 ,0, 0.008);
+anim_idle_y = polarca_animation_start([_sa_y]);
+anim_idle_y.is_looping = true;
+
+
 // for each quest, check in save if marked as resolved
 // if quest not resolved, check requirements
 // if requirements met, bypass dialogue with quest dialogue (initial or pending)
