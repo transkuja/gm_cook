@@ -18,6 +18,7 @@
     {"name":"Environment","order":24,"path":"folders/Objects/Environment.yy",},
     {"name":"Kitchen","order":1,"path":"folders/Objects/Environment/Kitchen.yy",},
     {"name":"Flow","order":21,"path":"folders/Objects/Flow.yy",},
+    {"name":"PH","order":25,"path":"folders/Objects/PH.yy",},
     {"name":"Items","order":7,"path":"folders/Objects/Items.yy",},
     {"name":"Mandatory","order":6,"path":"folders/Objects/Mandatory.yy",},
     {"name":"NPCs","order":18,"path":"folders/Objects/NPCs.yy",},
