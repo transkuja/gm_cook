@@ -1,10 +1,10 @@
 {
   "$GMSprite":"",
   "%Name":"Gaz_stove_200x204px",
-  "bboxMode":0,
-  "bbox_bottom":203,
+  "bboxMode":2,
+  "bbox_bottom":210,
   "bbox_left":0,
-  "bbox_right":199,
+  "bbox_right":228,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,

@@ -10,8 +10,8 @@ acceleration_factor = (max_speed - min_speed) * 2;
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
 
-playerSpr[PLAYER_STATE.IDLE] = spr_player_idle;
-playerSpr[PLAYER_STATE.WALKING] = spr_player_run;
+playerSpr[PLAYER_STATE.IDLE] = spr_chr_monkey_idle;
+playerSpr[PLAYER_STATE.WALKING] = spr_chr_monkey_walk;
 
 // Scale
 default_xscale = image_xscale;
@@ -61,8 +61,8 @@ function HandleAcceleration(_dt) {
 
 function UpdateFacingDirection() {
 	// Change direction based on movement
-	if (velocity_x > 0) { dir = DIRECTION_ENUM.RIGHT; scale_flip = 1;}
-	if (velocity_x < 0) { dir = DIRECTION_ENUM.LEFT; scale_flip = -1;}
+	if (velocity_x > 0) { dir = DIRECTION_ENUM.RIGHT; scale_flip = -1;}
+	if (velocity_x < 0) { dir = DIRECTION_ENUM.LEFT; scale_flip = 1;}
 	
 	image_xscale = default_xscale * current_scale * scale_flip;
 }
