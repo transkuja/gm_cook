@@ -125,6 +125,7 @@
     {"id":{"name":"fnt_inventory_slot","path":"fonts/fnt_inventory_slot/fnt_inventory_slot.yy",},},
     {"id":{"name":"font_button","path":"fonts/font_button/font_button.yy",},},
     {"id":{"name":"font_textbox","path":"fonts/font_textbox/font_textbox.yy",},},
+    {"id":{"name":"font_textbox_bigger","path":"fonts/font_textbox_bigger/font_textbox_bigger.yy",},},
     {"id":{"name":"font_title_screen_title","path":"fonts/font_title_screen_title/font_title_screen_title.yy",},},
     {"id":{"name":"DeltaObject","path":"objects/DeltaObject/DeltaObject.yy",},},
     {"id":{"name":"o_animation_example","path":"objects/o_animation_example/o_animation_example.yy",},},

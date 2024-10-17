@@ -2,13 +2,20 @@
 draw_self();
 
 // Draw Text
-draw_set_font(font_textbox);
+if (putaing_kong) {
+	draw_set_font(font_textbox_bigger);
+}
+else
+	draw_set_font(font_textbox);
+
 draw_set_halign(fa_center);
-draw_set_valign(fa_middle)
+draw_set_valign(fa_middle);
 draw_text_ext_color(x,y, textToShow, lineHeight, textWidth, c_black, c_black, c_black, c_black, image_alpha);
 
 // Draw talker box
 draw_sprite(phgen_rectangle(talker_name_width, talker_name_height, make_color_rgb(255,204,255), 3, c_black, 0, 0), 0, draw_talker_x, draw_talker_y);
+
+if (putaing_kong) { draw_set_font(font_textbox); }
 
 // Draw talker name
 draw_text_ext_color(draw_talker_x + talker_name_width * 0.5,draw_talker_y + talker_name_height * 0.5, talker_name, lineHeight, textWidth, c_black, c_black, c_black, c_black, image_alpha);

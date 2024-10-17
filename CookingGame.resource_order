@@ -92,6 +92,7 @@
     {"name":"ac_on_off_two","order":10,"path":"animcurves/ac_on_off_two/ac_on_off_two.yy",},
     {"name":"font_button","order":2,"path":"fonts/font_button/font_button.yy",},
     {"name":"font_textbox","order":1,"path":"fonts/font_textbox/font_textbox.yy",},
+    {"name":"font_textbox_bigger","order":4,"path":"fonts/font_textbox_bigger/font_textbox_bigger.yy",},
     {"name":"font_title_screen_title","order":3,"path":"fonts/font_title_screen_title/font_title_screen_title.yy",},
     {"name":"o_polarca_sequence_controller","order":1,"path":"objects/o_polarca_sequence_controller/o_polarca_sequence_controller.yy",},
     {"name":"o_sequence_example","order":1,"path":"objects/o_sequence_example/o_sequence_example.yy",},

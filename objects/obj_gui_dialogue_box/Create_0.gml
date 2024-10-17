@@ -55,9 +55,12 @@ opt_no_choice = false;
 // TO DELETE
 show_extra_sprite = false;
 can_go_to_next = true;
+putaing_kong = false;
+
 function HandleTextAppearSound() {
 	audio_stop_sound(sound_inst);
 	show_extra_sprite = false;
+	putaing_kong = false;
 	can_go_to_next = false;
 	alarm[1] = 15;
 
@@ -83,6 +86,11 @@ function HandleTextAppearSound() {
 	if (string_pos("*pro", lower_text) != 0) {
 		sound_inst = audio_play_sound(fart_sound, 10, false);
 		return;
+	}
+	
+	if (string_pos("oh putaing kong", lower_text) != 0) {
+		textToShow = string_upper(textToShow);
+		putaing_kong = true;
 	}
 	
 	if (string_pos("one piece le 28 octobre", lower_text) != 0) {
