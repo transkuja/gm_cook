@@ -52,8 +52,15 @@ on_choice_selected = [];
 // If set to true, will skip the choice of the current dialogue. Must be set before Initialize.
 opt_no_choice = false;
 
+// TO DELETE
+show_extra_sprite = false;
+can_go_to_next = true;
 function HandleTextAppearSound() {
 	audio_stop_sound(sound_inst);
+	show_extra_sprite = false;
+	can_go_to_next = false;
+	alarm[1] = 15;
+
 	var lower_text = string_lower(textToShow);
 	if (lower_text == "...")
 		return;
@@ -80,6 +87,9 @@ function HandleTextAppearSound() {
 	
 	if (string_pos("one piece le 28 octobre", lower_text) != 0) {
 		audio_play_sound(goodresult_sound, 10, false);
+		show_extra_sprite = true;
+
+		alarm[1] = 90;
 	}
 
 	var char_count = string_length(textToShow);
@@ -270,6 +280,8 @@ function SetChoices() {
 
 sound_inst = noone;
 function GoToNext() {
+	if (!can_go_to_next) return;
+	
 	audio_play_sound(FUI_Button_Beep_Clean, 10, false);
 	
 	dialogue_progress++;

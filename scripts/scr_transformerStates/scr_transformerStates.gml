@@ -103,8 +103,10 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
 	// Take item out
 	process_item_interaction = function(_interactInstigator) {
-		if (transformer.TakeFrom(_interactInstigator))
-			transition_to(new TransformerEmptyState(transformer));
+		if (transformer.TakeFrom(_interactInstigator)) {
+			if (array_length(transformer.items_in_ids) == 0)
+				transition_to(new TransformerEmptyState(transformer));
+		}
     }
 }
 

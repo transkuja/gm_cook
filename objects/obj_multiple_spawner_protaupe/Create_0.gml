@@ -7,7 +7,7 @@ event_inherited();
 //arr_to_spawn_ids = string_split(to_spawn_ids, "|", true);
 //spawned = [];
 
-cone_radius = 90
+cone_radius = 70
 function GetIdsToSpawn() {
 	var quest_status = save_data_get("q_protaupe_salad");
 	if (quest_status != "done")
@@ -24,6 +24,8 @@ function GetIdsToSpawn() {
 	quest_status = save_data_get("q_protaupe_ratatouille2");
 	if (quest_status == "pending")
 		return ["protaupe_fruit_a", "protaupe_fruit_b", "protaupe_egg"];
+	else if (quest_status == "done")
+		return ["protaupe_fruit_a", "protaupe_fruit_b", "protaupe_egg", "protaupe_flour"];
 		
 	return ["protaupe_fruit_a", "protaupe_fruit_b"];
 }

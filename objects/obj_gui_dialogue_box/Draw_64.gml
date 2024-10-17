@@ -12,3 +12,6 @@ draw_sprite(phgen_rectangle(talker_name_width, talker_name_height, c_white, 0, c
 
 // Draw talker name
 draw_text_ext_color(draw_talker_x + talker_name_width * 0.5,draw_talker_y + talker_name_height * 0.5, talker_name, lineHeight, textWidth, c_black, c_black, c_black, c_black, image_alpha);
+
+if (show_extra_sprite)
+	draw_sprite_ext(spr_op, 0, x, room_height * 0.5 - 175, 0.6, 0.6, 0,c_white, 1);

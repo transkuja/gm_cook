@@ -18,6 +18,8 @@ function IsTransformable() {
 			return false;
 		}
 		
+		expected_result = "none";
+		
 		for (var _index = 0; _index < array_length(inst_databaseLoader.assemble_combos); _index++) {
 			var tmp = new AssembleCombo(inst_databaseLoader.assemble_combos[_index].ids, inst_databaseLoader.assemble_combos[_index].result_id );
 			var result = tmp.IsCombo(items_in_ids);
