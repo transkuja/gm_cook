@@ -38,6 +38,11 @@ current_state.enter_state();
 
 play_left_footstep = false;
 
+min_x_depth_sorting = 340;
+max_x_depth_sorting = 910;
+min_y_depth_sorting = 580;
+max_y_depth_sorting = 670;
+
 function ComputeVelocity() {
 	velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
 	velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 
