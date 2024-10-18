@@ -1,5 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (is_title_screen) {
+	if (save_data_get(save_key) == undefined || irandom_range(0,2) == 1) {
+		instance_destroy();
+	}
+	
+	return;
+}
+
 if (global.patrick = true) {
 	instance_destroy();
 	return;
