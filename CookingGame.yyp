@@ -99,6 +99,7 @@
     {"$GMIncludedFile":"","%Name":"quests.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"quests.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"recipes.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"recipes.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"texts_fr.ini","CopyToMask":-1,"filePath":"datafiles/Datas","name":"texts_fr.ini","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"texts_fr.ini","CopyToMask":-1,"filePath":"datafiles/Datas/texts_fr","name":"texts_fr.ini","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"texts_fr.txt","CopyToMask":-1,"filePath":"datafiles/Datas/texts_fr","name":"texts_fr.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"delta-2-0-0.yymps","CopyToMask":-1,"filePath":"datafiles","name":"delta-2-0-0.yymps","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gdash-6-0-2.yymps","CopyToMask":-1,"filePath":"datafiles","name":"gdash-6-0-2.yymps","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

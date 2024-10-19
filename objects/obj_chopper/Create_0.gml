@@ -31,7 +31,7 @@ function DrawItemsIn() {
 			);
 	}
 	
-	_log("DRAWN ITEM ANIMATED SCALE:", drawn_item_animated_xscale);
+	//_log("DRAWN ITEM ANIMATED SCALE:", drawn_item_animated_xscale);
 }
 
 cur_qte_validated_anim = noone;

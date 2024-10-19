@@ -106,6 +106,8 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		if (transformer.TakeFrom(_interactInstigator)) {
 			if (array_length(transformer.items_in_ids) == 0)
 				transition_to(new TransformerEmptyState(transformer));
+			else
+				transition_to(new TransformerWaitForPickupState(transformer));
 		}
     }
 }
