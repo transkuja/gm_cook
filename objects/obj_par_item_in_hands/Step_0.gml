@@ -5,6 +5,11 @@ if (is_dropped)
 	
 	depth = -y;
 }
+//else
+//{
+//	if (instance_exists(holder))
+//		depth = holder.depth - 10;
+//}
 
 // TODO: remove from STEP
 if (shader_enabled) {

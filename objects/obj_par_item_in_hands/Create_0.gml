@@ -4,7 +4,7 @@ is_dropped = false;
 sprite_item_ref = noone;
 
 player_xoffset = 0.0;
-player_yoffset = -200.0;
+player_yoffset = -300.0;
 
 // Outline shader
 //handler=shader_get_uniform(shader_outline,"texture_Pixel")
@@ -40,6 +40,7 @@ function Drop(_x, _y) {
 	audio_play_sound(Basket_Putdown_01, 10, false);
 	SpawnFx(fx_on_drop, 0.25, x, y);
 	CanBePickedUpFeedback(true);
+	
 }
 
 function PickUp(_pickupInstigator) {

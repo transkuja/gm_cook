@@ -20,6 +20,7 @@ function PlayerIdleState(_player, _args = {}): PlayerState(_player, _args) const
 		player.ComputeVelocityFromInputs();
 		player.InteractInputCheck();
 		player.CheckInputsInventory();
+		player.UpdateItemInHands();
 		
 		if (!player.IsStopped() && global.player_control == true)
 			transition_to(new PlayerWalkState(player));

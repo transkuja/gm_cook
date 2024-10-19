@@ -10,20 +10,20 @@ function GetItemSprite(_item_id) {
 		case "chopped_apple":
 			return spr_strawberry_without_stroke;
 		case "fruit_salad":
-			return spr_tinned_fruit_with_stroke;
+			return spr_salad_128x128px;
 		
 		case "protaupe_fruit_a":
-			return spr_protaupe_fruit_a;
+			return spr_tomato_128x128px;
 		case "protaupe_fruit_b":
-			return spr_protaupe_fruit_b;
+			return spr_potato_128x128px;
 		case "protaupe_chopped_fruit_a":
-			return spr_protaupe_chop_fruit_a;
+			return spr_tomato_cut_128x128px;
 		case "protaupe_chopped_fruit_b":
-			return spr_protaupe_chop_fruit_b;
+			return spr_potato_cut_128x128px;
 		case "protaupe_chopped_fruit_a_cooked":
-			return spr_protaupe_chop_fruit_a_cooked;
+			return spr_tomato_cooked_128x128px;
 		case "protaupe_chopped_fruit_b_cooked":
-			return spr_protaupe_chop_fruit_b_cooked;
+			return spr_potato_fried_128x128px;
 			
 		case "protaupe_egg":
 			return spr_ph_egg;
