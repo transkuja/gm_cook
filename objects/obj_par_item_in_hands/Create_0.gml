@@ -18,6 +18,10 @@ move_target = noone;
 destroy_on_move_end = false;
 move_speed = 0.075;
 
+// Drop settings
+min_drop_radius = 25;
+max_drop_radius = 100;
+
 function Initialize(_itemId, _check_new_recipe = false) {
 	item_id = _itemId;
 	if (item_id != "none")
@@ -32,14 +36,21 @@ function Initialize(_itemId, _check_new_recipe = false) {
 }
 
 function Drop(_x, _y) {
-	x = _x;
-	y = _y;
-	is_dropped = true;
+	//x = _x;
+	//y = _y;
+	
+	var _angle = random_range(-pi, 0);
+	var _drop_radius = random_range(min_drop_radius, max_drop_radius);
+	
+	x = _x + (cos(_angle - pi) * _drop_radius);
+	y = _y + (sin(_angle - pi) * _drop_radius);
+	
+	is_dropped = true; 
 	mask_index = sprite_item_ref;
 	
 	audio_play_sound(Basket_Putdown_01, 10, false);
 	SpawnFx(fx_on_drop, 0.25, x, y);
-	CanBePickedUpFeedback(true);
+	//CanBePickedUpFeedback(true);
 	
 }
 
