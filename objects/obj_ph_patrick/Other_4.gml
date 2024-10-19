@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 if (is_title_screen) {
-	if (save_data_get(save_key) == undefined || irandom_range(0,2) == 1) {
+	if (save_data_get(save_key) == undefined || save_data_get(save_key) < 3 || irandom_range(0,2) == 1) {
 		instance_destroy();
 	}
 	
@@ -33,6 +33,12 @@ else {
 	else {
 		if (global.patrick == false) {
 			var _saved_value = save_data_get(save_key);
+			if (_saved_value == undefined || _saved_value < 3)
+			{
+				instance_destroy();
+				return;
+			}
+			
 			if (_saved_value > 0 && _saved_value%3 == 0) {
 				instance_destroy();
 				return;

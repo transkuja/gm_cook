@@ -1,5 +1,5 @@
 if (tuto_enabled && is_init) {
-	draw_sprite_ext(spr_inventory_slot_bg, 0, x - 160, y - 170, 4.7, 1, 0, c_gray, 0.5);
+	draw_sprite_ext(spr_inventory_slot_bg, 0, x - 160, y - 170, 4.7, 1, 0, c_gray, 0.75);
 	draw_set_font(font_textbox);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_bottom);
