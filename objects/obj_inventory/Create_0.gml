@@ -1,10 +1,10 @@
-slot_count = 3;
+slot_count = 4;
 
 inventory = array_create(slot_count, new ItemData());
 item_box = [];
 
 slots_instances = array_create(slot_count);
-slots_step = 75;
+slots_step = 50;
 slot_width = 128;
 selected_slot = 0;
 
