@@ -13,11 +13,7 @@ function OnInit(_items_id) {
 		return false;
 	
 	if (current_mash_count == 0) {
-		var _mash_count = GetChopMashCount(_items_id[0]);
-		if (_mash_count == -1) { 
-			_log("WARNING: Can't find appropriate mash count, fallback to 1");
-			_mash_count = 1; 
-		}
+		var _mash_count = 1;
 		
 		initial_item_mash_count = _mash_count;
 		current_mash_count = _mash_count;

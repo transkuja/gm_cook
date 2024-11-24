@@ -20,8 +20,8 @@ function IsTransformable() {
 		
 		expected_result = "none";
 		
-		for (var _index = 0; _index < array_length(inst_databaseLoader.assemble_combos); _index++) {
-			var tmp = new AssembleCombo(inst_databaseLoader.assemble_combos[_index].ids, inst_databaseLoader.assemble_combos[_index].result_id );
+		for (var _index = 0; _index < array_length(inst_databaseLoader.stir_combos); _index++) {
+			var tmp = new AssembleCombo(inst_databaseLoader.stir_combos[_index].ids, inst_databaseLoader.stir_combos[_index].result_id );
 			var result = tmp.IsCombo(items_in_ids);
 			
 			if (result != "none") {

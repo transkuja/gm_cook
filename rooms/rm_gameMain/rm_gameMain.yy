@@ -58,6 +58,7 @@
     {"name":"inst_5A661C51","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_4A2F258","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_13A746BA","path":"rooms/rm_gameMain/rm_gameMain.yy",},
+    {"name":"inst_C08ABE1","path":"rooms/rm_gameMain/rm_gameMain.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -104,6 +105,7 @@
         {"$GMRInstance":"","%Name":"inst_388BE87D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_388BE87D","objectId":{"name":"obj_ph_patrick","path":"objects/obj_ph_patrick/obj_ph_patrick.yy",},"properties":[
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_ph_patrick","path":"objects/obj_ph_patrick/obj_ph_patrick.yy",},"propertyId":{"name":"is_main","path":"objects/obj_ph_patrick/obj_ph_patrick.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.1,"scaleY":0.1,"x":292.0,"y":271.5,},
+        {"$GMRInstance":"","%Name":"inst_C08ABE1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_C08ABE1","objectId":{"name":"obj_assembler","path":"objects/obj_assembler/obj_assembler.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":128.0,"y":448.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"ControlObjects","depth":-5,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_C831AD7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_C831AD7","objectId":{"name":"obj_inputManager","path":"objects/obj_inputManager/obj_inputManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":-160.0,},

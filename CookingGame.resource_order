@@ -152,6 +152,8 @@
     {"name":"obj_particleManager","order":6,"path":"objects/obj_particleManager/obj_particleManager.yy",},
     {"name":"obj_qte_assemble","order":2,"path":"objects/obj_qte_assemble/obj_qte_assemble.yy",},
     {"name":"obj_qte_chop","order":1,"path":"objects/obj_qte_chop/obj_qte_chop.yy",},
+    {"name":"obj_qte_testing","order":6,"path":"objects/obj_qte_testing/obj_qte_testing.yy",},
+    {"name":"obj_qte_mix","order":5,"path":"objects/obj_qte_mix/obj_qte_mix.yy",},
     {"name":"obj_qte_stir","order":4,"path":"objects/obj_qte_stir/obj_qte_stir.yy",},
     {"name":"obj_qte_timedMash","order":3,"path":"objects/obj_qte_timedMash/obj_qte_timedMash.yy",},
     {"name":"obj_quest_npc","order":1,"path":"objects/obj_quest_npc/obj_quest_npc.yy",},
