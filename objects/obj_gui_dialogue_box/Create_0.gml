@@ -91,6 +91,8 @@ function HandleTextAppearSound() {
 	if (string_pos("oh putaing kong", lower_text) != 0) {
 		textToShow = string_upper(textToShow);
 		putaing_kong = true;
+		sound_inst = audio_play_sound(snd_monkey, 10, false);
+		return;
 	}
 	
 	if (string_pos("one piece le 28 octobre", lower_text) != 0) {

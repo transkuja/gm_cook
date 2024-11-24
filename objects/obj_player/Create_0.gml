@@ -15,7 +15,7 @@ playerSpr[PLAYER_STATE.WALKING] = spr_chr_monkey_walk;
 
 // Scale
 default_xscale = image_xscale;
-scale_flip = 1;
+scale_flip = -1;
 current_scale = 1;
 
 // Item detection
@@ -42,6 +42,8 @@ min_x_depth_sorting = 340;
 max_x_depth_sorting = 910;
 min_y_depth_sorting = 580;
 max_y_depth_sorting = 670;
+
+image_xscale = default_xscale * current_scale * scale_flip;
 
 function ComputeVelocity() {
 	velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 

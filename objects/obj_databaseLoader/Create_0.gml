@@ -1,14 +1,36 @@
 filepath = "Datas/";
 assemble_combos = [];
+marmite_combos = [];
+mixer_combos = [];
+stir_combos = [];
+pan_combos = [];
+
 recipes_data = [];
 dialogues = ds_map_create();
 localized_texts = ds_map_create();
 quests = ds_map_create();
 dialogues_requirements = ds_map_create();
 
+use_txt_not_ini = true;
+
+function LoadCombosFromFile(_filename) {
+	if (!use_txt_not_ini)
+	{
+		zip_unzip(filepath + _filename + ".ini", working_directory + "extracted/");
+		return load_database(working_directory + "extracted/" + _filename + ".txt");
+	}
+	else
+	{
+		return load_database(filepath + _filename + ".txt");
+	}
+}
+
 function LoadAssembleCombos() {
-	zip_unzip(filepath + "assemble_combos.ini", working_directory + "extracted/");
-	assemble_combos = load_database(working_directory + "extracted/" + "assemble_combos.txt");
+	assemble_combos = LoadCombosFromFile("assemble_combos");
+	marmite_combos = LoadCombosFromFile("marmite_combos");
+	mixer_combos = LoadCombosFromFile("mixer_combos");
+	stir_combos = LoadCombosFromFile("stir_combos");
+	pan_combos = LoadCombosFromFile("pan_combos");
 }
 
 function LoadRecipes() {
