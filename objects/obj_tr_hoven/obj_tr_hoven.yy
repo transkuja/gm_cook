@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_hoven_ph",
+    "path":"sprites/spr_hoven_ph/spr_hoven_ph.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

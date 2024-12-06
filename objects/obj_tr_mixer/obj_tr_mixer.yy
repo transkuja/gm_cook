@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_mixer_ph",
+    "path":"sprites/spr_mixer_ph/spr_mixer_ph.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

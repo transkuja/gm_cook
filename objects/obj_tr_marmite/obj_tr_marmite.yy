@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_marmite_ph",
+    "path":"sprites/spr_marmite_ph/spr_marmite_ph.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

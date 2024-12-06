@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Mixing_bowl_Whisk_112x108px",
-    "path":"sprites/Mixing_bowl_Whisk_112x108px/Mixing_bowl_Whisk_112x108px.yy",
+    "name":"Mixing_bowl_112x108px",
+    "path":"sprites/Mixing_bowl_112x108px/Mixing_bowl_112x108px.yy",
   },
   "spriteMaskId":null,
   "visible":true,
