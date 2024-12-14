@@ -68,7 +68,9 @@ function CheckIsNewRecipe(_item_id) {
 	if (state != TRANSFORMER_STATE.RESULT)
 		return false;
 	
-	if (GetItemType(_item_id) == ITEM_TYPE.RECIPE_FINAL) {
+	if (_contains(ITEM_TYPE.RECIPE_FINAL, GetItemTags(_item_id)) 
+		|| _contains(ITEM_TYPE.SUB_RECIPE, GetItemTags(_item_id))) 
+	{
 		save_check = save_data_get(_item_id + "_unlocked");
 		return save_check == undefined || !save_check;
 	}

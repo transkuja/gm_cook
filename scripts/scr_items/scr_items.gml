@@ -109,42 +109,105 @@ function GetFryingInputCount(_item_id) {
 	}
 }
 
-function GetItemType(_item_id) {
+function GetItemTags(_item_id) {
 		switch (_item_id) {
-		case "banana":
-			return ITEM_TYPE.RAW_COMPO;
+		// Up to proto
+				case "banana":
+			return [ITEM_TYPE.RAW_COMPO];
 		case "chopped_banana":
-			return ITEM_TYPE.TRANSFORMED_COMPO;
+			return [ITEM_TYPE.TRANSFORMED_COMPO];
 		case "apple":
-			return ITEM_TYPE.RAW_COMPO;
+			return [ITEM_TYPE.RAW_COMPO];
 		case "chopped_apple":
-			return ITEM_TYPE.TRANSFORMED_COMPO;
+			return [ITEM_TYPE.TRANSFORMED_COMPO];
 		case "fruit_salad":
-			return ITEM_TYPE.RECIPE_FINAL;
+			return [ITEM_TYPE.RECIPE_FINAL];
 		case "protaupe_fruit_a":
-			return ITEM_TYPE.RAW_COMPO;
+			return [ITEM_TYPE.RAW_COMPO];
 		case "protaupe_fruit_b":
-			return ITEM_TYPE.RAW_COMPO;
+			return [ITEM_TYPE.RAW_COMPO];
 		case "protaupe_chopped_fruit_a":
-			return ITEM_TYPE.HEATABLE_PAN;
+			return [ITEM_TYPE.HEATABLE_PAN];
 		case "protaupe_chopped_fruit_b":
-			return ITEM_TYPE.HEATABLE_PAN;
+			return [ITEM_TYPE.HEATABLE_PAN];
 		case "protaupe_egg":
-			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+			return [ITEM_TYPE.NON_TRANSFORMABLE_COMPO];
 		case "protaupe_flour":
-			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+			return [ITEM_TYPE.NON_TRANSFORMABLE_COMPO];
 		case "protaupe_crepe_batter":
-			return ITEM_TYPE.HEATABLE_PAN;
+			return [ITEM_TYPE.HEATABLE_PAN];
 		case "protaupe_crepe":
-			return ITEM_TYPE.RECIPE_FINAL;
+			return [ITEM_TYPE.RECIPE_FINAL];
 		case "protaupe_ratatouille":
-			return ITEM_TYPE.RECIPE_FINAL;
+			return [ITEM_TYPE.RECIPE_FINAL];
 		case "protaupe_chopped_fruit_a_cooked":
-			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+			return [ITEM_TYPE.NON_TRANSFORMABLE_COMPO];
 		case "protaupe_chopped_fruit_b_cooked":
-			return ITEM_TYPE.NON_TRANSFORMABLE_COMPO;
+			return [ITEM_TYPE.NON_TRANSFORMABLE_COMPO];
+			
+		// New ones
+		case "it_assembled_tart":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_c_fruit_1":
+			return [ITEM_TYPE.TRANSFORMED_COMPO];
+		case "it_c_vege_1":
+			return [ITEM_TYPE.TRANSFORMED_COMPO];
+		case "it_c_vege_2":
+			return [ITEM_TYPE.TRANSFORMED_COMPO];
+		case "it_cake":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_clafoutis":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_crepe":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_crepe_fruits":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_crepe_veggies":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_dough":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_egg":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_flour":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_fruit_1":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_fruit_salad":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_fruits_cake":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_milk":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_milk_egg_flour_combo":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_oeufs_plat":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_pizza":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_poelee_legumes":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_prep_cake":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_prep_clafoutis":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_prep_fruit_cake":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_prep_pizza":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_salad":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_sauce":
+			return [ITEM_TYPE.SUB_RECIPE];
+		case "it_tart":
+			return [ITEM_TYPE.RECIPE_FINAL];
+		case "it_vege_1":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_vege_2":
+			return [ITEM_TYPE.RAW_COMPO];
+		case "it_water":
+			return [ITEM_TYPE.RAW_COMPO];
 		default:
-			return ITEM_TYPE.NONE;
+			return [ITEM_TYPE.NONE];
 	}
 }
 

@@ -6,7 +6,7 @@ drawn_item_animated_yscale = 0
 preparation_type = PREPARATION_TYPE.CHOP;
 
 function IsItemValid(_itemId) {
-	return GetItemType(_itemId) == ITEM_TYPE.RAW_COMPO;
+	return _contains(ITEM_TYPE.RAW_COMPO, GetItemTags(_itemId));
 }
 
 function IsTransformable() {
