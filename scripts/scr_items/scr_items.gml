@@ -36,7 +36,7 @@ function GetItemSprite(_item_id) {
 		case "protaupe_ratatouille":
 			return spr_ph_ratatouille;
 		default:
-			return noone;
+			return asset_get_index("spr_" + _item_id);
 	}
 }
 
@@ -92,7 +92,7 @@ function GetChopMashCount(_item_id) {
 		case "protaupe_fruit_b":
 			return 8;
 		default:
-			return -1;
+			return 1;
 	}
 }
 
@@ -105,7 +105,7 @@ function GetFryingInputCount(_item_id) {
 		case "protaupe_crepe_batter":
 			return 8;
 		default:
-			return -1;
+			return 1;
 	}
 }
 

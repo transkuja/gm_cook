@@ -1,0 +1,5 @@
+﻿{"ids":["it_prep_cake"],"result_id":"it_cake"}
+{"ids":["it_prep_fruit_cake"],"result_id":"it_fruits_cake"}
+{"ids":["it_prep_pizza"],"result_id":"it_pizza"}
+{"ids":["it_prep_clafoutis"],"result_id":"it_clafoutis"}
+{"ids":["it_assembled_tart"],"result_id":"it_tart"}

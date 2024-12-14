@@ -2,6 +2,9 @@ event_inherited();
 
 anim_result_speed = 0.02;
 anim_qte_validated_speed = 0.04;
+
+preparation_type = PREPARATION_TYPE.PAN_COOK;
+
 function IsItemValid(_itemId) {
 	return GetItemType(_itemId) == ITEM_TYPE.HEATABLE_PAN;
 }

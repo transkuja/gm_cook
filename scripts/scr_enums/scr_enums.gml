@@ -26,6 +26,8 @@ enum PREPARATION_TYPE {
 	PAN_COOK,
 	HOVEN_COOK,
 	ASSEMBLE,
+	MIX,
+	STIR,
 	PEEL // or mix idk yet
 }
 

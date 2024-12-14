@@ -10,6 +10,7 @@ dialogues = ds_map_create();
 localized_texts = ds_map_create();
 quests = ds_map_create();
 dialogues_requirements = ds_map_create();
+hoven_combos = ds_map_create();
 
 use_txt_not_ini = true;
 
@@ -31,6 +32,7 @@ function LoadAssembleCombos() {
 	mixer_combos = LoadCombosFromFile("mixer_combos");
 	stir_combos = LoadCombosFromFile("stir_combos");
 	pan_combos = LoadCombosFromFile("pan_combos");
+	hoven_combos = LoadCombosFromFile("hoven_combos");
 }
 
 function LoadRecipes() {
@@ -92,6 +94,29 @@ function LoadLocTexts(_loc) {
 
 function LoadQuests() {
 	quests = load_database_to_map(filepath + "quests.txt", "quest_id");
+}
+
+function GetDatabaseFromPreparationType(_preparation_type)
+{
+	switch (_preparation_type)
+	{
+		//case PREPARATION_TYPE.CHOP:
+		//	return chop;
+		case PREPARATION_TYPE.PAN_COOK:
+			return pan_combos;
+		case PREPARATION_TYPE.HOVEN_COOK:
+			return hoven_combos;
+		case PREPARATION_TYPE.STIR:
+			return stir_combos;
+		case PREPARATION_TYPE.MIX:
+			return mixer_combos;
+		case PREPARATION_TYPE.ASSEMBLE:
+			return assemble_combos;
+		default:
+			return pointer_null;
+	}
+	
+	return pointer_null;
 }
 
 // PROTAUPE EXCLUSIVE

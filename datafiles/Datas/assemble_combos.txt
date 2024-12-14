@@ -1,4 +1,2 @@
-{"ids":["chopped_banana","chopped_apple"], "result_id":"fruit_salad"}
-{"ids":["protaupe_chopped_fruit_a","protaupe_chopped_fruit_b"], "result_id":"fruit_salad"}
-{"ids":["protaupe_egg","protaupe_flour"], "result_id":"protaupe_crepe_batter"}
-{"ids":["protaupe_chopped_fruit_a_cooked","protaupe_chopped_fruit_b_cooked"], "result_id":"protaupe_ratatouille"}
+﻿{"ids":["it_c_vege_1","it_sauce","it_dough"],"result_id":"it_prep_pizza"}
+{"ids":["it_dough","it_c_fruit_1"],"result_id":"it_assembled_tart"}

@@ -7,6 +7,8 @@ anim_speed = 0.1;
 anim_result_speed = 0.02;
 anim_speed_conditions_not_met = 0.02;
 
+preparation_type = PREPARATION_TYPE.ASSEMBLE;
+
 function IsItemValid(_itemId) {
 	return GetItemType(_itemId) != ITEM_TYPE.RECIPE_FINAL;
 }
@@ -18,17 +20,7 @@ function IsTransformable() {
 			return false;
 		}
 		
-		expected_result = "none";
-		
-		for (var _index = 0; _index < array_length(inst_databaseLoader.assemble_combos); _index++) {
-			var tmp = new AssembleCombo(inst_databaseLoader.assemble_combos[_index].ids, inst_databaseLoader.assemble_combos[_index].result_id );
-			var result = tmp.IsCombo(items_in_ids);
-			
-			if (result != "none") {
-				expected_result = result;
-				break;
-			}
-		}
+		expected_result = GetResultFromCombo();
 		
 		if (expected_result == "none")
 			return false;

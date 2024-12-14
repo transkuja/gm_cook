@@ -98,6 +98,8 @@
     {"$GMIncludedFile":"","%Name":"backup_assemble_combos.zip","CopyToMask":-1,"filePath":"datafiles/Datas","name":"backup_assemble_combos.zip","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"dialogues.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"dialogues.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"dialoguesRequirements.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"dialoguesRequirements.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"hoven_combos.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"hoven_combos.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"items_data.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"items_data.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"marmite_combos.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"marmite_combos.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"mixer_combos.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"mixer_combos.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"pan_combos.txt","CopyToMask":-1,"filePath":"datafiles/Datas","name":"pan_combos.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

@@ -18,6 +18,8 @@ bg_color_lerp = 1;
 initial_scale_x = image_xscale;
 initial_scale_y = image_yscale;
 
+preparation_type = PREPARATION_TYPE.ASSEMBLE;
+
 // On A pressed
 function PutItemIn(_item_id) {
 	if (IsFilled()) {
@@ -274,7 +276,25 @@ function InteractionBlockedFeedback() {
 	
 }
 
-
+function GetResultFromCombo() {
+	expected_result = "none";
+	
+	db = GetDatabaseFromPreparationType(preparation_type);
+	if (db == pointer_null)
+		return "none";
+		
+	for (var _index = 0; _index < array_length(db); _index++) {
+		var tmp = new AssembleCombo(db.ids, db.result_id );
+		var result = tmp.IsCombo(items_in_ids);
+			
+		if (result != "none") {
+			expected_result = result;
+			break;
+		}
+	}
+	
+	return expected_result;
+}
 
 // Start code execution
 current_state = new TransformerEmptyState(id, {});
