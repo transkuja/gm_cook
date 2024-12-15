@@ -6,7 +6,8 @@ anim_qte_validated_speed = 0.04;
 preparation_type = PREPARATION_TYPE.PAN_COOK;
 
 function IsItemValid(_itemId) {
-	return _contains(ITEM_TYPE.HEATABLE_PAN, GetItemTags(_itemId));
+	tags = GetItemTags(_itemId);
+	return _contains(tags, ITEM_TYPE.HEATABLE_PAN);
 	//return GetItemType(_itemId) == ITEM_TYPE.HEATABLE_PAN;
 }
 

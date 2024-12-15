@@ -110,9 +110,9 @@ function GetFryingInputCount(_item_id) {
 }
 
 function GetItemTags(_item_id) {
-		switch (_item_id) {
+	switch (_item_id) {
 		// Up to proto
-				case "banana":
+		case "banana":
 			return [ITEM_TYPE.RAW_COMPO];
 		case "chopped_banana":
 			return [ITEM_TYPE.TRANSFORMED_COMPO];

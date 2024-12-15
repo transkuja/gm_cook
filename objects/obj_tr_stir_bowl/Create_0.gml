@@ -10,7 +10,7 @@ anim_speed_conditions_not_met = 0.02;
 preparation_type = PREPARATION_TYPE.STIR;
 
 function IsItemValid(_itemId) {
-	return !_contains(ITEM_TYPE.RECIPE_FINAL, GetItemTags(_itemId));
+	return !_contains(GetItemTags(_itemId), ITEM_TYPE.RECIPE_FINAL);
 	//return GetItemType(_itemId) != ITEM_TYPE.RECIPE_FINAL;
 }
 
