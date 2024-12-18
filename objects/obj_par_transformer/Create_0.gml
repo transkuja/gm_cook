@@ -103,8 +103,47 @@ function TakeFrom(_interactInstigator) {
 	return true;
 }
 
+function GetResultFromCombo() {
+	var _expected_result = "none";
+	
+	if (!instance_exists(inst_databaseLoader)) {
+		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
+		return "none";
+	}
+	
+	var _db = inst_databaseLoader.GetDatabaseFromPreparationType(preparation_type);
+	if (array_length(_db) == 0)
+		return "none";
+		
+	for (var _index = 0; _index < array_length(_db); _index++) {
+		var _tmp = new AssembleCombo(_db[_index].ids, _db[_index].result_id );
+		var _result = _tmp.IsCombo(items_in_ids);
+			
+		if (_result != "none") {
+			_expected_result = _result;
+			break;
+		}
+	}
+	
+	return _expected_result;
+}
+
 function IsTransformable() {
-	return true;
+	if (array_length(items_in_ids) == 0)
+		return false;
+		
+	if (!instance_exists(inst_databaseLoader)) {
+		_log("ERROR! Obj database loader does not exist !");
+		return false;
+	}
+		
+	expected_result = GetResultFromCombo();
+		
+	if (expected_result == "none")
+		return false;
+	else
+		return true;
+			
 }
 
 // On A pressed
@@ -277,26 +316,6 @@ function StopInteractionBlockedFeedback() {
 
 function InteractionBlockedFeedback() {
 	
-}
-
-function GetResultFromCombo() {
-	expected_result = "none";
-	
-	db = GetDatabaseFromPreparationType(preparation_type);
-	if (db == pointer_null)
-		return "none";
-		
-	for (var _index = 0; _index < array_length(db); _index++) {
-		var tmp = new AssembleCombo(db.ids, db.result_id );
-		var result = tmp.IsCombo(items_in_ids);
-			
-		if (result != "none") {
-			expected_result = result;
-			break;
-		}
-	}
-	
-	return expected_result;
 }
 
 // Start code execution

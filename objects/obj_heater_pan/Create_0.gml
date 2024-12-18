@@ -11,13 +11,6 @@ function IsItemValid(_itemId) {
 	//return GetItemType(_itemId) == ITEM_TYPE.HEATABLE_PAN;
 }
 
-function IsTransformable() {
-	if (IsFilled())
-		return GetHeatablePanResult(items_in_ids[0]) != "none";
-		
-	return false;
-}
-
 function StopAnimQteValidated() {
 	if (anim_item_qte_validated != noone)
 		instance_destroy(anim_item_qte_validated);

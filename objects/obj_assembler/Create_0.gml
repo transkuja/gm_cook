@@ -14,24 +14,6 @@ function IsItemValid(_itemId) {
 	//return GetItemType(_itemId) != ITEM_TYPE.RECIPE_FINAL;
 }
 
-function IsTransformable() {
-	if (IsFilled())	{
-		if (!instance_exists(inst_databaseLoader)) {
-			_log("ERROR! Obj database loader does not exist !");
-			return false;
-		}
-		
-		expected_result = GetResultFromCombo();
-		
-		if (expected_result == "none")
-			return false;
-		else
-			return true;
-	}	
-	
-	return false;
-}
-
 function OnTransformationFinished() {
 	items_in_ids = array_create(1, expected_result);
 	

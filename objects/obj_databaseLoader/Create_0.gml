@@ -4,14 +4,14 @@ marmite_combos = [];
 mixer_combos = [];
 stir_combos = [];
 pan_combos = [];
+hoven_combos = [];
 
 recipes_data = [];
 dialogues = ds_map_create();
 localized_texts = ds_map_create();
 quests = ds_map_create();
 dialogues_requirements = ds_map_create();
-hoven_combos = ds_map_create();
-
+	
 use_txt_not_ini = true;
 
 function LoadCombosFromFile(_filename) {
@@ -113,10 +113,8 @@ function GetDatabaseFromPreparationType(_preparation_type)
 		case PREPARATION_TYPE.ASSEMBLE:
 			return assemble_combos;
 		default:
-			return pointer_null;
+			return [];
 	}
-	
-	return pointer_null;
 }
 
 // PROTAUPE EXCLUSIVE
