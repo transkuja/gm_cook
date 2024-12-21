@@ -6,12 +6,15 @@ for ( var i=0; i<4; i++ ){
 	gamepad_set_button_threshold(i, 0.5);
 }
 
+// face1 -> A, face2 -> B, face3 -> X, face4 -> Y
+
 // Define your inputs:
 input_add("ui_left", ord("A"), gp_axisL_left);
 input_add("ui_right", ord("D"), gp_axisL_right);
 input_add("ui_up", ord("W"), gp_axisL_up);
 input_add("ui_down", ord("S"), gp_axisL_down);
 input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);
+input_add("ui_cancel", vk_escape, gp_face2);
 
 input_add("move_left", ord("Q"), gp_axisL_left, [vk_left]);
 input_add("move_right", ord("D"), gp_axisL_right, [vk_right]);

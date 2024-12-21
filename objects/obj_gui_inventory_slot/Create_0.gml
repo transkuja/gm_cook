@@ -94,7 +94,7 @@ clicked = false;
 
 on_clicked_event = noone;
 on_clicked = function() {
-	if (global.player_control == false) return;
+	if (global.player_control < 0) return;
 	audio_play_sound(Minimalist1, 10, false);
 
 	if (is_selected) {

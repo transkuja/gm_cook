@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gui_par_popup",
+  "%Name":"obj_gui_fridge_inventory",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_gui_par_popup",
+  "name":"obj_gui_fridge_inventory",
   "overriddenProperties":[],
   "parent":{
-    "name":"Popups",
-    "path":"folders/Objects/UI/Popups.yy",
+    "name":"UI",
+    "path":"folders/Objects/UI.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,7 +32,7 @@
   "properties":[
     {"$GMObjectProperty":"","%Name":"snd_on_popup_open","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_open","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"goodresult_sound","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_open","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
     {"$GMObjectProperty":"","%Name":"snd_on_popup_close","filters":[
         "GMSound",
       ],"listItems":[],"multiselect":false,"name":"snd_on_popup_close","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
@@ -40,10 +40,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_gui_textbox",
-    "path":"sprites/spr_gui_textbox/spr_gui_textbox.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

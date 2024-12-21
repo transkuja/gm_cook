@@ -22,7 +22,7 @@ function PlayerIdleState(_player, _args = {}): PlayerState(_player, _args) const
 		player.CheckInputsInventory();
 		player.UpdateItemInHands();
 		
-		if (!player.IsStopped() && global.player_control == true)
+		if (!player.IsStopped() && global.player_control == 0)
 			transition_to(new PlayerWalkState(player));
 		
 		if (player.IsCooking())

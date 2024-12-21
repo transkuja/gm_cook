@@ -5,7 +5,7 @@ textWidth = 850;
 lineHeight = 40;
 
 // Stop player on open
-global.player_control = false;
+global.player_control--;
 
 // Init fade values
 event_perform_object(obj_fading, ev_create, 0);
