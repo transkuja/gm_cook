@@ -7,10 +7,12 @@ item_box = [];
 slots_instances = array_create(slot_count);
 slots_step = 50;
 slot_width = 128;
+slot_height = 128;
 selected_slot = 0;
 
 display_lines = 1;
 
+draw_origin = [view_wport[0] * 0.5, view_hport[0] - 200];
 
 function BindEventsToInventory() {
 	var _broadcast_add = Broadcast(function() {
@@ -65,28 +67,38 @@ function SetSelectedSlot(_newValue) {
 		
 	for (var i = 0; i < array_length(slots_instances); i++) {
 		if (instance_exists(slots_instances[i])) {
-			slots_instances[i].SetSelected(i == selected_slot);
+			slots_instances[i].SetSelected(slots_instances[i].slot_index == selected_slot);
 		}
 	}
 }
 
-function DrawSlots() {
+function CreateGUISlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
 	
 	//instance_create_layer(view_wport[0] * 0.5, view_hport[0] - 200, "GUI", obj_debug_square);
 
-	var _draw_xs = GetPositionsOnLineCenter(slot_width, slots_step, slot_count, view_wport[0] * 0.5, SPRITE_ORIGIN.MIDDLE_CENTER); 
+	var _nb_columns = ceil(slot_count / display_lines);
+	var _remaining_draw = slot_count;
 	
-	// Draw slots
-	for (var i = 0; i < slot_count; i += 1)
+	for (var _line_index = 0; _line_index < display_lines; _line_index++)
 	{
-		slots_instances[i] = instance_create_layer(_draw_xs[i], view_hport[0] - 200, "GUI", obj_gui_inventory_slot);
-		slots_instances[i].slot_index = i;
-		if (i == 0) {
-			slots_instances[0].SetSelected(true);
+		var _draw_xs = GetPositionsOnLineCenter(slot_width, slots_step, _nb_columns, draw_origin[0], SPRITE_ORIGIN.MIDDLE_CENTER); 
+		var _to_draw_count = min(_nb_columns, _remaining_draw);
+		
+		// Draw slots
+		for (var i = 0; i < _to_draw_count; i += 1)
+		{
+			var _slot_index = i + (_line_index * _nb_columns);
+
+			slots_instances[_slot_index] = instance_create_layer(_draw_xs[i], draw_origin[1] + (slots_step + slot_height) * _line_index, "GUI", obj_gui_inventory_slot);
+			slots_instances[_slot_index].slot_index = _slot_index;
 		}
+		
+		_remaining_draw -= _nb_columns;
 	}
+	
+	slots_instances[0].SetSelected(true);
 }
 
 
@@ -119,4 +131,4 @@ function HasItem(_item_id) {
 }
 
 // Create process
-DrawSlots();
+CreateGUISlots();
