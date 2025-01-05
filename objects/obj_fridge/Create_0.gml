@@ -17,6 +17,9 @@ self_hud = noone;
 	
 //}
 
+//inventory = new Inventory(24);
+//inventory.AddItemIfPossible("protaupe_egg", 10);
+//inventory.AddItemIfPossible("protaupe_flour", 5);
 
 function Interact(_interactInstigator) constructor {
 	if (instance_exists(self_hud))
@@ -24,7 +27,7 @@ function Interact(_interactInstigator) constructor {
 		
 	self_hud = instance_create_layer(view_wport[0] * 0.5, view_hport[0] * 0.5, "GUI", obj_gui_fridge_inventory);
 	if (instance_exists(self_hud))
-		self_hud.Initialize([]);
+		self_hud.Initialize();
 }
 
 // OLD CODE
