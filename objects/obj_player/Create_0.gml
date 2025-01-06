@@ -90,7 +90,7 @@ function ClearItemInHands(_target, _event) {
 }
 
 function ComputeVelocityFromInputs() {
-	if (global.player_control == 0)
+	if (global.player_control == 0 && !global.inventory_mode)
 	{
 		var _dt = delta_time * 0.000001;
 	

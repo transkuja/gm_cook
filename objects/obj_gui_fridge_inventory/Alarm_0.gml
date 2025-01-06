@@ -1,7 +1,6 @@
 /// @description Destroy
 
-// Destroy textbox
-global.player_control++;
+global.inventory_mode = false;
 
 if (on_menu_close != noone) 
 	on_menu_close.dispatch();

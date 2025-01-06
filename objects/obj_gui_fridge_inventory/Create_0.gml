@@ -2,7 +2,7 @@ text_width = 850;
 line_height = 40;
 
 // Stop player on open
-global.player_control--;
+global.inventory_mode = true;
 
 // Init fade values
 event_perform_object(obj_fading, ev_create, 0);
@@ -10,8 +10,7 @@ fadeMe = 1; // don't fade immediately
 
 on_menu_close = noone;
 
-depth = -11000;
-image_xscale = 1.5;
+depth = -9999;
 
 can_close = false;
 
@@ -25,23 +24,38 @@ selected_slot = 0;
 
 display_lines = 4;
 
-draw_origin = [view_wport[0] * 0.5, view_hport[0] * 0.5 - (slot_height + slots_step) * display_lines * 0.5];
-x = draw_origin[0];
-y = draw_origin[1];
+bg_width = 100 + ((slot_count / display_lines) * (slots_step + slot_width));
+bg_height = 100 + (display_lines * (slots_step + slot_height));
+
+draw_origin = [view_wport[0] * 0.5, view_hport[0] * 0.5 - (slot_height + slots_step) * display_lines * 0.5 - 50];
+x = draw_origin[0] - bg_width * 0.5;
+y = (view_hport[0] - bg_height) * 0.5 - 75;
 
 inventory = new Inventory(slot_count);
 inventory.AddItemIfPossible("protaupe_egg", 10);
 inventory.AddItemIfPossible("protaupe_flour", 5);
+
+function SetSize() {
+	image_xscale = bg_width / sprite_width;
+	image_yscale = bg_height / sprite_height;
+}
 
 function Initialize() {
 	//if (_item_id == undefined || _item_id == "" || _item_id == noone) {
 	//	instance_destroy();
 	//	return;
 	//}
-	
+
+	SetSize();
+
 	image_alpha = 1;
 	
 	audio_play_sound(snd_on_popup_open, 10, false);
+	
+	// Create slots and draw items
+	CreateGUISlots();
+	DrawItems();
+
 	alarm[1] = 30; // enable closing
 }
 
@@ -177,6 +191,3 @@ function UseSelectedItem() {
 function HasItem(_item_id) {
 	return inventory.HasItem(_item_id);
 }
-
-// Create process
-CreateGUISlots();
