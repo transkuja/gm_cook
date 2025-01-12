@@ -32,7 +32,7 @@ x = draw_origin[0] - bg_width * 0.5;
 y = (view_hport[0] - bg_height) * 0.5 - 75;
 
 inventory = new Inventory(slot_count);
-inventory.AddItemIfPossible("protaupe_egg", 10);
+inventory.AddItemIfPossible("protaupe_egg", 1);
 inventory.AddItemIfPossible("protaupe_flour", 5);
 
 function SetSize() {
@@ -134,6 +134,21 @@ function SetSelectedSlot(_newValue) {
 	}
 }
 
+function OnSlotClicked(_slot_index) {
+	if (selected_slot != _slot_index)
+		SetSelectedSlot(_slot_index);
+	else 
+	{
+		if (IsSelectedItemValid())
+		{
+			if (instance_exists(inst_inventory)) {
+				if (inst_inventory.AddItemIfPossible(GetSelectedItemId(), 1))
+					UseSelectedItem();
+			}
+		}
+	}
+}
+
 function CreateGUISlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -153,8 +168,15 @@ function CreateGUISlots() {
 		{
 			var _slot_index = i + (_line_index * _nb_columns);
 
-			slots_instances[_slot_index] = instance_create_layer(_draw_xs[i], draw_origin[1] + (slots_step + slot_height) * _line_index, "GUI", obj_gui_inventory_slot);
+			slots_instances[_slot_index] = instance_create_layer(_draw_xs[i], draw_origin[1] + (slots_step + slot_height) * _line_index, "GUI", obj_gui_fridge_slot);
 			slots_instances[_slot_index].slot_index = _slot_index;
+			slots_instances[_slot_index].on_click_param = _slot_index;
+			
+			var _broadcast = Broadcast(function(_slot_index) {
+				OnSlotClicked(_slot_index);
+			} );
+			
+			slots_instances[_slot_index].on_clicked_event = _broadcast;
 		}
 		
 		_remaining_draw -= _nb_columns;

@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gui_inventory_slot",
-  "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_gui_fridge_slot",
+  "eventList":[],
   "managed":true,
-  "name":"obj_gui_inventory_slot",
+  "name":"obj_gui_fridge_slot",
   "overriddenProperties":[],
   "parent":{
     "name":"UI",
