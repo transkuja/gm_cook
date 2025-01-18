@@ -1,4 +1,4 @@
-if (global.player_control < 0) return;
+if (global.player_control < 0 || global.inventory_mode) return;
 
 if (input_get_pressed(0, "prev_tab")) {
 	var _newValue = selected_slot - 1; 

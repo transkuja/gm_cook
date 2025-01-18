@@ -26,6 +26,13 @@ function BindEventsToInventory() {
 	} );
 			
 	inventory.on_item_removed = _broadcast_remove;
+	
+	// Clear selection
+	var _broadcast = Broadcast(function() {
+		SetSelectedSlot(-1);
+	} );
+			
+	global.ui_on_fridge_slot_selected = _broadcast;
 }
 
 BindEventsToInventory();
@@ -70,6 +77,9 @@ function SetSelectedSlot(_newValue) {
 			slots_instances[i].SetSelected(slots_instances[i].slot_index == selected_slot);
 		}
 	}
+	
+	if (selected_slot >= 0 && global.ui_on_inventory_slot_selected != noone)
+		global.ui_on_inventory_slot_selected.dispatch();
 }
 
 function CreateGUISlots() {
@@ -114,7 +124,8 @@ function GetSelectedItemId() {
 }
 
 function IsSelectedItemValid() {
-	return slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
+	return selected_slot >= 0 
+		&& slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
 		&& GetSelectedItemId() != "none";
 }
 

@@ -230,7 +230,7 @@ function SetItemInHands(_item_inst) {
 
 // TODO: externalize in InputManager
 function InteractInputCheck() {
-	if (global.player_control < 0 || global.interact_blocked)	{ return; }
+	if (global.player_control < 0 || global.interact_blocked || global.inventory_mode)	{ return; }
 
 	// Press X / Space button
 	if (instance_exists(last_interactible_detected)) {
@@ -282,7 +282,7 @@ function GetItemFromInventoryToHands() {
 }
 
 function CheckInputsInventory() {
-	if (global.player_control < 0)	{ return; }
+	if (global.player_control < 0 || global.inventory_mode)	{ return; }
 	
 	if (input_get_pressed(0, "take_out")) {
 		if (!instance_exists(item_in_hands)) {
