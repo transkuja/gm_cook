@@ -63,6 +63,19 @@ function Initialize() {
 	
 	global.ui_on_inventory_slot_selected = _broadcast;
 	
+	// Bind event on interact with player inventory
+	var _broadcast_item_removed = function(item_data) {
+		return AddItemIfPossible(item_data.item_id, 1);
+	};
+	
+	global.ui_on_inventory_item_used = _broadcast_item_removed;
+	
+	//// Bind event on interact with player inventory
+	//var _broadcast_condition = Broadcast(function(item_data) {
+	//	AddItemIfPossible(item_data.item_id, item_data.qty);
+	//} );
+	//global.ui_is_transfer_from_inventory_possible = _broadcast_condition;
+	
 	SetSelectedSlot(0);
 	
 	alarm[1] = 30; // enable closing

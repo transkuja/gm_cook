@@ -8,12 +8,17 @@ on_clicked = function() {
 	if (global.player_control < 0) return;
 	audio_play_sound(Minimalist1, 10, false);
 
+	_remove_item = false;
+	
 	if (is_selected) {
 		// Checks if another menu is opened
 		if (global.inventory_mode)
 		{
 			if (global.ui_on_inventory_item_used != noone)
-				global.ui_on_inventory_item_used.dispatch(item_data);
+			{
+				if (global.ui_on_inventory_item_used(item_data))
+					_remove_item = true;
+			}
 		}
 		else
 		{
@@ -25,5 +30,7 @@ on_clicked = function() {
 	
 	if (instance_exists(inst_inventory)) {
 		inst_inventory.SetSelectedSlot(slot_index);
+		if (_remove_item)
+			inst_inventory.UseSelectedItem();
 	}
 }
