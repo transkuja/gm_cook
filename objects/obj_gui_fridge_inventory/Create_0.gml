@@ -65,7 +65,7 @@ function Initialize() {
 	
 	// Bind event on interact with player inventory
 	var _broadcast_item_removed = function(item_data) {
-		return AddItemIfPossible(item_data.item_id, 1);
+		return AddItemIfPossible(item_data.item_id, item_data.qty);
 	};
 	
 	global.ui_on_inventory_item_used = _broadcast_item_removed;
@@ -166,9 +166,17 @@ function OnSlotClicked(_slot_index) {
 	{
 		if (IsSelectedItemValid())
 		{
+			_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
+			_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
+
 			if (instance_exists(inst_inventory)) {
-				if (inst_inventory.AddItemIfPossible(GetSelectedItemId(), 1))
-					UseSelectedItem();
+				if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+				{
+					if (_ctrl_input)
+						UseAllItemsSelected();
+					else
+						UseSelectedItem();
+				}
 			}
 		}
 	}
@@ -222,6 +230,16 @@ function GetSelectedItemId() {
 	return _currentSlotId;
 }
 
+function GetSelectedItemQty() {
+	var _currentSlotQty = 
+		variable_struct_get_or_else(slots_instances[selected_slot].item_data, "qty", "none");
+	//with (slots_instances[selected_slot]) {	
+		//_currentSlotId = item_data.item_id;
+	//}
+	
+	return _currentSlotQty;
+}
+
 function IsSelectedItemValid() {
 	return selected_slot >= 0
 		&& slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
@@ -233,6 +251,13 @@ function UseSelectedItem() {
 	var _currentSlotId = GetSelectedItemId();
 	
 	inventory.RemoveItem(_currentSlotId, 1);
+	return _currentSlotId;
+}
+
+function UseAllItemsSelected() {
+	var _currentSlotId = GetSelectedItemId();
+	
+	inventory.RemoveItem(_currentSlotId, GetSelectedItemQty());
 	return _currentSlotId;
 }
 

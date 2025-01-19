@@ -82,6 +82,39 @@ function SetSelectedSlot(_newValue) {
 		global.ui_on_inventory_slot_selected.dispatch();
 }
 
+function OnSlotClicked(_slot_index) {
+	if (selected_slot != _slot_index)
+		SetSelectedSlot(_slot_index);
+	else 
+	{
+		if (!IsSelectedItemValid())
+			return;
+			
+		// Checks if another menu is opened
+		if (global.inventory_mode)
+		{
+			if (global.ui_on_inventory_item_used != noone)
+			{
+				_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
+				_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
+				if (global.ui_on_inventory_item_used(_item_data_to_use))
+				{
+					if (_ctrl_input)
+						UseAllItemsSelected();
+					else
+						UseSelectedItem();
+				}
+			}
+		}
+		else
+		{
+			if (instance_exists(inst_player)) {
+				inst_player.GetItemFromInventoryToHands();
+			}
+		}
+	}
+}
+
 function CreateGUISlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -103,6 +136,13 @@ function CreateGUISlots() {
 
 			slots_instances[_slot_index] = instance_create_layer(_draw_xs[i], draw_origin[1] + (slots_step + slot_height) * _line_index, "GUI", obj_gui_inventory_slot);
 			slots_instances[_slot_index].slot_index = _slot_index;
+			slots_instances[_slot_index].on_click_param = _slot_index;
+			
+			var _broadcast = Broadcast(function(_slot_index) {
+				OnSlotClicked(_slot_index);
+			} );
+			
+			slots_instances[_slot_index].on_clicked_event = _broadcast;
 		}
 		
 		_remaining_draw -= _nb_columns;
@@ -123,6 +163,16 @@ function GetSelectedItemId() {
 	return _currentSlotId;
 }
 
+function GetSelectedItemQty() {
+	var _currentSlotQty = 
+		variable_struct_get_or_else(slots_instances[selected_slot].item_data, "qty", "none");
+	//with (slots_instances[selected_slot]) {	
+		//_currentSlotId = item_data.item_id;
+	//}
+	
+	return _currentSlotQty;
+}
+
 function IsSelectedItemValid() {
 	return selected_slot >= 0 
 		&& slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
@@ -134,6 +184,13 @@ function UseSelectedItem() {
 	var _currentSlotId = GetSelectedItemId();
 	
 	inventory.RemoveItem(_currentSlotId, 1);
+	return _currentSlotId;
+}
+
+function UseAllItemsSelected() {
+	var _currentSlotId = GetSelectedItemId();
+	
+	inventory.RemoveItem(_currentSlotId, GetSelectedItemQty());
 	return _currentSlotId;
 }
 
