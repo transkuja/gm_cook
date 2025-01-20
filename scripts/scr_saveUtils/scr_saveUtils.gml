@@ -1,6 +1,6 @@
 function save_data_get(_key) { 
 	if (!instance_exists(global.save_manager)) {
-		_log("ERROR: SAVE MANAGER MISSING !!!!");
+		_log("ERROR: save_data_get: SAVE MANAGER MISSING !!!! Key: " + _key);
 		return undefined;
 	}
 	
@@ -12,7 +12,7 @@ function save_data_get(_key) {
 
 function save_data_add(_key, _delta) {
 	if (!instance_exists(global.save_manager)) {
-		_log("ERROR: SAVE MANAGER MISSING !!!!");
+		_log("ERROR: save_data_add: SAVE MANAGER MISSING !!!! Key: " + _key);
 		return;
 	}
 	
@@ -29,7 +29,7 @@ function save_data_add(_key, _delta) {
 
 function save_data_set(_key, _value) {
 	if (!instance_exists(global.save_manager)) {
-		_log("ERROR: SAVE MANAGER MISSING !!!!");
+		_log("ERROR: save_data_set: SAVE MANAGER MISSING !!!! Key: " + _key);
 		return;
 	}
 	

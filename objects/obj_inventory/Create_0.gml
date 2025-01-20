@@ -1,7 +1,7 @@
 slot_count = 4;
 
 inventory = new Inventory(slot_count);
-
+save_prefixe = "inventory_item_";
 item_box = [];
 
 slots_instances = array_create(slot_count);
@@ -36,6 +36,35 @@ function BindEventsToInventory() {
 }
 
 BindEventsToInventory();
+
+function PerformLoad() {
+	for (var _i = 0; _i < slot_count; _i++)
+	{
+		var item_id_loaded = save_data_get(save_prefixe + string(_i) + "_id");
+		if (!is_undefined(item_id_loaded) && item_id_loaded != "none")
+		{
+			var item_qty_loaded = save_data_get(save_prefixe + string(_i) + "_qty");
+			if (!is_undefined(item_qty_loaded) && item_qty_loaded > 0)
+			{
+				inventory.items[_i] = new ItemData(item_id_loaded, item_qty_loaded);
+			}
+		}
+	}
+	
+	DrawItems();
+}
+
+function PerformSave() {
+	for (var _i = 0; _i < array_length(inventory.items); _i++)
+	{
+		if (inventory.items[_i].item_id != "none" && inventory.items[_i].qty > 0)
+		{
+			save_data_set(save_prefixe + string(_i) + "_id", inventory.items[_i].item_id);
+			save_data_set(save_prefixe + string(_i) + "_qty", inventory.items[_i].qty);
+		}
+	}
+}
+
 
 // Functions
 function GetNbrInventorySlotsTaken() {
