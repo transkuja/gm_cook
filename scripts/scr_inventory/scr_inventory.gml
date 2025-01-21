@@ -3,6 +3,29 @@ function ItemData(_id = "empty", _qty = 0, _stack = 0) constructor {
     item_id = _id;
 	qty = _qty;
 	stack = _stack;
+	
+	function SaveData(_key) {
+		save_data_set(_key + "_id", item_id);
+		save_data_set(_key + "_qty", qty);
+	}
+	
+	function LoadData(_key) {
+		item_id = save_data_get(_key + "_id");
+		qty = save_data_get(_key + "_qty");
+		
+		if (is_undefined(item_id) || is_undefined(qty))
+		{
+			item_id = "none";
+			qty = 0;
+		}
+	}
+	
+	function IsValid() {
+		if (item_id == "none" || qty == 0)
+			return false;
+			
+		return true;
+	}
 } 
 
 function Inventory(_slot_count) constructor {

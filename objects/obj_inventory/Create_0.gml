@@ -40,15 +40,19 @@ BindEventsToInventory();
 function PerformLoad() {
 	for (var _i = 0; _i < slot_count; _i++)
 	{
-		var item_id_loaded = save_data_get(save_prefixe + string(_i) + "_id");
-		if (!is_undefined(item_id_loaded) && item_id_loaded != "none")
-		{
-			var item_qty_loaded = save_data_get(save_prefixe + string(_i) + "_qty");
-			if (!is_undefined(item_qty_loaded) && item_qty_loaded > 0)
-			{
-				inventory.items[_i] = new ItemData(item_id_loaded, item_qty_loaded);
-			}
-		}
+		_new_item = new ItemData();
+		_new_item.LoadData(save_prefixe + string(_i));
+		
+		//var item_id_loaded = save_data_get(save_prefixe + string(_i) + "_id");
+		//if (!is_undefined(item_id_loaded) && item_id_loaded != "none")
+		//{
+		//	var item_qty_loaded = save_data_get(save_prefixe + string(_i) + "_qty");
+		//	if (!is_undefined(item_qty_loaded) && item_qty_loaded > 0)
+		//	{
+		if (_new_item.IsValid())
+			inventory.items[_i] = _new_item;
+		//	}
+		//}
 	}
 	
 	DrawItems();
@@ -59,8 +63,7 @@ function PerformSave() {
 	{
 		if (inventory.items[_i].item_id != "none" && inventory.items[_i].qty > 0)
 		{
-			save_data_set(save_prefixe + string(_i) + "_id", inventory.items[_i].item_id);
-			save_data_set(save_prefixe + string(_i) + "_qty", inventory.items[_i].qty);
+			inventory.items[_i].SaveData(save_prefixe + string(_i));
 		}
 	}
 }
@@ -107,8 +110,11 @@ function SetSelectedSlot(_newValue) {
 		}
 	}
 	
-	if (selected_slot >= 0 && global.ui_on_inventory_slot_selected != noone)
-		global.ui_on_inventory_slot_selected.dispatch();
+	if (selected_slot >= 0 && variable_global_exists("ui_on_inventory_slot_selected"))
+	{
+		if (global.ui_on_inventory_slot_selected != noone)
+			global.ui_on_inventory_slot_selected.dispatch();
+	}
 }
 
 function OnSlotClicked(_slot_index) {
