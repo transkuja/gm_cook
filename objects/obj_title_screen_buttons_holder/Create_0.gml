@@ -34,6 +34,13 @@ function OnNewClicked(_on_click_param) {
 		title_screen_manager_inst.saveManagerInst.clear_save();
 	}
 	
+	fridge_items_new_game = array_create(0);
+	_push(fridge_items_new_game, new ItemData("protaupe_egg", 2));
+	_push(fridge_items_new_game, new ItemData("protaupe_flour", 4));
+	
+	for (var _i = 0; _i < array_length(fridge_items_new_game); _i++)
+		fridge_items_new_game[_i].SaveData("fridge_item_" + string(_i));
+		
 	room_goto(rm_gameMain);
 }
 

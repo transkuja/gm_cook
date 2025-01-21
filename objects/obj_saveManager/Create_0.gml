@@ -29,7 +29,7 @@ function clear_save() {
 	if (current_save_data != noone)
 		ds_map_destroy(current_save_data);
 		
-	current_save_data = noone;
+	current_save_data = ds_map_create();
 }
 
 function bind_to_data_collection(_entity, _function) {

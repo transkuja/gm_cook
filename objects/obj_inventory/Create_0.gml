@@ -42,17 +42,9 @@ function PerformLoad() {
 	{
 		_new_item = new ItemData();
 		_new_item.LoadData(save_prefixe + string(_i));
-		
-		//var item_id_loaded = save_data_get(save_prefixe + string(_i) + "_id");
-		//if (!is_undefined(item_id_loaded) && item_id_loaded != "none")
-		//{
-		//	var item_qty_loaded = save_data_get(save_prefixe + string(_i) + "_qty");
-		//	if (!is_undefined(item_qty_loaded) && item_qty_loaded > 0)
-		//	{
+
 		if (_new_item.IsValid())
 			inventory.items[_i] = _new_item;
-		//	}
-		//}
 	}
 	
 	DrawItems();
