@@ -25,16 +25,16 @@ function GetItemSprite(_item_id) {
 		case "protaupe_chopped_fruit_b_cooked":
 			return spr_potato_fried_128x128px;
 			
-		case "protaupe_egg":
-			return spr_ph_egg;
-		case "protaupe_flour":
-			return spr_ph_flour;
-		case "protaupe_crepe_batter":
-			return spr_ph_crepe_batter;
-		case "protaupe_crepe":
-			return spr_ph_crepe;
-		case "protaupe_ratatouille":
-			return spr_ph_ratatouille;
+		//case "protaupe_egg":
+		//	return spr_it_egg;
+		//case "protaupe_flour":
+		//	return spr_it_flour;
+		//case "protaupe_crepe_batter":
+		//	return spr_ph_crepe_batter;
+		//case "protaupe_crepe":
+		//	return spr_ph_crepe;
+		//case "protaupe_ratatouille":
+		//	return spr_ph_ratatouille;
 		default:
 			return asset_get_index("spr_" + _item_id);
 	}

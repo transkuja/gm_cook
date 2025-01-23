@@ -35,8 +35,13 @@ function OnNewClicked(_on_click_param) {
 	}
 	
 	fridge_items_new_game = array_create(0);
-	_push(fridge_items_new_game, new ItemData("protaupe_egg", 2));
-	_push(fridge_items_new_game, new ItemData("protaupe_flour", 4));
+	_push(fridge_items_new_game, new ItemData("it_vege_1", 100));
+	_push(fridge_items_new_game, new ItemData("it_vege_2", 100));
+	_push(fridge_items_new_game, new ItemData("it_fruit_1", 100));
+	_push(fridge_items_new_game, new ItemData("it_flour", 100));
+	_push(fridge_items_new_game, new ItemData("it_egg", 100));
+	_push(fridge_items_new_game, new ItemData("it_water", 100));
+	_push(fridge_items_new_game, new ItemData("it_milk", 100));
 	
 	for (var _i = 0; _i < array_length(fridge_items_new_game); _i++)
 		fridge_items_new_game[_i].SaveData("fridge_item_" + string(_i));
