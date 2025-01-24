@@ -2,6 +2,9 @@
 
 global.inventory_mode = false;
 
+if (global.ui_on_fridge_closed != noone)
+	global.ui_on_fridge_closed.dispatch();
+	
 SaveFridgeState();
 
 if (on_menu_close != noone) 

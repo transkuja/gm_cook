@@ -33,6 +33,13 @@ function BindEventsToInventory() {
 	} );
 			
 	global.ui_on_fridge_slot_selected = _broadcast;
+	
+	var _reset_selection = Broadcast(function() {
+		if (selected_slot < 0)
+			SetSelectedSlot(0);
+	} );
+	
+	global.ui_on_fridge_closed = _reset_selection;
 }
 
 BindEventsToInventory();
