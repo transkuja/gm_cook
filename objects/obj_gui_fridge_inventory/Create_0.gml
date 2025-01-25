@@ -269,7 +269,7 @@ function GetSelectedItemQty() {
 function IsSelectedItemValid() {
 	return selected_slot >= 0
 		&& slots_instances[selected_slot] != noone && slots_instances[selected_slot] != undefined
-		&& GetSelectedItemId() != "none";
+		&& GetSelectedItemId() != "none" && GetSelectedItemQty() > 0;
 }
 
 // Returns the selected item id or "none" if no proper item was selected
@@ -277,6 +277,7 @@ function UseSelectedItem() {
 	var _currentSlotId = GetSelectedItemId();
 	
 	inventory.RemoveItem(_currentSlotId, 1);
+	
 	return _currentSlotId;
 }
 

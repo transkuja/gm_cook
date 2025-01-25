@@ -208,6 +208,8 @@ function PortableItemDetection() {
 function CreateItemInHands(_itemId) {
 	if (instance_exists(item_in_hands) || _itemId == "none" || _itemId == "") { return; }
 	
+	_log("Create item in hands with id: ", _itemId);
+	
 	audio_play_sound(Minimalist1, 10, false);
 	
 	item_in_hands = instance_create_layer(
@@ -255,6 +257,7 @@ function InteractInputCheck() {
 
 		}
 		else if (HasItemInHands()) {
+			_log("Dropping item !");
 			item_in_hands.Drop(x, y);
 			item_in_hands = noone;
 			return;
@@ -272,6 +275,7 @@ function GetItemFromInventoryToHands() {
 	
 	if (!instance_exists(inst_inventory)) { _log("ERROR: No inventory instance in room !!!"); return; }
 	if (!inst_inventory.IsSelectedItemValid()) { 
+		_log("Selected item not valid, cant take out !");
 		// TODO: feedback item selected not valid
 		return; 
 	}

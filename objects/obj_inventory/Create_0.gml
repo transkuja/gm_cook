@@ -218,6 +218,9 @@ function UseSelectedItem() {
 	var _currentSlotId = GetSelectedItemId();
 	
 	inventory.RemoveItem(_currentSlotId, 1);
+	
+	DrawItems();
+	
 	return _currentSlotId;
 }
 
@@ -225,6 +228,9 @@ function UseAllItemsSelected() {
 	var _currentSlotId = GetSelectedItemId();
 	
 	inventory.RemoveItem(_currentSlotId, GetSelectedItemQty());
+	
+	DrawItems();
+	
 	return _currentSlotId;
 }
 

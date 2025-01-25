@@ -1,5 +1,5 @@
 
-function ItemData(_id = "empty", _qty = 0, _stack = 0) constructor {
+function ItemData(_id = "none", _qty = 0, _stack = 0) constructor {
     item_id = _id;
 	qty = _qty;
 	stack = _stack;
@@ -58,7 +58,7 @@ function Inventory(_slot_count) constructor {
 		if (_found_index == -1)
 		{
 			var _empty_index = array_find_index(items, method({item_id:_item_id} , function(_element) 
-														{ return (_element.item_id == "empty" )}));
+														{ return (_element.item_id == "none" )}));
 													
 			return _empty_index;
 		}
@@ -74,7 +74,7 @@ function Inventory(_slot_count) constructor {
 		//var _foundIndex = array_find_index(inventory, method({data:_data} , function(_element) 
 		//												{ return (_element.item_id == data.item_id); }));
 	
-		if (items[_index].item_id == "empty")
+		if (items[_index].item_id == "none")
 		{
 			items[_index] = _data;
 			//array_push(inventory, _data);
