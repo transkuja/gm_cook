@@ -64,6 +64,12 @@ function GetChoppedResult(_item_id) {
 			return "protaupe_chopped_fruit_a";
 		case "protaupe_fruit_b":
 			return "protaupe_chopped_fruit_b";
+		case "it_fruit_1":
+			return "it_c_fruit_1";
+		case "it_vege_1":
+			return "it_c_vege_1";
+		case "it_vege_2":
+			return "it_c_vege_2";
 		default:
 			return "none";
 	}
@@ -78,6 +84,7 @@ function GetHeatablePanResult(_item_id) {
 			return "protaupe_chopped_fruit_a_cooked";
 		case "protaupe_chopped_fruit_b":
 			return "protaupe_chopped_fruit_b_cooked";
+			
 		default:
 			return "none";
 	}
@@ -149,11 +156,11 @@ function GetItemTags(_item_id) {
 		case "it_assembled_tart":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_c_fruit_1":
-			return [ITEM_TYPE.TRANSFORMED_COMPO];
+			return [ITEM_TYPE.TRANSFORMED_COMPO, ITEM_TYPE.HEATABLE_PAN];
 		case "it_c_vege_1":
-			return [ITEM_TYPE.TRANSFORMED_COMPO];
+			return [ITEM_TYPE.TRANSFORMED_COMPO, ITEM_TYPE.HEATABLE_PAN];
 		case "it_c_vege_2":
-			return [ITEM_TYPE.TRANSFORMED_COMPO];
+			return [ITEM_TYPE.TRANSFORMED_COMPO, ITEM_TYPE.HEATABLE_PAN];
 		case "it_cake":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_clafoutis":

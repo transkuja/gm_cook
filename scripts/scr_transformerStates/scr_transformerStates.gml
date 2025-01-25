@@ -95,7 +95,7 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 				return;
 		}
 	
-		if (array_length(transformer.items_in_ids) == transformer.max_items && transformer.IsTransformable()) {
+		if (transformer.IsTransformable()) {
 			_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
 			transition_to(new TransformerInProgressState(transformer));
 		}

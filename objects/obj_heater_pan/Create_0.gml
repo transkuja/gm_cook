@@ -20,7 +20,10 @@ function StopAnimQteValidated() {
 
 function OnTransformationFinished() {
 	if (array_length(items_in_ids) > 0)
-		items_in_ids[0] = GetHeatablePanResult(items_in_ids[0]);
+	{
+		items_in_ids[0] = GetResultFromCombo();
+		array_resize(items_in_ids, 1);
+	}
 	
 	initial_item_mash_count = 0;
 	initial_progress_received = -1;

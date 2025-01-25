@@ -142,7 +142,10 @@ function IsTransformable() {
 	if (expected_result == "none")
 		return false;
 	else
+	{
+		_log("Combo result: ", expected_result);
 		return true;
+	}
 			
 }
 
@@ -215,10 +218,14 @@ function DrawItemsIn() {
 			
 			draw_sprite_ext(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius,
 				1, 1, 0, c_white, 1);
-			
+				
 			if (array_length(items_in_ids) > _i) {
+				_sprite_to_draw = GetItemSprite(items_in_ids[_i]);
+				if (!sprite_exists(_sprite_to_draw))
+					continue;
+				
 				draw_sprite_ext(
-					GetItemSprite(items_in_ids[_i]), 
+					_sprite_to_draw, 
 					0, 
 					 _draw_xy[0] + draw_circle_radius,  _draw_xy[1],
 					0.4 * (1 + item_in_scale_x), 0.4 * (1 + item_in_scale_y), 0, c_white, 1);
