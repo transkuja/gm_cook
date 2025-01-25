@@ -15,7 +15,7 @@ function IsItemValid(_itemId) {
 }
 
 function OnTransformationFinished() {
-	items_in_ids = array_create(1, expected_result);
+	items_in_ids = array_create(1, GetResultFromCombo());
 	
 	initial_item_mash_count = 0;
 	instance_destroy(anim_item_qte_validated);

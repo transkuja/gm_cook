@@ -247,6 +247,7 @@ function OnTransformationFinished() {
 
 function TransformationFinished() {
 	is_interact_locked = true;
+
 	OnTransformationFinished();
 	qte_holder.Reset();
 

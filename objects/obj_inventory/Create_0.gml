@@ -47,7 +47,7 @@ BindEventsToInventory();
 function PerformLoad() {
 	for (var _i = 0; _i < slot_count; _i++)
 	{
-		_new_item = new ItemData();
+		var _new_item = new ItemData();
 		_new_item.LoadData(save_prefixe + string(_i));
 
 		if (_new_item.IsValid())

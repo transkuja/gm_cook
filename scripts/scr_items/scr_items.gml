@@ -99,7 +99,7 @@ function GetChopMashCount(_item_id) {
 		case "protaupe_fruit_b":
 			return 8;
 		default:
-			return 1;
+			return 5;
 	}
 }
 
@@ -112,7 +112,7 @@ function GetFryingInputCount(_item_id) {
 		case "protaupe_crepe_batter":
 			return 8;
 		default:
-			return 1;
+			return 3;
 	}
 }
 
@@ -154,7 +154,7 @@ function GetItemTags(_item_id) {
 			
 		// New ones
 		case "it_assembled_tart":
-			return [ITEM_TYPE.RECIPE_FINAL];
+			return [ITEM_TYPE.RECIPE_FINAL, ITEM_TYPE.HEATABLE_HOVEN];
 		case "it_c_fruit_1":
 			return [ITEM_TYPE.TRANSFORMED_COMPO, ITEM_TYPE.HEATABLE_PAN];
 		case "it_c_vege_1":
@@ -174,7 +174,7 @@ function GetItemTags(_item_id) {
 		case "it_dough":
 			return [ITEM_TYPE.SUB_RECIPE];
 		case "it_egg":
-			return [ITEM_TYPE.RAW_COMPO];
+			return [ITEM_TYPE.RAW_COMPO, ITEM_TYPE.HEATABLE_PAN];
 		case "it_flour":
 			return [ITEM_TYPE.RAW_COMPO];
 		case "it_fruit_1":
@@ -186,7 +186,7 @@ function GetItemTags(_item_id) {
 		case "it_milk":
 			return [ITEM_TYPE.RAW_COMPO];
 		case "it_milk_egg_flour_combo":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_PAN];
 		case "it_oeufs_plat":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_pizza":
@@ -194,13 +194,13 @@ function GetItemTags(_item_id) {
 		case "it_poelee_legumes":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_prep_cake":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_HOVEN];
 		case "it_prep_clafoutis":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_HOVEN];
 		case "it_prep_fruit_cake":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_HOVEN];
 		case "it_prep_pizza":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_HOVEN];
 		case "it_salad":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_sauce":
