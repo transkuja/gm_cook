@@ -1,4 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
+
 if (is_enabled)
-	game_restart();
+	draw_self();

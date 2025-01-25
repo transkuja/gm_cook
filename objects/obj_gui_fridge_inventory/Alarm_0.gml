@@ -9,6 +9,9 @@ SaveFridgeState();
 
 if (on_menu_close != noone) 
 	on_menu_close.dispatch();
+
+if (global.on_should_show_exit_cross != noone)
+	global.on_should_show_exit_cross();
 	
 for (var _index = slot_count - 1; _index >= 0; _index--)
 {

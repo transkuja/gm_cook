@@ -80,6 +80,9 @@ function Initialize() {
 	
 	SetSelectedSlot(0);
 	
+	if (global.on_should_hide_exit_cross != noone)
+		global.on_should_hide_exit_cross();
+	
 	alarm[1] = 30; // enable closing
 }
 
