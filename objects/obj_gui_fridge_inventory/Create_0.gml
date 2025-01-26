@@ -98,10 +98,16 @@ function LoadFridgeState() {
 }
 
 function SaveFridgeState() {
-	for (var _i = 0; _i < array_length(inventory.items); _i++)
+	for (var _i = 0; _i < slot_count; _i++)
 	{
-		if (inventory.items[_i].IsValid())
-			inventory.items[_i].SaveData(save_key + string(_i));
+		if (_i >= array_length(inventory.items))
+		{
+			var _empty_item = new ItemData();
+			_empty_item.SaveData(save_key + string(_i));
+			continue;
+		}
+		
+		inventory.items[_i].SaveData(save_key + string(_i));
 	}
 }
 
