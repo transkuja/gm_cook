@@ -58,12 +58,19 @@ function PerformLoad() {
 }
 
 function PerformSave() {
-	for (var _i = 0; _i < array_length(inventory.items); _i++)
+	for (var _i = 0; _i < slot_count; _i++)
 	{
-		if (inventory.items[_i].item_id != "none" && inventory.items[_i].qty > 0)
+		if (_i >= array_length(inventory.items))
 		{
-			inventory.items[_i].SaveData(save_prefixe + string(_i));
+			var _empty_item = new ItemData();
+			_empty_item.SaveData(save_prefixe + string(_i));
+			continue;
 		}
+		
+		//if (inventory.items[_i].item_id != "none" && inventory.items[_i].qty > 0)
+		//{
+		inventory.items[_i].SaveData(save_prefixe + string(_i));
+		//}
 	}
 }
 

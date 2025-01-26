@@ -41,9 +41,9 @@ function OnNewClicked(_on_click_param) {
 	_push(fridge_items_new_game, new ItemData("it_fruit_1", 100));
 	_push(fridge_items_new_game, new ItemData("it_flour", 100));
 	_push(fridge_items_new_game, new ItemData("it_egg", 100));
-	_push(fridge_items_new_game, new ItemData("it_water", 100));
 	_push(fridge_items_new_game, new ItemData("it_milk", 100));
-	
+	_push(fridge_items_new_game, new ItemData("it_water", 100));
+
 	// Test
 	//_push(fridge_items_new_game, new ItemData("it_assembled_tart", 100));
 	//_push(fridge_items_new_game, new ItemData("it_c_fruit_1", 100));

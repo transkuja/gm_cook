@@ -1,2 +1,5 @@
 ﻿{"ids":["it_c_vege_1","it_sauce","it_dough"],"result_id":"it_prep_pizza"}
 {"ids":["it_dough","it_c_fruit_1"],"result_id":"it_assembled_tart"}
+{"ids":["it_c_fruit_1","it_milk_egg_flour_combo"],"result_id":"it_prep_clafoutis"}
+{"ids":["it_c_vege_1","it_c_vege_2"],"result_id":"it_salad"}
+{"ids":["it_c_fruit_1","it_c_vege_1"],"result_id":"it_fruit_salad"}
