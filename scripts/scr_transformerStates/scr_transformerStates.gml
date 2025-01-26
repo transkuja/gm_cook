@@ -101,14 +101,44 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		}
     }
 	
+	send_item_in = function(_interactInstigator) {
+		_item_id = _interactInstigator.item_in_hands.item_id;
+		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		
+		if (_item_id != "none") {
+			_push(transformer.items_pending, _item_id);
+			
+			var _to_subscribe = Subscriber(function() { 
+				transformer.ConfirmPendingItem();
+				
+				if (transformer.IsTransformable())
+					transition_to(new TransformerCanTransformState(transformer));
+			} );
+			
+			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
+		}
+	}
+	
 	// Take item out
 	process_item_interaction = function(_interactInstigator) {
-		if (transformer.TakeFrom(_interactInstigator)) {
-			if (array_length(transformer.items_in_ids) == 0)
-				transition_to(new TransformerEmptyState(transformer));
-			else
-				transition_to(new TransformerWaitForPickupState(transformer));
+		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+			if (_interactInstigator.HasItemInHands()) {
+				if (!transformer.IsFilled()) {
+					send_item_in(_interactInstigator);
+				}
+			}
+			else {
+				if (transformer.TakeFrom(_interactInstigator)) {
+					if (!transformer.ContainsAnItem())
+						transition_to(new TransformerEmptyState(transformer));
+					else {
+						if (!transformer.IsTransformable())	
+							transition_to(new TransformerWaitForPickupState(transformer));
+					}
+				}
+			}
 		}
+		
     }
 }
 
