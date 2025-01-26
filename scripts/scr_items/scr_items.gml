@@ -166,7 +166,7 @@ function GetItemTags(_item_id) {
 		case "it_clafoutis":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_crepe":
-			return [ITEM_TYPE.SUB_RECIPE];
+			return [ITEM_TYPE.SUB_RECIPE, ITEM_TYPE.HEATABLE_PAN];
 		case "it_crepe_fruits":
 			return [ITEM_TYPE.RECIPE_FINAL];
 		case "it_crepe_veggies":
