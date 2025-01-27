@@ -52,3 +52,19 @@ function bind_to_data_collection(_entity, _function) {
 		Subscriber(_function).watch(on_data_collected);
 	}
 }
+
+function get_all_key_containing(_pattern) {
+	var _map_keys = ds_map_keys_to_array(current_save_data);
+	
+	if (array_length(_map_keys) == 0)
+		return [];
+		
+	for (var _i = array_length(_map_keys) - 1; _i >= 0; _i--)
+	{
+		if (string_pos(_pattern, _map_keys[_i]) == 0) {
+			array_delete(_map_keys, _i, 1);
+		}
+	}
+	
+	return _map_keys;
+}

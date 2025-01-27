@@ -40,3 +40,10 @@ function save_data_set(_key, _value) {
 function save_data_get_key(_suffixe) { 
 	return room_get_name(room) + object_get_name(object_index) + string(x) + string(y) + _suffixe; 
 }
+
+function save_get_manager() {
+	if (variable_global_exists("save_manager"))
+		return global.save_manager;
+	
+	return undefined;
+}

@@ -95,6 +95,9 @@ function TakeFrom(_interactInstigator) {
 		var popup = instance_create_layer(x,y, "GUI", obj_gui_par_popup);
 		popup.Initialize(_item_removed);
 		
+		var counter = instance_create_layer(x,y-200, "GUI", obj_gui_recipe_counter);
+		counter.Initialize();
+		
 		save_data_set(_item_removed + "_unlocked", true);
 	}
 	
