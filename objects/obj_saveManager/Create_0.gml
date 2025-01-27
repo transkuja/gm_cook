@@ -6,6 +6,17 @@ global.save_manager = self;
 on_data_collected = noone;
 on_load_finished = noone;
 
+function convert_to_readable_save_file() {
+	var t_string = json_encode(current_save_data);
+	t_string = json_beautify(t_string);
+	
+	var _filename = "readable_SaveData.json";
+	var _buffer = buffer_create(string_byte_length (t_string) +1, buffer_fixed, 1);
+	buffer_write(_buffer, buffer_string, t_string);
+	buffer_save(_buffer, _filename);
+	buffer_delete(_buffer);
+}
+
 function perform_save() {
 	if (current_save_data == noone || current_save_data == undefined) return;
 	

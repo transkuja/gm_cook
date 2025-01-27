@@ -82,6 +82,12 @@ function OnCreditsClicked(_on_click_param) {
 	draw_credits = !draw_credits;
 }
 
+function CreateReadableSave(_on_click_param) {
+	if (instance_exists(title_screen_manager_inst) && !title_screen_manager_inst.isSaveEmpty) {
+		title_screen_manager_inst.saveManagerInst.convert_to_readable_save_file();
+	}
+}
+
 function OnExitClicked(_on_click_param) {
 	game_end();
 }
@@ -112,6 +118,12 @@ function Init() {
 				); 
 	buttons_count++;
 
+	// Credits button
+	CreateButton("DebugSave", start_y + (buttons_offset + 50) * buttons_count, Broadcast(function(_on_click_param) {
+					CreateReadableSave(_on_click_param);}) 
+				); 
+	buttons_count++;
+	
 	// Exit button
 	CreateButton("Exit", start_y + (buttons_offset + 50) * buttons_count, Broadcast(function(_on_click_param) {
 					OnExitClicked(_on_click_param);}) 

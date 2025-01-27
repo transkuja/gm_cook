@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_json_helper",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_json_helper",
+  "parent":{
+    "name":"json_helper",
+    "path":"folders/Scripts/Addons/json_helper.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
