@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-counter = "0/20";
+counter = "20/20";
 
 count = 0;
 
