@@ -6,13 +6,19 @@ counter = "20/20";
 
 count = 0;
 
-image_xscale = 5;
-image_yscale = 3;
+text_color = make_color_rgb(251, 208, 77);	
 
-draw_x = view_wport[0] * 0.5 - (sprite_width * 0.5);
-draw_y = view_hport[0] * 0.5 - 300 - (sprite_height * 0.5);
-x = draw_x;
-y = draw_y;
+if (!in_menu)
+{
+	image_xscale = 5;
+	image_yscale = 3;
+	
+	draw_x = view_wport[0] * 0.5 - (sprite_width * 0.5);
+	draw_y = view_hport[0] * 0.5 - 300 - (sprite_height * 0.5);
+	x = draw_x;
+	y = draw_y;
+}
+
 
 // TODO: put bump anim into reusable script ??
 
@@ -23,15 +29,27 @@ can_kill = false;
 function Initialize() {
 	var _save_manager = save_get_manager();
 	if (is_undefined(_save_manager))
+	{
+		instance_destroy();
 		return;
-		
+	}
+	
 	var recipes_unlocked = _save_manager.get_all_key_containing("_unlocked");
 	count = array_length(recipes_unlocked);
 	
+	if (in_menu && count == 0)
+	{
+		instance_destroy();
+		return;
+	}
+	
 	counter = string(count) + "/20";
 	
+	if (in_menu)
+		return;
+		
 	image_alpha = 1;
-	
+
 	alarm[0] = seconds(0.75);
 }
 
@@ -53,3 +71,6 @@ function Bump() {
 	
 	alarm[1] = seconds(1.5);
 }
+
+if (in_menu)
+	Initialize();
