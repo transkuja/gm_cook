@@ -92,10 +92,10 @@ function TakeFrom(_interactInstigator) {
 	_interactInstigator.CreateItemInHands(_item_removed);
 	
 	if (CheckIsNewRecipe(_item_removed)) {
-		var popup = instance_create_layer(x,y, "GUI", obj_gui_par_popup);
+		var popup = instance_create_layer(0,0, "GUI", obj_gui_par_popup);
 		popup.Initialize(_item_removed);
 		
-		var counter = instance_create_layer(x,y-200, "GUI", obj_gui_recipe_counter);
+		var counter = instance_create_layer(0,0, "GUI", obj_gui_recipe_counter);
 		counter.Initialize();
 		
 		save_data_set(_item_removed + "_unlocked", true);
