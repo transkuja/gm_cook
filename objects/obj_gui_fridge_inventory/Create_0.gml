@@ -33,7 +33,7 @@ y = (view_hport[0] - bg_height) * 0.5 - 75;
 
 save_key = "fridge_item_";
 
-inventory = new Inventory(slot_count);
+inventory = noone;
 //inventory.AddItemIfPossible("protaupe_egg", 1);
 //inventory.AddItemIfPossible("protaupe_flour", 5);
 
@@ -42,11 +42,21 @@ function SetSize() {
 	image_yscale = bg_height / sprite_height;
 }
 
-function Initialize() {
+function Initialize(_inventory) {
 	//if (_item_id == undefined || _item_id == "" || _item_id == noone) {
 	//	instance_destroy();
 	//	return;
 	//}
+	
+	inventory = _inventory;
+	
+	if (inventory == noone)
+	{
+		instance_destroy();
+		return;
+	}
+	
+	BindEventsToInventory();
 	
 	SetSize();
 
@@ -86,35 +96,11 @@ function Initialize() {
 	alarm[1] = 30; // enable closing
 }
 
-function LoadFridgeState() {
-	for (var _i = 0; _i < slot_count; _i++)
-	{
-		_new_item = new ItemData();
-		_new_item.LoadData(save_key + string(_i));
-
-		if (_new_item.IsValid())
-			inventory.items[_i] = _new_item;
-	}
-}
-
-function SaveFridgeState() {
-	for (var _i = 0; _i < slot_count; _i++)
-	{
-		if (_i >= array_length(inventory.items))
-		{
-			var _empty_item = new ItemData();
-			_empty_item.SaveData(save_key + string(_i));
-			continue;
-		}
-		
-		inventory.items[_i].SaveData(save_key + string(_i));
-	}
-}
-
 function CloseMenu() {
 	audio_play_sound(snd_on_popup_close, 10, false);
 	
-	SaveFridgeState();
+	if (on_menu_close != noone) 
+		on_menu_close.dispatch();
 	
 	StartFadeOut();
 	alarm[0] = seconds(0.5);
@@ -143,8 +129,6 @@ function BindEventsToInventory() {
 			
 	inventory.on_item_removed = _broadcast_remove;
 }
-
-BindEventsToInventory();
 
 // Functions
 function GetNbrInventorySlotsTaken() {
@@ -297,6 +281,3 @@ function UseAllItemsSelected() {
 function HasItem(_item_id) {
 	return inventory.HasItem(_item_id);
 }
-
-// Execution
-LoadFridgeState();

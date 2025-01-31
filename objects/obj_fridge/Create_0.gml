@@ -17,17 +17,82 @@ self_hud = noone;
 	
 //}
 
+slot_count = 24;
+save_key = "fridge_item_";
+inventory = new Inventory(slot_count);
+
 //inventory = new Inventory(24);
 //inventory.AddItemIfPossible("protaupe_egg", 10);
 //inventory.AddItemIfPossible("protaupe_flour", 5);
 
+function LoadFridgeState() {
+	for (var _i = 0; _i < slot_count; _i++)
+	{
+		var _new_item = new ItemData();
+		_new_item.LoadData(save_key + string(_i));
+
+		if (_new_item.IsValid())
+			inventory.items[_i] = _new_item;
+	}
+	
+	is_inventory_loaded = true;
+}
+
+function SaveFridgeState() {
+	for (var _i = 0; _i < slot_count; _i++)
+	{
+		if (_i >= array_length(inventory.items))
+		{
+			var _empty_item = new ItemData();
+			_empty_item.SaveData(save_key + string(_i));
+			continue;
+		}
+		
+		inventory.items[_i].SaveData(save_key + string(_i));
+	}
+}
+
 function Interact(_interactInstigator) constructor {
+	//if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+	//	if (_interactInstigator.HasItemInHands())
+	//	{
+	//		var _item_id = _interactInstigator.item_in_hands.item_id;
+	//		//if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		
+	//        //if (_item_id != "none") {
+	//		//	_push(transformer.items_pending, _item_id);
+			
+	//		//	var _to_subscribe = Subscriber(function() { 
+	//		//		transformer.ConfirmPendingItem();
+				
+	//		//		if (transformer.IsTransformable())
+	//		//			transition_to(new TransformerCanTransformState(transformer));
+	//		//		else
+	//		//			transition_to(new TransformerWaitForPickupState(transformer));
+				
+	//		//	} );
+			
+	//		//	_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
+	//		//}
+	//		return;
+	//	}
+	//}
+	
 	if (instance_exists(self_hud))
 		return;
 		
 	self_hud = instance_create_layer(view_wport[0] * 0.5, view_hport[0] * 0.5, "GUI", obj_gui_fridge_inventory);
 	if (instance_exists(self_hud))
-		self_hud.Initialize();
+	{
+		LoadFridgeState();		
+		self_hud.Initialize(inventory);
+		
+		var _broadcast_save_inventory = Broadcast(function() { 
+			SaveFridgeState();
+		});
+		
+		self_hud.on_menu_close = _broadcast_save_inventory;
+	}
 }
 
 // OLD CODE
