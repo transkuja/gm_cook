@@ -33,6 +33,9 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"","%Name":"spawn_radius","filters":[],"listItems":[],"multiselect":false,"name":"spawn_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
+    {"$GMObjectProperty":"","%Name":"snd_item_arrived","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"snd_item_arrived","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Click_01","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

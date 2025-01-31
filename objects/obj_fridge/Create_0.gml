@@ -52,31 +52,36 @@ function SaveFridgeState() {
 	}
 }
 
+function PlayBumpAnimation() {
+	var anim_scale_x = new polarca_animation("image_xscale", 0.8, ac_bump_x, 0, 0.08);
+	var anim_scale_y = new polarca_animation("image_yscale", 1.2, ac_bump_x, 0, 0.08);
+	polarca_animation_start([anim_scale_x, anim_scale_y]);
+	
+	audio_play_sound(snd_item_arrived, 10, false);
+	//StopInteractionBlockedFeedback();
+}
+
 function Interact(_interactInstigator) constructor {
-	//if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
-	//	if (_interactInstigator.HasItemInHands())
-	//	{
-	//		var _item_id = _interactInstigator.item_in_hands.item_id;
-	//		//if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+		if (_interactInstigator.HasItemInHands())
+		{
+			var _item_id = _interactInstigator.item_in_hands.item_id;
+			if (!inventory.CanAddItem(_item_id, 1)) { return; } // play feedback ?
 		
-	//        //if (_item_id != "none") {
-	//		//	_push(transformer.items_pending, _item_id);
-			
-	//		//	var _to_subscribe = Subscriber(function() { 
-	//		//		transformer.ConfirmPendingItem();
+	        if (_item_id != "none") {
+				inventory.AddItemIfPossible(_item_id, 1);
 				
-	//		//		if (transformer.IsTransformable())
-	//		//			transition_to(new TransformerCanTransformState(transformer));
-	//		//		else
-	//		//			transition_to(new TransformerWaitForPickupState(transformer));
-				
-	//		//	} );
+				var _to_subscribe = Subscriber(function() { 
+					PlayBumpAnimation();
+				} );
 			
-	//		//	_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
-	//		//}
-	//		return;
-	//	}
-	//}
+				_interactInstigator.ClearItemInHands(self, _to_subscribe);
+				
+				SaveFridgeState();
+			}
+			return;
+		}
+	}
 	
 	if (instance_exists(self_hud))
 		return;
