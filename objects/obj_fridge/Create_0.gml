@@ -20,6 +20,7 @@ self_hud = noone;
 slot_count = 24;
 save_key = "fridge_item_";
 inventory = new Inventory(slot_count);
+is_inventory_loaded = false;
 
 //inventory = new Inventory(24);
 //inventory.AddItemIfPossible("protaupe_egg", 10);
@@ -39,6 +40,9 @@ function LoadFridgeState() {
 }
 
 function SaveFridgeState() {
+	if (!is_inventory_loaded)
+		LoadFridgeState();
+		
 	for (var _i = 0; _i < slot_count; _i++)
 	{
 		if (_i >= array_length(inventory.items))
@@ -53,8 +57,8 @@ function SaveFridgeState() {
 }
 
 function PlayBumpAnimation() {
-	var anim_scale_x = new polarca_animation("image_xscale", 0.8, ac_bump_x, 0, 0.08);
-	var anim_scale_y = new polarca_animation("image_yscale", 1.2, ac_bump_x, 0, 0.08);
+	var anim_scale_x = new polarca_animation("image_xscale", 1.1, ac_bump_x, 0, 0.08);
+	var anim_scale_y = new polarca_animation("image_yscale", 0.9, ac_bump_x, 0, 0.08);
 	polarca_animation_start([anim_scale_x, anim_scale_y]);
 	
 	audio_play_sound(snd_item_arrived, 10, false);
