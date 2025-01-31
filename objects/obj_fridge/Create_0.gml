@@ -75,8 +75,10 @@ function Interact(_interactInstigator) constructor {
 	        if (_item_id != "none") {
 				inventory.AddItemIfPossible(_item_id, 1);
 				
+				PlayBumpAnimation();
+				
 				var _to_subscribe = Subscriber(function() { 
-					PlayBumpAnimation();
+					// should bump here but we don't see the item moves because of the outliner	
 				} );
 			
 				_interactInstigator.ClearItemInHands(self, _to_subscribe);
