@@ -19,8 +19,10 @@ if (item_data.qty > 0 && item_data.item_id != "none") {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle)
 	//draw_text(x + (sprite_width * 0.2),y + (sprite_height * 0.2), item_data.qty);
-	draw_text_ext_transformed(x + (sprite_width * 0.2),y + (sprite_height * 0.15), item_data.qty, 
-		0, 50, 1 + anim_txt_scale_x,1 + anim_txt_scale_y,0);
-		
+	draw_text_ext_transformed_color(x + (sprite_width * 0.2) + 1,y + (sprite_height * 0.15) + 1, item_data.qty, 
+		0, 50, 1 + anim_txt_scale_x,1 + anim_txt_scale_y,0, c_black, c_black, c_black, c_black, 0.75);
+	
+	draw_text_ext_transformed_color(x + (sprite_width * 0.2),y + (sprite_height * 0.15), item_data.qty, 
+		0, 50, 1 + anim_txt_scale_x,1 + anim_txt_scale_y,0, c_white, c_white, c_white, c_white, 1);
 }
 
