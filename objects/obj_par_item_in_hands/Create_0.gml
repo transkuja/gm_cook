@@ -97,6 +97,8 @@ function StartMoveTo(_target, _destroyOnMoveEnd) {
 	destroy_on_move_end = _destroyOnMoveEnd;
 	is_dropped = true;
 	
+	depth = -12000;
+	
 	if (instance_exists(move_target))
 	{
 		xa = new polarca_animation("x",center_x(move_target),ac_moveItemInTransformer,0,move_speed)

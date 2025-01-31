@@ -1,10 +1,9 @@
 
-if (is_dropped)
+if (is_dropped && !instance_exists(move_target))
 {
-
-	
 	depth = -y;
 }
+
 //else
 //{
 //	if (instance_exists(holder))
