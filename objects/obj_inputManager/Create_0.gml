@@ -19,6 +19,7 @@ input_add("ui_stick_right", ord("D"), gp_axisL_right);
 input_add("ui_stick_up", ord("Z"), gp_axisL_up);
 input_add("ui_stick_down", ord("S"), gp_axisL_down);
 
+input_add("ui_validate_no_click", vk_space, gp_face1, [vk_enter]);
 input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);
 input_add("ui_cancel", vk_escape, gp_face2);
 

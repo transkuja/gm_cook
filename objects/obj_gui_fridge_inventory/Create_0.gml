@@ -176,6 +176,14 @@ function HandleSelectionInput() {
 }
 
 function HandleInput() {
+	if (!is_closing)
+	{
+		if (input_get_pressed(0, "ui_validate_no_click")) {
+			OnSlotClicked(selected_slot);
+			return;
+		}
+	}
+	
 	if (!can_close)
 		return;
 		
