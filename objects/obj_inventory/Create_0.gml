@@ -235,6 +235,27 @@ function HandleInput() {
 	{
 		if (input_get_pressed(0, "ui_validate_no_click")) {
 			OnSlotClicked(selected_slot);
+			return;
+		}
+		
+		// Transfer all input
+		if (input_get_pressed(0, "ui_alt")) {
+			if (!IsSelectedItemValid())
+						return;
+			
+			// Checks if another menu is opened
+			if (global.inventory_mode)
+			{
+				if (global.ui_on_inventory_item_used != noone)
+				{
+					var _item_qty = GetSelectedItemQty();
+					var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
+					if (global.ui_on_inventory_item_used(_item_data_to_use))
+						UseAllItemsSelected();
+				}
+			}
+		
+			return;
 		}
 	}
 }

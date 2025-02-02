@@ -199,6 +199,22 @@ function HandleInput() {
 			OnSlotClicked(selected_slot);
 			return;
 		}
+		
+		// transfer all input
+		if (input_get_pressed(0, "ui_alt")) {
+			if (IsSelectedItemValid())
+			{
+				var _item_qty = GetSelectedItemQty();
+				var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
+
+				if (instance_exists(inst_inventory)) {
+					if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+						UseAllItemsSelected();
+				}
+			}
+		
+			return;
+		}
 	}
 	
 	if (!can_close)
