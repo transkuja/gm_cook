@@ -111,6 +111,11 @@ function DrawItems() {
 	}
 }
 
+function LockDirectionInput() {
+	input_validated = true;
+	alarm[2] = seconds(0.2);
+}
+
 function SetSelectedSlot(_newValue) {
 	if (_newValue >= array_length(slots_instances)) { return; }
 	
@@ -127,6 +132,7 @@ function SetSelectedSlot(_newValue) {
 		if (global.ui_on_inventory_slot_selected != noone)
 			global.ui_on_inventory_slot_selected.dispatch();
 	}
+	
 }
 
 function OnSlotClicked(_slot_index) {
@@ -209,7 +215,10 @@ function HandleSelectionInput() {
 	if (_input_pressed && instance_exists(_slot_to_select))
 	{
 		if (_slot_to_select.owner != self)
+		{
+			_slot_to_select.owner.LockDirectionInput();
 			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
+		}
 		else
 			SetSelectedSlot(_slot_to_select.slot_index);
 			

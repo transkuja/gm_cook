@@ -48,6 +48,11 @@ function SetSize() {
 	image_yscale = bg_height / sprite_height;
 }
 
+function LockDirectionInput() {
+	input_validated = true;
+	alarm[2] = seconds(0.2);
+}
+
 function Initialize(_inventory) {
 	//if (_item_id == undefined || _item_id == "" || _item_id == noone) {
 	//	instance_destroy();
@@ -172,7 +177,10 @@ function HandleSelectionInput() {
 	if (_input_pressed && instance_exists(_slot_to_select))
 	{
 		if (_slot_to_select.owner != self)
+		{
+			_slot_to_select.owner.LockDirectionInput();
 			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
+		}
 		else
 			SetSelectedSlot(_slot_to_select.slot_index);
 			
