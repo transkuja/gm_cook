@@ -9,10 +9,16 @@ for ( var i=0; i<4; i++ ){
 // face1 -> A, face2 -> B, face3 -> X, face4 -> Y
 
 // Define your inputs:
-input_add("ui_left", ord("A"), gp_axisL_left);
-input_add("ui_right", ord("D"), gp_axisL_right);
-input_add("ui_up", ord("W"), gp_axisL_up);
-input_add("ui_down", ord("S"), gp_axisL_down);
+input_add("ui_left", ord("Q"), gp_padl);
+input_add("ui_right", ord("D"), gp_padr);
+input_add("ui_up", ord("Z"), gp_padu);
+input_add("ui_down", ord("S"), gp_padd);
+
+input_add("ui_stick_left", ord("Q"), gp_axisL_left);
+input_add("ui_stick_right", ord("D"), gp_axisL_right);
+input_add("ui_stick_up", ord("Z"), gp_axisL_up);
+input_add("ui_stick_down", ord("S"), gp_axisL_down);
+
 input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);
 input_add("ui_cancel", vk_escape, gp_face2);
 

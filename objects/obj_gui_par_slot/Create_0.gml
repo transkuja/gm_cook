@@ -18,6 +18,13 @@ anim_item_scale_y = 0;
 cur_anim = noone;
 //bump_item_anim_speed = 0.1;
 
+left_slot = noone;
+right_slot = noone;
+up_slot = noone;
+down_slot = noone;
+
+can_interact = true;
+
 function StartBumpAnimIncrease() {
 	instance_destroy(cur_anim);
 	anim_txt_scale_x = 0;

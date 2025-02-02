@@ -34,6 +34,10 @@ y = (view_hport[0] - bg_height) * 0.5 - 75;
 save_key = "fridge_item_";
 
 inventory = noone;
+
+is_closing = false;
+
+input_validated = false;
 //inventory.AddItemIfPossible("protaupe_egg", 1);
 //inventory.AddItemIfPossible("protaupe_flour", 5);
 
@@ -102,8 +106,73 @@ function CloseMenu() {
 	if (on_menu_close != noone) 
 		on_menu_close.dispatch();
 	
+	is_closing = true;
+	
+	for (var _index = slot_count - 1; _index >= 0; _index--)
+	{
+		if (instance_exists(slots_instances[_index]))
+			slots_instances[_index].can_interact = false;
+	}
+
 	StartFadeOut();
 	alarm[0] = seconds(0.5);
+}
+
+function HandleSelectionInput() {
+	if (is_closing)
+		return;
+	
+	if (input_validated)
+		return;
+		
+	if (selected_slot == -1)
+		return;
+	
+	var _slot_to_select = noone;
+	var _input_pressed = false;
+	var _stick_input = false;
+	if (input_get_pressed(0, "ui_up") || input_get(0, "ui_stick_up")) {
+		if (instance_exists(slots_instances[selected_slot].up_slot))
+		{
+			_slot_to_select = slots_instances[selected_slot].up_slot;
+			_input_pressed = true;
+			_stick_input = input_get(0, "ui_stick_up");
+		}
+	}
+	else if (input_get_pressed(0, "ui_down") || input_get(0, "ui_stick_down")) {
+		if (instance_exists(slots_instances[selected_slot].down_slot))
+		{
+			_slot_to_select = slots_instances[selected_slot].down_slot;
+			_input_pressed = true;
+			_stick_input = input_get(0, "ui_stick_down");
+		}
+	}
+	else if (input_get_pressed(0, "ui_left") || input_get(0, "ui_stick_left")) {
+		if (instance_exists(slots_instances[selected_slot].left_slot))
+		{
+			_slot_to_select = slots_instances[selected_slot].left_slot;
+			_input_pressed = true;
+			_stick_input = input_get(0, "ui_stick_left");
+		}
+	}
+	else if (input_get_pressed(0, "ui_right") || input_get(0, "ui_stick_right")) {
+		if (instance_exists(slots_instances[selected_slot].right_slot))
+		{
+			_slot_to_select = slots_instances[selected_slot].right_slot;
+			_input_pressed = true;
+			_stick_input = input_get(0, "ui_stick_right");
+		}
+	}
+	
+	if (_input_pressed && instance_exists(_slot_to_select))
+	{
+		SetSelectedSlot(_slot_to_select.slot_index);
+		if (_stick_input)
+		{
+			input_validated = true;
+			alarm[2] = seconds(0.2);
+		}
+	}
 }
 
 function HandleInput() {
@@ -198,6 +267,38 @@ function OnSlotClicked(_slot_index) {
 	}
 }
 
+function GetNearSlot(_index, _nb_columns, _dir) {
+	switch (_dir) {
+		case "left":
+			// Is on left column ?
+			if (_index % _nb_columns == 0)
+				return slots_instances[_index + _nb_columns - 1];
+			else
+				return slots_instances[_index - 1];
+		case "right":
+			// Is on right column ?
+			if (_index % _nb_columns == _nb_columns - 1)
+				return slots_instances[_index - (_nb_columns - 1)];
+			else
+				return slots_instances[_index + 1];		
+		case "up":
+			// Is on top line ?
+			if (_index < _nb_columns)
+				return slots_instances[_index + ((display_lines - 1) * _nb_columns)];		
+			else
+				return slots_instances[_index - _nb_columns];
+				
+		case "down":
+			// Is on bottom line ?
+			if (_index >= _nb_columns * (display_lines - 1))
+				return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
+			else
+				return slots_instances[_index + _nb_columns];
+				
+		default:
+			return noone;
+	}
+}
 function CreateGUISlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -229,6 +330,15 @@ function CreateGUISlots() {
 		}
 		
 		_remaining_draw -= _nb_columns;
+	}
+	
+	// Set navigation
+	for (var _index = 0; _index < slot_count; _index++)
+	{
+		slots_instances[_index].up_slot = GetNearSlot(_index, _nb_columns, "up");
+		slots_instances[_index].down_slot = GetNearSlot(_index, _nb_columns, "down");
+		slots_instances[_index].left_slot = GetNearSlot(_index, _nb_columns, "left");
+		slots_instances[_index].right_slot = GetNearSlot(_index, _nb_columns, "right");
 	}
 	
 	slots_instances[0].SetSelected(true);
