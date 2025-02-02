@@ -40,6 +40,8 @@ is_closing = false;
 input_validated = false;
 //inventory.AddItemIfPossible("protaupe_egg", 1);
 //inventory.AddItemIfPossible("protaupe_flour", 5);
+global.ui_fridge_first_row = [];
+global.ui_fridge_last_row = [];
 
 function SetSize() {
 	image_xscale = bg_width / sprite_width;
@@ -96,6 +98,9 @@ function Initialize(_inventory) {
 	
 	if (global.on_should_hide_exit_cross != noone)
 		global.on_should_hide_exit_cross();
+	
+	if (global.ui_on_fridge_opened != noone)
+		global.ui_on_fridge_opened.dispatch();
 	
 	alarm[1] = 30; // enable closing
 }
@@ -166,7 +171,11 @@ function HandleSelectionInput() {
 	
 	if (_input_pressed && instance_exists(_slot_to_select))
 	{
-		SetSelectedSlot(_slot_to_select.slot_index);
+		if (_slot_to_select.owner != self)
+			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
+		else
+			SetSelectedSlot(_slot_to_select.slot_index);
+			
 		if (_stick_input)
 		{
 			input_validated = true;
@@ -176,7 +185,7 @@ function HandleSelectionInput() {
 }
 
 function HandleInput() {
-	if (!is_closing)
+	if (!is_closing && selected_slot != -1)
 	{
 		if (input_get_pressed(0, "ui_validate_no_click")) {
 			OnSlotClicked(selected_slot);
@@ -275,7 +284,7 @@ function OnSlotClicked(_slot_index) {
 	}
 }
 
-function GetNearSlot(_index, _nb_columns, _dir) {
+function GetNearSlot(_index, _nb_columns, _dir, _inventory_mode = false) {
 	switch (_dir) {
 		case "left":
 			// Is on left column ?
@@ -292,14 +301,34 @@ function GetNearSlot(_index, _nb_columns, _dir) {
 		case "up":
 			// Is on top line ?
 			if (_index < _nb_columns)
-				return slots_instances[_index + ((display_lines - 1) * _nb_columns)];		
+			{
+				if (!_inventory_mode)
+					return slots_instances[_index + ((display_lines - 1) * _nb_columns)];		
+				else
+				{
+					if (instance_exists(inst_inventory))
+						return GetClosest(slots_instances[_index], inst_inventory.slots_instances);
+					else
+						return slots_instances[_index + ((display_lines - 1) * _nb_columns)];
+				}
+			}
 			else
 				return slots_instances[_index - _nb_columns];
 				
 		case "down":
 			// Is on bottom line ?
 			if (_index >= _nb_columns * (display_lines - 1))
-				return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
+			{
+				if (!_inventory_mode)
+					return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
+				else
+				{
+					if (instance_exists(inst_inventory))
+						return GetClosest(slots_instances[_index], inst_inventory.slots_instances);
+					else
+						return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
+				}
+			}
 			else
 				return slots_instances[_index + _nb_columns];
 				
@@ -307,6 +336,7 @@ function GetNearSlot(_index, _nb_columns, _dir) {
 			return noone;
 	}
 }
+
 function CreateGUISlots() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -329,6 +359,7 @@ function CreateGUISlots() {
 			slots_instances[_slot_index] = instance_create_layer(_draw_xs[i], draw_origin[1] + (slots_step + slot_height) * _line_index, "GUI", obj_gui_fridge_slot);
 			slots_instances[_slot_index].slot_index = _slot_index;
 			slots_instances[_slot_index].on_click_param = _slot_index;
+			slots_instances[_slot_index].owner = self;
 			
 			var _broadcast = Broadcast(function(_slot_index) {
 				OnSlotClicked(_slot_index);
@@ -343,10 +374,20 @@ function CreateGUISlots() {
 	// Set navigation
 	for (var _index = 0; _index < slot_count; _index++)
 	{
-		slots_instances[_index].up_slot = GetNearSlot(_index, _nb_columns, "up");
-		slots_instances[_index].down_slot = GetNearSlot(_index, _nb_columns, "down");
+		slots_instances[_index].up_slot = GetNearSlot(_index, _nb_columns, "up", true);
+		slots_instances[_index].down_slot = GetNearSlot(_index, _nb_columns, "down", true);
 		slots_instances[_index].left_slot = GetNearSlot(_index, _nb_columns, "left");
 		slots_instances[_index].right_slot = GetNearSlot(_index, _nb_columns, "right");
+	}
+	
+	global.ui_fridge_first_row = [];
+	global.ui_fridge_last_row = [];
+	
+	// Set global arrays so inventory can pick them up
+	for (var _index = 0; _index < _nb_columns; _index++)
+	{
+		_push(global.ui_fridge_first_row, slots_instances[_index]);
+		_push(global.ui_fridge_last_row, slots_instances[_index + (display_lines -1) * _nb_columns]);
 	}
 	
 	slots_instances[0].SetSelected(true);

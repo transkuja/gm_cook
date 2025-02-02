@@ -34,3 +34,28 @@ function GetAngleVectorsDegrees(_x1, _y1, _x2, _y2) {
 	
 	return darccos(DotProduct(_v1[0], _v1[1], _v2[0], _v2[1]));
 }
+
+function DistanceSqr(_x1, _y1, _x2, _y2) {
+	var _x = _x1 - _x2;
+	var _y = _y1 - _y2;
+	
+	return VectorSqrLength(_x, _y);
+}
+
+function GetClosest(_obj_to_test, _arr_objects) {
+	var _dist_ref = 1000000;
+	var _result = noone;
+	for (var _i = 0; _i < array_length(_arr_objects); _i++)
+	{
+		var _current_distance = DistanceSqr(_obj_to_test.x, _obj_to_test.y, 
+				_arr_objects[_i].x, _arr_objects[_i].y);
+				
+		if (_current_distance < _dist_ref)
+		{
+			_dist_ref = _current_distance;
+			_result = _arr_objects[_i];
+		}
+	}
+			
+	return _result;
+}

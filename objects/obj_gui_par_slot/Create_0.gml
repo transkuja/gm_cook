@@ -24,6 +24,7 @@ up_slot = noone;
 down_slot = noone;
 
 can_interact = true;
+owner = noone;
 
 function StartBumpAnimIncrease() {
 	instance_destroy(cur_anim);
@@ -91,11 +92,15 @@ function DrawSelectedFeedback() {
 function OnMouseEnter() {
 	global.interact_blocked = true;
 	UpdateVisual();
+	
+	draw_debug = true;
 }
 
 function OnMouseExit() {
 	global.interact_blocked = false;
 	UpdateVisual();
+	
+	draw_debug = false;
 }
 
 hovering_last_frame = false;
@@ -132,5 +137,36 @@ function UpdateVisual() {
 	else 
 	{
 		image_index = 0;
+	}
+}
+
+debug_enabled = true;
+draw_debug = false;
+function DrawDebugPattern(_origin, _target, _color) {
+	draw_line_color(_origin.x + sprite_width * 0.5, _origin.y + sprite_height * 0.5,
+		_target.x + sprite_width * 0.5, _target.y + sprite_height * 0.5, _color, _color);
+	draw_circle_color(_target.x + sprite_width * 0.5, _target.y + sprite_height * 0.5, 10, _color, _color, false);
+	//draw_circle(_target.x, _target.y, 10, false);
+}
+
+function DrawDebug() {
+	if (debug_enabled && draw_debug)
+	{
+		
+		if (instance_exists(up_slot))
+			DrawDebugPattern(self, up_slot, c_fuchsia);
+		if (instance_exists(down_slot))
+			DrawDebugPattern(self, down_slot, c_green);
+		if (instance_exists(left_slot))
+			DrawDebugPattern(self, left_slot, c_yellow);
+		if (instance_exists(right_slot))
+			DrawDebugPattern(self, right_slot, c_red);	
+		
+		draw_circle_color(x + sprite_width * 0.5, y + sprite_height * 0.5, 10, c_aqua, c_aqua, false);
+		//var x_mouse = device_mouse_x_to_gui(0);
+		//var y_mouse = device_mouse_y_to_gui(0);
+		//var text_value = string(x_mouse) + "," + string(y_mouse);
+
+		//draw_text_color(x_mouse + 5, y_mouse - 5, text_value, c_green, c_green, c_green, c_green, 1);
 	}
 }

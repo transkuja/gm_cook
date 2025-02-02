@@ -25,4 +25,3 @@ if (item_data.qty > 0 && item_data.item_id != "none") {
 	draw_text_ext_transformed_color(x + (sprite_width * 0.2),y + (sprite_height * 0.15), item_data.qty, 
 		0, 50, 1 + anim_txt_scale_x,1 + anim_txt_scale_y,0, c_white, c_white, c_white, c_white, 1);
 }
-

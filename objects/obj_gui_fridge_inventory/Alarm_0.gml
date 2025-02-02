@@ -14,4 +14,7 @@ for (var _index = slot_count - 1; _index >= 0; _index--)
 		instance_destroy(slots_instances[_index]);
 }
 
+global.ui_fridge_first_row = [];
+global.ui_fridge_last_row = [];
+	
 instance_destroy();
