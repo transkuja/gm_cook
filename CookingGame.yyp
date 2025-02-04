@@ -242,6 +242,7 @@
     {"id":{"name":"obj_tr_marmite","path":"objects/obj_tr_marmite/obj_tr_marmite.yy",},},
     {"id":{"name":"obj_tr_mixer","path":"objects/obj_tr_mixer/obj_tr_mixer.yy",},},
     {"id":{"name":"obj_tr_stir_bowl","path":"objects/obj_tr_stir_bowl/obj_tr_stir_bowl.yy",},},
+    {"id":{"name":"obj_title_version","path":"objects/obj_title_version/obj_title_version.yy",},},
     {"id":{"name":"oPhgenTest","path":"objects/oPhgenTest/oPhgenTest.yy",},},
     {"id":{"name":"fx_ph_on_chop","path":"particles/fx_ph_on_chop/fx_ph_on_chop.yy",},},
     {"id":{"name":"fx_ph_on_collect","path":"particles/fx_ph_on_collect/fx_ph_on_collect.yy",},},

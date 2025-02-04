@@ -177,6 +177,7 @@
     {"name":"obj_tr_marmite","order":7,"path":"objects/obj_tr_marmite/obj_tr_marmite.yy",},
     {"name":"obj_tr_mixer","order":5,"path":"objects/obj_tr_mixer/obj_tr_mixer.yy",},
     {"name":"obj_tr_stir_bowl","order":2,"path":"objects/obj_tr_stir_bowl/obj_tr_stir_bowl.yy",},
+    {"name":"obj_title_version","order":3,"path":"objects/obj_title_version/obj_title_version.yy",},
     {"name":"oPhgenTest","order":1,"path":"objects/oPhgenTest/oPhgenTest.yy",},
     {"name":"fx_ph_on_collect","order":3,"path":"particles/fx_ph_on_collect/fx_ph_on_collect.yy",},
     {"name":"fx_ph_on_transformation_finished","order":2,"path":"particles/fx_ph_on_transformation_finished/fx_ph_on_transformation_finished.yy",},
