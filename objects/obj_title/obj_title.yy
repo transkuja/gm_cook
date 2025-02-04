@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"help_the_old_billy_tooie_title",
-    "path":"sprites/help_the_old_billy_tooie_title/help_the_old_billy_tooie_title.yy",
+    "name":"spr_ph_title",
+    "path":"sprites/spr_ph_title/spr_ph_title.yy",
   },
   "spriteMaskId":null,
   "visible":true,
