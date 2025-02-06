@@ -49,16 +49,16 @@ function ComputeVelocity() {
 	var _stick_horizontal = gamepad_axis_value(0, gp_axislh);
 	var _stick_vertical = gamepad_axis_value(0, gp_axislv);
 	
-	if (VectorLength(_stick_horizontal, _stick_vertical) > 0.1)
+	if (VectorLength(_stick_horizontal, _stick_vertical) > 0.01)
 	{
 		_log("Use stick");
-		velocity_x = _stick_horizontal; 
-		velocity_y = _stick_vertical; 
+		velocity_x = _stick_horizontal;
+		velocity_y = _stick_vertical;
 	}
 	else
 	{
-		velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
-		velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 
+		velocity_x = input_get(0, "move_right") - input_get(0, "move_left");
+		velocity_y = input_get(0, "move_down") - input_get(0, "move_up");
 	}
 	
 	var _normalized_velocity = NormalizeVector(velocity_x, velocity_y);
@@ -109,6 +109,38 @@ function ComputeVelocityFromInputs() {
 		ComputeVelocity();
 		HandleAcceleration(_dt);
 	
+		var _vel_x_next_frame =	velocity_x * current_speed * _dt;
+		var _vel_y_next_frame =	velocity_y * current_speed * _dt;
+		
+		var _x_blocked = true;
+		var _y_blocked = true;
+			
+		if (!collision_point(x + _vel_x_next_frame, y, obj_static, true, true) && 
+			!collision_point(x + _vel_x_next_frame, y, obj_par_npc, true, true))
+		{
+			_x_blocked = false;
+		}
+		
+		if (!collision_point(x, y + _vel_y_next_frame, obj_static, true, true) &&
+			!collision_point(x, y + _vel_y_next_frame, obj_par_npc, true, true))
+		{
+			_y_blocked = false;
+		}
+			
+		
+		if (!_x_blocked)
+			velocity_x += (_y_blocked && abs(velocity_x) > 0 ? -velocity_y*0.5 : 0);
+		else
+			velocity_x = 0;
+			
+		if (!_y_blocked)
+			velocity_y += (_x_blocked && abs(velocity_y) > 0 ? -velocity_x*0.5 : 0);
+		else
+			velocity_y = 0;
+		
+		velocity_x = clamp(velocity_x, -1, 1);
+		velocity_y = clamp(velocity_y, -1, 1);
+		
 		velocity_x *= current_speed * _dt;
 		velocity_y *= current_speed * _dt;
 	}

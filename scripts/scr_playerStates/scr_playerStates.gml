@@ -53,12 +53,26 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
 		   InteractInputCheck();
 			CheckInputsInventory();
 			
-			if (!collision_point(x + velocity_x, y, obj_static, true, true) && 
-				!collision_point(x + velocity_x, y, obj_par_npc, true, true))
-				x += velocity_x;
+			//var _x_blocked = true;
+			//var _y_blocked = true;
+			
+			//if (!collision_point(x + velocity_x, y, obj_static, true, true) && 
+			//	!collision_point(x + velocity_x, y, obj_par_npc, true, true))
+			//{
+			//	_x_blocked = false;
+			//}
 		
-			if (!collision_point(x, y + velocity_y, obj_static, true, true) &&
-				!collision_point(x, y + velocity_y, obj_par_npc, true, true))
+			//if (!collision_point(x, y + velocity_y, obj_static, true, true) &&
+			//	!collision_point(x, y + velocity_y, obj_par_npc, true, true))
+			//{
+			//	_y_blocked = false;
+			//}
+			
+			//if (!_x_blocked)
+			if (velocity_x != 0)
+				x += velocity_x;
+			
+			if (velocity_y != 0)
 				y += velocity_y;
 
 		   UpdateFacingDirection();
