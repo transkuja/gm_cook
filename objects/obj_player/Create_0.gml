@@ -46,8 +46,20 @@ max_y_depth_sorting = 670;
 image_xscale = default_xscale * current_scale * scale_flip;
 
 function ComputeVelocity() {
-	velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
-	velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 
+	var _stick_horizontal = gamepad_axis_value(0, gp_axislh);
+	var _stick_vertical = gamepad_axis_value(0, gp_axislv);
+	
+	if (VectorLength(_stick_horizontal, _stick_vertical) > 0.1)
+	{
+		_log("Use stick");
+		velocity_x = _stick_horizontal; 
+		velocity_y = _stick_vertical; 
+	}
+	else
+	{
+		velocity_x = input_get(0, "move_right") - input_get(0, "move_left"); 
+		velocity_y = input_get(0, "move_down") - input_get(0, "move_up"); 
+	}
 	
 	var _normalized_velocity = NormalizeVector(velocity_x, velocity_y);
 	velocity_x = _normalized_velocity[0];

@@ -24,10 +24,10 @@ input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);
 input_add("ui_alt", "", gp_face3);
 input_add("ui_cancel", vk_escape, gp_face2);
 
-input_add("move_left", ord("Q"), gp_axisL_left, [vk_left]);
-input_add("move_right", ord("D"), gp_axisL_right, [vk_right]);
-input_add("move_up", ord("Z"), gp_axisL_up, [vk_up]);
-input_add("move_down", ord("S"), gp_axisL_down, [vk_down]);
+input_add("move_left", ord("Q"), gp_padl, [vk_left]);
+input_add("move_right", ord("D"), gp_padr, [vk_right]);
+input_add("move_up", ord("Z"), gp_padu, [vk_up]);
+input_add("move_down", ord("S"), gp_padd, [vk_down]);
 
 input_add("interact", vk_space, gp_face3);
 input_add("item_action", vk_enter, gp_face1, [mb_left]);
@@ -35,10 +35,10 @@ input_add("take_out", mb_right, gp_face4);
 
 input_add("qte", mb_left, gp_face1, [vk_enter,vk_space], [gp_face3]);
 
-input_add("move_left_controller", "", gp_axisL_left);
-input_add("move_right_controller", "", gp_axisL_right);
-input_add("move_up_controller", "", gp_axisL_up,);
-input_add("move_down_controller", "", gp_axisL_down);
+input_add("left_stick_h", "", gp_axislh);
+input_add("left_stick_v", "", gp_axislv);
+input_add("right_stick_h", "", gp_axisrh);
+input_add("right_stick_v", "", gp_axisrv);
 
 input_add("prev_tab", "", gp_shoulderl);
 input_add("next_tab", vk_tab, gp_shoulderr);
