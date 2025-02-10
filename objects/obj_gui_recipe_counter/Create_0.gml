@@ -56,7 +56,10 @@ function Initialize() {
 cur_anim = noone;
 bump_anim_speed = 0.1;
 
-function Bump() {
+function BumpCounter() {
+	if (cur_anim != noone)
+		return;
+	
 	instance_destroy(cur_anim);
 	anim_txt_scale_x = 0;
 	anim_txt_scale_y = 0;
@@ -68,6 +71,8 @@ function Bump() {
 	
 	count++;
 	counter = string(count) + "/20";
+	
+	audio_play_sound(Menu_Sound_Forward, 10, false);
 	
 	alarm[1] = seconds(1.5);
 }
