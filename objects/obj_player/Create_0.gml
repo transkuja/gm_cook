@@ -8,6 +8,7 @@ max_speed = 450;
 acceleration_factor = (max_speed - min_speed) * 2;
 sprint_max_speed = 650;
 current_max_speed = max_speed;
+sprinting = false;
 
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
@@ -72,7 +73,7 @@ function HandleAcceleration(_dt) {
 	if (velocity_x != 0 || velocity_y != 0) {
 		if (current_speed < current_max_speed) {
 			if (current_speed < min_speed) current_speed = min_speed;
-			current_speed += _dt * acceleration_factor * (current_max_speed == sprint_max_speed ? 1.5 : 1);
+			current_speed += _dt * acceleration_factor * (sprinting ? 2 : 1);
 			current_speed = clamp(current_speed, min_speed, current_max_speed);
 		}
 		else {
@@ -113,11 +114,12 @@ function ComputeVelocityFromInputs() {
 	
 		if (input_get(0, "sprint")) {
 			current_max_speed = sprint_max_speed;
+			sprinting = true;
 		}
 		else
 		{
 			current_max_speed = max_speed;
-			_log("Restore max speed");
+			sprinting = false;
 		}
 		
 		ComputeVelocity();
@@ -398,4 +400,20 @@ function CheckCookingInput() {
 
 function IsCooking() {
 	return state == PLAYER_STATE.TRANSFORMING;
+}
+
+xprev = 0;
+yprev = 0;
+function CreateTrailParticle() {
+	if (fx_trail != noone)
+	{
+		var p_dir = point_direction(x,y - sprite_height * 0.5,xprev,yprev)
+
+		part_type_orientation(global.pt_flare_particles, p_dir, p_dir, 0, 0, 0);
+
+		part_particles_create(global.ps_above,x,y - sprite_height * 0.5,global.pt_flare_particles,1) 
+		
+		xprev = x;
+		yprev = y - sprite_height * 0.5;
+	}
 }
