@@ -32,6 +32,7 @@ input_add("move_down", ord("S"), gp_padd, [vk_down]);
 input_add("interact", vk_space, gp_face3);
 input_add("item_action", vk_enter, gp_face1, [mb_left]);
 input_add("take_out", mb_right, gp_face4);
+input_add("sprint", vk_shift, gp_face2);
 
 input_add("qte", mb_left, gp_face1, [vk_enter,vk_space], [gp_face3]);
 

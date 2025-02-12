@@ -6,6 +6,8 @@ current_speed = 0;
 min_speed = 150;
 max_speed = 450;
 acceleration_factor = (max_speed - min_speed) * 2;
+sprint_max_speed = 650;
+current_max_speed = max_speed;
 
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
@@ -68,10 +70,13 @@ function ComputeVelocity() {
 
 function HandleAcceleration(_dt) {
 	if (velocity_x != 0 || velocity_y != 0) {
-		if (current_speed < max_speed) {
+		if (current_speed < current_max_speed) {
 			if (current_speed < min_speed) current_speed = min_speed;
-			current_speed += _dt * acceleration_factor;
-			current_speed = clamp(current_speed, min_speed, max_speed);
+			current_speed += _dt * acceleration_factor * (current_max_speed == sprint_max_speed ? 1.5 : 1);
+			current_speed = clamp(current_speed, min_speed, current_max_speed);
+		}
+		else {
+			current_speed -= _dt * acceleration_factor * 2;
 		}
 	}
 	else
@@ -106,6 +111,15 @@ function ComputeVelocityFromInputs() {
 	{
 		var _dt = delta_time * 0.000001;
 	
+		if (input_get(0, "sprint")) {
+			current_max_speed = sprint_max_speed;
+		}
+		else
+		{
+			current_max_speed = max_speed;
+			_log("Restore max speed");
+		}
+		
 		ComputeVelocity();
 		HandleAcceleration(_dt);
 	
