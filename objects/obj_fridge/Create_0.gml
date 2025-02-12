@@ -65,7 +65,7 @@ function PlayBumpAnimation() {
 	//StopInteractionBlockedFeedback();
 }
 
-function Interact(_interactInstigator) constructor {
+function PutItemInOrOpen(_interactInstigator) {
 	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 		if (_interactInstigator.HasItemInHands())
 		{
@@ -104,6 +104,14 @@ function Interact(_interactInstigator) constructor {
 		
 		self_hud.on_menu_close = _broadcast_save_inventory;
 	}
+}
+
+function Interact(_interactInstigator) constructor {
+	PutItemInOrOpen(_interactInstigator);
+}
+
+function ItemInteraction(_interactInstigator) constructor {
+	PutItemInOrOpen(_interactInstigator);
 }
 
 // OLD CODE

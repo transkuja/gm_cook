@@ -18,3 +18,7 @@ function ResetFeedback() {
 function Interact(_interactInstigator) constructor {
 	
 }
+
+function ItemInteractio(_interactInstigator) constructor {
+	
+}

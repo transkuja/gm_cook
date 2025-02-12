@@ -284,6 +284,11 @@ function InteractInputCheck() {
 			last_interactible_detected.Interact(self);
 			return;
 		}
+		
+		if (input_get_pressed(0, "item_action")) {
+			last_interactible_detected.ItemInteraction(self);
+			return;
+		}
 	}
 
 	// Press A / Enter button
