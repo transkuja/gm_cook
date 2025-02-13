@@ -334,6 +334,9 @@ function CreateGUISlots() {
 		_remaining_draw -= _nb_columns;
 	}
 	
+	//input_position_x = draw_origin[0] - 150;
+	//input_position_y = draw_origin[1];
+	
 	slots_instances[0].SetSelected(true);
 }
 

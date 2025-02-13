@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_gamepadUtils",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_gamepadUtils",
+  "parent":{
+    "name":"Utils",
+    "path":"folders/Scripts/Utils.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
