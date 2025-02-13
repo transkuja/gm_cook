@@ -112,6 +112,7 @@ function Interact(_interactInstigator) constructor {
 
 function ItemInteraction(_interactInstigator) constructor {
 	PutItemInOrOpen(_interactInstigator);
+	return true;
 }
 
 // OLD CODE

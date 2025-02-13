@@ -20,3 +20,8 @@
 //	return;
 
 draw_self();
+
+if (anim_interaction_blocked != noone)
+{
+	image_blend = merge_colour(c_white, blend_color, blend_color_lerp);
+}

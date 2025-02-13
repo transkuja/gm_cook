@@ -121,3 +121,24 @@ function StartMoveTo(_target, _destroyOnMoveEnd) {
 	else
 		return noone;
 }
+
+anim_interaction_blocked = noone;
+blend_color = c_white;
+blend_color_lerp = 0;
+anim_speed_conditions_not_met = 0.02;
+function BlockedFeedback() {
+	if (anim_interaction_blocked != noone)
+		instance_destroy(anim_interaction_blocked);
+		
+	blend_color_lerp = 0;
+	blend_color = c_red;
+	var _feedback_anim = new polarca_animation("blend_color_lerp", 100, ac_on_off_three, 0, anim_speed_conditions_not_met);
+	anim_interaction_blocked = polarca_animation_start([_feedback_anim]);
+	anim_interaction_blocked.on_animation_finished = Broadcast(
+		function() { 
+			anim_interaction_blocked = noone;
+			blend_color = c_white;
+			image_blend = c_white;
+			blend_color_lerp = 0;
+	});
+}

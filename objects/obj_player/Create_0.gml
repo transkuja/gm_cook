@@ -317,9 +317,9 @@ function InteractInputCheck() {
 		}
 		
 		if (instance_exists(last_transformer_detected)) {
+			// If can't interact, play feedback on item in hands
 			last_transformer_detected.ItemInteraction(self);
 			return;
-
 		}
 		else if (HasItemInHands()) {
 			_log("Dropping item !");

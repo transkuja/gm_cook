@@ -33,15 +33,21 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 	
 	process_item_interaction = function(_interactInstigator) {
 		if (transformer.IsFilled())
-			return;
+			return false;
 			
 		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (!_interactInstigator.HasItemInHands())
-				return;
+				return false;
 		}
 		
 		_item_id = _interactInstigator.item_in_hands.item_id;
-		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		if (!transformer.IsItemValid(_item_id)) {
+			with (_interactInstigator.item_in_hands) {
+				BlockedFeedback();
+			}
+			//_interactInstigator.item_in_hands.BlockedFeedback();
+			return false; 
+		}
 		
         if (_item_id != "none") {
 			_push(transformer.items_pending, _item_id);
@@ -58,6 +64,8 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 			
 			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);
 		}
+		
+		return true;
     }
 	
 }
@@ -126,6 +134,8 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 				if (!transformer.IsFilled()) {
 					send_item_in(_interactInstigator);
 				}
+				else
+					return false;
 			}
 			else {
 				if (transformer.TakeFrom(_interactInstigator)) {
@@ -139,6 +149,7 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 			}
 		}
 		
+		return true;
     }
 }
 
@@ -179,6 +190,8 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 		//	transformer.OnTransformationFinished();
 		//	transition_to(new TransformerResultState(transformer));
 		//}
+		
+		return false;
     }
 }
 
@@ -231,6 +244,8 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 				if (!transformer.IsFilled()) {
 					send_item_in(_interactInstigator);
 				}
+				else
+					return false;
 			}
 			else {
 				if (transformer.TakeFrom(_interactInstigator)) {
@@ -240,7 +255,7 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 			}
 		}
 		
-
+		return true;
 		
     }
 }

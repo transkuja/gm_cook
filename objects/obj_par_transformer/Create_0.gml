@@ -58,7 +58,9 @@ function IsItemValid(_itemId) {
 
 function ItemInteraction(_interactInstigator) {
 	if (current_state)
-		current_state.process_item_interaction(_interactInstigator);
+		return current_state.process_item_interaction(_interactInstigator);
+		
+	return false;
 }
 
 function CheckIsNewRecipe(_item_id) {
