@@ -27,10 +27,27 @@ function OnTransformationFinished() {
 }
 
 function GetItemsDrawnOffsets(_index = 0, _max = 1) {
-	if (_index == 0)
-		return [offset_draw_item_x, offset_draw_item];
+	var _max_modulo = _max % 2;
+	var _half_max = 0;
+	if (_max_modulo == 0)
+	{
+		_half_max = _max * 0.5;
+	}
+	else
+	{
+		_half_max = (_max - 1) * 0.5;
+		// If odd and _index is the middle
+		if (_index == _half_max)
+			return [0, offset_draw_item];
+	}
 	
-	return [-offset_draw_item_x, offset_draw_item];
+	if (_half_max == 0)
+		return [offset_draw_item_x, offset_draw_item];
+		
+	if (_index < _half_max)
+		return [offset_draw_item_x * (_half_max - _index) / _half_max, offset_draw_item];
+	else
+		return [offset_draw_item_x * (_half_max - (_index + 1)) / _half_max, offset_draw_item];
 }
 
 anim_item_qte_validated = noone;
