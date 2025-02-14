@@ -111,7 +111,12 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
 	send_item_in = function(_interactInstigator) {
 		_item_id = _interactInstigator.item_in_hands.item_id;
-		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		if (!transformer.IsItemValid(_item_id)) { 
+			with (_interactInstigator.item_in_hands) {
+				BlockedFeedback();
+			}
+			return;
+		}
 		
 		if (_item_id != "none") {
 			_push(transformer.items_pending, _item_id);
@@ -135,7 +140,12 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 					send_item_in(_interactInstigator);
 				}
 				else
+				{
+					with (_interactInstigator.item_in_hands) {
+						BlockedFeedback();
+					}
 					return false;
+				}
 			}
 			else {
 				if (transformer.TakeFrom(_interactInstigator)) {
@@ -221,7 +231,12 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
 	send_item_in = function(_interactInstigator) {
 		_item_id = _interactInstigator.item_in_hands.item_id;
-		if (!transformer.IsItemValid(_item_id)) { return; } // play feedback ?
+		if (!transformer.IsItemValid(_item_id)) { 
+			with (_interactInstigator.item_in_hands) {
+				BlockedFeedback();
+			}
+			return;
+		}
 		
 		if (_item_id != "none") {
 			_push(transformer.items_pending, _item_id);
@@ -245,7 +260,12 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 					send_item_in(_interactInstigator);
 				}
 				else
+				{
+					with (_interactInstigator.item_in_hands) {
+						BlockedFeedback();
+					}
 					return false;
+				}
 			}
 			else {
 				if (transformer.TakeFrom(_interactInstigator)) {
