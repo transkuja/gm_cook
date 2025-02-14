@@ -211,7 +211,11 @@ function GetItemInBgColor(_item_index) {
 
 function DrawItemsIn() {
 	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
-	
+	if (state == TRANSFORMER_STATE.RESULT) 
+		_nb_items_to_draw = 1;
+	else if (state == TRANSFORMER_STATE.IN_PROGRESS)
+		_nb_items_to_draw = array_length(items_in_ids);
+		
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
 	
 	if (array_length(items_in_ids) > 0)	{
