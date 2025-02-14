@@ -62,6 +62,11 @@ function OnQteValidatedFeedbacks(_progress) {
 	if (initial_progress_received < 0)
 		initial_progress_received = _progress;
 	
-	items_in_bg_draw_color[0] = merge_color(c_white, frying_bg_color, _progress + initial_progress_received);
+	var _lerp =  _progress + initial_progress_received;
+	for (var _index = 0; _index < array_length(items_in_ids); _index++)
+	{
+		items_in_bg_draw_color[_index] = merge_color(c_white, frying_bg_color, _lerp);
+	}
+	
 	StartAnimQteValidated();
 }
