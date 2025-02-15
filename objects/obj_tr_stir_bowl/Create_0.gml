@@ -45,9 +45,9 @@ function GetItemsDrawnOffsets(_index = 0, _max = 1) {
 		return [offset_draw_item_x, offset_draw_item];
 		
 	if (_index < _half_max)
-		return [offset_draw_item_x * (_half_max - _index) / _half_max, offset_draw_item];
-	else
-		return [offset_draw_item_x * (_half_max - (_index + 1)) / _half_max, offset_draw_item];
+		return [offset_draw_item_x, offset_draw_item];
+	
+	return [-offset_draw_item_x, offset_draw_item];
 }
 
 anim_item_qte_validated = noone;
@@ -72,7 +72,10 @@ function OnQteValidatedFeedbacks(_progress) {
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT);
 	if (array_length(_draw_xs) > 0) {
 		var _gap = (x - _draw_xs[0]) * 0.5;
-		max_offset_draw_item_x = _progress * _gap;
+		if (_nb_items_to_draw == 2)
+			_gap = (_draw_xs[array_length(_draw_xs) -1] -  _draw_xs[0]) * 0.5 * 0.5;
+
+		max_offset_draw_item_x = (_progress * _gap);
 	}
 	
 	StartAnimQteValidated();
@@ -102,4 +105,23 @@ function InteractionBlockedFeedback() {
 			bg_color_lerp = 0; 
 			items_in_bg_draw_color = array_create(max_items, c_white);
 	});
+}
+
+draw_debug = true;
+function DrawDebug() {
+	
+	if (should_draw && draw_debug)
+	{
+		draw_line_color(x - max_offset_draw_item_x, debug_y,
+			x + max_offset_draw_item_x, debug_y, c_fuchsia, c_fuchsia);
+			
+		draw_line_color(x + max_offset_draw_item_x, debug_y - 50,
+			x + max_offset_draw_item_x, debug_y + 50, c_fuchsia, c_fuchsia);
+			
+		draw_line_color(x - max_offset_draw_item_x, debug_y - 50,
+			x - max_offset_draw_item_x, debug_y + 50, c_fuchsia, c_fuchsia);
+
+		draw_circle_color(x, debug_y, 10, c_aqua, c_aqua, false);
+		
+	}
 }

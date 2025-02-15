@@ -20,6 +20,9 @@ initial_scale_y = image_yscale;
 
 preparation_type = PREPARATION_TYPE.ASSEMBLE;
 
+draw_debug = false;
+should_draw = false;
+
 // On A pressed
 function PutItemIn(_item_id) {
 	if (IsFilled()) {
@@ -158,6 +161,9 @@ function IsTransformable() {
 function Interact(_interactInstigator) {
 	if (current_state)
 		current_state.process_interaction(_interactInstigator);
+	
+	if (draw_debug)
+		should_draw = true;
 }
 
 // Retrieve what has been put in, in case of mistake
@@ -209,6 +215,8 @@ function GetItemInBgColor(_item_index) {
 	return items_in_bg_draw_color[_item_index];
 }
 
+debug_y = 0;
+debug_x = array_create(3, 0);
 function DrawItemsIn() {
 	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
 	if (state == TRANSFORMER_STATE.RESULT) 
@@ -224,6 +232,12 @@ function DrawItemsIn() {
 			var _draw_color = merge_colour(c_white, GetItemInBgColor(_i), bg_color_lerp);
 			var _offset = GetItemsDrawnOffsets(_i, _nb_items_to_draw);
 			var _draw_xy = WorldToGUI(_draw_xs[_i] + _offset[0], y - popup_draw_height + _offset[1]);
+			
+			if (draw_debug) 
+			{
+				draw_circle_color(_draw_xy[0], _draw_xy[1], 10, c_green, c_green, false);
+				debug_y = _draw_xy[1];
+			}
 			
 			draw_sprite_ext(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius,
 				1, 1, 0, c_white, 1);
@@ -263,6 +277,9 @@ function TransformationFinished() {
 	audio_play_sound(Tool_Table_01, 10, false);
 	if (current_state) 
 		current_state.transition_to(new TransformerResultState(id));
+		
+	if (draw_debug)
+		should_draw = false;
 		
 	alarm[0] = seconds(0.35);
 }
