@@ -1,8 +1,11 @@
 image_alpha = 1;
 
 is_selected = false;
+draw_feedback_selection = false;
+
 _center_x = center_x(); //x + (sprite_width * 0.5);
 _center_y = center_y(); //y + (sprite_height * 0.5);
+slot_index = 0;
 
 // Animations -> button anim rather than item anim ?
 //bump_anim_speed = 0.1;
@@ -18,12 +21,30 @@ down_slot = noone;
 can_interact = true;
 owner = noone;
 
-function SetSelected(_value) {
-	is_selected = _value;
-}
+hovering_last_frame = false;
+hovering = false;
+clicked = false;
+
+on_clicked_event = noone;
 
 function DrawSelectedFeedback() {
-	draw_sprite_ext(spr_ui_slot_selected, 0, _center_x, _center_y, 1, 1, 0, c_orange, 1);
+	//draw_sprite_ext(spr_ui_slot_selected, 0, _center_x, _center_y, 1, 1, 0, c_orange, 1);
+}
+
+function EnableSelectedFeedback() {
+}
+
+function RemoveSelectedFeedback() {
+}
+
+function SetSelected(_value) {
+	is_selected = _value;
+	
+	if (_value == false)
+		RemoveSelectedFeedback();
+	
+	if (_value == true)
+		EnableSelectedFeedback();
 }
 
 function OnMouseEnter() {
@@ -40,14 +61,13 @@ function OnMouseExit() {
 	draw_debug = false;
 }
 
-hovering_last_frame = false;
-hovering = false;
-clicked = false;
 
-on_clicked_event = noone;
 on_clicked = function() {
 	if (global.player_control < 0) return;
 	audio_play_sound(snd_on_clicked, 10, false);
+	
+	if (on_clicked_event != noone)
+		on_clicked_event.dispatch(on_click_param);
 }
 
 on_click_param = {};

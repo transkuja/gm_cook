@@ -1,6 +1,6 @@
 draw_self();
 
 // Selected feedback
-if (is_selected) {
+if (draw_feedback_selection) {
 	DrawSelectedFeedback();
 }
