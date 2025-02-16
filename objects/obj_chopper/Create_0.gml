@@ -5,6 +5,13 @@ drawn_item_animated_yscale = 0
 
 preparation_type = PREPARATION_TYPE.CHOP;
 
+// Can't interact feedback vars
+item_drawn_color = c_white;
+lerp_color = 0;
+anim_interaction_blocked = noone;
+anim_speed_conditions_not_met = 0.02;
+////////
+
 function IsItemValid(_itemId) {
 	return _contains(GetItemTags(_itemId), ITEM_TYPE.RAW_COMPO);
 }
@@ -29,7 +36,7 @@ function DrawItemsIn() {
 			GetItemSprite(items_in_ids[0]), 0,
 				x, y,
 				0.8 + drawn_item_animated_xscale, 0.8 + drawn_item_animated_yscale, 
-				0, c_white, 1
+				0,  merge_colour(c_white, c_red, lerp_color), 1
 			);
 	}
 	
@@ -57,4 +64,20 @@ function OnQteValidatedFeedbacks(_progress) {
 	var anim_item_sy = new polarca_animation("drawn_item_animated_yscale", 0.15, ac_bump_scale_down, 0, 0.1);
 	cur_item_anim = polarca_animation_start([anim_item_sx, anim_item_sy]);
 	
+}
+
+
+function InteractionBlockedFeedback() {
+	if (!IsFilled())
+		return;
+	
+	instance_destroy(anim_interaction_blocked);
+	lerp_color = 0;
+	var _feedback_anim = new polarca_animation("lerp_color", 100, ac_on_off_three, 0, anim_speed_conditions_not_met);
+	anim_interaction_blocked = polarca_animation_start([_feedback_anim]);
+	anim_interaction_blocked.on_animation_finished = Broadcast(
+		function() { 
+			lerp_color = 0; 
+			item_drawn_color = c_white;
+	});
 }
