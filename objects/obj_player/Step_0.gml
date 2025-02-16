@@ -15,7 +15,7 @@ if (x > min_x_depth_sorting && x < max_x_depth_sorting
 else
 	depth = -y;
 	
-if (sprinting)
+if (sprinting && (abs(velocity_x) > 10 || abs(velocity_y) > 10))
 {
 	CreateTrailParticle();
 }

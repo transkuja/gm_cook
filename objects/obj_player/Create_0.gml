@@ -3,12 +3,20 @@ velocity_x = 0;
 velocity_y = 0;
 current_speed = 0;
 
-min_speed = 150;
-max_speed = 450;
+// Old values
+//min_speed = 150;
+//max_speed = 450;
+//sprint_max_speed = 650;
+
+min_speed = 300;
+max_speed = 600;
+sprint_max_speed = 800;
+sprint_burst = 650;
+
 acceleration_factor = (max_speed - min_speed) * 2;
-sprint_max_speed = 650;
 current_max_speed = max_speed;
 sprinting = false;
+was_sprinting = false;
 
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
@@ -73,7 +81,11 @@ function HandleAcceleration(_dt) {
 	if (velocity_x != 0 || velocity_y != 0) {
 		if (current_speed < current_max_speed) {
 			if (current_speed < min_speed) current_speed = min_speed;
-			current_speed += _dt * acceleration_factor * (sprinting ? 2 : 1);
+			current_speed += _dt * acceleration_factor * (sprinting ? 2 : 1);	
+
+			if (!was_sprinting && sprinting)
+				current_speed += sprint_burst;
+				
 			current_speed = clamp(current_speed, min_speed, current_max_speed);
 		}
 		else {
@@ -112,6 +124,7 @@ function ComputeVelocityFromInputs() {
 	{
 		var _dt = delta_time * 0.000001;
 	
+		was_sprinting = sprinting;
 		if (input_get(0, "sprint")) {
 			current_max_speed = sprint_max_speed;
 			sprinting = true;
