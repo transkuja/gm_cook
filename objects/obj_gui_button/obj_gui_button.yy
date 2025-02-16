@@ -2,18 +2,21 @@
   "$GMObject":"",
   "%Name":"obj_gui_button",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_gui_button",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_gui_nav_button","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"propertyId":{"name":"snd_on_clicked","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Menu_Sound_Forward",},
+  ],
   "parent":{
     "name":"UI",
     "path":"folders/Objects/UI.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_gui_nav_button",
+    "path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

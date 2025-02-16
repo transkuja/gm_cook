@@ -140,7 +140,7 @@ function UpdateVisual() {
 	}
 }
 
-debug_enabled = true;
+debug_enabled = false;
 draw_debug = false;
 function DrawDebugPattern(_origin, _target, _color) {
 	draw_line_color(_origin.x + sprite_width * 0.5, _origin.y + sprite_height * 0.5,
