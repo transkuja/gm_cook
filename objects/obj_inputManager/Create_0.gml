@@ -2,8 +2,8 @@ global.input_list = ds_map_create();
 
 // Gamepad Settings
 for ( var i=0; i<4; i++ ){
-	gamepad_set_axis_deadzone(i, 0.5);
-	gamepad_set_button_threshold(i, 0.5);
+	gamepad_set_axis_deadzone(i, 0.25);
+	gamepad_set_button_threshold(i, 0.25);
 }
 
 // face1 -> A, face2 -> B, face3 -> X, face4 -> Y

@@ -107,7 +107,6 @@ function InteractionBlockedFeedback() {
 	});
 }
 
-draw_debug = true;
 function DrawDebug() {
 	
 	if (should_draw && draw_debug)
