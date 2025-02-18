@@ -66,6 +66,11 @@ function ItemInteraction(_interactInstigator) {
 	return false;
 }
 
+function CancelTransformation(_interactInstigator) {
+	if (current_state)
+		current_state.process_cancel(_interactInstigator);
+}
+
 function CheckIsNewRecipe(_item_id) {
 	if (_item_id == "") 
 		return false;

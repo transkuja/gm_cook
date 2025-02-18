@@ -23,8 +23,8 @@ is_checking_input = false;
 is_right_target = true;
 fill_target = 1000.0;
 current_fill = 0;
-min_fill_speed = 1;
-max_fill_speed = 50;
+min_fill_speed = 10;
+max_fill_speed = 60;
 current_fill_speed = min_fill_speed;
 
 stir_sound_inst = noone;

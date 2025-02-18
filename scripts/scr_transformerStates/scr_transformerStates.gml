@@ -7,6 +7,9 @@ function TransformerState(_object, _args = {}): BaseState(_object, _args) constr
 	
 	process_item_interaction = function(_interactInstigator) {
     }
+	
+	process_cancel = function(_interactInstigator) {
+    }
 }
 
 
@@ -202,6 +205,13 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 		//}
 		
 		return false;
+    }
+	
+	process_cancel = function(_interactInstigator) {
+		if (transformer.IsTransformable())
+			transition_to(new TransformerCanTransformState(transformer));
+		else
+			transition_to(new TransformerWaitForPickupState(transformer));
     }
 }
 

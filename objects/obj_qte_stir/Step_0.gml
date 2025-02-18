@@ -9,7 +9,7 @@ if (is_checking_input) {
 		
 		current_fill = clamp(current_fill + d(current_fill_speed), 0, fill_target);
 		
-		if (current_fill >= fill_target) {
+		if (current_fill >= fill_target - 50) {
 			InputValidated();
 		}
 		
