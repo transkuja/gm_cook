@@ -36,6 +36,19 @@ function Start() {
 	OnStart();
 }
 
+function OnPause() {
+	
+}
+
+function Pause() {
+	if (current_state)
+		current_state.transition_to(new QtePausedState(id, {}));
+	else
+		current_state = new QtePausedState(id, {});
+		
+	OnPause();
+}
+
 function PlayValidateFx() {
 	//if (!part_system_exists(validate_fx_inst))
 		validate_fx_inst = part_system_create(fx_on_validate);
@@ -86,6 +99,9 @@ function OnInputPressed() {
 	}
 }
 
+function SpecificInputBehavior() {
+}
+
 function Finish() {
 	if (on_qte_completed != noone) 
 		on_qte_completed.dispatch();
@@ -116,6 +132,15 @@ function SetPlayerInteractingFeedbacks() {
 	var _s_id = layer_sequence_get_sequence(active_sequence);
 	if (sequence_exists(_s_id))
 		layer_sequence_play(active_sequence);
+}
+
+function SetPausedFeedbacks() {
+	var _s_id = layer_sequence_get_sequence(active_sequence);
+	if (sequence_exists(_s_id))
+	{
+		layer_sequence_pause(active_sequence);
+		layer_sequence_headpos(active_sequence, 0);
+	}
 }
 
 function HideFeedbacks() {

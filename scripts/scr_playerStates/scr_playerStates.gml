@@ -119,5 +119,14 @@ function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _arg
 				player.last_transformer_detected.state == TRANSFORMER_STATE.RESULT) {
 			transition_to(new PlayerIdleState(player))
 		}
+		
+		if (instance_exists(player.last_transformer_detected))
+		{
+			if (player.CancelInputCheck())
+			{
+				player.last_transformer_detected.CancelTransformation(player);
+				transition_to(new PlayerIdleState(player));
+			}
+		}
 	}
  }

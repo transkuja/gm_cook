@@ -59,6 +59,24 @@ function QteInProgressState(_qte_holder, _args = {}): QteState(_qte_holder, _arg
 		}
 		
 		qte_holder.OnInputPressed();
+		qte_holder.SpecificInputBehavior();
     }
+	
+}
+
+function QtePausedState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
+    name = "in_progress";
+	qte_holder = _qte_holder;
+	
+    enter_state = function() {
+		qte_holder.state = QTE_STATE.PAUSED;
+		qte_holder.SetPausedFeedbacks();
+    }
+
+ 	process_draw = function() {
+		// Draw progression
+		qte_holder.DrawBackground();
+		qte_holder.DrawProgress();
+	}
 	
 }

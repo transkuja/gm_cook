@@ -430,3 +430,7 @@ function CreateTrailParticle() {
 		yprev = y - sprite_height * 0.5;
 	}
 }
+
+function CancelInputCheck() {
+	return input_get_pressed(0, "cancel_interaction");
+}

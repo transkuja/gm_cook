@@ -69,6 +69,10 @@ function ItemInteraction(_interactInstigator) {
 function CancelTransformation(_interactInstigator) {
 	if (current_state)
 		current_state.process_cancel(_interactInstigator);
+	
+	if (instance_exists(qte_holder)) { 
+		qte_holder.Pause();
+	}
 }
 
 function CheckIsNewRecipe(_item_id) {
