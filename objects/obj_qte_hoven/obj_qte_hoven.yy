@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_qte_timedMash",
+  "%Name":"obj_qte_hoven",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_qte_timedMash",
+  "name":"obj_qte_hoven",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"input_sequence","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"seq_press_button",},
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"fx_on_validate_offset_y","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},

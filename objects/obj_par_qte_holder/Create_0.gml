@@ -131,15 +131,19 @@ function SetFeedbacksInitialState() {
 function SetPlayerInteractingFeedbacks() {
 	var _s_id = layer_sequence_get_sequence(active_sequence);
 	if (sequence_exists(_s_id))
+	{
+		_s_id.playbackSpeed = 60;
 		layer_sequence_play(active_sequence);
+	}
 }
 
 function SetPausedFeedbacks() {
 	var _s_id = layer_sequence_get_sequence(active_sequence);
 	if (sequence_exists(_s_id))
 	{
+		layer_sequence_headpos(active_sequence, 1);
+		_s_id.playbackSpeed = 0;
 		layer_sequence_pause(active_sequence);
-		layer_sequence_headpos(active_sequence, 0);
 	}
 }
 

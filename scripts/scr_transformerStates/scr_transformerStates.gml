@@ -107,7 +107,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		}
 	
 		if (transformer.IsTransformable()) {
-			_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
+			if (transformer.preparation_type != PREPARATION_TYPE.HOVEN_COOK)
+				_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
+				
 			transition_to(new TransformerInProgressState(transformer));
 		}
     }
