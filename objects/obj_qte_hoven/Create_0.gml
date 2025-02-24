@@ -4,7 +4,7 @@ event_inherited();
 initial_item_mash_count = 0;
 current_mash_count = 0;
 
-progress_bar_width = 100;
+progress_bar_width = 150;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 

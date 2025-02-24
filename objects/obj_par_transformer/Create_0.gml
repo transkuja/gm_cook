@@ -231,8 +231,13 @@ function DrawItemsIn() {
 	if (state == TRANSFORMER_STATE.RESULT) 
 		_nb_items_to_draw = 1;
 	else if (state == TRANSFORMER_STATE.IN_PROGRESS)
+	{
 		_nb_items_to_draw = array_length(items_in_ids);
 		
+		if (opt_hide_item_while_in_progress)
+			return;
+	}
+	
 	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
 	
 	if (array_length(items_in_ids) > 0)	{
@@ -310,7 +315,12 @@ function CreateQteHolder() {
 	}
 	
 	if (qte_holder_obj != noone && qte_holder_obj != undefined) {
-		qte_holder = instance_create_layer(x, y + qte_holder_spawn_y_offset, "GUI", qte_holder_obj);
+		qte_holder = instance_create_layer(
+			x + qte_holder_spawn_x_offset, 
+			y + qte_holder_spawn_y_offset, 
+			"GUI", 
+			qte_holder_obj
+		);
 	}
 }
 

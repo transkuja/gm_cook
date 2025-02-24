@@ -8,6 +8,11 @@
   "name":"obj_tr_hoven",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_hoven",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_spawn_y_offset","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-180",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_spawn_x_offset","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"opt_show_qte_when_ready_only","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"popup_draw_height","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"180",},
+    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"opt_hide_item_while_in_progress","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
   ],
   "parent":{
     "name":"Transformers",
