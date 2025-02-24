@@ -9,7 +9,6 @@
   "managed":true,
   "name":"obj_qte_hoven",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"input_sequence","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"seq_press_button",},
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"fx_on_validate_offset_y","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},
     {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_qte_holder","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"propertyId":{"name":"progress_y_offset","path":"objects/obj_par_qte_holder/obj_par_qte_holder.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0",},
   ],
