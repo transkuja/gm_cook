@@ -8,11 +8,22 @@ progress_bar_width = 100;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
-bar_duration = 2;
+bar_duration = 10; // -> should be item related
 window_open_time = 1;
 window_close_time = 1.5;
 current_qte_time = 0;
 cursor_speed = 0.05;
+
+// Perfect zone -> should be item related
+perfect_window_open_time = bar_duration * 0.5;
+perfect_window_close_time = bar_duration * 0.7;
+
+// Good zone -> should be item related
+good_window_open_time = bar_duration * 0.25;
+good_window_close_time = bar_duration * 0.8;
+
+// Nothing zone is before min(perfect_open, good_open)
+// Burnt zone is after max(perfect_close, good_close)
 
 current_position = 0;
 
@@ -37,7 +48,12 @@ function OnInit(_items_id) {
 		current_mash_count = _mash_count;
 	}
 	
-	
+	bar_duration = seconds(bar_duration);
+	perfect_window_open_time = seconds(perfect_window_open_time);
+	perfect_window_close_time = seconds(perfect_window_close_time);
+	good_window_open_time = seconds(good_window_open_time);
+	good_window_close_time = seconds(good_window_close_time);
+
 	return true;
 }
 
@@ -108,16 +124,33 @@ function DrawCursor(_x, _y) {
 	draw_sprite(phgen_rectangle(10, _height, c_red, 0, c_white, 5, _height * 0.5), 0, _pos, _y);
 }
 
+function DrawZone(_pb_draw_xy, _start_time, _end_time, _color) {
+	var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, _end_time - _start_time);
+	var pb_content_h = progress_bar_height;
+	var pb_content_start_pos = InvLerp(0, bar_duration, _start_time) * progress_bar_width - (progress_bar_width * 0.5);
+	if (pb_content_w > 0 && pb_content_h > 0)
+		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, _color, 0, c_white, 0, progress_bar_height * 0.5), 0, _pb_draw_xy[0] + pb_content_start_pos, _pb_draw_xy[1]);
+}
+
 function DrawProgress() {
 	var _draw_xy = WorldToGUI(x, y + progress_y_offset);
 	var _bg_color = merge_colour(c_white, make_color_rgb(215,0,0), bg_color_lerp);
 	draw_sprite(phgen_rectangle(progress_bar_width, progress_bar_height, _bg_color, 1, c_grey, progress_bar_width * 0.5, progress_bar_height * 0.5), 0, _draw_xy[0], _draw_xy[1]);
 	
-	var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, window_close_time - window_open_time);
-	var pb_content_h = progress_bar_height;
-	var pb_content_start_pos = InvLerp(0, bar_duration, window_open_time) * progress_bar_width - (progress_bar_width * 0.5);
-	if (pb_content_w > 0 && pb_content_h > 0)
-		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] + pb_content_start_pos, _draw_xy[1]);
+	// Draw good zone
+	DrawZone(_draw_xy, good_window_open_time, good_window_close_time, c_orange);
+	
+	// Draw perfect zone
+	DrawZone(_draw_xy, perfect_window_open_time, perfect_window_close_time, c_green);
+	
+	// Draw burnt zone
+	DrawZone(_draw_xy, max(perfect_window_close_time, good_window_close_time), bar_duration, c_black);
+	
+	//var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, window_close_time - window_open_time);
+	//var pb_content_h = progress_bar_height;
+	//var pb_content_start_pos = InvLerp(0, bar_duration, window_open_time) * progress_bar_width - (progress_bar_width * 0.5);
+	//if (pb_content_w > 0 && pb_content_h > 0)
+	//	draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, c_green, 0, c_white, 0, progress_bar_height * 0.5), 0, _draw_xy[0] + pb_content_start_pos, _draw_xy[1]);
 		
 	DrawCursor(_draw_xy[0], _draw_xy[1]);
 }
@@ -154,7 +187,7 @@ function OnReset() {
 
 function SpecificInputBehavior() {
 	if (is_checking_input) {
-		current_qte_time += d(cursor_speed);
+		current_qte_time += d(1);
 	
 		current_qte_time = clamp(current_qte_time, 0, bar_duration);
 		current_position = Remap(0, bar_duration, 0, progress_bar_width, current_qte_time);
