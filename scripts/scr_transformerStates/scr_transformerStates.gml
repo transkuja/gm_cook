@@ -94,7 +94,7 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
  
 	process_draw = function() {
 		// Draw item in + progression
-		transformer.DrawItemsIn();
+		transformer.DrawItemsIn(transformer.max_items);
 		//transformer.DrawBackground();
 		//transformer.DrawProgress();
 	}
@@ -186,7 +186,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
  
  	process_draw = function() {
 		// Draw item in + progression
-		transformer.DrawItemsIn();
+		transformer.DrawItemsIn(array_length(transformer.items_in_ids));
 		//transformer.DrawBackground();
 		//transformer.DrawProgress();
 	}
@@ -211,7 +211,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 	
 	process_cancel = function(_interactInstigator) {
 		if (transformer.IsTransformable())
-			transition_to(new TransformerCanTransformState(transformer));
+			transition_to(new TransformerCancelledState(transformer));
 		else
 			transition_to(new TransformerWaitForPickupState(transformer));
     }
@@ -233,7 +233,7 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
  
  	process_draw = function() {
 		// Draw item in + progression
-		transformer.DrawItemsIn();
+		transformer.DrawItemsIn(transformer.max_items);
 	}
 	
     process_interaction = function(_interactInstigator) {
@@ -292,6 +292,50 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
     }
 }
 
+function TransformerCancelledState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
+    name = "cancelled";
+	transformer = _transformer;
+	
+    enter_state = function() {
+		transformer.state = TRANSFORMER_STATE.CANCELLED;
+
+		transformer.image_blend = c_red;
+    }
+
+
+    process_step = function() {
+			
+    }
+ 
+ 	process_draw = function() {
+		// Draw item in + progression
+		transformer.DrawItemsIn(array_length(transformer.items_in_ids));
+	}
+	
+	function Resume(_interactInstigator) {
+		if (transformer.is_interact_locked)
+			return;
+			
+		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
+			if (_interactInstigator.HasItemInHands()) {	return; }
+		}
+			
+		if (transformer.IsTransformable()) {
+			//if (transformer.preparation_type != PREPARATION_TYPE.HOVEN_COOK)
+			_interactInstigator.state = PLAYER_STATE.TRANSFORMING;
+			transition_to(new TransformerInProgressState(transformer));
+		}
+	}
+	
+    process_interaction = function(_interactInstigator) {
+		Resume(_interactInstigator); 
+    }
+		
+	process_item_interaction = function(_interactInstigator) {
+		// Complete cancel of QTE ?
+    }
+}
+
 function TransformerResultState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
     name = "result";
 	transformer = _transformer;
@@ -309,7 +353,7 @@ function TransformerResultState(_transformer, _args = {}): TransformerState(_tra
  
  	process_draw = function() {
 		// Draw item in + progression
-		transformer.DrawItemsIn();
+		transformer.DrawItemsIn(1);
 	}
 	
 	function Interact(_interactInstigator) {

@@ -226,19 +226,17 @@ function GetItemInBgColor(_item_index) {
 
 debug_y = 0;
 debug_x = array_create(3, 0);
-function DrawItemsIn() {
-	var _nb_items_to_draw = (state == TRANSFORMER_STATE.RESULT) ? 1 : max_items;
-	if (state == TRANSFORMER_STATE.RESULT) 
-		_nb_items_to_draw = 1;
-	else if (state == TRANSFORMER_STATE.IN_PROGRESS)
+function DrawItemsIn(_nb_items_to_draw) {
+	
+	if (state == TRANSFORMER_STATE.IN_PROGRESS)
 	{
-		_nb_items_to_draw = array_length(items_in_ids);
-		
 		if (opt_hide_item_while_in_progress)
 			return;
 	}
 	
-	var _draw_xs = GetPositionsOnLineCenter(draw_circle_radius, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
+	var _result_radius_multiplier = state == TRANSFORMER_STATE.RESULT ? 1.5 : 1;
+	var _draw_circle_radius_final = draw_circle_radius * _result_radius_multiplier;
+	var _draw_xs = GetPositionsOnLineCenter(_draw_circle_radius_final, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
 	
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
@@ -253,7 +251,7 @@ function DrawItemsIn() {
 				debug_y = _draw_xy[1];
 			}
 			
-			draw_sprite_ext(phgen_circle(draw_circle_radius, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - draw_circle_radius,
+			draw_sprite_ext(phgen_circle(_draw_circle_radius_final, _draw_color, 2, c_black), 0, _draw_xy[0], _draw_xy[1] - _draw_circle_radius_final,
 				1, 1, 0, c_white, 1);
 				
 			if (array_length(items_in_ids) > _i) {
@@ -264,8 +262,8 @@ function DrawItemsIn() {
 				draw_sprite_ext(
 					_sprite_to_draw, 
 					0, 
-					 _draw_xy[0] + draw_circle_radius,  _draw_xy[1],
-					0.4 * (1 + item_in_scale_x), 0.4 * (1 + item_in_scale_y), 0, c_white, 1);
+					 _draw_xy[0] + _draw_circle_radius_final,  _draw_xy[1],
+					0.4 * (1 + item_in_scale_x) * _result_radius_multiplier, 0.4 * (1 + item_in_scale_y) * _result_radius_multiplier, 0, c_white, 1);
 			}
 		}
 	}
