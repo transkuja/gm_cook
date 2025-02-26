@@ -238,10 +238,19 @@ function DrawItemsIn(_nb_items_to_draw) {
 	var _draw_circle_radius_final = draw_circle_radius * _result_radius_multiplier;
 	var _draw_xs = GetPositionsOnLineCenter(_draw_circle_radius_final, 50, _nb_items_to_draw, x, SPRITE_ORIGIN.TOP_LEFT); 
 	
+	var _base_item_scale = state == TRANSFORMER_STATE.RESULT ? 0.65 : 0.4;
+
 	if (array_length(items_in_ids) > 0)	{
 		for (var _i = 0; _i < _nb_items_to_draw; _i++)
 		{
-			var _draw_color = merge_colour(c_white, GetItemInBgColor(_i), bg_color_lerp);
+			var _draw_color = c_white;
+			if (state == TRANSFORMER_STATE.CANCELLED)
+				_draw_color = c_yellow;
+			else if (state == TRANSFORMER_STATE.RESULT)
+				_draw_color = c_aqua;
+			else
+				_draw_color = merge_colour(c_white, GetItemInBgColor(_i), bg_color_lerp);
+				
 			var _offset = GetItemsDrawnOffsets(_i, _nb_items_to_draw);
 			var _draw_xy = WorldToGUI(_draw_xs[_i] + _offset[0], y - popup_draw_height + _offset[1]);
 			
@@ -263,7 +272,7 @@ function DrawItemsIn(_nb_items_to_draw) {
 					_sprite_to_draw, 
 					0, 
 					 _draw_xy[0] + _draw_circle_radius_final,  _draw_xy[1],
-					0.4 * (1 + item_in_scale_x) * _result_radius_multiplier, 0.4 * (1 + item_in_scale_y) * _result_radius_multiplier, 0, c_white, 1);
+					_base_item_scale * (1 + item_in_scale_x), _base_item_scale * (1 + item_in_scale_y), 0, c_white, 1);
 			}
 		}
 	}
