@@ -71,41 +71,20 @@ function OnStart() {
 	loop_sound_inst = audio_play_sound(in_progress_sound, 10, true);
 }
 
+function OnInputPressed() {
+
+}
+
 function OnInputValidated() {
-	//if (!is_checking_input) return;
-	//is_checking_input = false;
-	
-	//current_mash_count--;
-	//if (initial_item_mash_count > 0 && current_mash_count <= 0)
-	//	Finish();
-	//else
-	//{
-	//	audio_play_sound(correct_input_sound, 10, false);
-	//	GoToStartLocation();
-	//}
+
 }
 
 function OnInputFailed() {
-	if (!is_checking_input) return;
-	
-	// Play failed anim
-	instance_destroy(anim_failed_inst);
-	bg_color_lerp = 0;
-	var _feedback_anim = new polarca_animation("bg_color_lerp", 1, ac_on_off_two, 0, anim_speed_failed);
-	anim_failed_inst = polarca_animation_start([_feedback_anim]);
-	anim_failed_inst.on_animation_finished = Broadcast(
-		function() { 
-			bg_color_lerp = 0; 
-	});
-	
-	GoToStartLocation();
+
 }
 
 function GetProgressRatio() {
-	if (initial_item_mash_count <= 0)
-		return 0;
-		
-	return 1 - (current_mash_count / initial_item_mash_count);
+	return 0;
 }
 
 function DrawCursor(_x, _y) {
