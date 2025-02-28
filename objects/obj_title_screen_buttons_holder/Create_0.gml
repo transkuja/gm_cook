@@ -76,7 +76,7 @@ function OnNewClicked(_on_click_param) {
 	//_push(fridge_items_new_game, new ItemData("it_prep_cake", 100));
 	//_push(fridge_items_new_game, new ItemData("it_prep_clafoutis", 100));
 	//_push(fridge_items_new_game, new ItemData("it_prep_fruit_cake", 100));
-	//_push(fridge_items_new_game, new ItemData("it_prep_pizza", 100));
+	_push(fridge_items_new_game, new ItemData("it_prep_pizza", 100));
 	//_push(fridge_items_new_game, new ItemData("it_salad", 100));
 	//_push(fridge_items_new_game, new ItemData("it_sauce", 100));
 	//_push(fridge_items_new_game, new ItemData("it_tart", 100));

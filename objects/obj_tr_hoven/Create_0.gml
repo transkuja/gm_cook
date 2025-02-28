@@ -10,6 +10,41 @@ preparation_type = PREPARATION_TYPE.HOVEN_COOK;
 anim_result_speed = 0.02;
 anim_qte_validated_speed = 0.04;
 
+function OnInteract() {
+	if (state == TRANSFORMER_STATE.IN_PROGRESS)
+	{
+		var _hoven_result = 0;
+		// Stop hoven
+		if (instance_exists(qte_holder))
+		{
+			_hoven_result = qte_holder.StopHoven();
+		}
+		
+		_log("Hoven result: ", _hoven_result);
+		
+		if (_hoven_result == 0)
+		{
+			if (current_state) 
+				current_state.transition_to(new TransformerCanTransformState(id));
+		}
+		else
+		{
+			var _result_id = _hoven_result > 0 ? GetResultFromCombo() : "hoven_burnt";
+			if (array_length(items_in_ids) > 0) {
+				array_resize(items_in_ids, 1);
+				items_in_ids[0] = _result_id;
+			}
+			else {
+				_push(items_in_ids, _result_id);
+			}
+			
+			// Transformer will go into result state
+			if (instance_exists(qte_holder))
+				qte_holder.Finish();
+		}
+	}
+}
+
 function IsItemValid(_itemId) {
 	tags = GetItemTags(_itemId);
 	return _contains(tags, ITEM_TYPE.HEATABLE_HOVEN);
@@ -24,11 +59,11 @@ function StopAnimQteValidated() {
 }
 
 function OnTransformationFinished() {
-	if (array_length(items_in_ids) > 0)
-	{
-		items_in_ids[0] = GetResultFromCombo();
-		array_resize(items_in_ids, 1);
-	}
+	//if (array_length(items_in_ids) > 0)
+	//{
+	//	items_in_ids[0] = GetResultFromCombo();
+	//	array_resize(items_in_ids, 1);
+	//}
 	
 	initial_item_mash_count = 0;
 	initial_progress_received = -1;

@@ -35,6 +35,9 @@ function GetItemSprite(_item_id) {
 		//	return spr_ph_crepe;
 		//case "protaupe_ratatouille":
 		//	return spr_ph_ratatouille;
+		case "hoven_burnt":
+			return ;
+			
 		default:
 			return asset_get_index("spr_" + _item_id);
 	}

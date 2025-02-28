@@ -166,8 +166,13 @@ function IsTransformable() {
 			
 }
 
+function OnInteract() {
+}
+
 // On A pressed
 function Interact(_interactInstigator) {
+	OnInteract();
+	
 	if (current_state)
 		current_state.process_interaction(_interactInstigator);
 	

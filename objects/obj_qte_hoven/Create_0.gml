@@ -57,18 +57,6 @@ function OnInit(_items_id) {
 	return true;
 }
 
-function CheckInputIsValid() {
-	return current_qte_time >= window_open_time && current_qte_time <= window_close_time;
-}
-
-function GoToStartLocation() {
-	is_checking_input = false;
-	current_position = 0;
-	current_qte_time = 0;
-	alarm[0] = seconds(anticipation_time);
-	
-}
-
 function StartMoving() {
 	is_checking_input = true;
 	instance_destroy(anim_failed_inst);
@@ -197,7 +185,33 @@ function SpecificInputBehavior() {
 	
 		if (current_qte_time >= bar_duration) {
 			is_checking_input = false;
-			GoToStartLocation();
+		}
+	}
+}
+
+function StopHoven() {
+	// Check if min time reached, else return
+	if (current_qte_time < good_window_open_time)
+	{
+		return 0;
+	}
+	else
+	{
+		if (current_qte_time >= perfect_window_open_time && current_qte_time <= perfect_window_close_time)
+		{
+			// Perfect
+			return 1;
+		}
+		// Item was cooked
+		else if (current_qte_time >= good_window_open_time && current_qte_time <= good_window_close_time)
+		{
+			// Nice
+			return 0.5;
+		}
+		else
+		{
+			// burnt
+			return -1;
 		}
 	}
 }
