@@ -15,7 +15,7 @@ function TransformerState(_object, _args = {}): BaseState(_object, _args) constr
 
 
 function TransformerEmptyState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "empty";
+    name = "tr_empty";
 	transformer = _transformer;
 	
     enter_state = function() {
@@ -74,8 +74,10 @@ function TransformerEmptyState(_transformer, _args = {}): TransformerState(_tran
 }
 
 function TransformerCanTransformState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "can_transform";
+    name = "tr_can_transform";
 	transformer = _transformer;
+	
+	enter_state_time = -1;
 	
     enter_state = function() {
 		transformer.state = TRANSFORMER_STATE.CAN_TRANSFORM;
@@ -83,6 +85,7 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		transformer.StartAnimItems();
 		
 		transformer.image_blend = c_aqua;
+		enter_state_time = current_time;
     }
 
 	exit_state = function() {
@@ -101,6 +104,10 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
 	// Start transforming
     process_interaction = function(_interactInstigator) {
+		// Prevent re-interacting instantly when entering this state
+		if (enter_state_time < 0 || current_time - enter_state_time < 10)
+			return;
+			
         if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands())
 				return;
@@ -169,7 +176,7 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 }
 
 function TransformerInProgressState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "in_progress";
+    name = "tr_in_progress";
 	transformer = _transformer;
 	
     enter_state = function() {
@@ -218,7 +225,7 @@ function TransformerInProgressState(_transformer, _args = {}): TransformerState(
 }
 
 function TransformerWaitForPickupState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "wait_for_pickup";
+    name = "tr_wait_for_pickup";
 	transformer = _transformer;
 	
     enter_state = function() {
@@ -293,7 +300,7 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 }
 
 function TransformerCancelledState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "cancelled";
+    name = "tr_cancelled";
 	transformer = _transformer;
 	
     enter_state = function() {
@@ -337,7 +344,7 @@ function TransformerCancelledState(_transformer, _args = {}): TransformerState(_
 }
 
 function TransformerResultState(_transformer, _args = {}): TransformerState(_transformer, _args) constructor {
-    name = "result";
+    name = "tr_result";
 	transformer = _transformer;
 	
     enter_state = function() {

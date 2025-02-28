@@ -8,7 +8,7 @@ progress_bar_width = 150;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
-bar_duration = 10; // -> should be item related
+bar_duration = 30; // -> should be item related
 window_open_time = 1;
 window_close_time = 1.5;
 current_qte_time = 0;
@@ -36,24 +36,26 @@ bg_color_lerp = 0;
 anim_speed_failed = 0.025;
 anim_failed_inst = noone;
 
+is_init = false;
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;
 	
-	if (current_mash_count == 0) {
-		var _mash_count = GetFryingInputCount(_items_id[0]);
-		if (_mash_count == -1) { return false; }
-		
-		initial_item_mash_count = _mash_count;
-		current_mash_count = _mash_count;
-	}
+	if (!is_init)
+	{
+		bar_duration = seconds(bar_duration);
+		perfect_window_open_time = seconds(perfect_window_open_time);
+		perfect_window_close_time = seconds(perfect_window_close_time);
+		good_window_open_time = seconds(good_window_open_time);
+		good_window_close_time = seconds(good_window_close_time);
 	
-	bar_duration = seconds(bar_duration);
-	perfect_window_open_time = seconds(perfect_window_open_time);
-	perfect_window_close_time = seconds(perfect_window_close_time);
-	good_window_open_time = seconds(good_window_open_time);
-	good_window_close_time = seconds(good_window_close_time);
+		current_qte_time = 0;
+		current_position = 0;
+	}
 
+	is_checking_input = false;
+	
+	is_init = true;
 	return true;
 }
 
@@ -70,17 +72,17 @@ function OnStart() {
 }
 
 function OnInputValidated() {
-	if (!is_checking_input) return;
-	is_checking_input = false;
+	//if (!is_checking_input) return;
+	//is_checking_input = false;
 	
-	current_mash_count--;
-	if (initial_item_mash_count > 0 && current_mash_count <= 0)
-		Finish();
-	else
-	{
-		audio_play_sound(correct_input_sound, 10, false);
-		GoToStartLocation();
-	}
+	//current_mash_count--;
+	//if (initial_item_mash_count > 0 && current_mash_count <= 0)
+	//	Finish();
+	//else
+	//{
+	//	audio_play_sound(correct_input_sound, 10, false);
+	//	GoToStartLocation();
+	//}
 }
 
 function OnInputFailed() {
@@ -168,10 +170,8 @@ function SetFeedbacksInitialState() {
 }
 
 function OnReset() {
-	initial_item_mash_count = 0;
-	current_mash_count = 0;
-	current_qte_time = 0;
-	current_position = 0;
+	//current_qte_time = 0; -> don't reset time
+	// current_position = 0;
 	is_checking_input = false;
 	audio_stop_sound(loop_sound_inst);
 }

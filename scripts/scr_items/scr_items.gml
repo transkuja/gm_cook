@@ -216,6 +216,8 @@ function GetItemTags(_item_id) {
 			return [ITEM_TYPE.RAW_COMPO];
 		case "it_water":
 			return [ITEM_TYPE.RAW_COMPO];
+		case "it_hoven_burnt":
+			return [ITEM_TYPE.NON_TRANSFORMABLE_COMPO];
 		default:
 			return [ITEM_TYPE.NONE];
 	}

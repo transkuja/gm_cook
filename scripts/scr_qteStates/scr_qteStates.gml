@@ -7,7 +7,7 @@ function QteState(_object, _args = {}): BaseState(_object, _args) constructor {
 
 
 function QteNotReadyState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
-    name = "not_ready";
+    name = "qte_not_ready";
 	qte_holder = _qte_holder;
 	
     enter_state = function() {
@@ -18,7 +18,7 @@ function QteNotReadyState(_qte_holder, _args = {}): QteState(_qte_holder, _args)
 }
 
 function QteInitializedState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
-    name = "initialized";
+    name = "qte_initialized";
 	qte_holder = _qte_holder;
 	
     enter_state = function() {
@@ -35,7 +35,7 @@ function QteInitializedState(_qte_holder, _args = {}): QteState(_qte_holder, _ar
 }
 
 function QteInProgressState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
-    name = "in_progress";
+    name = "qte_in_progress";
 	qte_holder = _qte_holder;
 	was_input_pressed = false;
 	
@@ -65,7 +65,7 @@ function QteInProgressState(_qte_holder, _args = {}): QteState(_qte_holder, _arg
 }
 
 function QtePausedState(_qte_holder, _args = {}): QteState(_qte_holder, _args) constructor {
-    name = "in_progress";
+    name = "qte_paused";
 	qte_holder = _qte_holder;
 	
     enter_state = function() {

@@ -20,16 +20,18 @@ function OnInteract() {
 			_hoven_result = qte_holder.StopHoven();
 		}
 		
-		_log("Hoven result: ", _hoven_result);
-		
 		if (_hoven_result == 0)
 		{
+			// Reset
+			CreateQteHolder();
+			
 			if (current_state) 
 				current_state.transition_to(new TransformerCanTransformState(id));
+			return;
 		}
 		else
 		{
-			var _result_id = _hoven_result > 0 ? GetResultFromCombo() : "hoven_burnt";
+			var _result_id = _hoven_result > 0 ? GetResultFromCombo() : "it_hoven_burnt";
 			if (array_length(items_in_ids) > 0) {
 				array_resize(items_in_ids, 1);
 				items_in_ids[0] = _result_id;

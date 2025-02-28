@@ -30,7 +30,7 @@ function OnTransformationFinished() {
 	initial_item_mash_count = 0;
 }
 
-function DrawItemsIn() {
+function DrawItemsIn(_nb_items_to_draw) {
 	if (array_length(items_in_ids) > 0)	{
 		draw_sprite_ext(
 			GetItemSprite(items_in_ids[0]), 0,
