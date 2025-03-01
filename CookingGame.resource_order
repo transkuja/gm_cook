@@ -348,6 +348,7 @@
     {"name":"TrixScript","order":2,"path":"scripts/TrixScript/TrixScript.yy",},
     {"name":"seq_arrow_bump","order":1,"path":"sequences/seq_arrow_bump/seq_arrow_bump.yy",},
     {"name":"seq_qte_perfect","order":2,"path":"sequences/seq_qte_perfect/seq_qte_perfect.yy",},
+    {"name":"seq_qte_good","order":3,"path":"sequences/seq_qte_good/seq_qte_good.yy",},
     {"name":"shd_blur","order":1,"path":"shaders/shd_blur/shd_blur.yy",},
     {"name":"shd_cel_shading","order":2,"path":"shaders/shd_cel_shading/shd_cel_shading.yy",},
     {"name":"shd_depth","order":3,"path":"shaders/shd_depth/shd_depth.yy",},
