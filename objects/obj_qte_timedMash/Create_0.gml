@@ -37,7 +37,7 @@ function OnInit(_items_id) {
 		current_mash_count = _mash_count;
 	}
 	
-	
+	failed_once = false;
 	return true;
 }
 
@@ -65,15 +65,25 @@ function OnStart() {
 	loop_sound_inst = audio_play_sound(in_progress_sound, 10, true);
 }
 
+failed_once = false;
+
 function OnInputValidated() {
 	if (!is_checking_input) return;
 	is_checking_input = false;
 	
 	current_mash_count--;
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
+	{
+		if (failed_once)
+			PlayGoodScoreFeedbacks(x, y);
+		else
+			PlayPerfectScoreFeedbacks(x, y);
+			
 		Finish();
+	}
 	else
 	{
+		PlayGoodScoreFeedbacks(x, y);
 		audio_play_sound(correct_input_sound, 10, false);
 		GoToStartLocation();
 	}
@@ -92,6 +102,7 @@ function OnInputFailed() {
 			bg_color_lerp = 0; 
 	});
 	
+	failed_once = true;
 	GoToStartLocation();
 }
 
@@ -149,6 +160,7 @@ function OnReset() {
 	current_qte_time = 0;
 	current_position = 0;
 	is_checking_input = false;
+	failed_once = false;
 	audio_stop_sound(loop_sound_inst);
 }
 
