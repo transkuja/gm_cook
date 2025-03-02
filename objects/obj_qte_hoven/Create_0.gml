@@ -95,10 +95,10 @@ function DrawCursor(_x, _y) {
 
 function DrawZone(_pb_draw_xy, _start_time, _end_time, _color) {
 	var pb_content_w = progress_bar_width * InvLerp(0, bar_duration, _end_time - _start_time);
-	var pb_content_h = progress_bar_height;
+	var pb_content_h = progress_bar_height - 3;
 	var pb_content_start_pos = InvLerp(0, bar_duration, _start_time) * progress_bar_width - (progress_bar_width * 0.5);
 	if (pb_content_w > 0 && pb_content_h > 0)
-		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, _color, 0, c_white, 0, progress_bar_height * 0.5), 0, _pb_draw_xy[0] + pb_content_start_pos, _pb_draw_xy[1]);
+		draw_sprite(phgen_rectangle(pb_content_w, pb_content_h, _color, 0, c_white, 0, progress_bar_height * 0.5 ), 0, _pb_draw_xy[0] + pb_content_start_pos, _pb_draw_xy[1] + 1.5);
 }
 
 function DrawProgress() {

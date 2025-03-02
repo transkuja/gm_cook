@@ -8,6 +8,9 @@ progress_bar_width = 100;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
+// TMP: diff time to specify good or perfect (mash speed)
+first_chop_time = -1;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;
@@ -23,13 +26,26 @@ function OnInit(_items_id) {
 		current_mash_count = _mash_count;
 	}
 	
+	first_chop_time = -1;
 	return true;
 }
 
+
 function OnInputValidated() {
 	current_mash_count--;
+	if (first_chop_time < 0)
+		first_chop_time = current_time;
+		
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
+	{
+		_log("Diff: ", current_time - first_chop_time);
+		if (current_time - first_chop_time < 1800) // 1.8s
+			PlayPerfectScoreFeedbacks(x, y - 40);
+		else
+			PlayGoodScoreFeedbacks(x, y - 40);
+				
 		Finish();
+	}
 	else
 	{
 		audio_play_sound(Cutout_Knife_Hit_01, 10, false);
@@ -78,4 +94,5 @@ function SetFeedbacksInitialState() {
 function OnReset() {
 	initial_item_mash_count = 0;
 	current_mash_count = 0;
+	first_chop_time = -1;
 }
