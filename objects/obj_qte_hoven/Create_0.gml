@@ -168,6 +168,12 @@ function SpecificInputBehavior() {
 	}
 }
 
+function HardReset() {
+	OnReset();
+	current_qte_time = 0;
+	current_position = 0;
+}
+
 function StopHoven() {
 	// Check if min time reached, else return
 	if (current_qte_time < good_window_open_time)
@@ -176,23 +182,23 @@ function StopHoven() {
 	}
 	else
 	{
+		var _return_value = -1; // burnt
 		if (current_qte_time >= perfect_window_open_time && current_qte_time <= perfect_window_close_time)
 		{
 			// Perfect
 			PlayPerfectScoreFeedbacks(x, y - 70);
-			return 1;
+			_return_value = 1;
 		}
 		// Item was cooked
 		else if (current_qte_time >= good_window_open_time && current_qte_time <= good_window_close_time)
 		{
 			// Nice
 			PlayGoodScoreFeedbacks(x, y - 70);
-			return 0.5;
+			_return_value = 0.5;
 		}
-		else
-		{
-			// burnt
-			return -1;
-		}
+		
+		HardReset();
+		
+		return _return_value;
 	}
 }
