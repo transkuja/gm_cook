@@ -135,9 +135,6 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 			
 			var _to_subscribe = Subscriber(function() { 
 				transformer.ConfirmPendingItem();
-				
-				if (transformer.IsTransformable())
-					transition_to(new TransformerCanTransformState(transformer));
 			} );
 			
 			_interactInstigator.ClearItemInHands(transformer, _to_subscribe);

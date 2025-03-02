@@ -38,7 +38,6 @@ function OnInputValidated() {
 		
 	if (initial_item_mash_count > 0 && current_mash_count <= 0)
 	{
-		_log("Diff: ", current_time - first_chop_time);
 		if (current_time - first_chop_time < 1800) // 1.8s
 			PlayPerfectScoreFeedbacks(x, y - 40);
 		else

@@ -90,7 +90,6 @@ function DelayedFinish() {
 }
 
 function OnInputValidated() {
-	_log("OnInputValidated");
 	if (!is_checking_input) return;
 	is_checking_input = false;
 	
@@ -153,7 +152,7 @@ function DrawBackground() {
 
 
 function SetFeedbacksInitialState() {
-	if (!sequence_exists(active_sequence)) {
+	if (!layer_sequence_exists("GUI", active_sequence)) {
 		var _seq_x = x - 25 - (progress_bar_width * 0.5);
 		var _seq_y = y - 85;
 		
