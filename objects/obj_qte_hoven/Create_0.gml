@@ -8,7 +8,7 @@ progress_bar_width = 150;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
-bar_duration = 30; // -> should be item related
+bar_duration = 10; // -> should be item related
 window_open_time = 1;
 window_close_time = 1.5;
 current_qte_time = 0;
@@ -179,12 +179,14 @@ function StopHoven() {
 		if (current_qte_time >= perfect_window_open_time && current_qte_time <= perfect_window_close_time)
 		{
 			// Perfect
+			PlayPerfectScoreFeedbacks(x, y - 70);
 			return 1;
 		}
 		// Item was cooked
 		else if (current_qte_time >= good_window_open_time && current_qte_time <= good_window_close_time)
 		{
 			// Nice
+			PlayGoodScoreFeedbacks(x, y - 70);
 			return 0.5;
 		}
 		else

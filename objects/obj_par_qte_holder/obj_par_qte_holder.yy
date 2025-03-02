@@ -41,6 +41,18 @@
         "GMParticleSystem",
       ],"listItems":[],"multiselect":false,"name":"fx_on_finish","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_transformation_finished","varType":5,},
     {"$GMObjectProperty":"","%Name":"fx_on_finished_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_finished_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-25","varType":0,},
+    {"$GMObjectProperty":"","%Name":"seq_good","filters":[
+        "GMSequence",
+      ],"listItems":[],"multiselect":false,"name":"seq_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_good","varType":5,},
+    {"$GMObjectProperty":"","%Name":"seq_perfect","filters":[
+        "GMSequence",
+      ],"listItems":[],"multiselect":false,"name":"seq_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_perfect","varType":5,},
+    {"$GMObjectProperty":"","%Name":"snd_score_good","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"snd_score_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_10","varType":5,},
+    {"$GMObjectProperty":"","%Name":"snd_score_perfect","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"snd_score_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_7","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

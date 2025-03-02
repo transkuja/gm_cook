@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"seq_qte_score_good_Events",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"seq_qte_score_good_Events",
+  "parent":{
+    "name":"CookingGame",
+    "path":"CookingGame.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

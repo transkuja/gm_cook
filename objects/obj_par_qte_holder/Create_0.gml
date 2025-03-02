@@ -167,6 +167,27 @@ function Reset() {
 	on_qte_completed = noone;
 }
 
+function PlayGoodScoreFeedbacks(_x, _y) {
+	// Play sequence
+	if (seq_good != noone)
+		layer_sequence_create("GUI", _x, _y, seq_good);
+		
+	// play sound
+	if (snd_score_good != noone) {
+		audio_play_sound(snd_score_good, 0, false);
+	}
+}
+
+function PlayPerfectScoreFeedbacks(_x, _y) {
+	// Play sequence
+	if (seq_perfect != noone)
+		layer_sequence_create("GUI", _x, _y, seq_perfect);
+		
+	if (snd_score_perfect != noone) {
+		audio_play_sound(snd_score_perfect, 0, false);
+	}
+}
+
 state = QTE_STATE.NOT_READY;
 current_state = new QteNotReadyState(id, {});
 current_state.enter_state();
