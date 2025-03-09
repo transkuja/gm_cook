@@ -32,11 +32,15 @@ function PutItemIn(_item_id) {
 	
 	if (_item_id != "none")
 		_push(items_pending, _item_id);
-	
+		
+	is_interact_locked = true;
 }
 
 function ConfirmPendingItem() {
 	if (array_length(items_pending) == 0) return;
+	
+	is_interact_locked = true;
+	alarm[0] = seconds(0.25); // reset interaction locked
 	
 	var _itemId = items_pending[0];		
 	array_remove(items_pending, _itemId);
@@ -95,6 +99,9 @@ function CheckIsNewRecipe(_item_id) {
 
 // After operation, A
 function TakeFrom(_interactInstigator) {
+	if (is_interact_locked || array_length(items_pending) > 0)
+		return false;
+		
 	if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 		if (_interactInstigator.HasItemInHands())
 			return false;

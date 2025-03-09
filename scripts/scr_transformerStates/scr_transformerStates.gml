@@ -108,6 +108,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 		if (enter_state_time < 0 || current_time - enter_state_time < 10)
 			return;
 			
+		if (transformer.is_interact_locked)
+			return;
+			
         if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands())
 				return;
@@ -143,6 +146,9 @@ function TransformerCanTransformState(_transformer, _args = {}): TransformerStat
 	
 	// Take item out
 	process_item_interaction = function(_interactInstigator) {
+		if (transformer.is_interact_locked)
+			return;
+		
 		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands()) {
 				if (!transformer.IsFilled()) {
@@ -270,6 +276,9 @@ function TransformerWaitForPickupState(_transformer, _args = {}): TransformerSta
 	
 	// Take item out
 	process_item_interaction = function(_interactInstigator) {
+		if (transformer.is_interact_locked)
+			return;
+			
 		if (instance_exists(_interactInstigator) && _interactInstigator.object_index == obj_player) {
 			if (_interactInstigator.HasItemInHands()) {
 				if (!transformer.IsFilled()) {
