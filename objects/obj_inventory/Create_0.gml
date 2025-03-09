@@ -138,34 +138,33 @@ function SetSelectedSlot(_newValue) {
 function OnSlotClicked(_slot_index) {
 	if (selected_slot != _slot_index)
 		SetSelectedSlot(_slot_index);
-	else 
-	{
-		if (!IsSelectedItemValid())
-			return;
+		
+	if (!IsSelectedItemValid())
+		return;
 			
-		// Checks if another menu is opened
-		if (global.inventory_mode)
+	// Checks if another menu is opened
+	if (global.inventory_mode)
+	{
+		if (global.ui_on_inventory_item_used != noone)
 		{
-			if (global.ui_on_inventory_item_used != noone)
+			_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
+			_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
+			if (global.ui_on_inventory_item_used(_item_data_to_use))
 			{
-				_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
-				_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
-				if (global.ui_on_inventory_item_used(_item_data_to_use))
-				{
-					if (_ctrl_input)
-						UseAllItemsSelected();
-					else
-						UseSelectedItem();
-				}
-			}
-		}
-		else
-		{
-			if (instance_exists(inst_player)) {
-				inst_player.GetItemFromInventoryToHands();
+				if (_ctrl_input)
+					UseAllItemsSelected();
+				else
+					UseSelectedItem();
 			}
 		}
 	}
+	else
+	{
+		if (instance_exists(inst_player)) {
+			inst_player.GetItemFromInventoryToHands();
+		}
+	}
+	
 }
 
 input_validated = false;

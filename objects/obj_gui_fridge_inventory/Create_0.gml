@@ -288,21 +288,19 @@ function SetSelectedSlot(_newValue) {
 function OnSlotClicked(_slot_index) {
 	if (selected_slot != _slot_index)
 		SetSelectedSlot(_slot_index);
-	else 
+		
+	if (IsSelectedItemValid())
 	{
-		if (IsSelectedItemValid())
-		{
-			_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
-			_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
+		_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
+		_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
 
-			if (instance_exists(inst_inventory)) {
-				if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
-				{
-					if (_ctrl_input)
-						UseAllItemsSelected();
-					else
-						UseSelectedItem();
-				}
+		if (instance_exists(inst_inventory)) {
+			if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+			{
+				if (_ctrl_input)
+					UseAllItemsSelected();
+				else
+					UseSelectedItem();
 			}
 		}
 	}
