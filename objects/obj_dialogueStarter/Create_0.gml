@@ -28,13 +28,14 @@ function AreRequirementsValid() {
 }
 
 function StartDialogue() {
-	if (!instance_exists(inst_databaseLoader)) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (!instance_exists(_db_inst)) {
 		_log("ERROR: Database loader instance not in Room: ", room_name);
 		return;
 	}
 	
 	for (var i = 0; i < array_length(arr_quests_ids); i++) {
-		var quest = inst_databaseLoader.quests[? arr_quests_ids[i]];
+		var quest = _db_inst.quests[? arr_quests_ids[i]];
 		if (struct_exists(quest, "initial_dialogue")) {
 			if (dialogue_id == quest.initial_dialogue) {
 				PlayQuestStartingDialogue(arr_quests_ids[i]);

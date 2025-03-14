@@ -1,11 +1,12 @@
 
 function AreDialogueRequirementsMet(_dialogue_id) {
-	if (!instance_exists(inst_databaseLoader)) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (!instance_exists(_db_inst)) {
 		_log("ERROR: Database loader instance not in Room: ", room_name);
 		return false;
 	}
 	
-	requirementsData = inst_databaseLoader.dialogues_requirements[? _dialogue_id];
+	requirementsData = _db_inst.dialogues_requirements[? _dialogue_id];
 	if (requirementsData == undefined)
 		return true;
 		

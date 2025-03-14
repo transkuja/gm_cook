@@ -164,12 +164,14 @@ function GetText(_id, _loc_code) {
 // --------- upon selection, look for [text_id]_selected in DialogueData
 // Might have an issue if don't want to have a dialogue AFTER selection
 function GetDialogueData(_dialogue_id) {
-	if (!instance_exists(inst_databaseLoader)) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	
+	if (!instance_exists(_db_inst)) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
 	}
 	
 	_log("Check dialogue from DB:", _dialogue_id);
-	current_dialogue_data = inst_databaseLoader.dialogues[? _dialogue_id];
+	current_dialogue_data = _db_inst.dialogues[? _dialogue_id];
 	if (current_dialogue_data == noone || current_dialogue_data == undefined) {
 		_log(string("Dialogue {0} not found !", _dialogue_id));
 		return;
@@ -182,7 +184,7 @@ function GetDialogueData(_dialogue_id) {
 		
 	has_choice = array_length(loaded_choices) > 0;
 
-	texts_array = inst_databaseLoader.localized_texts[? _dialogue_id];
+	texts_array = _db_inst.localized_texts[? _dialogue_id];
 	if (array_length(texts_array) > 0) {
 		textToShow = texts_array[0].text_value;
 		HandleTextAppearSound();
@@ -255,7 +257,13 @@ function OnChoiceSelected(_on_click_param) {
 function SetChoices() {
 	if (opt_no_choice)
 		return;
-		
+	
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	
+	if (!instance_exists(_db_inst)) {
+		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
+	}
+	
 	choices_set = true;
 
 	var nb_choices = array_length(loaded_choices);
@@ -271,7 +279,7 @@ function SetChoices() {
 			button_inst.depth = depth-1000;
 			button_inst.on_click_param = on_choice_selected[_i];
 			
-			var choice_text = inst_databaseLoader.localized_texts[? loaded_choices[_i]];
+			var choice_text = _db_inst.localized_texts[? loaded_choices[_i]];
 			if (array_length(choice_text) > 0)
 				button_inst.button_text = choice_text[0].text_value;
 			

@@ -18,8 +18,10 @@ function GetCurrentDialogue() {
 	if (current_quest[0] != "") {
 		current_quest_id = current_quest[0];
 		
-		if (!instance_exists(inst_databaseLoader)) { return false; }
-		cur_quest_data = inst_databaseLoader.quests[? current_quest_id];
+		var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+		if (!instance_exists(_db_inst)) { return false; }
+		
+		cur_quest_data = _db_inst.quests[? current_quest_id];
 		
 		if (current_quest[1] == "pending") {
 			if (struct_exists(cur_quest_data, "pending_dialogue")) {

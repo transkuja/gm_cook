@@ -38,9 +38,10 @@ function GetQuestStatus(_quest_id) {
 }
 
 function IsQuestRequirementsMet(_quest_id) {
-	if (!instance_exists(inst_databaseLoader)) { return false; }
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (!instance_exists(_db_inst)) { return false; }
 	
-	var q_data = inst_databaseLoader.quests[? _quest_id];
+	var q_data = _db_inst.quests[? _quest_id];
 		
 	// check quest valid
 	if (!struct_exists(q_data, "requirements")) { return true; }
@@ -121,12 +122,13 @@ function PlayQuestDialogue(_quest_id, _forced_status = "", _always = false) {
 
 	var quest_status = is_string(_forced_status) && _forced_status != "" ? _forced_status : GetQuestStatus(_quest_id);
 	if (quest_status == "done") { return false; }
-	
-	if (!instance_exists(inst_databaseLoader)) { return false; }
+
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (!instance_exists(_db_inst)) { return false; }
 	
 	current_quest_id = _quest_id;
 	
-	var cur_quest_data = inst_databaseLoader.quests[? current_quest_id];
+	var cur_quest_data = _db_inst.quests[? current_quest_id];
 		
 	var current_dialogue_id = "";
 	

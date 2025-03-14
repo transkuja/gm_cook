@@ -14,6 +14,8 @@ dialogues_requirements = ds_map_create();
 	
 use_txt_not_ini = true;
 
+global.database_manager = self;
+
 function LoadCombosFromFile(_filename) {
 	if (!use_txt_not_ini)
 	{
@@ -117,23 +119,10 @@ function GetDatabaseFromPreparationType(_preparation_type)
 	}
 }
 
-// PROTAUPE EXCLUSIVE
-billy_memory = "";
-function LoadVieuxBillyMemory() {
-	
-	file = file_text_open_read("VieuxBilly/memory.txt");
-	
-	if (file == -1) {
-		_log("Can't open", _filename, " file !");
-		return;
-	}
-	
-	billy_memory = "";
-	while (!file_text_eof(file)) {
-		billy_memory += file_text_readln(file);
-	}
-	
-	file_text_close(file);
-	
-	billy_memory = string_lower(billy_memory);
-}
+LoadAssembleCombos();
+LoadRecipes();
+
+LoadDialogues();
+LoadLocTexts("fr");
+
+LoadQuests();

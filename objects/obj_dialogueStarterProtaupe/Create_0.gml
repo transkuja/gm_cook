@@ -5,16 +5,19 @@
 event_inherited();
 
 function CheckMemory(_quest_id) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (!instance_exists(_db_inst)) { return false; }
+	
 	if (_quest_id == "q_protaupe_salad") {
-		return (string_pos("galette", inst_databaseLoader.billy_memory) != 0 || string_pos("crêpe", inst_databaseLoader.billy_memory) != 0 || string_pos("crepe", inst_databaseLoader.billy_memory) != 0) 
-					&& string_pos("sans lait", inst_databaseLoader.billy_memory) != 0;
+		return (string_pos("galette", _db_inst.billy_memory) != 0 || string_pos("crêpe", _db_inst.billy_memory) != 0 || string_pos("crepe", _db_inst.billy_memory) != 0) 
+					&& string_pos("sans lait", _db_inst.billy_memory) != 0;
 	}
 		
 	if (_quest_id == "q_protaupe_galette") 
 	{
-		return string_pos("grosse", inst_databaseLoader.billy_memory) != 0
-			&& string_pos("ratatouille", inst_databaseLoader.billy_memory) != 0
-			&& string_pos("famille", inst_databaseLoader.billy_memory) != 0;
+		return string_pos("grosse", _db_inst.billy_memory) != 0
+			&& string_pos("ratatouille", _db_inst.billy_memory) != 0
+			&& string_pos("famille", _db_inst.billy_memory) != 0;
 	}
 }
 
@@ -25,44 +28,12 @@ function QuestCheckFinished(_quest_id) {
 }
 
 function CheckMemoryForName() {
-	var arr_checks = ["topich", "pichon", "thomas"];
-	for (var i = 0; i < array_length(arr_checks); i++)
-	{
-		if (string_pos(arr_checks[i], inst_databaseLoader.billy_memory) != 0)
-		{
-			dialogue_id = "d_input_" + arr_checks[i];
-			save_key = dialogue_id + "_played";
-			return;
-		}	
-	}
-	
-	if (string_pos("dinde", inst_databaseLoader.billy_memory) != 0 || string_pos("dindon", inst_databaseLoader.billy_memory) != 0)
-	{
-		dialogue_id = "d_input_dinde";
-		save_key = dialogue_id + "_played";
-		return;
-	}
-	
-	if (string_pos("clément", inst_databaseLoader.billy_memory) != 0 || string_pos("clement", inst_databaseLoader.billy_memory) != 0)
-	{
-		dialogue_id = "d_input_clement";
-		save_key = dialogue_id + "_played";
-		return;
-	}
-	
-	if (string_pos("bite", inst_databaseLoader.billy_memory) != 0
-		|| string_pos("penis", inst_databaseLoader.billy_memory) != 0 || string_pos("pénis", inst_databaseLoader.billy_memory) != 0
-		|| string_pos("sex", inst_databaseLoader.billy_memory) != 0 || string_pos("zizi", inst_databaseLoader.billy_memory) != 0
-		|| string_pos("teub", inst_databaseLoader.billy_memory) != 0 || string_pos("chibr", inst_databaseLoader.billy_memory) != 0)
-	{
-		dialogue_id = "d_input_bite";
-		save_key = dialogue_id + "_played";
-		return;
-	}
+
 }
 
 function SetDialogueId() {
-	if (instance_exists(inst_databaseLoader))	
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	if (instance_exists(_db_inst))
 	{
 		// Act I: if vieux quichon entered AND 1st dialogue played, swapped to 2nd dialogue
 		var _intro_dialogue_played = save_data_get(save_key) != undefined;
@@ -97,7 +68,7 @@ function SetDialogueId() {
 			}
 			else 
 			{
-				if (string_pos("vieux quichon", inst_databaseLoader.billy_memory) != 0)
+				if (string_pos("vieux quichon", _db_inst.billy_memory) != 0)
 				{
 					dialogue_id = "d_protaupe_correct_name";
 					save_key = dialogue_id + "_played";
@@ -106,7 +77,6 @@ function SetDialogueId() {
 				}
 				else 
 				{
-					 CheckMemoryForName();					
 				}
 			}
 		}

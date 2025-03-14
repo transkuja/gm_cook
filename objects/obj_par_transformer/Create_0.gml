@@ -130,12 +130,14 @@ function TakeFrom(_interactInstigator) {
 function GetResultFromCombo() {
 	var _expected_result = "none";
 	
-	if (!instance_exists(inst_databaseLoader)) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	
+	if (!instance_exists(_db_inst)) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
 		return "none";
 	}
 	
-	var _db = inst_databaseLoader.GetDatabaseFromPreparationType(preparation_type);
+	var _db = _db_inst.GetDatabaseFromPreparationType(preparation_type);
 	if (array_length(_db) == 0)
 		return "none";
 		
@@ -156,7 +158,9 @@ function IsTransformable() {
 	if (array_length(items_in_ids) == 0)
 		return false;
 		
-	if (!instance_exists(inst_databaseLoader)) {
+	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	
+	if (!instance_exists(_db_inst)) {
 		_log("ERROR! Obj database loader does not exist !");
 		return false;
 	}
