@@ -39,7 +39,7 @@ last_transformer_detected = noone;
 last_portable_item_detected = noone;
 detection_offset_y = -50;
 
-draw_debug = false;
+draw_debug = true;
 
 // For prepared items
 item_in_hands = noone; 
@@ -433,4 +433,51 @@ function CreateTrailParticle() {
 
 function CancelInputCheck() {
 	return input_get_pressed(0, "cancel_interaction");
+}
+
+min_x_check_enviro = 25;
+min_y_check_enviro = 150;
+max_x_check_enviro = 25;
+max_y_check_enviro = 100;
+
+debug_draw_enviro_detected = false;
+debug_draw_enviro_detected_x = 0;
+debug_draw_enviro_detected_y = 0;
+
+depth_override = true;
+depth_override_value = 0;
+function CheckEnviroAround() {
+	var _items_detected = ds_list_create();
+	var _count = collision_rectangle_list(
+		x - min_x_check_enviro,
+		y - min_y_check_enviro,
+		x + max_x_check_enviro,
+		y + max_y_check_enviro,
+		obj_par_enviro, false, false, _items_detected, false);
+	
+	var is_behind = false;
+	depth_override = false;
+	if (_count > 0)
+	{
+		for (var i = 0; i < _count; ++i;)
+		{
+			var item_detected = _items_detected[| i];
+			if (item_detected != noone && item_detected != undefined) {
+				if (item_detected.bbox_bottom > bbox_bottom)
+				{
+					depth_override_value = item_detected.depth + 1;
+					depth_override = true;
+				}
+				
+				debug_draw_enviro_detected = true;
+				debug_draw_enviro_detected_x = item_detected.x;
+				debug_draw_enviro_detected_y = item_detected.y;
+				break;
+			}
+		}
+	}
+	else
+		debug_draw_enviro_detected = false;
+	
+	ds_list_destroy(_items_detected);
 }
