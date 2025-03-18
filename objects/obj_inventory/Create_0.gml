@@ -14,6 +14,8 @@ display_lines = 1;
 
 draw_origin = [view_wport[0] * 0.5, view_hport[0] - 200];
 
+global.inventory_instance = self;
+
 function BindEventsToInventory() {
 	var _broadcast_add = Broadcast(function() {
 		DrawItems();
@@ -90,7 +92,12 @@ function CanAddItem(_item_id, _qty) {
 }
 
 function AddItemIfPossible(_item_id, _qty) {
-	return inventory.AddItemIfPossible(_item_id, _qty);
+	var _item_added = inventory.AddItemIfPossible(_item_id, _qty);
+	
+	if (_item_added)
+		PerformSave();
+		
+	return _item_added;
 }
 
 //function RemoveItem(_id, _qty) {
@@ -376,6 +383,8 @@ function UseSelectedItem() {
 	
 	DrawItems();
 	
+	PerformSave();
+	
 	return _currentSlotId;
 }
 
@@ -386,6 +395,8 @@ function UseAllItemsSelected() {
 	
 	DrawItems();
 	
+	PerformSave();
+		
 	return _currentSlotId;
 }
 

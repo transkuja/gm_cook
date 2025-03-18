@@ -33,7 +33,8 @@ function StartMagnet(_player) {
 	if (!is_ready) return;
 	if (is_collected || is_magnetized) return;		
 	
-	if (instance_exists(inst_inventory) && !inst_inventory.CanAddItem(item_id, 1))
+	var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+	if (instance_exists(_inventory) && !_inventory.CanAddItem(item_id, 1))
 		return;
 		
 	if (instance_exists(_player)) {
@@ -52,8 +53,9 @@ function Collect() {
 	
 	is_magnetized = false;
 	
-	if (instance_exists(inst_inventory)) {
-		if (!inst_inventory.AddItemIfPossible(item_id, 1))
+	var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+	if (instance_exists(_inventory)) {
+		if (!_inventory.AddItemIfPossible(item_id, 1))
 			return;
 			
 		is_collected = true;

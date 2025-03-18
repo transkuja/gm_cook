@@ -11,6 +11,9 @@ function GetGlobalInstanceVarName(_manager_enum) {
 			
 		case GLOBAL_INSTANCES.PLAYER:
 			return "player_instance";
+			
+		case GLOBAL_INSTANCES.INVENTORY:
+			return "inventory_instance";
 	}
 	
 	return "none";

@@ -62,7 +62,8 @@ function IsQuestRequirementsMet(_quest_id) {
 }
 
 function CanQuestItemBeValidated(_quest_data) {
-	if (!instance_exists(inst_inventory)) { return false; }
+	var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+	if (!instance_exists(_inventory)) { return false; }
 	
 	if (!struct_exists(_quest_data, "quest_objectives")) { return true; }
 
@@ -78,7 +79,7 @@ function CanQuestItemBeValidated(_quest_data) {
 		item_in_hand_id = _player.item_in_hands.item_id;
 		
 	for (var _i = 0; _i < item_count; _i++) {
-		if (!inst_inventory.HasItem(_quest_data.quest_objectives[_i]) && item_in_hand_id != _quest_data.quest_objectives[_i])
+		if (!_inventory.HasItem(_quest_data.quest_objectives[_i]) && item_in_hand_id != _quest_data.quest_objectives[_i])
 			return false;
 	}
 	
@@ -99,7 +100,8 @@ function SetQuestToFinished() {
 	var item_count = array_length(cur_quest_data.quest_objectives);
 	if (item_count == 0) return;
 
-	if (!instance_exists(inst_inventory)) { return; }	
+	var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+	if (!instance_exists(_inventory)) { return; }	
 	
 	var _player = TryGetGlobalInstance(GLOBAL_INSTANCES.PLAYER);
 	if (!instance_exists(_player)) { return; }
@@ -111,7 +113,7 @@ function SetQuestToFinished() {
 		if (item_in_hands == cur_quest_data.quest_objectives[_i])
 			_player.ClearItemInHands(noone, noone);
 		else
-			inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
+			_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
 	}
 	
 }

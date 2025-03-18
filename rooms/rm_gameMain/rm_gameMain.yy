@@ -7,7 +7,6 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_player","path":"rooms/rm_gameMain/rm_gameMain.yy",},
-    {"name":"inst_inventory","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_41B37E0C","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_3566866","path":"rooms/rm_gameMain/rm_gameMain.yy",},
     {"name":"inst_7326C878","path":"rooms/rm_gameMain/rm_gameMain.yy",},
@@ -91,7 +90,6 @@
       ],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":true,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":-6,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_player","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_player","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1486.0,"y":369.0,},
-        {"$GMRInstance":"","%Name":"inst_inventory","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_inventory","objectId":{"name":"obj_inventory","path":"objects/obj_inventory/obj_inventory.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":-352.0,},
         {"$GMRInstance":"","%Name":"inst_2E130A16","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2E130A16","objectId":{"name":"obj_tr_stir_bowl","path":"objects/obj_tr_stir_bowl/obj_tr_stir_bowl.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":521.0,"y":704.0,},
         {"$GMRInstance":"","%Name":"inst_747C076F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_747C076F","objectId":{"name":"obj_quest_npc","path":"objects/obj_quest_npc/obj_quest_npc.yy",},"properties":[
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_npc","path":"objects/obj_par_npc/obj_par_npc.yy",},"propertyId":{"name":"dialogue_ids","path":"objects/obj_par_npc/obj_par_npc.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"d_protaupe_the_end_idle|d_protaupe_talk1|d_protaupe_talk2|d_protaupe_porte_manteau\"",},

@@ -68,3 +68,6 @@ function get_all_key_containing(_pattern) {
 	
 	return _map_keys;
 }
+
+// Init
+perform_load();

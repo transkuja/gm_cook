@@ -736,8 +736,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_gameMain","path":"rooms/rm_gameMain/rm_gameMain.yy",},},
     {"roomId":{"name":"rm_mainMenu","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},},
+    {"roomId":{"name":"rm_gameMain","path":"rooms/rm_gameMain/rm_gameMain.yy",},},
     {"roomId":{"name":"rm_testMechanic","path":"rooms/rm_testMechanic/rm_testMechanic.yy",},},
     {"roomId":{"name":"rm_loadingRoom","path":"rooms/rm_loadingRoom/rm_loadingRoom.yy",},},
     {"roomId":{"name":"rm_polarca_testing","path":"rooms/rm_polarca_testing/rm_polarca_testing.yy",},},

@@ -353,14 +353,15 @@ function GetItemFromInventoryToHands() {
 		return;
 	}
 	
-	if (!instance_exists(inst_inventory)) { _log("ERROR: No inventory instance in room !!!"); return; }
-	if (!inst_inventory.IsSelectedItemValid()) { 
+	var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+	if (!instance_exists(_inventory)) { _log("ERROR: No inventory instance in room !!!"); return; }
+	if (!_inventory.IsSelectedItemValid()) { 
 		_log("Selected item not valid, cant take out !");
 		// TODO: feedback item selected not valid
 		return; 
 	}
 	
-	var _itemId = inst_inventory.UseSelectedItem();
+	var _itemId = _inventory.UseSelectedItem();
 	
 	CreateItemInHands(_itemId);
 }
@@ -373,8 +374,9 @@ function CheckInputsInventory() {
 			GetItemFromInventoryToHands();
 		}
 		else {
-			if (instance_exists(inst_inventory)) {
-				if (inst_inventory.AddItemIfPossible(item_in_hands.item_id, 1)) {
+			var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+			if (instance_exists(_inventory)) {
+				if (_inventory.AddItemIfPossible(item_in_hands.item_id, 1)) {
 					ClearItemInHands(noone, noone);
 				}
 			}

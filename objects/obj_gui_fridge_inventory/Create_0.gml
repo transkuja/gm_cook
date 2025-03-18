@@ -207,8 +207,9 @@ function HandleInput() {
 				var _item_qty = GetSelectedItemQty();
 				var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
 
-				if (instance_exists(inst_inventory)) {
-					if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+				var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+				if (instance_exists(_inventory)) {
+					if (_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
 						UseAllItemsSelected();
 				}
 			}
@@ -294,8 +295,9 @@ function OnSlotClicked(_slot_index) {
 		_ctrl_input = keyboard_check(vk_lcontrol) || keyboard_check(vk_control);
 		_item_data_to_use = new ItemData(GetSelectedItemId(), _ctrl_input ? GetSelectedItemQty() : 1);
 
-		if (instance_exists(inst_inventory)) {
-			if (inst_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+		var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+		if (instance_exists(_inventory)) {
+			if (_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
 			{
 				if (_ctrl_input)
 					UseAllItemsSelected();
@@ -328,8 +330,9 @@ function GetNearSlot(_index, _nb_columns, _dir, _inventory_mode = false) {
 					return slots_instances[_index + ((display_lines - 1) * _nb_columns)];		
 				else
 				{
-					if (instance_exists(inst_inventory))
-						return GetClosest(slots_instances[_index], inst_inventory.slots_instances);
+					var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+					if (instance_exists(_inventory))
+						return GetClosest(slots_instances[_index], _inventory.slots_instances);
 					else
 						return slots_instances[_index + ((display_lines - 1) * _nb_columns)];
 				}
@@ -345,8 +348,9 @@ function GetNearSlot(_index, _nb_columns, _dir, _inventory_mode = false) {
 					return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
 				else
 				{
-					if (instance_exists(inst_inventory))
-						return GetClosest(slots_instances[_index], inst_inventory.slots_instances);
+					var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+					if (instance_exists(_inventory))
+						return GetClosest(slots_instances[_index], _inventory.slots_instances);
 					else
 						return slots_instances[_index - ((display_lines - 1) * _nb_columns)];
 				}

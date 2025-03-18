@@ -1,9 +1,10 @@
 /// @description On load finished
 
-if (instance_exists(inst_inventory))
+var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+if (instance_exists(_inventory))
 {
-	inst_inventory.PerformLoad();
-	bind_to_data_collection(inst_inventory, function(){inst_inventory.PerformSave();});
+	_inventory.PerformLoad();
+	bind_to_data_collection(_inventory, function(){_inventory.PerformSave();});
 }
 
 if (on_load_finished != noone)
