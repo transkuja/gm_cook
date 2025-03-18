@@ -28,7 +28,7 @@ function AreRequirementsValid() {
 }
 
 function StartDialogue() {
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	if (!instance_exists(_db_inst)) {
 		_log("ERROR: Database loader instance not in Room: ", room_name);
 		return;

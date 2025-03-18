@@ -56,6 +56,8 @@ max_y_depth_sorting = 670;
 
 image_xscale = default_xscale * current_scale * scale_flip;
 
+global.player_instance = self;
+
 function ComputeVelocity() {
 	var _stick_horizontal = gamepad_axis_value(0, gp_axislh);
 	var _stick_vertical = gamepad_axis_value(0, gp_axislv);

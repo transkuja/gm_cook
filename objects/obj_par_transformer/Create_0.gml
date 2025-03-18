@@ -130,7 +130,7 @@ function TakeFrom(_interactInstigator) {
 function GetResultFromCombo() {
 	var _expected_result = "none";
 	
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	
 	if (!instance_exists(_db_inst)) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
@@ -158,7 +158,7 @@ function IsTransformable() {
 	if (array_length(items_in_ids) == 0)
 		return false;
 		
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	
 	if (!instance_exists(_db_inst)) {
 		_log("ERROR! Obj database loader does not exist !");

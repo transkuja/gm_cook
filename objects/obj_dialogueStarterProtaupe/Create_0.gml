@@ -5,7 +5,7 @@
 event_inherited();
 
 function CheckMemory(_quest_id) {
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	if (!instance_exists(_db_inst)) { return false; }
 	
 	if (_quest_id == "q_protaupe_salad") {
@@ -32,7 +32,7 @@ function CheckMemoryForName() {
 }
 
 function SetDialogueId() {
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	if (instance_exists(_db_inst))
 	{
 		// Act I: if vieux quichon entered AND 1st dialogue played, swapped to 2nd dialogue

@@ -164,7 +164,7 @@ function GetText(_id, _loc_code) {
 // --------- upon selection, look for [text_id]_selected in DialogueData
 // Might have an issue if don't want to have a dialogue AFTER selection
 function GetDialogueData(_dialogue_id) {
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	
 	if (!instance_exists(_db_inst)) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");
@@ -258,7 +258,7 @@ function SetChoices() {
 	if (opt_no_choice)
 		return;
 	
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	
 	if (!instance_exists(_db_inst)) {
 		_log("CRITICAL ERROR: Database Loader not found ! /!\\");

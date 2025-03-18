@@ -11,7 +11,7 @@ catch_input = false;
 //if (instance_number(obj_title_screen_manager) > 0)
 //	title_screen_manager_inst = instance_find(obj_title_screen_manager, 0);
 //else 
-//	title_screen_manager_inst = instance_create_layer(0,0,"Managers", obj_title_screen_manager);
+//	title_screen_manager_inst = instance_create_layer(0,0,"GLOBAL_INSTANCES", obj_title_screen_manager);
 	
 function CreateButton(_text, _y, _broadcast, _up, _down) {
 	var button_inst = instance_create_layer(spawn_x, _y, "GUI", obj_gui_button);

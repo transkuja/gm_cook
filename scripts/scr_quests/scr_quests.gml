@@ -38,7 +38,7 @@ function GetQuestStatus(_quest_id) {
 }
 
 function IsQuestRequirementsMet(_quest_id) {
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	if (!instance_exists(_db_inst)) { return false; }
 	
 	var q_data = _db_inst.quests[? _quest_id];
@@ -72,9 +72,10 @@ function CanQuestItemBeValidated(_quest_data) {
 	
 	var item_in_hand_id = "";
 	
-	if (!instance_exists(inst_player)) { return false; }
-	if (inst_player.HasItemInHands())
-		item_in_hand_id = inst_player.item_in_hands.item_id;
+	var _player = TryGetGlobalInstance(GLOBAL_INSTANCES.PLAYER);
+	if (!instance_exists(_player)) { return false; }
+	if (_player.HasItemInHands())
+		item_in_hand_id = _player.item_in_hands.item_id;
 		
 	for (var _i = 0; _i < item_count; _i++) {
 		if (!inst_inventory.HasItem(_quest_data.quest_objectives[_i]) && item_in_hand_id != _quest_data.quest_objectives[_i])
@@ -98,15 +99,17 @@ function SetQuestToFinished() {
 	var item_count = array_length(cur_quest_data.quest_objectives);
 	if (item_count == 0) return;
 
-	if (!instance_exists(inst_inventory)) { return; }
-	if (!instance_exists(inst_player)) { return; }
+	if (!instance_exists(inst_inventory)) { return; }	
+	
+	var _player = TryGetGlobalInstance(GLOBAL_INSTANCES.PLAYER);
+	if (!instance_exists(_player)) { return; }
 	var item_in_hands = "";
-	if (inst_player.HasItemInHands())
-		item_in_hands = inst_player.item_in_hands.item_id;
+	if (_player.HasItemInHands())
+		item_in_hands = _player.item_in_hands.item_id;
 	
 	for (var _i = 0; _i < item_count; _i++) {
 		if (item_in_hands == cur_quest_data.quest_objectives[_i])
-			inst_player.ClearItemInHands(noone, noone);
+			_player.ClearItemInHands(noone, noone);
 		else
 			inst_inventory.RemoveItem(cur_quest_data.quest_objectives[_i], 1);
 	}
@@ -123,7 +126,7 @@ function PlayQuestDialogue(_quest_id, _forced_status = "", _always = false) {
 	var quest_status = is_string(_forced_status) && _forced_status != "" ? _forced_status : GetQuestStatus(_quest_id);
 	if (quest_status == "done") { return false; }
 
-	var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+	var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 	if (!instance_exists(_db_inst)) { return false; }
 	
 	current_quest_id = _quest_id;

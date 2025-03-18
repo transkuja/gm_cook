@@ -3,11 +3,14 @@
 function GetGlobalInstanceVarName(_manager_enum) {
 	switch (_manager_enum)
 	{
-		case MANAGERS.DATABASE_MANAGER:
+		case GLOBAL_INSTANCES.DATABASE_MANAGER:
 			return "database_manager";
 			
-		case MANAGERS.SAVE_MANAGER:
+		case GLOBAL_INSTANCES.SAVE_MANAGER:
 			return "save_manager";
+			
+		case GLOBAL_INSTANCES.PLAYER:
+			return "player_instance";
 	}
 	
 	return "none";

@@ -17,12 +17,12 @@ function LoadHighPriority() {
 function LoadMediumPriority() {
 	// Prio 1: file loading -> once, have global.ref, if exists, skip
 	//DatabaseLoader
-	if (!instance_exists(TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER))) {
+	if (!instance_exists(TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER))) {
 		instance_create_layer(x,y, "ControlObjects", obj_databaseLoader);
 	}
 
 	//SaveManager
-	if (!instance_exists(TryGetGlobalInstance(MANAGERS.SAVE_MANAGER))) {
+	if (!instance_exists(TryGetGlobalInstance(GLOBAL_INSTANCES.SAVE_MANAGER))) {
 		instance_create_layer(x,y, "ControlObjects", obj_saveManager);
 	}
 }

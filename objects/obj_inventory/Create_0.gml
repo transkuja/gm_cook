@@ -160,8 +160,9 @@ function OnSlotClicked(_slot_index) {
 	}
 	else
 	{
-		if (instance_exists(inst_player)) {
-			inst_player.GetItemFromInventoryToHands();
+		var _player = TryGetGlobalInstance(GLOBAL_INSTANCES.PLAYER);
+		if (instance_exists(_player)) {
+			_player.GetItemFromInventoryToHands();
 		}
 	}
 	

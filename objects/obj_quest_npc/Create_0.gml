@@ -18,7 +18,7 @@ function GetCurrentDialogue() {
 	if (current_quest[0] != "") {
 		current_quest_id = current_quest[0];
 		
-		var _db_inst = TryGetGlobalInstance(MANAGERS.DATABASE_MANAGER);
+		var _db_inst = TryGetGlobalInstance(GLOBAL_INSTANCES.DATABASE_MANAGER);
 		if (!instance_exists(_db_inst)) { return false; }
 		
 		cur_quest_data = _db_inst.quests[? current_quest_id];
