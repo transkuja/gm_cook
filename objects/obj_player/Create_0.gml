@@ -441,7 +441,7 @@ function CancelInputCheck() {
 
 min_x_check_enviro = 25;
 min_y_check_enviro = 150;
-max_x_check_enviro = 25;
+max_x_check_enviro = 75;
 max_y_check_enviro = 100;
 
 debug_draw_enviro_detected = false;
@@ -452,36 +452,55 @@ depth_override = true;
 depth_override_value = 0;
 function CheckEnviroAround() {
 	var _items_detected = ds_list_create();
+	
+	var x_min = dir == DIRECTION_ENUM.LEFT ? x - min_x_check_enviro : x + min_x_check_enviro;
+	var x_max = dir == DIRECTION_ENUM.LEFT ? x + max_x_check_enviro : x - max_x_check_enviro;
 	var _count = collision_rectangle_list(
-		x - min_x_check_enviro,
+		x_min,
 		y - min_y_check_enviro,
-		x + max_x_check_enviro,
+		x_max,
 		y + max_y_check_enviro,
 		obj_par_enviro, false, false, _items_detected, false);
 	
 	var is_behind = false;
 	depth_override = false;
+	var _max_depth_value = 99999;
+	var _lowest_bbox_top = -1000000;
+	var _item_to_use = undefined;
+	
 	if (_count > 0)
 	{
 		for (var i = 0; i < _count; ++i;)
 		{
 			var item_detected = _items_detected[| i];
-			if (item_detected != noone && item_detected != undefined) {
-				if (item_detected.bbox_bottom > bbox_bottom)
+			if (item_detected != noone && item_detected != undefined)
+			{
+				if (!item_detected.use_depth_sorting)
+					continue;
+					
+				if (item_detected.bbox_top > _lowest_bbox_top)
 				{
-					depth_override_value = item_detected.depth + 1;
-					depth_override = true;
+					_lowest_bbox_top = item_detected.bbox_top;
+					_item_to_use = item_detected;
 				}
-				
-				debug_draw_enviro_detected = true;
-				debug_draw_enviro_detected_x = item_detected.x;
-				debug_draw_enviro_detected_y = item_detected.y;
-				break;
 			}
 		}
 	}
+	
+	if (_item_to_use != undefined)
+	{
+		if (y - sprite_height * 0.4 < _item_to_use.bbox_top)
+		{
+			depth_override_value = _item_to_use.depth + 1;
+			depth_override = true;
+		}
+				
+		debug_draw_enviro_detected = true;
+		debug_draw_enviro_detected_x = _item_to_use.x;
+		debug_draw_enviro_detected_y = _item_to_use.y;
+	}
 	else
 		debug_draw_enviro_detected = false;
-	
+
 	ds_list_destroy(_items_detected);
 }

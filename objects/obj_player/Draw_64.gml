@@ -11,11 +11,15 @@
 if (draw_debug) { 
 	var _color = c_green;
 	draw_set_alpha(0.2);
-	draw_rectangle_color(x - min_x_check_enviro,
+	var x_min = dir == DIRECTION_ENUM.LEFT ? x - min_x_check_enviro : x + min_x_check_enviro;
+	var x_max = dir == DIRECTION_ENUM.LEFT ? x + max_x_check_enviro : x - max_x_check_enviro;
+	
+	draw_rectangle_color(x_min,
 		y - min_y_check_enviro,
-		x + max_x_check_enviro,
+		x_max,
 		y + max_y_check_enviro,
 		_color, _color, _color, _color, false);
+		
 	draw_set_alpha(1);
 	
 	if (debug_draw_enviro_detected)
