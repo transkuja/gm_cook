@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_broadcasterUtils",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_broadcasterUtils",
+  "parent":{
+    "name":"Utils",
+    "path":"folders/Scripts/Utils.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

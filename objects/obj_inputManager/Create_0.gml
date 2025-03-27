@@ -1,4 +1,6 @@
 global.input_list = ds_map_create();
+global.input_bindings = {};
+global.input_bindings_keys = array_create(0, "");
 
 // Gamepad Settings
 for ( var i=0; i<4; i++ ){
@@ -14,10 +16,10 @@ input_add("ui_right", ord("D"), gp_padr);
 input_add("ui_up", ord("Z"), gp_padu);
 input_add("ui_down", ord("S"), gp_padd);
 
-input_add("ui_stick_left", ord("Q"), gp_axisL_left);
-input_add("ui_stick_right", ord("D"), gp_axisL_right);
-input_add("ui_stick_up", ord("Z"), gp_axisL_up);
-input_add("ui_stick_down", ord("S"), gp_axisL_down);
+input_add("ui_stick_left", "", gp_axisL_left);
+input_add("ui_stick_right", "", gp_axisL_right);
+input_add("ui_stick_up", "", gp_axisL_up);
+input_add("ui_stick_down", "", gp_axisL_down);
 
 input_add("ui_validate_no_click", vk_space, gp_face1, [vk_enter]);
 input_add("ui_validate", vk_space, gp_face1, [vk_enter, mb_left]);

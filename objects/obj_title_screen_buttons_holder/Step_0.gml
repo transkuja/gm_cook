@@ -3,5 +3,5 @@
 if (!catch_input)
 	return;
 	
-HandleSelectionInput();
+//HandleSelectionInput();
 HandleInput();

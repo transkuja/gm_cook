@@ -102,6 +102,77 @@ function OnExitClicked(_on_click_param) {
 	game_end();
 }
 
+#region Inputs
+function OnUpPressed() {
+	if (input_validated)
+		return;
+		
+	if (selected_slot == -1)
+		return;
+	
+	if (instance_exists(buttons[selected_slot].up_slot))
+	{
+		var _button_to_select = buttons[selected_slot].up_slot;
+		SetSelectedButton(_button_to_select.slot_index);
+		
+		input_validated = true;
+		alarm[0] = seconds(0.2);
+	}
+}
+
+function OnUpStick(_stick_value) {
+	if (input_validated)
+		return;
+		
+	if (selected_slot == -1)
+		return;
+	
+	if (instance_exists(buttons[selected_slot].up_slot))
+	{
+		var _button_to_select = buttons[selected_slot].up_slot;
+		SetSelectedButton(_button_to_select.slot_index);
+			
+		input_validated = true;
+		alarm[0] = seconds(0.2);
+	}
+}
+
+function OnDownPressed() {
+	if (input_validated)
+		return;
+		
+	if (selected_slot == -1)
+		return;
+	
+	if (instance_exists(buttons[selected_slot].down_slot))
+	{
+		var _button_to_select = buttons[selected_slot].down_slot;
+		SetSelectedButton(_button_to_select.slot_index);
+		
+		input_validated = true;
+		alarm[0] = seconds(0.2);
+	}
+}
+
+function OnDownStick() {
+	if (input_validated)
+		return;
+		
+	if (selected_slot == -1)
+		return;
+	
+	if (instance_exists(buttons[selected_slot].down_slot))
+	{
+		var _button_to_select = buttons[selected_slot].down_slot;
+		SetSelectedButton(_button_to_select.slot_index);
+			
+		input_validated = true;
+		alarm[0] = seconds(0.2);
+	}
+}
+
+#endregion
+
 function Init() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -112,7 +183,7 @@ function Init() {
 	var _button = noone;
 	
 	buttons_count = 0;
-	if (instance_exists(title_screen_manager_inst) && !title_screen_manager_inst.isSaveEmpty) {
+	if (instance_exists(title_screen_manager_inst) && !title_screen_manager_inst.is_save_empty) {
 		_button = CreateButton("Continue", start_y, Broadcast(function(_on_click_param) {
 					OnContinueClicked(_on_click_param);}) 
 				);
@@ -174,6 +245,12 @@ function Init() {
 	}
 	
 	SetSelectedButton(0);
+	
+	// BindInputs
+	BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
+	//BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
+	//BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
+	//BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
 	
 	catch_input = true;
 }
