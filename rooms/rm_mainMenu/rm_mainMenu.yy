@@ -17,7 +17,6 @@
     {"name":"inst_2B1F3107_1","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
     {"name":"inst_41B10A8_1","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
     {"name":"inst_3988929F","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
-    {"name":"inst_1F7DBA18","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
     {"name":"inst_35DD1C0F","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
   ],
   "isDnd":false,
@@ -38,7 +37,6 @@
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_simple_music_player","path":"objects/obj_simple_music_player/obj_simple_music_player.yy",},"propertyId":{"name":"music_to_play","path":"objects/obj_simple_music_player/obj_simple_music_player.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"YAKUZA_0_OST_Are_You_Kidding",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-64.0,"y":-64.0,},
         {"$GMRInstance":"","%Name":"inst_2B1F3107_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2B1F3107_1","objectId":{"name":"obj_debug_grid","path":"objects/obj_debug_grid/obj_debug_grid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":-64.0,},
-        {"$GMRInstance":"","%Name":"inst_1F7DBA18","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1F7DBA18","objectId":{"name":"obj_inputManager","path":"objects/obj_inputManager/obj_inputManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":-160.0,},
         {"$GMRInstance":"","%Name":"inst_35DD1C0F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_35DD1C0F","objectId":{"name":"obj_gameManager","path":"objects/obj_gameManager/obj_gameManager.yy",},"properties":[
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_gameManager","path":"objects/obj_gameManager/obj_gameManager.yy",},"propertyId":{"name":"inventory","path":"objects/obj_gameManager/obj_gameManager.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_gameManager","path":"objects/obj_gameManager/obj_gameManager.yy",},"propertyId":{"name":"particle_manager","path":"objects/obj_gameManager/obj_gameManager.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},

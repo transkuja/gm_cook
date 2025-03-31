@@ -104,8 +104,8 @@ function OnExitClicked(_on_click_param) {
 
 #region Inputs
 function OnUpPressed() {
-	if (input_validated)
-		return;
+	//if (input_validated)
+	//	return;
 		
 	if (selected_slot == -1)
 		return;
@@ -115,13 +115,16 @@ function OnUpPressed() {
 		var _button_to_select = buttons[selected_slot].up_slot;
 		SetSelectedButton(_button_to_select.slot_index);
 		
-		input_validated = true;
-		alarm[0] = seconds(0.2);
+		//input_validated = true;
+		//alarm[0] = seconds(0.2);
 	}
 }
 
 function OnUpStick(_stick_value) {
-	if (input_validated)
+	//if (input_validated)
+	//	return;
+		
+	if (_stick_value < 0.2)
 		return;
 		
 	if (selected_slot == -1)
@@ -132,15 +135,15 @@ function OnUpStick(_stick_value) {
 		var _button_to_select = buttons[selected_slot].up_slot;
 		SetSelectedButton(_button_to_select.slot_index);
 			
-		input_validated = true;
-		alarm[0] = seconds(0.2);
+		//input_validated = true;
+		//alarm[0] = seconds(0.2);
 	}
 }
 
 function OnDownPressed() {
-	if (input_validated)
-		return;
-		
+	//if (input_validated)
+	//	return;
+	
 	if (selected_slot == -1)
 		return;
 	
@@ -149,13 +152,16 @@ function OnDownPressed() {
 		var _button_to_select = buttons[selected_slot].down_slot;
 		SetSelectedButton(_button_to_select.slot_index);
 		
-		input_validated = true;
-		alarm[0] = seconds(0.2);
+		//input_validated = true;
+		//alarm[0] = seconds(0.2);
 	}
 }
 
-function OnDownStick() {
-	if (input_validated)
+function OnDownStick(_stick_value) {
+	//if (input_validated)
+	//	return;
+		
+	if (_stick_value < 0.2)
 		return;
 		
 	if (selected_slot == -1)
@@ -166,8 +172,8 @@ function OnDownStick() {
 		var _button_to_select = buttons[selected_slot].down_slot;
 		SetSelectedButton(_button_to_select.slot_index);
 			
-		input_validated = true;
-		alarm[0] = seconds(0.2);
+		//input_validated = true;
+		//alarm[0] = seconds(0.2);
 	}
 }
 
@@ -248,9 +254,9 @@ function Init() {
 	
 	// BindInputs
 	BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
-	//BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
-	//BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
-	//BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
+	BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
+	BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
+	BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
 	
 	catch_input = true;
 }

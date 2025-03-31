@@ -5,9 +5,13 @@ if (global.input_bindings != noone)
 	{
 		var _current_input = global.input_bindings_keys[_i];
 		var _bindings = global.input_bindings[$ _current_input];
-		if (input_get_pressed(0, _current_input)) {
+		if (input_get_pressed(0, _current_input) && !IsKeyInCooldown(_current_input)) {			
 			if (_bindings.pressed_event != noone)
+			{
 				_bindings.pressed_event.dispatch();
+				//if (string_pos("ui_", _current_input) != 0)
+				//	cd_inputs[$ _current_input] = current_time;
+			}
 		}
 		
 		if (input_get_released(0, _current_input)) {
@@ -15,9 +19,13 @@ if (global.input_bindings != noone)
 				_bindings.released_event.dispatch();
 		}
 		
-		if (input_get(0, _current_input)) {
+		if (input_get(0, _current_input) && !IsKeyInCooldown(_current_input)) {
 			if (_bindings.down_event != noone)
+			{
 				_bindings.down_event.dispatch(input_get(0, _current_input));
+				if (string_pos("ui_", _current_input) != 0)
+					cd_inputs[$ _current_input] = current_time;
+			}	
 		}
 	}
 }

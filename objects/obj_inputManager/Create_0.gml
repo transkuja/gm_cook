@@ -2,6 +2,9 @@ global.input_list = ds_map_create();
 global.input_bindings = {};
 global.input_bindings_keys = array_create(0, "");
 
+ui_input_cooldown = 200; // in ms
+cd_inputs = {};
+
 // Gamepad Settings
 for ( var i=0; i<4; i++ ){
 	gamepad_set_axis_deadzone(i, 0.25);
@@ -46,3 +49,17 @@ input_add("right_stick_v", "", gp_axisrv);
 
 input_add("prev_tab", "", gp_shoulderl);
 input_add("next_tab", vk_tab, gp_shoulderr);
+
+function IsKeyInCooldown(_key) {
+	var _value = cd_inputs[$ _key];
+	if (_value == undefined)
+		return false;
+		
+	if (_key == "ui_stick_down")
+	{
+		_log("Check cd: ui_stick_down cd: ", cd_inputs[$ _key]);
+		_log("Check cd: current time: ", current_time);
+	}
+				
+	return current_time - _value < ui_input_cooldown;
+}
