@@ -1,7 +1,7 @@
 if (global.inventory_mode) {
 	// Selection and validation input
-	HandleSelectionInput();
-	HandleInput();
+	//HandleSelectionInput();
+	//HandleInput();
 	return;
 }
 

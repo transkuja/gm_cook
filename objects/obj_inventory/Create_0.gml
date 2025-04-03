@@ -176,96 +176,96 @@ function OnSlotClicked(_slot_index) {
 }
 
 input_validated = false;
-function HandleSelectionInput() {
-	if (input_validated)
-		return;
+//function HandleSelectionInput() {
+//	if (input_validated)
+//		return;
 		
-	if (selected_slot == -1)
-		return;
+//	if (selected_slot == -1)
+//		return;
 	
-	var _slot_to_select = noone;
-	var _input_pressed = false;
-	var _stick_input = false;
-	if (input_get_pressed(0, "ui_up") || input_get(0, "ui_stick_up")) {
-		if (instance_exists(slots_instances[selected_slot].up_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].up_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_up");
-		}
-	}
-	else if (input_get_pressed(0, "ui_down") || input_get(0, "ui_stick_down")) {
-		if (instance_exists(slots_instances[selected_slot].down_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].down_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_down");
-		}
-	}
-	else if (input_get_pressed(0, "ui_left") || input_get(0, "ui_stick_left")) {
-		if (instance_exists(slots_instances[selected_slot].left_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].left_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_left");
-		}
-	}
-	else if (input_get_pressed(0, "ui_right") || input_get(0, "ui_stick_right")) {
-		if (instance_exists(slots_instances[selected_slot].right_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].right_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_right");
-		}
-	}
+//	var _slot_to_select = noone;
+//	var _input_pressed = false;
+//	var _stick_input = false;
+//	if (input_get_pressed(0, "ui_up") || input_get(0, "ui_stick_up")) {
+//		if (instance_exists(slots_instances[selected_slot].up_slot))
+//		{
+//			_slot_to_select = slots_instances[selected_slot].up_slot;
+//			_input_pressed = true;
+//			_stick_input = input_get(0, "ui_stick_up");
+//		}
+//	}
+//	else if (input_get_pressed(0, "ui_down") || input_get(0, "ui_stick_down")) {
+//		if (instance_exists(slots_instances[selected_slot].down_slot))
+//		{
+//			_slot_to_select = slots_instances[selected_slot].down_slot;
+//			_input_pressed = true;
+//			_stick_input = input_get(0, "ui_stick_down");
+//		}
+//	}
+//	else if (input_get_pressed(0, "ui_left") || input_get(0, "ui_stick_left")) {
+//		if (instance_exists(slots_instances[selected_slot].left_slot))
+//		{
+//			_slot_to_select = slots_instances[selected_slot].left_slot;
+//			_input_pressed = true;
+//			_stick_input = input_get(0, "ui_stick_left");
+//		}
+//	}
+//	else if (input_get_pressed(0, "ui_right") || input_get(0, "ui_stick_right")) {
+//		if (instance_exists(slots_instances[selected_slot].right_slot))
+//		{
+//			_slot_to_select = slots_instances[selected_slot].right_slot;
+//			_input_pressed = true;
+//			_stick_input = input_get(0, "ui_stick_right");
+//		}
+//	}
 	
-	if (_input_pressed && instance_exists(_slot_to_select))
-	{
-		if (_slot_to_select.owner != self)
-		{
-			_slot_to_select.owner.LockDirectionInput();
-			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
-		}
-		else
-			SetSelectedSlot(_slot_to_select.slot_index);
+//	if (_input_pressed && instance_exists(_slot_to_select))
+//	{
+//		if (_slot_to_select.owner != self)
+//		{
+//			_slot_to_select.owner.LockDirectionInput();
+//			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
+//		}
+//		else
+//			SetSelectedSlot(_slot_to_select.slot_index);
 			
-		if (_stick_input)
-		{
-			input_validated = true;
-			alarm[2] = seconds(0.2);
-		}
-	}
-}
+//		if (_stick_input)
+//		{
+//			input_validated = true;
+//			alarm[2] = seconds(0.2);
+//		}
+//	}
+//}
 
-function HandleInput() {
-	if (global.inventory_mode && selected_slot != -1)
-	{
-		if (input_get_pressed(0, "ui_validate_no_click")) {
-			OnSlotClicked(selected_slot);
-			return;
-		}
+//function HandleInput() {
+//	if (global.inventory_mode && selected_slot != -1)
+//	{
+//		if (input_get_pressed(0, "ui_validate_no_click")) {
+//			OnSlotClicked(selected_slot);
+//			return;
+//		}
 		
-		// Transfer all input
-		if (input_get_pressed(0, "ui_alt")) {
-			if (!IsSelectedItemValid())
-						return;
+//		// Transfer all input
+//		if (input_get_pressed(0, "ui_alt")) {
+//			if (!IsSelectedItemValid())
+//						return;
 			
-			// Checks if another menu is opened
-			if (global.inventory_mode)
-			{
-				if (global.ui_on_inventory_item_used != noone)
-				{
-					var _item_qty = GetSelectedItemQty();
-					var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
-					if (global.ui_on_inventory_item_used(_item_data_to_use))
-						UseAllItemsSelected();
-				}
-			}
+//			// Checks if another menu is opened
+//			if (global.inventory_mode)
+//			{
+//				if (global.ui_on_inventory_item_used != noone)
+//				{
+//					var _item_qty = GetSelectedItemQty();
+//					var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
+//					if (global.ui_on_inventory_item_used(_item_data_to_use))
+//						UseAllItemsSelected();
+//				}
+//			}
 		
-			return;
-		}
-	}
-}
+//			return;
+//		}
+//	}
+//}
 
 function GetNearSlot(_index, _dir) {
 	switch (_dir) {
@@ -404,5 +404,124 @@ function HasItem(_item_id) {
 	return inventory.HasItem(_item_id);
 }
 
+#region Inputs
+function HandleSelectionInput(_button_to_select) {
+	if (!global.inventory_mode)
+		return;
+		
+	if (input_validated)
+		return;
+		
+	if (instance_exists(_button_to_select))
+	{
+		if (_button_to_select.owner != self)
+		{
+			_button_to_select.owner.LockDirectionInput();
+			_button_to_select.owner.SetSelectedSlot(_button_to_select.slot_index);
+		}
+		else
+			SetSelectedSlot(_button_to_select.slot_index);
+	}
+}
+
+function OnUpPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].up_slot);
+}
+
+function OnUpStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnUpPressed();
+}
+
+function OnDownPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].down_slot);
+}
+
+function OnDownStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnDownPressed();
+}
+
+function OnLeftPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].left_slot);
+}
+
+function OnLeftStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnLeftPressed();
+}
+
+function OnRightPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].right_slot);
+}
+
+function OnRightStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+
+	OnRightPressed();
+}
+
+function OnValidateSelection() {
+	if (global.inventory_mode && selected_slot != -1)
+	{
+		OnSlotClicked(selected_slot);
+	}
+}
+
+// Transfer all input
+function OnAltInputPressed() {
+	if (global.inventory_mode && selected_slot != -1)
+	{
+		if (!IsSelectedItemValid())
+			return;
+			
+		// Checks if another menu is opened
+		if (global.ui_on_inventory_item_used != noone)
+		{
+			var _item_qty = GetSelectedItemQty();
+			var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
+			if (global.ui_on_inventory_item_used(_item_data_to_use))
+				UseAllItemsSelected();
+		}
+	}
+}
+
+#endregion
+
+function BindInputs() {
+	BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
+	BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
+	BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
+	BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
+	BindEventToInput("ui_left", INPUT_EVENTS.PRESSED, OnLeftPressed);
+	BindEventToInput("ui_stick_left", INPUT_EVENTS.DOWN, OnLeftStick);
+	BindEventToInput("ui_right", INPUT_EVENTS.PRESSED, OnRightPressed);
+	BindEventToInput("ui_stick_right", INPUT_EVENTS.DOWN, OnRightStick);
+	
+	BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, OnValidateSelection);
+	BindEventToInput("ui_alt", INPUT_EVENTS.PRESSED, OnAltInputPressed);
+}
+
 // Create process
 CreateGUISlots();
+
+BindInputs();

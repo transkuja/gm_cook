@@ -104,9 +104,9 @@ function OnExitClicked(_on_click_param) {
 
 #region Inputs
 function OnUpPressed() {
-	//if (input_validated)
-	//	return;
-		
+	if (!catch_input)
+		return;
+	
 	if (selected_slot == -1)
 		return;
 	
@@ -124,6 +124,9 @@ function OnUpStick(_stick_value) {
 	//if (input_validated)
 	//	return;
 		
+	if (!catch_input)
+		return;
+	
 	if (_stick_value < 0.2)
 		return;
 		
@@ -144,6 +147,9 @@ function OnDownPressed() {
 	//if (input_validated)
 	//	return;
 	
+	if (!catch_input)
+		return;
+	
 	if (selected_slot == -1)
 		return;
 	
@@ -160,6 +166,9 @@ function OnDownPressed() {
 function OnDownStick(_stick_value) {
 	//if (input_validated)
 	//	return;
+		
+	if (!catch_input)
+		return;
 		
 	if (_stick_value < 0.2)
 		return;
@@ -258,6 +267,8 @@ function Init() {
 	BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
 	BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
 	
+	BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, HandleSelectionInput);
+		
 	catch_input = true;
 }
 
@@ -283,49 +294,11 @@ function OnSlotClicked(_slot_index) {
 }
 
 function HandleSelectionInput() {
-	if (input_validated)
-		return;
-		
-	if (selected_slot == -1)
+	if (!catch_input)
 		return;
 	
-	var _button_to_select = noone;
-	var _input_pressed = false;
-	var _stick_input = false;
-	if (input_get_pressed(0, "ui_up") || input_get(0, "ui_stick_up")) {
-		if (instance_exists(buttons[selected_slot].up_slot))
-		{
-			_button_to_select = buttons[selected_slot].up_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_up");
-		}
-	}
-	else if (input_get_pressed(0, "ui_down") || input_get(0, "ui_stick_down")) {
-		if (instance_exists(buttons[selected_slot].down_slot))
-		{
-			_button_to_select = buttons[selected_slot].down_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_down");
-		}
-	}
-		
-	if (_input_pressed && instance_exists(_button_to_select))
-	{
-		SetSelectedButton(_button_to_select.slot_index);
-			
-		if (_stick_input)
-		{
-			input_validated = true;
-			alarm[0] = seconds(0.2);
-		}
-	}
-}
-
-function HandleInput() {
 	if (selected_slot != -1)
 	{
-		if (input_get_pressed(0, "ui_validate_no_click")) {
-			OnSlotClicked(selected_slot);
-		}
+		OnSlotClicked(selected_slot);
 	}
 }
