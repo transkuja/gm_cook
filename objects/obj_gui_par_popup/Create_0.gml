@@ -35,6 +35,7 @@ function Initialize(_item_id) {
 	image_alpha = 1;
 	
 	audio_play_sound(snd_on_popup_open, 10, false);
+	
 	alarm[1] = 30; // enable closing
 }
 

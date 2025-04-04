@@ -50,64 +50,7 @@ function SetSize() {
 
 function LockDirectionInput() {
 	input_validated = true;
-	alarm[2] = seconds(0.2);
-}
-
-function Initialize(_inventory) {
-	//if (_item_id == undefined || _item_id == "" || _item_id == noone) {
-	//	instance_destroy();
-	//	return;
-	//}
-	
-	inventory = _inventory;
-	
-	if (inventory == noone)
-	{
-		instance_destroy();
-		return;
-	}
-	
-	BindEventsToInventory();
-	
-	SetSize();
-
-	image_alpha = 1;
-	
-	audio_play_sound(snd_on_popup_open, 10, false);
-	
-	// Create slots and draw items
-	CreateGUISlots();
-	DrawItems();
-	
-	// Clear selection on select inventory
-	var _broadcast = Broadcast(function() {
-		SetSelectedSlot(-1);
-	} );
-	
-	global.ui_on_inventory_slot_selected = _broadcast;
-	
-	// Bind event on interact with player inventory
-	var _broadcast_item_removed = function(item_data) {
-		return AddItemIfPossible(item_data.item_id, item_data.qty);
-	};
-	
-	global.ui_on_inventory_item_used = _broadcast_item_removed;
-	
-	//// Bind event on interact with player inventory
-	//var _broadcast_condition = Broadcast(function(item_data) {
-	//	AddItemIfPossible(item_data.item_id, item_data.qty);
-	//} );
-	//global.ui_is_transfer_from_inventory_possible = _broadcast_condition;
-	
-	SetSelectedSlot(0);
-	
-	if (global.on_should_hide_exit_cross != noone)
-		global.on_should_hide_exit_cross();
-	
-	if (global.ui_on_fridge_opened != noone)
-		global.ui_on_fridge_opened.dispatch();
-	
-	alarm[1] = 30; // enable closing
+	alarm[2] = seconds(0.1);
 }
 
 function CloseMenu() {
@@ -126,105 +69,6 @@ function CloseMenu() {
 
 	StartFadeOut();
 	alarm[0] = seconds(0.5);
-}
-
-function HandleSelectionInput() {
-	if (is_closing)
-		return;
-	
-	if (input_validated)
-		return;
-		
-	if (selected_slot == -1)
-		return;
-	
-	var _slot_to_select = noone;
-	var _input_pressed = false;
-	var _stick_input = false;
-	if (input_get_pressed(0, "ui_up") || input_get(0, "ui_stick_up")) {
-		if (instance_exists(slots_instances[selected_slot].up_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].up_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_up");
-		}
-	}
-	else if (input_get_pressed(0, "ui_down") || input_get(0, "ui_stick_down")) {
-		if (instance_exists(slots_instances[selected_slot].down_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].down_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_down");
-		}
-	}
-	else if (input_get_pressed(0, "ui_left") || input_get(0, "ui_stick_left")) {
-		if (instance_exists(slots_instances[selected_slot].left_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].left_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_left");
-		}
-	}
-	else if (input_get_pressed(0, "ui_right") || input_get(0, "ui_stick_right")) {
-		if (instance_exists(slots_instances[selected_slot].right_slot))
-		{
-			_slot_to_select = slots_instances[selected_slot].right_slot;
-			_input_pressed = true;
-			_stick_input = input_get(0, "ui_stick_right");
-		}
-	}
-	
-	if (_input_pressed && instance_exists(_slot_to_select))
-	{
-		if (_slot_to_select.owner != self)
-		{
-			_slot_to_select.owner.LockDirectionInput();
-			_slot_to_select.owner.SetSelectedSlot(_slot_to_select.slot_index);
-		}
-		else
-			SetSelectedSlot(_slot_to_select.slot_index);
-			
-		if (_stick_input)
-		{
-			input_validated = true;
-			alarm[2] = seconds(0.2);
-		}
-	}
-}
-
-function HandleInput() {
-	if (!is_closing && selected_slot != -1)
-	{
-		if (input_get_pressed(0, "ui_validate_no_click")) {
-			OnSlotClicked(selected_slot);
-			return;
-		}
-		
-		// transfer all input
-		if (input_get_pressed(0, "ui_alt")) {
-			if (IsSelectedItemValid())
-			{
-				var _item_qty = GetSelectedItemQty();
-				var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
-
-				var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
-				if (instance_exists(_inventory)) {
-					if (_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
-						UseAllItemsSelected();
-				}
-			}
-		
-			return;
-		}
-	}
-	
-	if (!can_close)
-		return;
-		
-	// TODO: add delay to prevent closing too fast
-	if (input_get_pressed(0, "ui_cancel")) {
-		CloseMenu();
-	}
 }
 
 function BindEventsToInventory() {
@@ -465,4 +309,209 @@ function UseAllItemsSelected() {
 
 function HasItem(_item_id) {
 	return inventory.HasItem(_item_id);
+}
+
+
+#region Inputs
+function HandleSelectionInput(_button_to_select) {
+	if (!global.inventory_mode)
+		return;
+		
+	if (input_validated)
+		return;
+		
+	if (instance_exists(_button_to_select))
+	{
+		if (_button_to_select.owner != self)
+		{
+			_button_to_select.owner.LockDirectionInput();
+			_button_to_select.owner.SetSelectedSlot(_button_to_select.slot_index);
+		}
+		else
+			SetSelectedSlot(_button_to_select.slot_index);
+	}
+}
+
+function OnUpPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].up_slot);
+}
+
+function OnUpStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnUpPressed();
+}
+
+function OnDownPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].down_slot);
+}
+
+function OnDownStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnDownPressed();
+}
+
+function OnLeftPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].left_slot);
+}
+
+function OnLeftStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+		
+	OnLeftPressed();
+}
+
+function OnRightPressed() {
+	if (selected_slot == -1)
+		return;
+		
+	HandleSelectionInput(slots_instances[selected_slot].right_slot);
+}
+
+function OnRightStick(_stick_value) {
+	if (_stick_value < 0.2)
+		return;
+
+	OnRightPressed();
+}
+
+function OnValidateSelection() {
+	if (!is_closing && selected_slot != -1)
+	{
+		OnSlotClicked(selected_slot);
+	}
+}
+
+// Transfer all input
+function OnAltInputPressed() {
+	if (!is_closing && selected_slot != -1) {
+		if (IsSelectedItemValid())
+		{
+			var _item_qty = GetSelectedItemQty();
+			var _item_data_to_use = new ItemData(GetSelectedItemId(), _item_qty);
+
+			var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+			if (instance_exists(_inventory)) {
+				if (_inventory.AddItemIfPossible(_item_data_to_use.item_id, _item_data_to_use.qty))
+					UseAllItemsSelected();
+			}
+		}
+	}
+}
+
+// Close menu
+function OnUiCancelPressed() {
+	if (can_close)
+		CloseMenu();
+}
+
+#endregion
+
+up_pressed_event = noone;
+stick_up_event = noone;
+down_pressed_event = noone;
+stick_down_event = noone;
+left_pressed_event = noone;
+stick_left_event = noone;
+right_pressed_event = noone;
+stick_right_event = noone;
+
+validate_event = noone;
+alt_event = noone;
+cancel_event = noone;
+function BindInputs() {
+	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
+	stick_up_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
+	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
+	stick_down_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
+	left_pressed_event = BindEventToInput("ui_left", INPUT_EVENTS.PRESSED, OnLeftPressed);
+	stick_left_event = BindEventToInput("ui_stick_left", INPUT_EVENTS.DOWN, OnLeftStick);
+	right_pressed_event = BindEventToInput("ui_right", INPUT_EVENTS.PRESSED, OnRightPressed);
+	stick_right_event = BindEventToInput("ui_stick_right", INPUT_EVENTS.DOWN, OnRightStick);
+	
+	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, OnValidateSelection);
+	alt_event = BindEventToInput("ui_alt", INPUT_EVENTS.PRESSED, OnAltInputPressed);
+	cancel_event = BindEventToInput("ui_cancel", INPUT_EVENTS.PRESSED, OnUiCancelPressed);
+}
+
+function ClearInputs() {
+	if (up_pressed_event != noone) up_pressed_event.destroy();		
+	if (stick_up_event != noone) stick_up_event.destroy();		
+	if (down_pressed_event != noone) down_pressed_event.destroy();		
+	if (stick_down_event != noone) stick_down_event.destroy();
+	if (left_pressed_event != noone) left_pressed_event.destroy();
+	if (stick_left_event != noone) stick_left_event.destroy();
+	if (right_pressed_event != noone) right_pressed_event.destroy();
+	if (stick_right_event != noone) stick_right_event.destroy();
+	
+	if (validate_event != noone) validate_event.destroy();
+	if (alt_event != noone) alt_event.destroy();
+	if (cancel_event != noone) cancel_event.destroy();
+}
+
+function Initialize(_inventory) {
+	inventory = _inventory;
+	
+	if (inventory == noone)
+	{
+		instance_destroy();
+		return;
+	}
+	
+	BindEventsToInventory();
+	
+	SetSize();
+
+	image_alpha = 1;
+	
+	audio_play_sound(snd_on_popup_open, 10, false);
+	
+	// Create slots and draw items
+	CreateGUISlots();
+	DrawItems();
+	
+	// Clear selection on select inventory
+	var _broadcast = Broadcast(function() {
+		SetSelectedSlot(-1);
+	} );
+	
+	global.ui_on_inventory_slot_selected = _broadcast;
+	
+	// Bind event on interact with player inventory
+	var _broadcast_item_removed = function(item_data) {
+		return AddItemIfPossible(item_data.item_id, item_data.qty);
+	};
+	
+	global.ui_on_inventory_item_used = _broadcast_item_removed;
+	
+	//// Bind event on interact with player inventory
+	//var _broadcast_condition = Broadcast(function(item_data) {
+	//	AddItemIfPossible(item_data.item_id, item_data.qty);
+	//} );
+	//global.ui_is_transfer_from_inventory_possible = _broadcast_condition;
+	
+	SetSelectedSlot(0);
+	
+	if (global.on_should_hide_exit_cross != noone)
+		global.on_should_hide_exit_cross();
+	
+	if (global.ui_on_fridge_opened != noone)
+		global.ui_on_fridge_opened.dispatch();
+	
+	alarm[1] = 30; // enable closing
+	
+	BindInputs();			
 }
