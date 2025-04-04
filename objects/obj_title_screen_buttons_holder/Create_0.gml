@@ -188,6 +188,12 @@ function OnDownStick(_stick_value) {
 
 #endregion
 
+up_pressed_event = noone;
+stick_up_event = noone;
+down_pressed_event = noone;
+stick_down_event = noone;
+validate_event = noone;
+
 function Init() {
 	if (!layer_exists("GUI"))
 		layer_create(-10000,"GUI");
@@ -262,14 +268,23 @@ function Init() {
 	SetSelectedButton(0);
 	
 	// BindInputs
-	BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
-	BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
-	BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
-	BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
+	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
+	up_stick_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
+	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
+	down_stick_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
 	
-	BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, HandleSelectionInput);
+	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, HandleSelectionInput);
 		
 	catch_input = true;
+}
+
+function ClearInputs() {
+	if (up_pressed_event != noone) up_pressed_event.destroy();		
+	if (stick_up_event != noone) stick_up_event.destroy();		
+	if (down_pressed_event != noone) down_pressed_event.destroy();		
+	if (stick_down_event != noone) stick_down_event.destroy();
+	
+	if (validate_event != noone) validate_event.destroy();
 }
 
 input_validated = false;
