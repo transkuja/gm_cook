@@ -23,7 +23,7 @@ if (global.input_bindings != noone)
 			if (_bindings.down_event != noone)
 			{
 				_bindings.down_event.dispatch(input_get(0, _current_input));
-				if (string_pos("ui_", _current_input) != 0)
+				if (string_pos("ui_stick_", _current_input) != 0)
 					cd_inputs[$ _current_input] = current_time;
 			}	
 		}
