@@ -435,10 +435,6 @@ function CreateTrailParticle() {
 	}
 }
 
-function CancelInputCheck() {
-	return input_get_pressed(0, "cancel_interaction");
-}
-
 min_x_check_enviro = 25;
 min_y_check_enviro = 150;
 max_x_check_enviro = 75;
@@ -504,3 +500,105 @@ function CheckEnviroAround() {
 
 	ds_list_destroy(_items_detected);
 }
+
+#region Inputs
+function InteractInput() {
+	if (global.player_control < 0 || global.interact_blocked || global.inventory_mode)	{ return; }
+
+	// Press X / Space button
+	if (instance_exists(last_interactible_detected)) {
+		last_interactible_detected.Interact(self);
+	}
+}
+
+function ItemActionInput() {
+	if (global.player_control < 0 || global.interact_blocked || global.inventory_mode)	{ return; }
+
+	// Press X / Space button
+	if (instance_exists(last_interactible_detected)) {
+		last_interactible_detected.ItemInteraction(self);
+		return;
+	}
+
+	// Press A / Enter button
+	if (instance_exists(last_portable_item_detected)) {
+		if (!HasItemInHands()) {
+			last_portable_item_detected.PickUp(self);
+			return;
+		}
+	}
+		
+	if (instance_exists(last_transformer_detected)) {
+		// If can't interact, play feedback on item in hands
+		last_transformer_detected.ItemInteraction(self);
+		return;
+	}
+	else if (HasItemInHands()) {
+		_log("Dropping item !");
+		item_in_hands.Drop(x, y);
+		item_in_hands = noone;
+		return;
+	}
+}
+
+function TakeOutInput() {
+	if (global.player_control < 0 || global.inventory_mode)	{ return; }
+	
+	if (!instance_exists(item_in_hands)) {
+		GetItemFromInventoryToHands();
+	}
+	else {
+		var _inventory = TryGetGlobalInstance(GLOBAL_INSTANCES.INVENTORY);
+		if (instance_exists(_inventory)) {
+			if (_inventory.AddItemIfPossible(item_in_hands.item_id, 1)) {
+				ClearItemInHands(noone, noone);
+			}
+		}
+	}
+}
+
+function CancelInteractionInput() {
+	//if (global.player_control < 0)	{ return; }
+		_log("DEBUG: cancel interaction pressed");
+	if (current_state)
+		current_state.cancel_interaction_pressed();
+}
+
+function QteInput() {
+	//if (global.player_control < 0)	{ return; }
+	
+	if (current_state)
+		current_state.qte_input_pressed();
+}
+#endregion
+
+interact_pressed_event = noone;
+item_action_pressed_event = noone;
+take_out_pressed_event = noone;
+qte_pressed_event = noone;
+cancel_interaction_pressed_event = noone;
+function BindInputs() {
+	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, InteractInput());
+	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, ItemActionInput());
+	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, TakeOutInput());
+	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, QteInput());
+	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, CancelInteractionInput());
+	
+	_log("DEBUG: cancel interaction binded");
+}
+
+function ClearInputs() {
+	if (interact_pressed_event != noone) interact_pressed_event.destroy();		
+	if (item_action_pressed_event != noone) item_action_pressed_event.destroy();		
+	if (take_out_pressed_event != noone) take_out_pressed_event.destroy();		
+	if (qte_pressed_event != noone) qte_pressed_event.destroy();
+	if (cancel_interaction_pressed_event != noone) cancel_interaction_pressed_event.destroy();
+	
+	_log("DEBUG: cancel interaction cleared");
+	
+}
+
+function Initialize() {
+}
+
+BindInputs(); // TODO: Move to gamemanager ?

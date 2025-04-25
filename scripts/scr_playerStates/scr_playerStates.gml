@@ -1,6 +1,9 @@
 /// @description base player state
 function PlayerState(_object, _args = {}): BaseState(_object, _args) constructor {
     player = object;
+	
+	qte_input_pressed = function() { }
+	cancel_interaction_pressed = function() { }
 }
 
 
@@ -105,10 +108,10 @@ function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _arg
 
     process_step = function() {
 		
-		if (player.CheckCookingInput()) {
-			feedback_value = 0;
-			player.image_blend = merge_colour(c_green, c_white, feedback_value);
-		}
+		//if (player.CheckCookingInput()) {
+		//	feedback_value = 0;
+		//	player.image_blend = merge_colour(c_green, c_white, feedback_value);
+		//}
 			
 		if (feedback_value < 1) {
 			feedback_value = min(feedback_value + d(feedback_speed), 1);
@@ -119,14 +122,25 @@ function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _arg
 				player.last_transformer_detected.state == TRANSFORMER_STATE.RESULT) {
 			transition_to(new PlayerIdleState(player))
 		}
-		
+	}
+	
+	qte_input_pressed = function() { 
+		if (instance_exists(last_interactible_detected)) {
+			feedback_value = 0;
+			player.image_blend = merge_colour(c_green, c_white, feedback_value);
+		}
+		else {
+			if (current_state) 
+				current_state.transition_to(new PlayerIdleState(self));
+		}
+	}
+	
+	cancel_interaction_pressed = function() { 
+		_log("DEBUG: cancel transform state");
 		if (instance_exists(player.last_transformer_detected))
 		{
-			if (player.CancelInputCheck())
-			{
-				player.last_transformer_detected.CancelTransformation(player);
-				transition_to(new PlayerIdleState(player));
-			}
+			player.last_transformer_detected.CancelTransformation(player);
+			transition_to(new PlayerIdleState(player));
 		}
 	}
  }
