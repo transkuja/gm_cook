@@ -4,6 +4,16 @@
 // Inherit the parent event
 event_inherited();
 
+function SetSelected(_value) {
+    if (_value == false && is_selected)
+        RemoveSelectedFeedback();
+    
+	is_selected = _value;
+    
+    if (is_selected)
+        EnableSelectedFeedback();
+}
+
 function DrawSelectedFeedback() {
 }
 

@@ -13,7 +13,7 @@ catch_input = false;
 //else 
 //	title_screen_manager_inst = instance_create_layer(0,0,"GLOBAL_INSTANCES", obj_title_screen_manager);
 	
-function CreateButton(_text, _y, _broadcast, _up, _down) {
+function CreateButton(_text, _y, _broadcast) {
 	var button_inst = instance_create_layer(spawn_x, _y, "GUI", obj_gui_button);
 	if (instance_exists(button_inst)) {
 		button_inst.image_xscale = 250 / button_inst.sprite_width;
@@ -104,6 +104,7 @@ function OnExitClicked(_on_click_param) {
 
 #region Inputs
 function OnUpPressed() {
+    _log("Up pressed");
 	if (!catch_input)
 		return;
 	
@@ -268,12 +269,12 @@ function Init() {
 	SetSelectedButton(0);
 	
 	// BindInputs
-	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
-	up_stick_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
-	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
-	down_stick_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
+	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, function() { OnUpPressed();}, self);
+	up_stick_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, function(_stick_value) { OnUpStick(_stick_value); }, self);
+	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, function() { OnDownPressed(); }, self);
+	down_stick_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, function(_stick_value) { OnDownStick(_stick_value); }, self);
 	
-	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, HandleSelectionInput);
+	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, function() { HandleSelectionInput(); }, self);
 		
 	catch_input = true;
 }

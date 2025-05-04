@@ -63,7 +63,6 @@ function ComputeVelocity() {
 	
 	if (VectorLength(_stick_horizontal, _stick_vertical) > 0.01)
 	{
-		_log("Use stick");
 		velocity_x = _stick_horizontal;
 		velocity_y = _stick_vertical;
 	}
@@ -546,7 +545,6 @@ function TakeOutInput() {
 
 function CancelInteractionInput() {
 	//if (global.player_control < 0)	{ return; }
-		_log("DEBUG: cancel interaction pressed");
 	if (current_state)
 		current_state.cancel_interaction_pressed();
 }

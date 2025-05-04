@@ -12,7 +12,7 @@ function BindEvent(_event_holder, _to_bind, _subscribee) {
 }
 
 
-function BindEventToInput(_input_name, _input_event, _to_bind) {
+function BindEventToInput(_input_name, _input_event, _to_bind, _scope = undefined) {
 	var _binding = global.input_bindings[$ _input_name];
 	
 	if (_binding == undefined)

@@ -8,7 +8,7 @@
   "managed":true,
   "name":"obj_gui_button",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gui_nav_button","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"propertyId":{"name":"snd_on_clicked","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Menu_Sound_Forward",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gui_nav_button","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"propertyId":{"name":"snd_on_clicked","path":"objects/obj_gui_nav_button/obj_gui_nav_button.yy",},"resource":{"name":"Menu_Sound_Forward","path":"sounds/Menu_Sound_Forward/Menu_Sound_Forward.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Menu_Sound_Forward",},
   ],
   "parent":{
     "name":"UI",
@@ -32,7 +32,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"button_text","filters":[],"listItems":[],"multiselect":false,"name":"button_text","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Default\"","varType":2,},
+    {"$GMObjectProperty":"v1","%Name":"button_text","filters":[],"listItems":[],"multiselect":false,"name":"button_text","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Default\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
