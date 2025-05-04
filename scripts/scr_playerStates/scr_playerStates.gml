@@ -21,8 +21,8 @@ function PlayerIdleState(_player, _args = {}): PlayerState(_player, _args) const
     process_step = function() {
 		// Inputs
 		player.ComputeVelocityFromInputs();
-		player.InteractInputCheck();
-		player.CheckInputsInventory();
+		//player.InteractInputCheck();
+		//player.CheckInputsInventory();
 		player.UpdateItemInHands();
 		
 		if (!player.IsStopped() && global.player_control == 0 && !global.inventory_mode)
@@ -53,8 +53,8 @@ function PlayerWalkState(_player, _args = {}): PlayerState(_player, _args) const
 		   alarm[0] = 3;
 		   // Inputs
 		   ComputeVelocityFromInputs();
-		   InteractInputCheck();
-			CheckInputsInventory();
+		   //InteractInputCheck();
+			//CheckInputsInventory();
 			
 			//var _x_blocked = true;
 			//var _y_blocked = true;
@@ -125,7 +125,7 @@ function PlayerTransformingState(_player, _args = {}): PlayerState(_player, _arg
 	}
 	
 	qte_input_pressed = function() { 
-		if (instance_exists(last_interactible_detected)) {
+		if (instance_exists(player.last_interactible_detected)) {
 			feedback_value = 0;
 			player.image_blend = merge_colour(c_green, c_white, feedback_value);
 		}

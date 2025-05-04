@@ -11,6 +11,7 @@ if (global.input_bindings != noone)
 				_bindings.pressed_event.dispatch();
 				//if (string_pos("ui_", _current_input) != 0)
 				//	cd_inputs[$ _current_input] = current_time;
+				_log("Input pressed: ", _current_input);
 			}
 		}
 		

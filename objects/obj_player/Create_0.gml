@@ -307,6 +307,7 @@ function SetItemInHands(_item_inst) {
 
 // TODO: externalize in InputManager
 function InteractInputCheck() {
+	_log("DEBUG: interact input");
 	if (global.player_control < 0 || global.interact_blocked || global.inventory_mode)	{ return; }
 
 	// Press X / Space button
@@ -543,6 +544,7 @@ function ItemActionInput() {
 
 function TakeOutInput() {
 	if (global.player_control < 0 || global.inventory_mode)	{ return; }
+	if (state = PLAYER_STATE.TRANSFORMING) return;
 	
 	if (!instance_exists(item_in_hands)) {
 		GetItemFromInventoryToHands();
@@ -578,11 +580,11 @@ take_out_pressed_event = noone;
 qte_pressed_event = noone;
 cancel_interaction_pressed_event = noone;
 function BindInputs() {
-	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, InteractInput());
-	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, ItemActionInput());
-	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, TakeOutInput());
-	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, QteInput());
-	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, CancelInteractionInput());
+	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, InteractInputCheck);
+	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, ItemActionInput);
+	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, TakeOutInput);
+	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, QteInput);
+	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, CancelInteractionInput);
 	
 	_log("DEBUG: cancel interaction binded");
 }
@@ -601,4 +603,5 @@ function ClearInputs() {
 function Initialize() {
 }
 
-BindInputs(); // TODO: Move to gamemanager ?
+alarm[1] = 30;
+//BindInputs(); // TODO: Move to gamemanager ?
