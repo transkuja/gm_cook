@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_union_by",
   "isCompatibility":false,
   "isDnD":false,

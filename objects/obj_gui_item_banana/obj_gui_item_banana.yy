@@ -5,9 +5,9 @@
   "managed":true,
   "name":"obj_gui_item_banana",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"item_id","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"banana\"",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"quantity","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"stack","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"5",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"item_id","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"banana\"",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"quantity","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_gui_item","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"propertyId":{"name":"stack","path":"objects/obj_par_gui_item/obj_par_gui_item.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"5",},
   ],
   "parent":{
     "name":"Items",

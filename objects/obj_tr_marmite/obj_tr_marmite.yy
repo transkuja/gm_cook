@@ -5,7 +5,7 @@
   "managed":true,
   "name":"obj_tr_marmite",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_testing",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_testing",},
   ],
   "parent":{
     "name":"Transformers",

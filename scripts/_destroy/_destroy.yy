@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_destroy",
   "isCompatibility":false,
   "isDnD":false,

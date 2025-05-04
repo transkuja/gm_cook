@@ -334,6 +334,8 @@ function HandleSelectionInput(_button_to_select) {
 }
 
 function OnUpPressed() {
+    if (!global.inventory_mode) return;
+        
 	if (selected_slot == -1)
 		return;
 		
@@ -341,6 +343,8 @@ function OnUpPressed() {
 }
 
 function OnUpStick(_stick_value) {
+    if (!global.inventory_mode) return;
+        
 	if (_stick_value < 0.2)
 		return;
 		
@@ -348,6 +352,8 @@ function OnUpStick(_stick_value) {
 }
 
 function OnDownPressed() {
+    if (!global.inventory_mode) return;
+        
 	if (selected_slot == -1)
 		return;
 		
@@ -355,6 +361,8 @@ function OnDownPressed() {
 }
 
 function OnDownStick(_stick_value) {
+    if (!global.inventory_mode) return;
+        
 	if (_stick_value < 0.2)
 		return;
 		
@@ -362,6 +370,8 @@ function OnDownStick(_stick_value) {
 }
 
 function OnLeftPressed() {
+    if (!global.inventory_mode) return;
+        
 	if (selected_slot == -1)
 		return;
 		
@@ -369,6 +379,8 @@ function OnLeftPressed() {
 }
 
 function OnLeftStick(_stick_value) {
+    if (!global.inventory_mode) return;
+        
 	if (_stick_value < 0.2)
 		return;
 		
@@ -376,6 +388,8 @@ function OnLeftStick(_stick_value) {
 }
 
 function OnRightPressed() {
+    if (!global.inventory_mode) return;
+        
 	if (selected_slot == -1)
 		return;
 		
@@ -383,6 +397,8 @@ function OnRightPressed() {
 }
 
 function OnRightStick(_stick_value) {
+    if (!global.inventory_mode) return;
+        
 	if (_stick_value < 0.2)
 		return;
 

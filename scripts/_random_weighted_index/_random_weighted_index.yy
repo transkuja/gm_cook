@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_random_weighted_index",
   "isCompatibility":false,
   "isDnD":false,

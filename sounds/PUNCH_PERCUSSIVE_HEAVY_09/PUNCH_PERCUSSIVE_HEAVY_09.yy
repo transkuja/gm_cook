@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.325333,
+  "duration":0.32535148,
   "name":"PUNCH_PERCUSSIVE_HEAVY_09",
   "parent":{
     "name":"Protaupe",

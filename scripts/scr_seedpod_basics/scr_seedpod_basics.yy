@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_seedpod_basics",
   "isCompatibility":false,
   "isDnD":false,

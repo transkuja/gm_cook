@@ -2,8 +2,8 @@
   "$GMObject":"",
   "%Name":"obj_par_spawner",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_par_spawner",
@@ -30,16 +30,16 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"","%Name":"to_spawn","filters":[
+    {"$GMObjectProperty":"v1","%Name":"to_spawn","filters":[
         "GMObject",
-      ],"listItems":[],"multiselect":false,"name":"to_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
-    {"$GMObjectProperty":"","%Name":"spawn_quantity","filters":[],"listItems":[],"multiselect":false,"name":"spawn_quantity","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
-    {"$GMObjectProperty":"","%Name":"auto_spawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
-    {"$GMObjectProperty":"","%Name":"auto_respawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_respawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
-    {"$GMObjectProperty":"","%Name":"spawn_cooldown","filters":[],"listItems":[],"multiselect":false,"name":"spawn_cooldown","rangeEnabled":true,"rangeMax":5000.0,"rangeMin":0.2,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.2","varType":0,},
-    {"$GMObjectProperty":"","%Name":"fx_on_spawn","filters":[
+      ],"listItems":[],"multiselect":false,"name":"to_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"spawn_quantity","filters":[],"listItems":[],"multiselect":false,"name":"spawn_quantity","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"auto_spawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
+    {"$GMObjectProperty":"v1","%Name":"auto_respawn","filters":[],"listItems":[],"multiselect":false,"name":"auto_respawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},
+    {"$GMObjectProperty":"v1","%Name":"spawn_cooldown","filters":[],"listItems":[],"multiselect":false,"name":"spawn_cooldown","rangeEnabled":true,"rangeMax":5000.0,"rangeMin":0.2,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.2","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"fx_on_spawn","filters":[
         "GMParticleSystem",
-      ],"listItems":[],"multiselect":false,"name":"fx_on_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_smoke_spawn","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"fx_on_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_smoke_spawn","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

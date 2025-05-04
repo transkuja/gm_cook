@@ -2,13 +2,13 @@
   "$GMObject":"",
   "%Name":"obj_fridge",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_fridge",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_par_item",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_par_item",},
   ],
   "parent":{
     "name":"Objects",
@@ -32,10 +32,10 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"","%Name":"spawn_radius","filters":[],"listItems":[],"multiselect":false,"name":"spawn_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
-    {"$GMObjectProperty":"","%Name":"snd_item_arrived","filters":[
+    {"$GMObjectProperty":"v1","%Name":"spawn_radius","filters":[],"listItems":[],"multiselect":false,"name":"spawn_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"snd_item_arrived","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_item_arrived","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Click_01","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_item_arrived","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Click_01","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

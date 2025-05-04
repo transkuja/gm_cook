@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"__class_Consumer",
   "isCompatibility":false,
   "isDnD":false,

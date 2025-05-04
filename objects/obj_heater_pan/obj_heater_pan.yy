@@ -2,15 +2,15 @@
   "$GMObject":"",
   "%Name":"obj_heater_pan",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_heater_pan",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"popup_draw_height","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"160",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_timedMash",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_spawn_y_offset","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"max_items","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"popup_draw_height","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"160",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_timedMash",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_spawn_y_offset","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-10",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"max_items","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
   ],
   "parent":{
     "name":"Transformers",

@@ -5,10 +5,10 @@
   "managed":true,
   "name":"obj_apple_spawner",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_item_apple",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"auto_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"auto_respawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"spawn_cooldown","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_item_apple",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"auto_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"auto_respawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"spawn_cooldown","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
   ],
   "parent":{
     "name":"Spawners",

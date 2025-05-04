@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_json_helper",
   "isCompatibility":false,
   "isDnD":false,

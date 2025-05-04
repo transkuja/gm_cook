@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_map_of",
   "isCompatibility":false,
   "isDnD":false,

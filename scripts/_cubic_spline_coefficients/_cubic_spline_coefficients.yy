@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_cubic_spline_coefficients",
   "isCompatibility":false,
   "isDnD":false,

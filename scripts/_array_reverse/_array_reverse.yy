@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_array_reverse",
   "isCompatibility":false,
   "isDnD":false,

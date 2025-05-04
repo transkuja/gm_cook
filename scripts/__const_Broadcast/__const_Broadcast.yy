@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"__const_Broadcast",
   "isCompatibility":false,
   "isDnD":false,

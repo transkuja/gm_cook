@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_create_graph",
   "isCompatibility":false,
   "isDnD":false,

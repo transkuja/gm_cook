@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_linear_solve",
   "isCompatibility":false,
   "isDnD":false,

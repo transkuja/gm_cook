@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_clone_array",
   "isCompatibility":false,
   "isDnD":false,

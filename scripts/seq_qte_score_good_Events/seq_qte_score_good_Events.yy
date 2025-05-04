@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"seq_qte_score_good_Events",
   "isCompatibility":false,
   "isDnD":false,

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.572993,
+  "duration":1.5729932,
   "name":"snd_monkey",
   "parent":{
     "name":"Protaupe",

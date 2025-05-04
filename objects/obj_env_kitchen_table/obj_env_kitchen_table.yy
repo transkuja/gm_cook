@@ -5,8 +5,8 @@
   "managed":true,
   "name":"obj_env_kitchen_table",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_enviro","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"propertyId":{"name":"use_depth_sorting","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_par_enviro","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"propertyId":{"name":"override_depth","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_enviro","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"propertyId":{"name":"use_depth_sorting","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_enviro","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"propertyId":{"name":"override_depth","path":"objects/obj_par_enviro/obj_par_enviro.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
   ],
   "parent":{
     "name":"Kitchen",
@@ -30,7 +30,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"","%Name":"custom_width","filters":[],"listItems":[],"multiselect":false,"name":"custom_width","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"custom_width","filters":[],"listItems":[],"multiselect":false,"name":"custom_width","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

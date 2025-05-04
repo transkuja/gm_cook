@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.756259,
+  "duration":0.7562585,
   "name":"Minimalist1",
   "parent":{
     "name":"Protaupe",

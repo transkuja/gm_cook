@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_invert_permutation",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_tridiagonal_solve",
   "isCompatibility":false,
   "isDnD":false,

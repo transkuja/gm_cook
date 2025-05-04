@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_jsonifier",
   "isCompatibility":false,
   "isDnD":false,

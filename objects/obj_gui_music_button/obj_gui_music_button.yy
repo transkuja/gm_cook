@@ -5,7 +5,7 @@
   "managed":true,
   "name":"obj_gui_music_button",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_gui_audio_button","path":"objects/obj_gui_audio_button/obj_gui_audio_button.yy",},"propertyId":{"name":"is_music","path":"objects/obj_gui_audio_button/obj_gui_audio_button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gui_audio_button","path":"objects/obj_gui_audio_button/obj_gui_audio_button.yy",},"propertyId":{"name":"is_music","path":"objects/obj_gui_audio_button/obj_gui_audio_button.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
   ],
   "parent":{
     "name":"Settings",

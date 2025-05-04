@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.182833,
+  "duration":0.18285714,
   "name":"splash0",
   "parent":{
     "name":"Protaupe",

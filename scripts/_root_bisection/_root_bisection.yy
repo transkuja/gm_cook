@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_root_bisection",
   "isCompatibility":false,
   "isDnD":false,

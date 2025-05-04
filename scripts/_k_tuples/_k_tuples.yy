@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_k_tuples",
   "isCompatibility":false,
   "isDnD":false,

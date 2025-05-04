@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_matrix_transpose",
   "isCompatibility":false,
   "isDnD":false,

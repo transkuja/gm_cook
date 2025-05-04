@@ -1,5 +1,5 @@
 {
-  "$GMRoom":"",
+  "$GMRoom":"v1",
   "%Name":"rm_polarca_testing",
   "creationCodeFile":"",
   "inheritCode":false,

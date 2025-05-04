@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_intersection_by",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_frac",
   "isCompatibility":false,
   "isDnD":false,

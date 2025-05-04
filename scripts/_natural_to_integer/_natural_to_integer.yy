@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_natural_to_integer",
   "isCompatibility":false,
   "isDnD":false,

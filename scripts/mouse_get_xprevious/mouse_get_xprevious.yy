@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"mouse_get_xprevious",
   "isCompatibility":false,
   "isDnD":false,

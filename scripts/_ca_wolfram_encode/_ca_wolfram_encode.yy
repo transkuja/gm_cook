@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_ca_wolfram_encode",
   "isCompatibility":false,
   "isDnD":false,

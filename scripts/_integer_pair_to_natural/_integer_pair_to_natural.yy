@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_integer_pair_to_natural",
   "isCompatibility":false,
   "isDnD":false,

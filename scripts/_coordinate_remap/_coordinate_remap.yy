@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_coordinate_remap",
   "isCompatibility":false,
   "isDnD":false,

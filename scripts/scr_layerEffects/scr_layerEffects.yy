@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_layerEffects",
   "isCompatibility":false,
   "isDnD":false,
