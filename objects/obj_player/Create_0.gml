@@ -16,7 +16,6 @@ sprint_burst = 650;
 acceleration_factor = (max_speed - min_speed) * 2;
 current_max_speed = max_speed;
 sprinting = false;
-was_sprinting = false;
 
 state = PLAYER_STATE.IDLE;
 dir = DIRECTION_ENUM.RIGHT;
@@ -85,9 +84,6 @@ function HandleAcceleration(_dt) {
 			if (current_speed < min_speed) current_speed = min_speed;
 			current_speed += _dt * acceleration_factor * (sprinting ? 2 : 1);	
 
-			if (!was_sprinting && sprinting)
-				current_speed += sprint_burst;
-				
 			current_speed = clamp(current_speed, min_speed, current_max_speed);
 		}
 		else {
@@ -125,18 +121,7 @@ function ComputeVelocityFromInputs() {
 	if (global.player_control == 0 && !global.inventory_mode)
 	{
 		var _dt = delta_time * 0.000001;
-	
-		was_sprinting = sprinting;
-		if (input_get(0, "sprint")) {
-			current_max_speed = sprint_max_speed;
-			sprinting = true;
-		}
-		else
-		{
-			current_max_speed = max_speed;
-			sprinting = false;
-		}
-		
+			
 		ComputeVelocity();
 		HandleAcceleration(_dt);
 	
@@ -544,7 +529,7 @@ function ItemActionInput() {
 
 function TakeOutInput() {
 	if (global.player_control < 0 || global.inventory_mode)	{ return; }
-	if (state = PLAYER_STATE.TRANSFORMING) return;
+	if (state == PLAYER_STATE.TRANSFORMING) return;
 	
 	if (!instance_exists(item_in_hands)) {
 		GetItemFromInventoryToHands();
@@ -572,6 +557,26 @@ function QteInput() {
 	if (current_state)
 		current_state.qte_input_pressed();
 }
+
+function SprintInputPressed() {
+	if (global.player_control < 0 || global.inventory_mode)	{ return; }
+	if (state != PLAYER_STATE.IDLE && state != PLAYER_STATE.WALKING) return;
+	
+	current_max_speed = sprint_max_speed;
+	sprinting = true;
+	
+	if (velocity_x != 0 || velocity_y != 0) {
+		if (current_speed < current_max_speed) {
+			current_speed += sprint_burst;
+		}
+	}
+				
+}
+
+function SprintInputReleased() {
+	current_max_speed = max_speed;
+	sprinting = false;
+}
 #endregion
 
 interact_pressed_event = noone;
@@ -579,14 +584,17 @@ item_action_pressed_event = noone;
 take_out_pressed_event = noone;
 qte_pressed_event = noone;
 cancel_interaction_pressed_event = noone;
+sprint_input_pressed_event = noone;
+sprint_input_released_event = noone;
 function BindInputs() {
 	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, InteractInputCheck);
 	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, ItemActionInput);
 	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, TakeOutInput);
 	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, QteInput);
 	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, CancelInteractionInput);
-	
-	_log("DEBUG: cancel interaction binded");
+	sprint_input_pressed_event = BindEventToInput("sprint", INPUT_EVENTS.PRESSED, SprintInputPressed);
+	sprint_input_released_event = BindEventToInput("sprint", INPUT_EVENTS.RELEASED, SprintInputReleased);
+
 }
 
 function ClearInputs() {
@@ -595,9 +603,8 @@ function ClearInputs() {
 	if (take_out_pressed_event != noone) take_out_pressed_event.destroy();		
 	if (qte_pressed_event != noone) qte_pressed_event.destroy();
 	if (cancel_interaction_pressed_event != noone) cancel_interaction_pressed_event.destroy();
-	
-	_log("DEBUG: cancel interaction cleared");
-	
+	if (sprint_input_pressed_event != noone) sprint_input_pressed_event.destroy();
+	if (sprint_input_released_event != noone) sprint_input_released_event.destroy();
 }
 
 function Initialize() {
