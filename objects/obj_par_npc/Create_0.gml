@@ -33,7 +33,7 @@ function InitDialogueBox() {
 		inst_dialogue_box.Initialize(GetCurrentDialogue());
 }
 
-function Interact(_interactInstigator) constructor {
+function Interact(_interactInstigator) {
 	if (is_player_interacting || array_length(arr_dialogues_ids) <= current_dialogue_state) 
 		return;
 		

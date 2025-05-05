@@ -7,7 +7,7 @@
   "managed":true,
   "name":"obj_multiple_spawner_protaupe",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_par_item",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_spawner","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"propertyId":{"name":"to_spawn","path":"objects/obj_par_spawner/obj_par_spawner.yy",},"resource":{"name":"obj_par_item","path":"objects/obj_par_item/obj_par_item.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_par_item",},
   ],
   "parent":{
     "name":"Spawners",
@@ -31,7 +31,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"spawn_radius","filters":[],"listItems":[],"multiselect":false,"name":"spawn_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"spawn_radius","filters":[],"listItems":[],"multiselect":false,"name":"spawn_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

@@ -34,7 +34,7 @@
         "\"Item 1\"",
         "\"Item 2\"",
         "\"Item 3\"",
-      ],"multiselect":true,"name":"dialogue_ids","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"test\"","varType":2,},
+      ],"multiselect":true,"name":"dialogue_ids","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"test\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

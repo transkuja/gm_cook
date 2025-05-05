@@ -34,10 +34,10 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"snd_on_popup_open","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_open","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_open","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"FUI_Button_Beep_Clean","path":"sounds/FUI_Button_Beep_Clean/FUI_Button_Beep_Clean.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"snd_on_popup_close","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_close","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_on_popup_close","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"FUI_Button_Beep_Clean","path":"sounds/FUI_Button_Beep_Clean/FUI_Button_Beep_Clean.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"FUI_Button_Beep_Clean","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

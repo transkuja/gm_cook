@@ -585,13 +585,13 @@ cancel_interaction_pressed_event = noone;
 sprint_input_pressed_event = noone;
 sprint_input_released_event = noone;
 function BindInputs() {
-	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, InteractInputCheck);
-	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, ItemActionInput);
-	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, TakeOutInput);
-	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, QteInput);
-	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, CancelInteractionInput);
-	sprint_input_pressed_event = BindEventToInput("sprint", INPUT_EVENTS.PRESSED, SprintInputPressed);
-	sprint_input_released_event = BindEventToInput("sprint", INPUT_EVENTS.RELEASED, SprintInputReleased);
+	interact_pressed_event = BindEventToInput("interact", INPUT_EVENTS.PRESSED, function() { InteractInputCheck(); });
+	item_action_pressed_event = BindEventToInput("item_action", INPUT_EVENTS.PRESSED, function() { ItemActionInput(); });
+	take_out_pressed_event = BindEventToInput("take_out", INPUT_EVENTS.PRESSED, function() { TakeOutInput(); });
+	qte_pressed_event = BindEventToInput("qte", INPUT_EVENTS.PRESSED, function() { QteInput(); });
+	cancel_interaction_pressed_event = BindEventToInput("cancel_interaction", INPUT_EVENTS.PRESSED, function() { CancelInteractionInput(); });
+	sprint_input_pressed_event = BindEventToInput("sprint", INPUT_EVENTS.PRESSED, function() { SprintInputPressed(); });
+	sprint_input_released_event = BindEventToInput("sprint", INPUT_EVENTS.RELEASED, function() { SprintInputReleased(); });
 
 }
 

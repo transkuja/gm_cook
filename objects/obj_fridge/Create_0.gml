@@ -106,11 +106,11 @@ function PutItemInOrOpen(_interactInstigator) {
 	}
 }
 
-function Interact(_interactInstigator) constructor {
+function Interact(_interactInstigator) {
 	PutItemInOrOpen(_interactInstigator);
 }
 
-function ItemInteraction(_interactInstigator) constructor {
+function ItemInteraction(_interactInstigator) {
 	PutItemInOrOpen(_interactInstigator);
 	return true;
 }

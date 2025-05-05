@@ -269,12 +269,12 @@ function Init() {
 	SetSelectedButton(0);
 	
 	// BindInputs
-	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, function() { OnUpPressed();}, self);
-	up_stick_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, function(_stick_value) { OnUpStick(_stick_value); }, self);
-	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, function() { OnDownPressed(); }, self);
-	down_stick_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, function(_stick_value) { OnDownStick(_stick_value); }, self);
+	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, function() { OnUpPressed();});
+	up_stick_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, function(_stick_value) { OnUpStick(_stick_value); });
+	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, function() { OnDownPressed(); });
+	down_stick_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, function(_stick_value) { OnDownStick(_stick_value); });
 	
-	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, function() { HandleSelectionInput(); }, self);
+	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, function() { HandleSelectionInput(); });
 		
 	catch_input = true;
 }

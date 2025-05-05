@@ -15,10 +15,10 @@ function ResetFeedback() {
 	layer_add_instance(layer_id, self);
 }
 
-function Interact(_interactInstigator) constructor {
+function Interact(_interactInstigator) {
 	
 }
 
-function ItemInteractio(_interactInstigator) constructor {
+function ItemInteraction(_interactInstigator) {
 	
 }

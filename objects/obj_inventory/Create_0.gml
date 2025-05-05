@@ -445,17 +445,17 @@ validate_event = noone;
 alt_event = noone;
 
 function BindInputs() {
-	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, OnUpPressed);
-	stick_up_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, OnUpStick);
-	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, OnDownPressed);
-	stick_down_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, OnDownStick);
-	left_pressed_event = BindEventToInput("ui_left", INPUT_EVENTS.PRESSED, OnLeftPressed);
-	stick_left_event = BindEventToInput("ui_stick_left", INPUT_EVENTS.DOWN, OnLeftStick);
-	right_pressed_event = BindEventToInput("ui_right", INPUT_EVENTS.PRESSED, OnRightPressed);
-	stick_right_event = BindEventToInput("ui_stick_right", INPUT_EVENTS.DOWN, OnRightStick);
+	up_pressed_event = BindEventToInput("ui_up", INPUT_EVENTS.PRESSED, function() { OnUpPressed(); });
+	stick_up_event = BindEventToInput("ui_stick_up", INPUT_EVENTS.DOWN, function(_stick_value) { OnUpStick(_stick_value); });
+	down_pressed_event = BindEventToInput("ui_down", INPUT_EVENTS.PRESSED, function() { OnDownPressed(); });
+	stick_down_event = BindEventToInput("ui_stick_down", INPUT_EVENTS.DOWN, function(_stick_value) { OnDownStick(_stick_value); });
+	left_pressed_event = BindEventToInput("ui_left", INPUT_EVENTS.PRESSED, function() { OnLeftPressed(); });
+	stick_left_event = BindEventToInput("ui_stick_left", INPUT_EVENTS.DOWN, function(_stick_value) { OnLeftStick(_stick_value); });
+	right_pressed_event = BindEventToInput("ui_right", INPUT_EVENTS.PRESSED, function() { OnRightPressed(); });
+	stick_right_event = BindEventToInput("ui_stick_right", INPUT_EVENTS.DOWN, function(_stick_value) { OnRightStick(_stick_value); });
 	
-	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, OnValidateSelection);
-	alt_event = BindEventToInput("ui_alt", INPUT_EVENTS.PRESSED, OnAltInputPressed);
+	validate_event = BindEventToInput("ui_validate_no_click", INPUT_EVENTS.PRESSED, function() { OnValidateSelection(); });
+	alt_event = BindEventToInput("ui_alt", INPUT_EVENTS.PRESSED, function() { OnAltInputPressed(); });
 }
 
 function ClearInputs() {
