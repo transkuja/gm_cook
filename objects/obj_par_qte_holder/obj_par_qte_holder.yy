@@ -31,28 +31,28 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"input_sequence","filters":[
         "GMSequence",
-      ],"listItems":[],"multiselect":false,"name":"input_sequence","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"progress_y_offset","filters":[],"listItems":[],"multiselect":false,"name":"progress_y_offset","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-85","varType":0,},
+      ],"listItems":[],"multiselect":false,"name":"input_sequence","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"progress_y_offset","filters":[],"listItems":[],"multiselect":false,"name":"progress_y_offset","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-85","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"fx_on_validate","filters":[
         "GMParticleSystem",
-      ],"listItems":[],"multiselect":false,"name":"fx_on_validate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_chop","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"fx_on_validate_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_validate_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-50","varType":0,},
+      ],"listItems":[],"multiselect":false,"name":"fx_on_validate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"fx_ph_on_chop","path":"particles/fx_ph_on_chop/fx_ph_on_chop.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_chop","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"fx_on_validate_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_validate_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-50","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"fx_on_finish","filters":[
         "GMParticleSystem",
-      ],"listItems":[],"multiselect":false,"name":"fx_on_finish","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_transformation_finished","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"fx_on_finished_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_finished_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-25","varType":0,},
+      ],"listItems":[],"multiselect":false,"name":"fx_on_finish","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"fx_ph_on_transformation_finished","path":"particles/fx_ph_on_transformation_finished/fx_ph_on_transformation_finished.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"fx_ph_on_transformation_finished","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"fx_on_finished_offset_y","filters":[],"listItems":[],"multiselect":false,"name":"fx_on_finished_offset_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-25","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"seq_good","filters":[
         "GMSequence",
-      ],"listItems":[],"multiselect":false,"name":"seq_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_good","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"seq_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"seq_qte_good","path":"sequences/seq_qte_good/seq_qte_good.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_good","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"seq_perfect","filters":[
         "GMSequence",
-      ],"listItems":[],"multiselect":false,"name":"seq_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_perfect","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"seq_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"seq_qte_perfect","path":"sequences/seq_qte_perfect/seq_qte_perfect.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"seq_qte_perfect","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"snd_score_good","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_score_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_10","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_score_good","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"Fantasy_UI_10","path":"sounds/Fantasy_UI_10/Fantasy_UI_10.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_10","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"snd_score_perfect","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"snd_score_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_7","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"snd_score_perfect","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"Fantasy_UI_7","path":"sounds/Fantasy_UI_7/Fantasy_UI_7.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Fantasy_UI_7","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

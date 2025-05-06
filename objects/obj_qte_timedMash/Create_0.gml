@@ -25,6 +25,11 @@ bg_color_lerp = 0;
 anim_speed_failed = 0.025;
 anim_failed_inst = noone;
 
+on_init = OnInit;
+on_start = OnStart;
+on_input_validated = OnInputValidated;
+on_reset = OnReset;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;

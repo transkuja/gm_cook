@@ -8,6 +8,10 @@ progress_bar_width = 100;
 progress_bar_height = 25;
 progress_bar_outline = 2.5;
 
+on_init = OnInit;
+on_input_validated = OnInputValidated;
+on_reset = OnReset;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;

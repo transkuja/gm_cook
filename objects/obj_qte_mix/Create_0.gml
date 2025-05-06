@@ -29,6 +29,10 @@ current_fill_speed = min_fill_speed;
 
 stir_sound_inst = noone;
 
+on_init = OnInit;
+on_start = OnStart;
+on_reset = OnReset;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;

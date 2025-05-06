@@ -11,8 +11,12 @@ progress_bar_outline = 2.5;
 // TMP: diff time to specify good or perfect (mash speed)
 first_chop_time = -1;
 
+on_init = OnInit;
+on_input_validated = OnInputValidated;
+on_reset = OnReset;
+
 function OnInit(_items_id) {
-	if (array_length(_items_id) == 0)
+    if (array_length(_items_id) == 0)
 		return false;
 	
 	if (current_mash_count == 0) {
@@ -29,7 +33,6 @@ function OnInit(_items_id) {
 	first_chop_time = -1;
 	return true;
 }
-
 
 function OnInputValidated() {
 	current_mash_count--;

@@ -37,6 +37,11 @@ anim_speed_failed = 0.025;
 anim_failed_inst = noone;
 
 is_init = false;
+
+on_init = OnInit;
+on_start = OnStart;
+on_reset = OnReset;
+
 function OnInit(_items_id) {
 	if (array_length(_items_id) == 0)
 		return false;
@@ -65,17 +70,15 @@ function StartMoving() {
 	bg_color_lerp = 0;
 }
 
-loop_sound_inst = noone;
 function OnStart() {
-	StartMoving();
+    StartMoving();
 	loop_sound_inst = audio_play_sound(in_progress_sound, 10, true);
 }
 
+loop_sound_inst = noone;
+
+
 function OnInputPressed() {
-
-}
-
-function OnInputValidated() {
 
 }
 

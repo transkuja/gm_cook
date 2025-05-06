@@ -8,23 +8,21 @@ validate_fx_inst = noone;
 transformer_x = 0;
 transformer_y = 0;
 
-function OnInit(_items_id) {
-	return true;
-}
+on_init = function() { return true; };
+on_start = noone;
+on_input_validated = noone;
+on_reset = noone;
 
 function Init(_items_id, _x, _y) {
 	transformer_x = _x;
 	transformer_y = _y;
 	
-	if (!OnInit(_items_id)) { return; }
+	if (!on_init(_items_id)) { return; }
 
 	if (current_state)
 		current_state.transition_to(new QteInitializedState(id, {}));
 	else
 		current_state = new QteInitializedState(id, {});
-}
-
-function OnStart() {
 }
 
 function Start() {
@@ -33,7 +31,8 @@ function Start() {
 	else
 		current_state = new QteInProgressState(id, {});
 		
-	OnStart();
+    if (on_start != noone)
+        on_start();
 }
 
 function OnPause() {
@@ -70,14 +69,11 @@ function CheckInputIsValid() {
 	return true;
 }
 
-// Overridable
-function OnInputValidated() {
-	
-}
-
 // Not overridable
 function InputValidated() {
-	OnInputValidated();
+    if (on_input_validated != noone)
+        on_input_validated();
+    
 	PlayValidateFx();
 	
 	if (on_qte_validated != noone) 
@@ -153,11 +149,10 @@ function HideFeedbacks() {
 		layer_sequence_destroy(active_sequence);
 }
 
-function OnReset() {
-}
 
 function Reset() {
-	OnReset();
+	if (on_reset != noone)
+        on_reset();
 	
 	if (current_state)
 		current_state.transition_to(new QteNotReadyState(id, {}));
