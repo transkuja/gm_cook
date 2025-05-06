@@ -13,6 +13,7 @@ anim_qte_validated_speed = 0.04;
 // Inherited delegates
 on_interact = OnInteract;
 on_transformation_finished = OnTransformationFinished;
+get_items_drawn_offsets = GetItemsDrawnOffsets;
 
 function OnInteract() {
 	if (state == TRANSFORMER_STATE.IN_PROGRESS)

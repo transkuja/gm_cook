@@ -27,6 +27,7 @@ should_draw = false;
 on_interact = noone;
 on_transformation_finished = noone;
 on_qte_validated_feedbacks = noone;
+get_items_drawn_offsets = GetItemsDrawnOffsets;
 
 // On A pressed
 function PutItemIn(_item_id) {
@@ -270,7 +271,7 @@ function DrawItemsIn(_nb_items_to_draw) {
 			else
 				_draw_color = merge_colour(c_white, GetItemInBgColor(_i), bg_color_lerp);
 				
-			var _offset = GetItemsDrawnOffsets(_i, _nb_items_to_draw);
+			var _offset = get_items_drawn_offsets(_i, _nb_items_to_draw);
 			var _draw_xy = WorldToGUI(_draw_xs[_i] + _offset[0], y - popup_draw_height + _offset[1]);
 			
 			if (draw_debug) 

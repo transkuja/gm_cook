@@ -15,6 +15,7 @@ anim_speed_conditions_not_met = 0.02;
 // Inherited delegates
 on_transformation_finished = OnTransformationFinished;
 on_qte_validated_feedbacks = OnQteValidatedFeedbacks;
+get_items_drawn_offsets = GetItemsDrawnOffsets;
 
 function IsItemValid(_itemId) {
 	return _contains(GetItemTags(_itemId), ITEM_TYPE.RAW_COMPO);

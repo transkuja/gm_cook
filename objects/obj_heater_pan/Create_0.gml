@@ -8,6 +8,7 @@ preparation_type = PREPARATION_TYPE.PAN_COOK;
 // Inherited delegates
 on_transformation_finished = OnTransformationFinished;
 on_qte_validated_feedbacks = OnQteValidatedFeedbacks;
+get_items_drawn_offsets = GetItemsDrawnOffsets;
 
 function IsItemValid(_itemId) {
 	tags = GetItemTags(_itemId);
