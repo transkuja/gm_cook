@@ -10,6 +10,10 @@ preparation_type = PREPARATION_TYPE.HOVEN_COOK;
 anim_result_speed = 0.02;
 anim_qte_validated_speed = 0.04;
 
+// Inherited delegates
+on_interact = OnInteract;
+on_transformation_finished = OnTransformationFinished;
+
 function OnInteract() {
 	if (state == TRANSFORMER_STATE.IN_PROGRESS)
 	{

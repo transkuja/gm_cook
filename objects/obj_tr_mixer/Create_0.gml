@@ -10,6 +10,9 @@ preparation_type = PREPARATION_TYPE.MIX;
 anim_result_speed = 0.02;
 anim_qte_validated_speed = 0.04;
 
+// Inherited delegates
+on_transformation_finished = OnTransformationFinished;
+
 function IsItemValid(_itemId) {
 	tags = GetItemTags(_itemId);
 	return _contains(tags, ITEM_TYPE.RAW_COMPO);

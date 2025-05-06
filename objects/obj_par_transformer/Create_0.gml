@@ -23,6 +23,11 @@ preparation_type = PREPARATION_TYPE.ASSEMBLE;
 draw_debug = false;
 should_draw = false;
 
+// Inherited delegates
+on_interact = noone;
+on_transformation_finished = noone;
+on_qte_validated_feedbacks = noone;
+
 // On A pressed
 function PutItemIn(_item_id) {
 	if (IsFilled()) {
@@ -177,13 +182,11 @@ function IsTransformable() {
 			
 }
 
-function OnInteract() {
-}
-
 // On A pressed
 function Interact(_interactInstigator) {
-	OnInteract();
-	
+    if (on_interact != noone)
+        on_interact();
+    
 	if (current_state)
 		current_state.process_interaction(_interactInstigator);
 	
@@ -302,13 +305,12 @@ function Progress() {
 	return true;		
 }
 
-function OnTransformationFinished() {
-}
-
 function TransformationFinished() {
 	is_interact_locked = true;
 
-	OnTransformationFinished();
+    if (on_transformation_finished != noone)
+        on_transformation_finished();
+    
 	qte_holder.Reset();
 
 	audio_play_sound(Tool_Table_01, 10, false);
@@ -372,17 +374,17 @@ function StopAnimItems() {
 	offset_draw_item = 0;
 }
 
-function OnQteValidatedFeedbacks(_progress) {
-
-}
-
 function ActivateQteHolder() {
 	if (opt_show_qte_when_ready_only)
 		InitializeQteHolder(true);
 		
 	if (instance_exists(qte_holder)) {
-		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished() } );
-		qte_holder.on_qte_validated = Broadcast(function(_progress) { OnQteValidatedFeedbacks(_progress) } );
+		qte_holder.on_qte_completed = Broadcast(function() { TransformationFinished(); } );
+		qte_holder.on_qte_validated = Broadcast(function(_progress) {
+            if (on_qte_validated_feedbacks != noone) 
+                on_qte_validated_feedbacks(_progress); 
+        } );
+        
 		qte_holder.Start();
 	}
 }

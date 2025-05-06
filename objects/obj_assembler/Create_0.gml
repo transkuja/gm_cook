@@ -9,6 +9,10 @@ anim_speed_conditions_not_met = 0.02;
 
 preparation_type = PREPARATION_TYPE.ASSEMBLE;
 
+// Inherited delegates
+on_transformation_finished = OnTransformationFinished;
+on_qte_validated_feedbacks = OnQteValidatedFeedbacks;
+
 function IsItemValid(_itemId) {
 	return !_contains(GetItemTags(_itemId), ITEM_TYPE.RECIPE_FINAL);
 	//return GetItemType(_itemId) != ITEM_TYPE.RECIPE_FINAL;

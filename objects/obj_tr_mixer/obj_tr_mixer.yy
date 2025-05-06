@@ -7,8 +7,8 @@
   "managed":true,
   "name":"obj_tr_mixer",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_testing",},
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"max_items","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":null,"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"2",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"qte_holder_obj","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resource":{"name":"obj_qte_testing","path":"objects/obj_qte_testing/obj_qte_testing.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"obj_qte_testing",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_par_transformer","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"propertyId":{"name":"max_items","path":"objects/obj_par_transformer/obj_par_transformer.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"2",},
   ],
   "parent":{
     "name":"Transformers",

@@ -5,6 +5,10 @@ anim_qte_validated_speed = 0.04;
 
 preparation_type = PREPARATION_TYPE.PAN_COOK;
 
+// Inherited delegates
+on_transformation_finished = OnTransformationFinished;
+on_qte_validated_feedbacks = OnQteValidatedFeedbacks;
+
 function IsItemValid(_itemId) {
 	tags = GetItemTags(_itemId);
 	return _contains(tags, ITEM_TYPE.HEATABLE_PAN);
