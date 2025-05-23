@@ -58,6 +58,14 @@ function LoadLowPriority() {
 		}
 	}
 	
+    // GameState
+    var _game_state = instance_create_layer(x,y, "ControlObjects", obj_gameState);
+    if (instance_exists(_game_state))
+    {
+        _game_state.GameStateInit();
+        _game_state.LoadState();
+    }
+    
 	// Prio 3: Load ressources
 	//particle manager
 	if (particle_manager)

@@ -1,4 +1,4 @@
-function save_data_get(_key) { 
+function save_data_get(_key, _default = undefined) { 
 	if (!variable_global_exists("save_manager") || !instance_exists(global.save_manager)) {
 		_log("ERROR: save_data_get: SAVE MANAGER MISSING !!!! Key: " + _key);
 		return undefined;
@@ -7,7 +7,7 @@ function save_data_get(_key) {
 	if (ds_map_exists(global.save_manager.current_save_data, _key))
 		return ds_map_find_value(global.save_manager.current_save_data,_key);
 		
-	return undefined;
+	return _default;
 }
 
 function save_data_add(_key, _delta) {
