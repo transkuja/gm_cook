@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"seq_level_up_Events169",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"seq_level_up_Events169",
+  "parent":{
+    "name":"CookingGame",
+    "path":"CookingGame.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
