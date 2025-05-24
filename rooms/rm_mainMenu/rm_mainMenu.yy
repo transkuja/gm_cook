@@ -19,7 +19,7 @@
     {"name":"inst_3988929F","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
     {"name":"inst_35DD1C0F","path":"rooms/rm_mainMenu/rm_mainMenu.yy",},
     {"name":"inst_xp_bar","path":"roomui/RoomUI/RoomUI.yy",},
-    {"name":"inst_3AB18579","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_ui_manager","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_1E770E13","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,

@@ -3,7 +3,7 @@
   "%Name":"RoomUI",
   "children":[
     {"$GMRUILayer":"v1","%Name":"MainHUD","alignItems":1,"children":[
-        {"$GMRInstance":"v2","%Name":"inst_3AB18579","colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps",},"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3AB18579","objectId":{"name":"obj_uiManager","path":"objects/obj_uiManager/obj_uiManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
+        {"$GMRInstance":"v2","%Name":"inst_ui_manager","colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps",},"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_ui_manager","objectId":{"name":"obj_uiManager","path":"objects/obj_uiManager/obj_uiManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"flexDirection":2,"gridX":32,"gridY":32,"justifyContent":0,"name":"MainHUD","nodeColour":4284827890,"resourceType":"GMRUILayer","resourceVersion":"2.0",},
     {"$GMRUILayer":"v1","%Name":"XpBarLayer","alignItems":2,"children":[
         {"$GMRFlexPanel":"","%Name":"XpBarPanel","alignItems":2,"children":[

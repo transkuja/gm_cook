@@ -11,6 +11,9 @@ global.__phgen_string_cache = ds_map_create();
 /// @returns {sprite} sprite_index
 function phgen_rectangle(_width=16, _height=16, _color=c_white, _outline_size=1, _outline_color=_color, _x_origin_relative=0, _y_origin_relative=0)
 {
+    if (_width < 1) return noone; 
+    if (_height < 1) return noone;
+            
 	__phgen_map_check();
 
 	var _map_string = __phgen_map_string("sprRect", _width, _height, _color, _outline_size, _outline_color);
@@ -20,6 +23,9 @@ function phgen_rectangle(_width=16, _height=16, _color=c_white, _outline_size=1,
 		return _map_value;
 	}
 
+    _log("W ", _width);
+    _log("H ", _height);
+    
 	var _surf = surface_create(_width, _height);
 	surface_set_target(_surf);
 	draw_clear_alpha(_outline_color, 1.0);

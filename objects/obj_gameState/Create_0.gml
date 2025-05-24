@@ -10,10 +10,10 @@ previous_exp = 0;
 previous_level = 1;
 
 global.game_state = self;
+global.on_lvl_up = Broadcast(); // event
 
 function GameStateInit() {
-    global.on_lvl_up = function() {
-        LvlUp(); }
+    var _subscribee = BindEvent(global.on_lvl_up, function() { LvlUp(); });
 }
 
 function AddMoney(_delta) {

@@ -10,7 +10,7 @@ if (progress > 0)
 	var pb_content_w = (sprite_width - 2*margin_sides) * progress;
 	var pb_content_h = sprite_height - 2*margin_top_bottom;
     
-	if (pb_content_w <= 0.0 || pb_content_h <= 0.0)
+	if (pb_content_w < 1 || pb_content_h < 1)
         return;
     
     draw_sprite(

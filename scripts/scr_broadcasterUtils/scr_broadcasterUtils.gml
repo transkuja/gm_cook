@@ -1,14 +1,11 @@
 
-function BindEvent(_event_holder, _to_bind, _subscribee) {
-	if (_event_holder != noone) {
-		_subscribee = Subscriber( _to_bind).watch(_event_holder);
-	}
-	else {
-		var _broadcast = Broadcast(_to_bind);
-		_event_holder = _broadcast;
-	}
-	
-	return _event_holder;
+function BindEvent(_event_holder, _to_bind) {
+	if (_event_holder == noone || _event_holder == undefined) { 
+        _event_holder = Broadcast();
+    }
+    
+    var _subscribee = Subscriber( _to_bind).watch(_event_holder);
+    return _subscribee;
 }
 
 

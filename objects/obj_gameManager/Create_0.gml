@@ -71,5 +71,7 @@ function LoadLowPriority() {
 	if (particle_manager)
 		instance_create_layer(x,y, "ControlObjects", obj_particleManager);
 		
+    inst_ui_manager.GuiInit();
+    
 	is_loaded = true;
 }

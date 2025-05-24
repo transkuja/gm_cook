@@ -19,7 +19,7 @@ function OnLevelUp() {
     
     // Tell GameState about level up
     if (global.on_lvl_up != noone)
-        global.on_lvl_up(); 
+        global.on_lvl_up.dispatch(); 
 }
 
 function AddXp(_previous_xp, _xp) {
