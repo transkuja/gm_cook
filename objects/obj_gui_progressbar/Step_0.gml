@@ -15,4 +15,10 @@ if (delta_progress > 0)
         
         progress -= 1;
     }
+    
+    if (delta_progress <= 0)
+    {
+        progress = target_progress;
+        delta_progress = 0;
+     }   
 }
