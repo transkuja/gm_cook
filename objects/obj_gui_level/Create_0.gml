@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 current_level = 1;
-anim_speed = 0.02;
+anim_speed = 0.03;
 txt_scale_x = 0;
 txt_scale_y = 0;
 

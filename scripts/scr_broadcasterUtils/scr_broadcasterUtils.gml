@@ -4,6 +4,7 @@ function BindEvent(_event_holder, _to_bind) {
         _event_holder = Broadcast();
     }
     
+    _log("Event binded");
     var _subscribee = Subscriber( _to_bind).watch(_event_holder);
     return _subscribee;
 }

@@ -23,9 +23,6 @@ function phgen_rectangle(_width=16, _height=16, _color=c_white, _outline_size=1,
 		return _map_value;
 	}
 
-    _log("W ", _width);
-    _log("H ", _height);
-    
 	var _surf = surface_create(_width, _height);
 	surface_set_target(_surf);
 	draw_clear_alpha(_outline_color, 1.0);
