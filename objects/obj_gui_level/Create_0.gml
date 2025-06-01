@@ -8,10 +8,10 @@ txt_scale_y = 0;
 
 function GuiInit() {
     var _subscribee = BindEvent(global.on_lvl_up, function() { PlayLevelUpAnim(); });
+    current_level = save_data_get("level", 1);
 }
 
 function DrawText() {
-    current_level = save_data_get("level", 1);
     //draw_set_font(font_qte_score);
     //draw_text(x, y, "Lvl " + current_level);
     var _draw_xy = WorldToGUI(x, y);
@@ -33,4 +33,6 @@ function PlayLevelUpAnim() {
     var _sa_x = new polarca_animation("txt_scale_x", 0.2, ac_bump_scale_up_maintained, 0, anim_speed);
 	var _sa_y = new polarca_animation("txt_scale_y", 0.2, ac_bump_scale_up_maintained, 0, anim_speed);
 	polarca_animation_start([_sa_x, _sa_y]);
+    
+    current_level = save_data_get("level", 1);
 }
