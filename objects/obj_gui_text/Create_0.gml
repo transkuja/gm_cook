@@ -1,9 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-current_level = 1;
 anim_scale_x = 0;
 anim_scale_y = 0;
+
+on_play_anim = function() {};
 
 function GuiInit() {
     
@@ -85,7 +86,9 @@ function DrawText() {
 }
 
 function PlayLevelUpAnim() {
-    var _sa_x = new polarca_animation("txt_scale_x", 0.2, ac_bump_scale_up_maintained, 0, anim_speed);
-	var _sa_y = new polarca_animation("txt_scale_y", 0.2, ac_bump_scale_up_maintained, 0, anim_speed);
+    var _sa_x = new polarca_animation("anim_scale_x", 0.2, anim_curve, 0, anim_speed);
+	var _sa_y = new polarca_animation("anim_scale_y", 0.2, anim_curve, 0, anim_speed);
 	polarca_animation_start([_sa_x, _sa_y]);
+    
+    on_play_anim();
 }
