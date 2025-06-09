@@ -10,7 +10,10 @@ previous_exp = 0;
 previous_level = 1;
 
 global.game_state = self;
-global.on_lvl_up = Broadcast(); // event
+if (!variable_global_exists("on_lvl_up"))
+    global.on_lvl_up = Broadcast();
+if (!variable_global_exists("on_money_updated"))
+    global.on_money_updated = Broadcast();
 
 function GameStateInit() {
     var _subscribee = BindEvent(global.on_lvl_up, function() { LvlUp(); });
@@ -21,6 +24,9 @@ function AddMoney(_delta) {
     money += _delta;
     
     SaveState();
+    
+    if (global.on_money_updated != noone)
+        global.on_money_updated.dispatch();
 }
 
 function CheckEnoughMoney(_value) {
@@ -35,6 +41,10 @@ function TryPayMoney(_value) {
     money -= _value;
     
     SaveState();
+    
+    if (global.on_money_updated != noone)
+        global.on_money_updated.dispatch();
+    
     return true;
 }
 

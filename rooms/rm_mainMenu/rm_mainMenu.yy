@@ -21,6 +21,7 @@
     {"name":"inst_xp_bar","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_ui_manager","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_1E770E13","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_12440010","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,
   "layers":[

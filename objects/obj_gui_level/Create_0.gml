@@ -11,7 +11,7 @@ function UpdateText() {
 }
 
 function GuiInit() {
-    var _subscribee = BindEvent(global.on_lvl_up, function() { PlayLevelUpAnim(); });
+    var _subscribee = BindEvent(global.on_lvl_up, function() { PlayAnim(); });
     UpdateText();
 }
 

@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gui_level",
+  "%Name":"obj_gui_money_text",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_gui_level",
+  "name":"obj_gui_money_text",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gui_text","path":"objects/obj_gui_text/obj_gui_text.yy",},"propertyId":{"name":"base_scale_x","path":"objects/obj_gui_text/obj_gui_text.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0.75",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gui_text","path":"objects/obj_gui_text/obj_gui_text.yy",},"propertyId":{"name":"base_scale_y","path":"objects/obj_gui_text/obj_gui_text.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0.75",},
